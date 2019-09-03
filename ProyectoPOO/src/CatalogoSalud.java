@@ -1,15 +1,21 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 public class CatalogoSalud {
-	private ArrayList<Enfermedad>enfermedades;
-	private ArrayList<Medicina>medicinas;
+	private List <Enfermedad> listadoEnfermedades;
+	private List <Medicina> listadoMedicinas;
 	
 	/**
 	 * @param Constructor de la clase CatalogoSalud
 	 */
 	public CatalogoSalud()
 	{
-		enfermedades = new ArrayList<Enfermedad>();
-		medicinas = new ArrayList<Medicina>();
+		listadoEnfermedades = new ArrayList<Enfermedad>();
+		listadoMedicinas = new ArrayList<Medicina>();
+		llenarCatalogo();
 	}
 	
 	
@@ -19,7 +25,7 @@ public class CatalogoSalud {
 	 */
 	public void agregarMedicina(Medicina nuevaMedicina, int i)
 	{	
-		medicinas.add(i, nuevaMedicina);	
+		listadoMedicinas.add(i, nuevaMedicina);	
 	}
 	
 	/**
@@ -28,7 +34,7 @@ public class CatalogoSalud {
 	 */
 	public void agregarEnfermedad(Enfermedad nuevaEnfermedad, int i)
 	{
-		enfermedades.add(i,nuevaEnfermedad);
+		listadoEnfermedades.add(i,nuevaEnfermedad);
 	}
 	
 	
@@ -37,11 +43,68 @@ public class CatalogoSalud {
 	 * 
 	 */
 	public void ActualizarEnfermedad(Enfermedad enfermedadActualizado, int i) {
-		if(i<=enfermedades.size() && enfermedades.get(i) != null)
-			enfermedades.add(i, enfermedadActualizado);
+		if(i<=listadoEnfermedades.size() && listadoEnfermedades.get(i) != null)
+			listadoEnfermedades.add(i, enfermedadActualizado);
 	}
 	
+	
+	public void pruebaListas() {
+		for(Enfermedad enfermedad:listadoEnfermedades) {
+			System.out.println(enfermedad.getNombre());
+		}
+		
+		for(Medicina medicina:listadoMedicinas) {
+			System.out.println(medicina.getNombre());
+		}
+	}
+	
+	
+	/**
+	 * Este metodo llena tanto el listado de enfermedades como de medicinas al crear un catalogoSalud
+	 */
+	private void llenarCatalogo() {
+		Enfermedad enfermedad;
+		Medicina medicina;
+		
+		try {
+			BufferedReader brE = new BufferedReader(new FileReader("Enfermedades.csv"));
+			BufferedReader brM = new BufferedReader(new FileReader("Medicinas.csv"));
+			
+			
+			String lineE = brE.readLine();
+			String lineM = brM.readLine();
+			
+			while (lineE != null) {
+				String[] AtributosEnf = lineE.split(",");
+				
+				
+				enfermedad = new Enfermedad(AtributosEnf[0],Boolean.parseBoolean(AtributosEnf[1]),Boolean.parseBoolean(AtributosEnf[2]),Boolean.parseBoolean(AtributosEnf[3])
+						,Boolean.parseBoolean(AtributosEnf[4]),Boolean.parseBoolean(AtributosEnf[5]),Boolean.parseBoolean(AtributosEnf[6]),Boolean.parseBoolean(AtributosEnf[7])
+						,Boolean.parseBoolean(AtributosEnf[8]),AtributosEnf[9]);
+				
+				listadoEnfermedades.add(enfermedad);
 
+	            lineE = brE.readLine();
+			}
+			
+			while (lineM != null) {
+				String[] AtributosMed = lineM.split(",");
+				
+				medicina = new Medicina(AtributosMed[0],Double.parseDouble(AtributosMed[1]), AtributosMed[2], AtributosMed[3], AtributosMed[4],AtributosMed[5]);
+				
+				listadoMedicinas.add(medicina);
+				
+	            lineM = brM.readLine();
+			}
+			
+			brE.close();
+			brM.close();
+			
+			
+		}catch(Exception e) {
+			System.out.println("Ocurrio un error al cargar los datos");
+		}
+	}
 	 
 	
 	
