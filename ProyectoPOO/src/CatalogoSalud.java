@@ -8,15 +8,18 @@ public class CatalogoSalud {
 	private List <Enfermedad> listadoEnfermedades;
 	private List <Medicina> listadoMedicinas;
 	
+		
 	/**
 	 * @param Constructor de la clase CatalogoSalud
 	 */
 	public CatalogoSalud()
 	{
+
 		listadoEnfermedades = new ArrayList<Enfermedad>();
 		listadoMedicinas = new ArrayList<Medicina>();
 		llenarCatalogo();
 	}
+	
 	
 	
 	/**
@@ -105,9 +108,24 @@ public class CatalogoSalud {
 			System.out.println("Ocurrio un error al cargar los datos");
 		}
 	}
-	 
-	
-	
-	
-		
-}
+	 /**
+	  * Este metodo permite ingresar el nombre de la enfermedad 
+	  */
+	public List<Enfermedad> verEnfermedad(String nombre) {
+		List<Enfermedad> enfermedadBusca = null;
+		for (Enfermedad Enfermedad: listadoEnfermedades)
+			if (Enfermedad.getNombre().equals(nombre)){
+				enfermedadBusca: new Enfermedad(((Enfermedad) listadoEnfermedades).getNombre(), ((Enfermedad) listadoEnfermedades).isDolorCabeza(), ((Enfermedad) listadoEnfermedades).isDolorEstomago(), ((Enfermedad) listadoEnfermedades).isVomito(), 
+						((Enfermedad) listadoEnfermedades).isDiarrea(), ((Enfermedad) listadoEnfermedades).isEstornudo(), ((Enfermedad) listadoEnfermedades).isTos(), ((Enfermedad) listadoEnfermedades).isDolorGeneral(), ((Enfermedad) listadoEnfermedades).isFaltaEnergia(),
+						((Enfermedad) listadoEnfermedades).getNotasAdicionales());
+				
+				enfermedadBusca = (List<Enfermedad>) Enfermedad;
+			}
+			if(enfermedadBusca != null) {
+				if(((Enfermedad) listadoEnfermedades).getNombre().contentEquals(nombre)) {
+					enfermedadBusca = listadoEnfermedades;
+				}
+			}
+			return enfermedadBusca;
+		}
+	}
