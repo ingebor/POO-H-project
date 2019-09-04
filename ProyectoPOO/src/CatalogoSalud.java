@@ -109,7 +109,7 @@ public class CatalogoSalud {
 		}
 	}
 	 /**
-	  * Este metodo permite ingresar el nombre de la enfermedad 
+	  * Este metodo permite ingresar el nombre de la enfermedad. 
 	  */
 	public List<Enfermedad> verEnfermedad(String nombre) {
 		List<Enfermedad> enfermedadBusca = null;
