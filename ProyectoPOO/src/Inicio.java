@@ -12,6 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.Color;
 
 public class Inicio {
 
@@ -45,6 +47,7 @@ public class Inicio {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(255, 239, 213));
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -53,10 +56,13 @@ public class Inicio {
 		JLabel lblInstrucciones = new JLabel("INSTRUCCIONES");
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.setBackground(new Color(230, 230, 250));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Doctor ", "Paciente"}));
 		
-		JLabel lblSeleccionarCategora = new JLabel("Seleccionar categoría");
+		JLabel lblSeleccionarCategora = new JLabel("Seleccionar categoria");
 		
 		JButton btnIngresar = new JButton("Ingresar");
+		btnIngresar.setBackground(new Color(176, 224, 230));
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
