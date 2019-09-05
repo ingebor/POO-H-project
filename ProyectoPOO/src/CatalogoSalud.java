@@ -171,13 +171,16 @@ public class CatalogoSalud {
 	 * Este metodo permite buscar la medicina 
 	 */
 	
-	public List<Medicina> BuscarMed(String nombreMed) {
+	public String BuscarMed(String nombreMed) {
+		int indice = 0;
 		for (Medicina buscandoMed: listadoMedicinas) {
 			if (nombreMed.equals(buscandoMed.getNombre())){
-				List<Medicina> y = System.out.println(nombreMed);
+				indice = listadoMedicinas.indexOf(buscandoMed);
 			}
 		}
-		return y;
+		
+		Medicina medMostrar = listadoMedicinas.get(indice);
+		return medMostrar.toString();
 	}
 	
 	
