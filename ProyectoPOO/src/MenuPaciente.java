@@ -94,5 +94,5 @@ public class MenuPaciente {
 							.addGap(32))))
 		);
 		frame.getContentPane().setLayout(groupLayout);
-	}
+	} 
 }
