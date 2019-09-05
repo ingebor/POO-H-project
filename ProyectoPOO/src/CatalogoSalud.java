@@ -128,4 +128,14 @@ public class CatalogoSalud {
 			}
 			return enfermedadBusca;
 		}
+	/**
+	 * Este metodo permite buscar la medicina 
+	 */
+	public String BuscarMed() {
+		for (List<Medicina> x: listadoMedicinas) {
+			if nombre.equals(x.getNombre){
+				System.out.println(x)
+			}
+		}
 	}
+}
