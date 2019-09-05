@@ -36,29 +36,23 @@ public class CatalogoSalud {
 	 * @param Agrega una medicina en la lista del array de medicinas 
 	 * 
 	 */
-	public void agregarMedicina(String nombre, double precio,String ingestion,String tiposMedicina,String dosis,String notasAdicionales, String notasAdicionales1)
+	public void agregarMedicina(Enfermedad nombre, Enfermedad precio, Enfermedad ingestion, Enfermedad tipoMedicina, Enfermedad dosis, Enfermedad notasAdicionales, int i)
 	{	
-		Medicina AgregarMedicina = new Medicina(nombre,precio,ingestion,tiposMedicina,dosis,notasAdicionales1);
-		listadoMedicinas.add(AgregarMedicina);
-		/*
+		listadoEnfermedades.add(i, nombre);
 		listadoEnfermedades.add(i, precio);// 
-		listadoEnfermedades.add(i, ingestio);
+		listadoEnfermedades.add(i, ingestion);
 		listadoEnfermedades.add(i, tipoMedicina);
 		listadoEnfermedades.add(i, notasAdicionales);
 		listadoEnfermedades.add(i, dosis);
-	*/
+	
 	}
 	
 	/**
 	 * @param Agrega una enfermedad en la lista del array de enfermedades 
 	 * 
 	 */
-	public void agregarEnfermedad(String nombre, boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea, boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia, String notasAdicionales)
+	public void agregarEnfermedad(Enfermedad nombre, Enfermedad dolorCabeza, Enfermedad dolorEstomago, Enfermedad vomito, Enfermedad diarrea, Enfermedad estornudo, Enfermedad tos, Enfermedad dolorGeneral, Enfermedad faltaEnergia, int i)
 	{
-		Enfermedad AgregarEnfermedad = new Enfermedad(nombre, dolorCabeza, dolorEstomago, vomito, diarrea, estornudo, tos, dolorGeneral, faltaEnergia, notasAdicionales);
-		listadoEnfermedades.add(AgregarEnfermedad);
-		
-		/*
 		listadoEnfermedades.add( nombre);
 		listadoEnfermedades.add(i, dolorCabeza);
 		listadoEnfermedades.add(i, dolorEstomago);
@@ -68,7 +62,7 @@ public class CatalogoSalud {
 		listadoEnfermedades.add(i,tos);
 		listadoEnfermedades.add(i,dolorGeneral);
 		listadoEnfermedades.add(i, faltaEnergia);
-		*/
+	
 	}
 	
 	
@@ -112,7 +106,7 @@ public class CatalogoSalud {
 	/**
 	 * Este metodo llena tanto el listado de enfermedades como de medicinas al crear un catalogoSalud
 	 */
-	private void llenarCatalogo() {
+	private void llenarCatalogo()  {
 		Enfermedad enfermedad;
 		Medicina medicina;
 		
@@ -152,7 +146,7 @@ public class CatalogoSalud {
 			
 			
 		}catch(Exception e) {
-			System.out.println("Ocurrio un error al cargar los datos");
+			
 		}
 	}
 	 /**
@@ -162,9 +156,7 @@ public class CatalogoSalud {
 		List<Enfermedad> enfermedadBusca = null;
 		for (Enfermedad Enfermedad: listadoEnfermedades)
 			if (Enfermedad.getNombre().equals(nombre)){
-				enfermedadBusca: new Enfermedad(((Enfermedad) listadoEnfermedades).getNombre(), ((Enfermedad) listadoEnfermedades).isDolorCabeza(), ((Enfermedad) listadoEnfermedades).isDolorEstomago(), ((Enfermedad) listadoEnfermedades).isVomito(), 
-						((Enfermedad) listadoEnfermedades).isDiarrea(), ((Enfermedad) listadoEnfermedades).isEstornudo(), ((Enfermedad) listadoEnfermedades).isTos(), ((Enfermedad) listadoEnfermedades).isDolorGeneral(), ((Enfermedad) listadoEnfermedades).isFaltaEnergia(),
-						((Enfermedad) listadoEnfermedades).getNotasAdicionales());
+			enfermedadBusca.add(Enfermedad);
 				
 				enfermedadBusca = (List<Enfermedad>) Enfermedad;
 			}
@@ -207,20 +199,22 @@ public class CatalogoSalud {
 		
 		for(Medicina medicina:listadoMedicinas) {
 			if(nombre.equals(medicina.getNombre())) {
-				indice = i;	
+				indice = listadoMedicinas.indexOf(medicina);	
 				bandera = true;
 			}
 			i++;
 		}
 		
 		if (bandera == true) {
+			listadoMedicinas.remove(indice);
 			listadoMedicinas.add(indice,Nmedicina);
+			
 			llenarCsvMed();
-			JOptionPane.showMessageDialog(null, "Actualizacion de informacion completada");
+			
 			
 		}
 		else {
-			JOptionPane.showMessageDialog(null, "Ninguna medicina tiene el nombre ingresado");
+			
 		}
 		
 		
@@ -238,7 +232,7 @@ public class CatalogoSalud {
 			String texto = "";
 			
 			for(Medicina Nmedicina: listadoMedicinas) {
-				texto = Nmedicina.getNombre() + "," + String.valueOf(Nmedicina.getPrecio()) + "," + Nmedicina.getIngestion() + ","
+				texto += Nmedicina.getNombre() + "," + String.valueOf(Nmedicina.getPrecio()) + "," + Nmedicina.getIngestion() + ","
 					+ Nmedicina.getTiposMedicina() + "," + Nmedicina.getDosis() + "," + Nmedicina.getNotasAdicionales() + "\n";
 			}
 				
