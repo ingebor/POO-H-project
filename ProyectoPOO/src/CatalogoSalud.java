@@ -206,7 +206,9 @@ public class CatalogoSalud {
 		}
 		
 		if (bandera == true) {
+			listadoMedicinas.remove(indice);
 			listadoMedicinas.add(indice,Nmedicina);
+			
 			llenarCsvMed();
 			JOptionPane.showMessageDialog(null, "Actualizacion de informacion completada");
 			
@@ -230,7 +232,7 @@ public class CatalogoSalud {
 			String texto = "";
 			
 			for(Medicina Nmedicina: listadoMedicinas) {
-				texto = Nmedicina.getNombre() + "," + String.valueOf(Nmedicina.getPrecio()) + "," + Nmedicina.getIngestion() + ","
+				texto += Nmedicina.getNombre() + "," + String.valueOf(Nmedicina.getPrecio()) + "," + Nmedicina.getIngestion() + ","
 					+ Nmedicina.getTiposMedicina() + "," + Nmedicina.getDosis() + "," + Nmedicina.getNotasAdicionales() + "\n";
 			}
 				
