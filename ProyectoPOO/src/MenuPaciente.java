@@ -78,7 +78,7 @@ public class MenuPaciente {
 		JComboBox comboBox_2 = new JComboBox();
 		
 		JComboBox comboBox_3 = new JComboBox();
-		
+		 
 		JComboBox comboBox_4 = new JComboBox();
 		
 		JComboBox comboBox_5 = new JComboBox();
