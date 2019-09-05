@@ -1,8 +1,16 @@
+/**
+ * @author Grupo 2 POO Seccion 21
+ */
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
+import javax.swing.JOptionPane;
 
 public class CatalogoSalud {
 	private List <Enfermedad> listadoEnfermedades;
@@ -131,11 +139,78 @@ public class CatalogoSalud {
 	/**
 	 * Este metodo permite buscar la medicina 
 	 */
-	public List<Medicina> BuscarMed() {
-		for (List<Medicina> x: listadoMedicinas) {
-			if nombre.equals(x.getNombre){
-				System.out.println(x)
+	/*
+	public List<Medicina> BuscarMed(String nombre) {
+		for (Medicina x: listadoMedicinas) {
+			if (nombre.equals(x.getNombre())){
+				System.out.println(x);
 			}
 		}
+		return 
 	}
+	*/
+	
+	
+	/**
+	 * @param nombre
+	 * @param precio
+	 * @param ingestion
+	 * @param tiposMedicina
+	 * @param dosis
+	 * @param notasAdicionales
+	 * Este metodo actualiza un de las medicinas del csv
+	 */
+	public void acualizarMedicina(String nombre,double precio, String ingestion, String tiposMedicina, String dosis, String notasAdicionales) {
+		Medicina Nmedicina = new Medicina(nombre,precio,ingestion,tiposMedicina,dosis,notasAdicionales);
+		int indice = 0;
+		int i = 0;
+		boolean bandera = false;
+		
+		for(Medicina medicina:listadoMedicinas) {
+			if(nombre.equals(medicina.getNombre())) {
+				indice = i;	
+				bandera = true;
+			}
+			i++;
+		}
+		
+		if (bandera == true) {
+			listadoMedicinas.add(indice,Nmedicina);
+			llenarCsvMed();
+			JOptionPane.showMessageDialog(null, "Actualizacion de informacion completada");
+			
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "Ninguna medicina tiene el nombre ingresado");
+		}
+		
+		
+		
+	}
+	
+	/**
+	 * Este metodo reescribe el csv
+	 */
+	private void llenarCsvMed() {
+		
+		try {
+			FileWriter pencil = new FileWriter("Medicinas.csv");
+			PrintWriter pw = new PrintWriter(pencil);
+			String texto = "";
+			
+			for(Medicina Nmedicina: listadoMedicinas) {
+				texto = Nmedicina.getNombre() + "," + String.valueOf(Nmedicina.getPrecio()) + "," + Nmedicina.getIngestion() + ","
+					+ Nmedicina.getTiposMedicina() + "," + Nmedicina.getDosis() + "," + Nmedicina.getNotasAdicionales() + "\n";
+			}
+				
+			pw.write(texto);
+			pw.close();
+				
+		}catch (Exception e) {
+			System.out.println("Ocurrio un error al escribir en el csv");
+		}
+		
+	}
+	
+	
 }
