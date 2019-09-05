@@ -172,14 +172,14 @@ public class CatalogoSalud {
 	/**
 	 * Este metodo permite buscar la medicina 
 	 */
-	/*
-	public List<Medicina> BuscarMed(String nombre) {
+	
+	/*public List<Medicina> BuscarMed(String nombre) {
 		for (Medicina x: listadoMedicinas) {
 			if (nombre.equals(x.getNombre())){
-				System.out.println(x);
+				List<Medicina> y = System.out.println(x);
 			}
 		}
-		return 
+		return y;
 	}
 	*/
 	
