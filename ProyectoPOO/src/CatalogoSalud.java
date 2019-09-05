@@ -131,7 +131,7 @@ public class CatalogoSalud {
 	/**
 	 * Este metodo permite buscar la medicina 
 	 */
-	public String BuscarMed() {
+	public List<Medicina> BuscarMed() {
 		for (List<Medicina> x: listadoMedicinas) {
 			if nombre.equals(x.getNombre){
 				System.out.println(x)
