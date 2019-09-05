@@ -1,7 +1,5 @@
 /**
  * @author Grupo 2 POO Seccion 21
- * @date 05/09/2019
- * Segunda presentacion de proyecto
  */
 
 import java.util.ArrayList;
@@ -36,11 +34,11 @@ public class CatalogoSalud {
 	 * @param Agrega una medicina en la lista del array de medicinas 
 	 * 
 	 */
-	public void agregarMedicina(Enfermedad nombre, Enfermedad precio, Enfermedad ingestion, Enfermedad tipoMedicina, Enfermedad dosis, Enfermedad notasAdicionales, int i)
+	public void agregarMedicina(Enfermedad nombre, Enfermedad precio, Enfermedad ingestio, Enfermedad tipoMedicina, Enfermedad dosis, Enfermedad notasAdicionales, int i)
 	{	
 		listadoEnfermedades.add(i, nombre);
 		listadoEnfermedades.add(i, precio);// 
-		listadoEnfermedades.add(i, ingestion);
+		listadoEnfermedades.add(i, ingestio);
 		listadoEnfermedades.add(i, tipoMedicina);
 		listadoEnfermedades.add(i, notasAdicionales);
 		listadoEnfermedades.add(i, dosis);
@@ -156,18 +154,18 @@ public class CatalogoSalud {
 		List<Enfermedad> enfermedadBusca = null;
 		for (Enfermedad Enfermedad: listadoEnfermedades)
 			if (Enfermedad.getNombre().equals(nombre)){
-				enfermedadBusca: new Enfermedad(((Enfermedad) listadoEnfermedades).getNombre(), ((Enfermedad) listadoEnfermedades).isDolorCabeza(), ((Enfermedad) listadoEnfermedades).isDolorEstomago(), ((Enfermedad) listadoEnfermedades).isVomito(), 
+				enfermedadBusca.add(new Enfermedad(((Enfermedad) listadoEnfermedades).getNombre(), ((Enfermedad) listadoEnfermedades).isDolorCabeza(), ((Enfermedad) listadoEnfermedades).isDolorEstomago(), ((Enfermedad) listadoEnfermedades).isVomito(), 
 						((Enfermedad) listadoEnfermedades).isDiarrea(), ((Enfermedad) listadoEnfermedades).isEstornudo(), ((Enfermedad) listadoEnfermedades).isTos(), ((Enfermedad) listadoEnfermedades).isDolorGeneral(), ((Enfermedad) listadoEnfermedades).isFaltaEnergia(),
-						((Enfermedad) listadoEnfermedades).getNotasAdicionales());
+						((Enfermedad) listadoEnfermedades).getNotasAdicionales()));
 				
 				enfermedadBusca = (List<Enfermedad>) Enfermedad;
 			}
-			if(enfermedadBusca != null) {
-				if(((Enfermedad) listadoEnfermedades).getNombre().contentEquals(nombre)) {
-					enfermedadBusca = listadoEnfermedades;
+		if(enfermedadBusca != null) {
+			if(((Enfermedad) listadoEnfermedades).getNombre().contentEquals(nombre)) {
+				enfermedadBusca = listadoEnfermedades;
 				}
 			}
-			return enfermedadBusca;
+		return enfermedadBusca;
 		}
 	/**
 	 * Este metodo permite buscar la medicina 
@@ -216,6 +214,7 @@ public class CatalogoSalud {
 		else {
 			JOptionPane.showMessageDialog(null, "Ninguna medicina tiene el nombre ingresado");
 		}
+		
 		
 		
 		
