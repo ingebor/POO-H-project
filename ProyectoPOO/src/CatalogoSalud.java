@@ -77,24 +77,22 @@ public class CatalogoSalud {
 	 * 
 	 */
 	public void ActualizarEnfermedad(String nombre, boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea, boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia) {	
-		int i = 0;
 		for(int j = 0; j < listadoEnfermedades.size(); j++)
 		{
-			if (nombre.equals(listadoEnfermedades.get(i).getNombre()))
+			if (nombre.equals(listadoEnfermedades.get(j).getNombre()))
 			{
-				listadoEnfermedades.get(i).setNombre(nombre);
-				listadoEnfermedades.get(i).setDolorCabeza(dolorCabeza);				
-				listadoEnfermedades.get(i).setDolorEstomago(dolorEstomago);
-				listadoEnfermedades.get(i).setVomito(vomito);
-				listadoEnfermedades.get(i).setDiarrea(diarrea);
-				listadoEnfermedades.get(i).setEstornudo(estornudo);
-				listadoEnfermedades.get(i).setTos(tos);
-				listadoEnfermedades.get(i).setDolorGeneral(dolorGeneral);
-				listadoEnfermedades.get(i).setFaltaEnergia(faltaEnergia);
+				listadoEnfermedades.get(j).setNombre(nombre);
+				listadoEnfermedades.get(j).setDolorCabeza(dolorCabeza);				
+				listadoEnfermedades.get(j).setDolorEstomago(dolorEstomago);
+				listadoEnfermedades.get(j).setVomito(vomito);
+				listadoEnfermedades.get(j).setDiarrea(diarrea);
+				listadoEnfermedades.get(j).setEstornudo(estornudo);
+				listadoEnfermedades.get(j).setTos(tos);
+				listadoEnfermedades.get(j).setDolorGeneral(dolorGeneral);
+				listadoEnfermedades.get(j).setFaltaEnergia(faltaEnergia);
 				// Necesito saber si no se usan todos los parametros.
 			}
-			else
-				i++;
+
 		}
 	
 	}
