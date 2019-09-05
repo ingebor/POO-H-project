@@ -36,15 +36,17 @@ public class CatalogoSalud {
 	 * @param Agrega una medicina en la lista del array de medicinas 
 	 * 
 	 */
-	public void agregarMedicina(Enfermedad nombre, Enfermedad precio, Enfermedad ingestion, Enfermedad tipoMedicina, Enfermedad dosis, Enfermedad notasAdicionales, int i)
+	public void agregarMedicina(String nombre, double precio,String ingestion,String tiposMedicina,String dosis,String notasAdicionales, String notasAdicionales1)
 	{	
-		listadoEnfermedades.add(i, nombre);
+		Medicina AgregarMedicina = new Medicina(nombre,precio,ingestion,tiposMedicina,dosis,notasAdicionales1);
+		listadoMedicinas.add(AgregarMedicina);
+		/*
 		listadoEnfermedades.add(i, precio);// 
-		listadoEnfermedades.add(i, ingestion);
+		listadoEnfermedades.add(i, ingestio);
 		listadoEnfermedades.add(i, tipoMedicina);
 		listadoEnfermedades.add(i, notasAdicionales);
 		listadoEnfermedades.add(i, dosis);
-	
+	*/
 	}
 	
 	/**
