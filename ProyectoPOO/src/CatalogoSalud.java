@@ -34,18 +34,33 @@ public class CatalogoSalud {
 	 * @param Agrega una medicina en la lista del array de medicinas 
 	 * 
 	 */
-	public void agregarMedicina(Medicina nuevaMedicina, int i)
+	public void agregarMedicina(Enfermedad nombre, Enfermedad precio, Enfermedad ingestio, Enfermedad tipoMedicina, Enfermedad dosis, Enfermedad notasAdicionales, int i)
 	{	
-		listadoMedicinas.add(i, nuevaMedicina);	
+		listadoEnfermedades.add(i, nombre);
+		listadoEnfermedades.add(i, precio);// 
+		listadoEnfermedades.add(i, ingestio);
+		listadoEnfermedades.add(i, tipoMedicina);
+		listadoEnfermedades.add(i, notasAdicionales);
+		listadoEnfermedades.add(i, dosis);
+	
 	}
 	
 	/**
 	 * @param Agrega una enfermedad en la lista del array de enfermedades 
 	 * 
 	 */
-	public void agregarEnfermedad(Enfermedad nuevaEnfermedad, int i)
+	public void agregarEnfermedad(Enfermedad nombre, Enfermedad dolorCabeza, Enfermedad dolorEstomago, Enfermedad vomito, Enfermedad diarrea, Enfermedad estornudo, Enfermedad tos, Enfermedad dolorGeneral, Enfermedad faltaEnergia, int i)
 	{
-		listadoEnfermedades.add(i,nuevaEnfermedad);
+		listadoEnfermedades.add( nombre);
+		listadoEnfermedades.add(i, dolorCabeza);
+		listadoEnfermedades.add(i, dolorEstomago);
+		listadoEnfermedades.add(i, vomito);
+		listadoEnfermedades.add(i, diarrea);
+		listadoEnfermedades.add(i,estornudo);
+		listadoEnfermedades.add(i,tos);
+		listadoEnfermedades.add(i,dolorGeneral);
+		listadoEnfermedades.add(i, faltaEnergia);
+	
 	}
 	
 	
@@ -53,12 +68,28 @@ public class CatalogoSalud {
 	 * @param Actualiza una enfermedad, para agregar mas informacion, nuevos sintomas o el nombre de la enen la lista del array de enfermedades 
 	 * 
 	 */
-	public void ActualizarEnfermedad(Enfermedad enfermedadActualizado, int i) {
-		if(i<=listadoEnfermedades.size() && listadoEnfermedades.get(i) != null)
-			listadoEnfermedades.add(i, enfermedadActualizado);
+	public void ActualizarEnfermedad(String nombre, boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea, boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia) {	
+		int i = 0;
+		for(int j = 0; j < listadoEnfermedades.size(); j++)
+		{
+			if (nombre.equals(listadoEnfermedades.get(i).getNombre()))
+			{
+				listadoEnfermedades.get(i).setNombre(nombre);
+				listadoEnfermedades.get(i).setDolorCabeza(dolorCabeza);				
+				listadoEnfermedades.get(i).setDolorEstomago(dolorEstomago);
+				listadoEnfermedades.get(i).setVomito(vomito);
+				listadoEnfermedades.get(i).setDiarrea(diarrea);
+				listadoEnfermedades.get(i).setEstornudo(estornudo);
+				listadoEnfermedades.get(i).setTos(tos);
+				listadoEnfermedades.get(i).setDolorGeneral(dolorGeneral);
+				listadoEnfermedades.get(i).setFaltaEnergia(faltaEnergia);
+				// Necesito saber si no se usan todos los parametros.
+			}
+			else
+				i++;
+		}
+	
 	}
-	
-	
 	public void pruebaListas() {
 		for(Enfermedad enfermedad:listadoEnfermedades) {
 			System.out.println(enfermedad.getNombre());
