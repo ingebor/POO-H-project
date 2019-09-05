@@ -49,7 +49,7 @@ public class MenuPaciente {
 		
 		JLabel lblIn = new JLabel("INSTRUCCIONES");
 		
-		JButton btnIngresarSntomas = new JButton("Ingresar Síntomas");
+		JButton btnIngresarSntomas = new JButton("Ingresar Sintomas");
 		
 		JButton btnBu = new JButton("Buscar Medicina");
 		
@@ -61,7 +61,7 @@ public class MenuPaciente {
 		
 		JLabel lblNewLabel = new JLabel("Dolor de cabeza");
 		
-		JLabel label = new JLabel("Dolor de estómago");
+		JLabel label = new JLabel("Dolor de estomago");
 		
 		JLabel label_1 = new JLabel("Vomito");
 		
