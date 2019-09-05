@@ -106,7 +106,7 @@ public class CatalogoSalud {
 	/**
 	 * Este metodo llena tanto el listado de enfermedades como de medicinas al crear un catalogoSalud
 	 */
-	private void llenarCatalogo() throws Exception {
+	private void llenarCatalogo()  {
 		Enfermedad enfermedad;
 		Medicina medicina;
 		
@@ -146,7 +146,7 @@ public class CatalogoSalud {
 			
 			
 		}catch(Exception e) {
-			System.out.println("Ocurrio un error al cargar los datos");
+			
 		}
 	}
 	 /**
