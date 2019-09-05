@@ -1,6 +1,216 @@
+/**
+ * @author Grupo 2 POO Seccion 21
+ */
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
+import javax.swing.JOptionPane;
 
 public class CatalogoSalud {
-	private String MePuedenVer;
-	private String soyAyleen;
-	private String SoySayA;
+	private List <Enfermedad> listadoEnfermedades;
+	private List <Medicina> listadoMedicinas;
+	
+		
+	/**
+	 * @param Constructor de la clase CatalogoSalud
+	 */
+	public CatalogoSalud()
+	{
+
+		listadoEnfermedades = new ArrayList<Enfermedad>();
+		listadoMedicinas = new ArrayList<Medicina>();
+		llenarCatalogo();
+	}
+	
+	
+	
+	/**
+	 * @param Agrega una medicina en la lista del array de medicinas 
+	 * 
+	 */
+	public void agregarMedicina(Medicina nuevaMedicina, int i)
+	{	
+		listadoMedicinas.add(i, nuevaMedicina);	
+	}
+	
+	/**
+	 * @param Agrega una enfermedad en la lista del array de enfermedades 
+	 * 
+	 */
+	public void agregarEnfermedad(Enfermedad nuevaEnfermedad, int i)
+	{
+		listadoEnfermedades.add(i,nuevaEnfermedad);
+	}
+	
+	
+	/**
+	 * @param Actualiza una enfermedad, para agregar mas informacion, nuevos sintomas o el nombre de la enen la lista del array de enfermedades 
+	 * 
+	 */
+	public void ActualizarEnfermedad(Enfermedad enfermedadActualizado, int i) {
+		if(i<=listadoEnfermedades.size() && listadoEnfermedades.get(i) != null)
+			listadoEnfermedades.add(i, enfermedadActualizado);
+	}
+	
+	
+	public void pruebaListas() {
+		for(Enfermedad enfermedad:listadoEnfermedades) {
+			System.out.println(enfermedad.getNombre());
+		}
+		
+		for(Medicina medicina:listadoMedicinas) {
+			System.out.println(medicina.getNombre());
+		}
+	}
+	
+	
+	/**
+	 * Este metodo llena tanto el listado de enfermedades como de medicinas al crear un catalogoSalud
+	 */
+	private void llenarCatalogo() {
+		Enfermedad enfermedad;
+		Medicina medicina;
+		
+		try {
+			BufferedReader brE = new BufferedReader(new FileReader("Enfermedades.csv"));
+			BufferedReader brM = new BufferedReader(new FileReader("Medicinas.csv"));
+			
+			
+			String lineE = brE.readLine();
+			String lineM = brM.readLine();
+			
+			while (lineE != null) {
+				String[] AtributosEnf = lineE.split(",");
+				
+				
+				enfermedad = new Enfermedad(AtributosEnf[0],Boolean.parseBoolean(AtributosEnf[1]),Boolean.parseBoolean(AtributosEnf[2]),Boolean.parseBoolean(AtributosEnf[3])
+						,Boolean.parseBoolean(AtributosEnf[4]),Boolean.parseBoolean(AtributosEnf[5]),Boolean.parseBoolean(AtributosEnf[6]),Boolean.parseBoolean(AtributosEnf[7])
+						,Boolean.parseBoolean(AtributosEnf[8]),AtributosEnf[9]);
+				
+				listadoEnfermedades.add(enfermedad);
+
+	            lineE = brE.readLine();
+			}
+			
+			while (lineM != null) {
+				String[] AtributosMed = lineM.split(",");
+				
+				medicina = new Medicina(AtributosMed[0],Double.parseDouble(AtributosMed[1]), AtributosMed[2], AtributosMed[3], AtributosMed[4],AtributosMed[5]);
+				
+				listadoMedicinas.add(medicina);
+				
+	            lineM = brM.readLine();
+			}
+			
+			brE.close();
+			brM.close();
+			
+			
+		}catch(Exception e) {
+			System.out.println("Ocurrio un error al cargar los datos");
+		}
+	}
+	 /**
+	  * Este metodo permite ingresar el nombre de la enfermedad. 
+	  */
+	public List<Enfermedad> verEnfermedad(String nombre) {
+		List<Enfermedad> enfermedadBusca = null;
+		for (Enfermedad Enfermedad: listadoEnfermedades)
+			if (Enfermedad.getNombre().equals(nombre)){
+				enfermedadBusca: new Enfermedad(((Enfermedad) listadoEnfermedades).getNombre(), ((Enfermedad) listadoEnfermedades).isDolorCabeza(), ((Enfermedad) listadoEnfermedades).isDolorEstomago(), ((Enfermedad) listadoEnfermedades).isVomito(), 
+						((Enfermedad) listadoEnfermedades).isDiarrea(), ((Enfermedad) listadoEnfermedades).isEstornudo(), ((Enfermedad) listadoEnfermedades).isTos(), ((Enfermedad) listadoEnfermedades).isDolorGeneral(), ((Enfermedad) listadoEnfermedades).isFaltaEnergia(),
+						((Enfermedad) listadoEnfermedades).getNotasAdicionales());
+				
+				enfermedadBusca = (List<Enfermedad>) Enfermedad;
+			}
+			if(enfermedadBusca != null) {
+				if(((Enfermedad) listadoEnfermedades).getNombre().contentEquals(nombre)) {
+					enfermedadBusca = listadoEnfermedades;
+				}
+			}
+			return enfermedadBusca;
+		}
+	/**
+	 * Este metodo permite buscar la medicina 
+	 */
+	/*
+	public List<Medicina> BuscarMed(String nombre) {
+		for (Medicina x: listadoMedicinas) {
+			if (nombre.equals(x.getNombre())){
+				System.out.println(x);
+			}
+		}
+		return 
+	}
+	*/
+	
+	
+	/**
+	 * @param nombre
+	 * @param precio
+	 * @param ingestion
+	 * @param tiposMedicina
+	 * @param dosis
+	 * @param notasAdicionales
+	 * Este metodo actualiza un de las medicinas del csv
+	 */
+	public void acualizarMedicina(String nombre,double precio, String ingestion, String tiposMedicina, String dosis, String notasAdicionales) {
+		Medicina Nmedicina = new Medicina(nombre,precio,ingestion,tiposMedicina,dosis,notasAdicionales);
+		int indice = 0;
+		int i = 0;
+		boolean bandera = false;
+		
+		for(Medicina medicina:listadoMedicinas) {
+			if(nombre.equals(medicina.getNombre())) {
+				indice = i;	
+				bandera = true;
+			}
+			i++;
+		}
+		
+		if (bandera == true) {
+			listadoMedicinas.add(indice,Nmedicina);
+			llenarCsvMed();
+			JOptionPane.showMessageDialog(null, "Actualizacion de informacion completada");
+			
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "Ninguna medicina tiene el nombre ingresado");
+		}
+		
+		
+		
+	}
+	
+	/**
+	 * Este metodo reescribe el csv
+	 */
+	private void llenarCsvMed() {
+		
+		try {
+			FileWriter pencil = new FileWriter("Medicinas.csv");
+			PrintWriter pw = new PrintWriter(pencil);
+			String texto = "";
+			
+			for(Medicina Nmedicina: listadoMedicinas) {
+				texto = Nmedicina.getNombre() + "," + String.valueOf(Nmedicina.getPrecio()) + "," + Nmedicina.getIngestion() + ","
+					+ Nmedicina.getTiposMedicina() + "," + Nmedicina.getDosis() + "," + Nmedicina.getNotasAdicionales() + "\n";
+			}
+				
+			pw.write(texto);
+			pw.close();
+				
+		}catch (Exception e) {
+			System.out.println("Ocurrio un error al escribir en el csv");
+		}
+		
+	}
+	
+	
 }
