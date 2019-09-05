@@ -154,9 +154,7 @@ public class CatalogoSalud {
 		List<Enfermedad> enfermedadBusca = null;
 		for (Enfermedad Enfermedad: listadoEnfermedades)
 			if (Enfermedad.getNombre().equals(nombre)){
-				enfermedadBusca.add(new Enfermedad(((Enfermedad) listadoEnfermedades).getNombre(), ((Enfermedad) listadoEnfermedades).isDolorCabeza(), ((Enfermedad) listadoEnfermedades).isDolorEstomago(), ((Enfermedad) listadoEnfermedades).isVomito(), 
-						((Enfermedad) listadoEnfermedades).isDiarrea(), ((Enfermedad) listadoEnfermedades).isEstornudo(), ((Enfermedad) listadoEnfermedades).isTos(), ((Enfermedad) listadoEnfermedades).isDolorGeneral(), ((Enfermedad) listadoEnfermedades).isFaltaEnergia(),
-						((Enfermedad) listadoEnfermedades).getNotasAdicionales()));
+				enfermedadBusca.add(Enfermedad);
 				
 				enfermedadBusca = (List<Enfermedad>) Enfermedad;
 			}
