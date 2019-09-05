@@ -53,8 +53,12 @@ public class CatalogoSalud {
 	 * @param Agrega una enfermedad en la lista del array de enfermedades 
 	 * 
 	 */
-	public void agregarEnfermedad(Enfermedad nombre, Enfermedad dolorCabeza, Enfermedad dolorEstomago, Enfermedad vomito, Enfermedad diarrea, Enfermedad estornudo, Enfermedad tos, Enfermedad dolorGeneral, Enfermedad faltaEnergia, int i)
+	public void agregarEnfermedad(String nombre, boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea, boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia, String notasAdicionales)
 	{
+		Enfermedad AgregarEnfermedad = new Enfermedad(nombre, dolorCabeza, dolorEstomago, vomito, diarrea, estornudo, tos, dolorGeneral, faltaEnergia, notasAdicionales);
+		listadoEnfermedades.add(AgregarEnfermedad);
+		
+		/*
 		listadoEnfermedades.add( nombre);
 		listadoEnfermedades.add(i, dolorCabeza);
 		listadoEnfermedades.add(i, dolorEstomago);
@@ -64,7 +68,7 @@ public class CatalogoSalud {
 		listadoEnfermedades.add(i,tos);
 		listadoEnfermedades.add(i,dolorGeneral);
 		listadoEnfermedades.add(i, faltaEnergia);
-	
+		*/
 	}
 	
 	
