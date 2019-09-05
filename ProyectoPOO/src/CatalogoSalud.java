@@ -36,23 +36,29 @@ public class CatalogoSalud {
 	 * @param Agrega una medicina en la lista del array de medicinas 
 	 * 
 	 */
-	public void agregarMedicina(Enfermedad nombre, Enfermedad precio, Enfermedad ingestion, Enfermedad tipoMedicina, Enfermedad dosis, Enfermedad notasAdicionales, int i)
+	public void agregarMedicina(String nombre, double precio,String ingestion,String tiposMedicina,String dosis,String notasAdicionales, String notasAdicionales1)
 	{	
-		listadoEnfermedades.add(i, nombre);
+		Medicina AgregarMedicina = new Medicina(nombre,precio,ingestion,tiposMedicina,dosis,notasAdicionales1);
+		listadoMedicinas.add(AgregarMedicina);
+		/*
 		listadoEnfermedades.add(i, precio);// 
-		listadoEnfermedades.add(i, ingestion);
+		listadoEnfermedades.add(i, ingestio);
 		listadoEnfermedades.add(i, tipoMedicina);
 		listadoEnfermedades.add(i, notasAdicionales);
 		listadoEnfermedades.add(i, dosis);
-	
+	*/
 	}
 	
 	/**
 	 * @param Agrega una enfermedad en la lista del array de enfermedades 
 	 * 
 	 */
-	public void agregarEnfermedad(Enfermedad nombre, Enfermedad dolorCabeza, Enfermedad dolorEstomago, Enfermedad vomito, Enfermedad diarrea, Enfermedad estornudo, Enfermedad tos, Enfermedad dolorGeneral, Enfermedad faltaEnergia, int i)
+	public void agregarEnfermedad(String nombre, boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea, boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia, String notasAdicionales)
 	{
+		Enfermedad AgregarEnfermedad = new Enfermedad(nombre, dolorCabeza, dolorEstomago, vomito, diarrea, estornudo, tos, dolorGeneral, faltaEnergia, notasAdicionales);
+		listadoEnfermedades.add(AgregarEnfermedad);
+		
+		/*
 		listadoEnfermedades.add( nombre);
 		listadoEnfermedades.add(i, dolorCabeza);
 		listadoEnfermedades.add(i, dolorEstomago);
@@ -62,7 +68,7 @@ public class CatalogoSalud {
 		listadoEnfermedades.add(i,tos);
 		listadoEnfermedades.add(i,dolorGeneral);
 		listadoEnfermedades.add(i, faltaEnergia);
-	
+		*/
 	}
 	
 	
