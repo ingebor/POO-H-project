@@ -1,5 +1,7 @@
 /**
  * @author Grupo 2 POO Seccion 21
+ * @date 05/09/2019
+ * Segunda presentacion de proyecto
  */
 
 import java.util.ArrayList;
@@ -34,11 +36,11 @@ public class CatalogoSalud {
 	 * @param Agrega una medicina en la lista del array de medicinas 
 	 * 
 	 */
-	public void agregarMedicina(Enfermedad nombre, Enfermedad precio, Enfermedad ingestio, Enfermedad tipoMedicina, Enfermedad dosis, Enfermedad notasAdicionales, int i)
+	public void agregarMedicina(Enfermedad nombre, Enfermedad precio, Enfermedad ingestion, Enfermedad tipoMedicina, Enfermedad dosis, Enfermedad notasAdicionales, int i)
 	{	
 		listadoEnfermedades.add(i, nombre);
 		listadoEnfermedades.add(i, precio);// 
-		listadoEnfermedades.add(i, ingestio);
+		listadoEnfermedades.add(i, ingestion);
 		listadoEnfermedades.add(i, tipoMedicina);
 		listadoEnfermedades.add(i, notasAdicionales);
 		listadoEnfermedades.add(i, dosis);
