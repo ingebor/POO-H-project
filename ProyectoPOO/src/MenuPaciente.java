@@ -1,27 +1,24 @@
-/**
- * @author Grupo 2 POO Seccion 21
- * @date 05/09/2019
- * Segunda presentacion de proyecto
- */
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import javax.swing.JButton;
-import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
-import javax.swing.JTextField;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.Color;
-import java.awt.Font;
 
-public class MenuPaciente {
+public class MenuPaciente extends JFrame {
 
-	private JFrame frame;
-	private JTextField textField;
-
+	private JPanel contentPane;
+	private JButton btnIngresoSintomas;
+	private JButton btnBuscarSintomas;
+	private JButton btnBuscarMedicina;
+	private JButton btnVolver;
+	private CatalogoSalud catalogo = new CatalogoSalud();
 	/**
 	 * Launch the application.
 	 */
@@ -29,8 +26,8 @@ public class MenuPaciente {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenuPaciente window = new MenuPaciente();
-					window.frame.setVisible(true);
+					MenuPaciente frame = new MenuPaciente();
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -39,188 +36,95 @@ public class MenuPaciente {
 	}
 
 	/**
-	 * Create the application.
+	 * Create the frame.  boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea, boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia
 	 */
 	public MenuPaciente() {
-		initialize();
+		getContentPane().setLayout(null);
+		
+		JLabel lbldolorCabeza = new JLabel("Dolor de Cabeza:");
+		lbldolorCabeza.setBounds(10, 8, 83, 14);
+		getContentPane().add(lbldolorCabeza);
+		
+		JComboBox comboBoxDolor_de_cabeza = new JComboBox();
+		comboBoxDolor_de_cabeza.setBounds(113, 5, 28, 20);
+		getContentPane().add(comboBoxDolor_de_cabeza);
+		
+		JLabel lbldolorEstomago = new JLabel("Dolor de Estomago:");
+		lbldolorEstomago.setBounds(10, 33, 94, 14);
+		getContentPane().add(lbldolorEstomago);
+		
+		JComboBox comboBoxDolorEstomago = new JComboBox();
+		comboBoxDolorEstomago.setBounds(113, 30, 28, 20);
+		getContentPane().add(comboBoxDolorEstomago);
+		
+		JLabel lblvomito = new JLabel("Vomitos:");
+		lblvomito.setBounds(10, 58, 41, 14);
+		lblvomito.setHorizontalAlignment(SwingConstants.TRAILING);
+		getContentPane().add(lblvomito);
+		
+		JComboBox comboBoxVomito = new JComboBox();
+		comboBoxVomito.setBounds(113, 55, 28, 20);
+		getContentPane().add(comboBoxVomito);
+		
+		JLabel lbldiarrea = new JLabel("Diarrea:");
+		lbldiarrea.setBounds(10, 83, 39, 14);
+		lbldiarrea.setHorizontalAlignment(SwingConstants.TRAILING);
+		getContentPane().add(lbldiarrea);
+		
+		JComboBox comboBoxDiarrea = new JComboBox();
+		comboBoxDiarrea.setBounds(113, 80, 28, 20);
+		getContentPane().add(comboBoxDiarrea);
+		
+		JLabel lblestornudo = new JLabel("Estornudo:");
+		lblestornudo.setBounds(10, 108, 53, 14);
+		getContentPane().add(lblestornudo);
+		
+		JComboBox comboBoxEstornudo = new JComboBox();
+		comboBoxEstornudo.setBounds(113, 105, 28, 20);
+		getContentPane().add(comboBoxEstornudo);
+		
+		JLabel lbltos = new JLabel("Tos:");
+		lbltos.setBounds(10, 133, 21, 14);
+		getContentPane().add(lbltos);
+		
+		JComboBox comboBoxTos = new JComboBox();
+		comboBoxTos.setBounds(113, 130, 28, 20);
+		getContentPane().add(comboBoxTos);
+		
+		JLabel lbldolorGeneral = new JLabel("Dolor General:");
+		lbldolorGeneral.setBounds(10, 158, 69, 14);
+		getContentPane().add(lbldolorGeneral);
+		
+		JComboBox comboBoxDolorGeneral = new JComboBox();
+		comboBoxDolorGeneral.setBounds(113, 155, 28, 20);
+		getContentPane().add(comboBoxDolorGeneral);
+		
+		JLabel lblfaltaEnergia = new JLabel("Falta de energia:");
+		lblfaltaEnergia.setBounds(10, 184, 82, 14);
+		getContentPane().add(lblfaltaEnergia);
+		
+		JComboBox comboBoxFaltaEnergia = new JComboBox();
+		comboBoxFaltaEnergia.setBounds(113, 181, 28, 20);
+		getContentPane().add(comboBoxFaltaEnergia);
+		
+		JButton btnIngresoSintomas = new JButton("Ingresar Sintomas");
+		btnIngresoSintomas.setBounds(10, 251, 119, 23);
+		getContentPane().add(btnIngresoSintomas);
+		
+		JButton btnBuscarSintomas = new JButton("Buscar Sintomas");
+		btnBuscarSintomas.setBounds(139, 251, 111, 23);
+		getContentPane().add(btnBuscarSintomas);
+		
+		JButton btnBuscarMedicina = new JButton("Buscar Medicinas");
+		btnBuscarMedicina.setBounds(260, 251, 113, 23);
+		getContentPane().add(btnBuscarMedicina);
+		
+		JButton btnVolver = new JButton("Volver");
+		btnVolver.setBounds(416, 309, 63, 23);
+		getContentPane().add(btnVolver);
+		
+		
+
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setBackground(new Color(255, 250, 205));
-		frame.setBounds(100, 100, 578, 440);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		JLabel lblPaciente = new JLabel("PACIENTE");
-		lblPaciente.setFont(new Font("Tahoma", Font.BOLD, 14));
-		
-		JLabel lblIn = new JLabel("INSTRUCCIONES");
-		lblIn.setFont(new Font("Tahoma", Font.BOLD, 14));
-		
-		JButton btnIngresarSntomas = new JButton("Ingresar Sintomas");
-		btnIngresarSntomas.setForeground(new Color(0, 0, 0));
-		btnIngresarSntomas.setBackground(new Color(176, 224, 230));
-		
-		JButton btnBu = new JButton("Buscar Medicina");
-		btnBu.setBackground(new Color(176, 224, 230));
-		
-		JButton btnVolver = new JButton("Volver ");
-		btnVolver.setBackground(new Color(176, 224, 230));
-		
-		JLabel lblSintomas = new JLabel("SINTOMAS");
-		lblSintomas.setFont(new Font("Tahoma", Font.BOLD, 14));
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
-		
-		JLabel lblNewLabel = new JLabel("Dolor de cabeza");
-		
-		JLabel label = new JLabel("Dolor de estomago");
-		
-		JLabel label_1 = new JLabel("Vomito");
-		
-		JLabel label_2 = new JLabel("Diarrea");
-		
-		JLabel label_3 = new JLabel("Estornudo");
-		
-		JLabel label_4 = new JLabel("Tos");
-		
-		JLabel label_5 = new JLabel("Dolor General");
-		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
-		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
-		
-		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
-		 
-		JComboBox comboBox_4 = new JComboBox();
-		comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
-		
-		JComboBox comboBox_5 = new JComboBox();
-		comboBox_5.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
-		
-		JComboBox comboBox_6 = new JComboBox();
-		comboBox_6.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		
-		JLabel lblNota = new JLabel("NOTA");
-		lblNota.setFont(new Font("Tahoma", Font.BOLD, 14));
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(28, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblIn, GroupLayout.PREFERRED_SIZE, 141, GroupLayout.PREFERRED_SIZE)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(24)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
-										.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
-										.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
-										.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
-										.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblNewLabel)
-										.addGroup(groupLayout.createSequentialGroup()
-											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(label, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)))
-									.addGap(18)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
-										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-											.addComponent(comboBox_1, 0, 59, Short.MAX_VALUE)
-											.addComponent(comboBox_2, 0, 59, Short.MAX_VALUE)
-											.addComponent(comboBox_3, 0, 59, Short.MAX_VALUE)
-											.addComponent(comboBox_4, 0, 59, Short.MAX_VALUE)
-											.addComponent(comboBox_5, 0, 59, Short.MAX_VALUE)
-											.addComponent(comboBox_6, 0, 59, Short.MAX_VALUE))))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(18)
-									.addComponent(lblSintomas)))
-							.addGap(30))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnIngresarSntomas)
-							.addGap(44)))
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-									.addComponent(btnVolver)
-									.addComponent(btnBu))))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(37)
-							.addComponent(lblNota)))
-					.addContainerGap(34, Short.MAX_VALUE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(243)
-					.addComponent(lblPaciente)
-					.addContainerGap(260, Short.MAX_VALUE))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblPaciente)
-					.addGap(18)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblIn, GroupLayout.PREFERRED_SIZE, 217, GroupLayout.PREFERRED_SIZE)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblSintomas)
-										.addComponent(lblNota))
-									.addGap(6)
-									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-										.addComponent(lblNewLabel)
-										.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
-									.addGap(14)
-									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-										.addComponent(label)
-										.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-									.addGap(5)
-									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-										.addComponent(label_1)
-										.addComponent(comboBox_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-									.addGap(4)
-									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-										.addComponent(label_2)
-										.addComponent(comboBox_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-									.addGap(5)
-									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-										.addComponent(label_3)
-										.addComponent(comboBox_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-									.addGap(4)
-									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-										.addComponent(label_4)
-										.addComponent(comboBox_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-									.addGap(3)
-									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-										.addComponent(label_5)
-										.addComponent(comboBox_6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-									.addGap(88)
-									.addComponent(btnVolver)))
-							.addContainerGap())
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 204, GroupLayout.PREFERRED_SIZE)
-							.addGap(36)
-							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(btnBu)
-								.addComponent(btnIngresarSntomas))
-							.addGap(73))))
-		);
-		frame.getContentPane().setLayout(groupLayout);
-	} 
 }
