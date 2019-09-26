@@ -49,7 +49,7 @@ public class Inicio {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 666, 275);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
 		
@@ -61,6 +61,13 @@ public class Inicio {
 		lblPaciente.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		
 		JButton button = new JButton("INGRESAR");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+			}
+		});
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.TRAILING)
@@ -83,8 +90,8 @@ public class Inicio {
 		panel_1.setLayout(gl_panel_1);
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap(216, Short.MAX_VALUE)
 					.addComponent(lblVerificacion)
 					.addGap(203))
@@ -93,7 +100,7 @@ public class Inicio {
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 322, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 286, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(36, Short.MAX_VALUE))
+					.addContainerGap(35, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -101,10 +108,10 @@ public class Inicio {
 					.addGap(12)
 					.addComponent(lblVerificacion)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 152, Short.MAX_VALUE)
-						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))
+					.addContainerGap(24, Short.MAX_VALUE))
 		);
 		
 		JLabel lblNewLabel = new JLabel("USUARIO: ");
@@ -125,7 +132,12 @@ public class Inicio {
 				String clave= new String(key); 
 				
 				if (textUsuario.getText().equals("admin") && clave.equals("12345")) { 
-				
+					
+					MenuDoctor nuevo = new MenuDoctor(); 
+
+					nuevo.newScreen();
+					
+					
 					
 				
 				}

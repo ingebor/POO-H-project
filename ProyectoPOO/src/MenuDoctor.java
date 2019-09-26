@@ -44,7 +44,7 @@ public class MenuDoctor {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void newScreen() {
 		try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -79,7 +79,7 @@ public class MenuDoctor {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 735, 512);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
