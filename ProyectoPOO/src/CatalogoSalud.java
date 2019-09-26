@@ -14,11 +14,19 @@ import java.io.PrintWriter;
 
 import javax.swing.JOptionPane;
 
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 public class CatalogoSalud {
 	private List <Enfermedad> listadoEnfermedades;
 	private List <Medicina> listadoMedicinas;
 	
-		
+	public Statement stQuery;
+    public ResultSet rsRecords;
+    
+    public String basededatos = "bdpoo";
+    public String contrasena = "infobi17";
+    
 	/**
 	 * @param Constructor de la clase CatalogoSalud
 	 */
@@ -30,45 +38,47 @@ public class CatalogoSalud {
 		llenarCatalogo();
 	}
 	
-	
-	
 	/**
-	 * @param Agrega una medicina en la lista del array de medicinas 
-	 * 
+	 * @param nombre
+	 * @param precio
+	 * @param ingestion
+	 * @param tipoMedicina
+	 * @param dosis
+	 * @param notasAdicionales
+	 * @param nombreEnf
+	 * Agrega una enfermedad a la base de datos
 	 */
-	public void agregarMedicina(String nombre, double precio,String ingestion,String tiposMedicina,String dosis,String notasAdicionales, String notasAdicionales1)
+	public void agregarMedicina(String nombre, String precio, String ingestion, String tipoMedicina, String dosis, String notasAdicionales, String nombreEnf)
 	{	
-		Medicina AgregarMedicina = new Medicina(nombre,precio,ingestion,tiposMedicina,dosis,notasAdicionales1);
-		listadoMedicinas.add(AgregarMedicina);
-		/*
-		listadoEnfermedades.add(i, precio);// 
-		listadoEnfermedades.add(i, ingestio);
-		listadoEnfermedades.add(i, tipoMedicina);
-		listadoEnfermedades.add(i, notasAdicionales);
-		listadoEnfermedades.add(i, dosis);
-	*/
+		String queryInsert = "INSERT INTO medicinas (Nombre, Precio, Ingestion, Tipo, Dosis, NotasAdicionales, Enfermedad) "
+                + "VALUES ('" + nombre + "', '" + precio + "', '" + ingestion + "', '" + tipoMedicina + "', '" + dosis + "', '" + notasAdicionales + "', '" + nombreEnf + "') ";
+		
+        manejarBD(queryInsert);
+	
 	}
 	
 	/**
-	 * @param Agrega una enfermedad en la lista del array de enfermedades 
-	 * 
+	 * @param nombre
+	 * @param dolorCabeza
+	 * @param dolorEstomago
+	 * @param vomito
+	 * @param diarrea
+	 * @param estornudo
+	 * @param tos
+	 * @param dolorGeneral
+	 * @param faltaEnergia
+	 * @param notasAdicionales
+	 * @param nombreMed
+	 * Agrega una medicina a la base de datos
 	 */
-	public void agregarEnfermedad(String nombre, boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea, boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia, String notasAdicionales)
+	public void agregarEnfermedad(String nombre, String dolorCabeza, String dolorEstomago, String vomito, String diarrea,
+			String estornudo, String tos, String dolorGeneral, String faltaEnergia, String notasAdicionales, String nombreMed)
 	{
-		Enfermedad AgregarEnfermedad = new Enfermedad(nombre, dolorCabeza, dolorEstomago, vomito, diarrea, estornudo, tos, dolorGeneral, faltaEnergia, notasAdicionales);
-		listadoEnfermedades.add(AgregarEnfermedad);
+		String queryInsert = "INSERT INTO enfermedades (Nombre, DolorCabeza, DolorEstomago, Vomito, Diarrea, Estornudo, Tos, DolorGeneral, FaltaEnergia, NotasAdicionales, Medicina) "
+                + "VALUES ('" + nombre + "', '" + dolorCabeza + "', '" + dolorEstomago + "', '" + vomito + "', '" + diarrea + "', '" + estornudo + "', '" + tos + "', '" + dolorGeneral + 
+                "', '" + faltaEnergia + "', '" + notasAdicionales + "', '" + nombreMed + "') ";
 		
-		/*
-		listadoEnfermedades.add( nombre);
-		listadoEnfermedades.add(i, dolorCabeza);
-		listadoEnfermedades.add(i, dolorEstomago);
-		listadoEnfermedades.add(i, vomito);
-		listadoEnfermedades.add(i, diarrea);
-		listadoEnfermedades.add(i,estornudo);
-		listadoEnfermedades.add(i,tos);
-		listadoEnfermedades.add(i,dolorGeneral);
-		listadoEnfermedades.add(i, faltaEnergia);
-		*/
+        manejarBD(queryInsert);
 	}
 	
 	
@@ -110,84 +120,126 @@ public class CatalogoSalud {
 	
 	
 	/**
-	 * Este metodo llena tanto el listado de enfermedades como de medicinas al crear un catalogoSalud
+	 * Este metodo llena tanto el listado de enfermedades como el de medicinas al crear un catalogoSalud
 	 */
-	private void llenarCatalogo() {
-		Enfermedad enfermedad;
-		Medicina medicina;
+	private void llenarCatalogo()  {
+		try {
+            ConeccionBD BD = null;
+            
+            BD = new ConeccionBD("jdbc:mysql://localhost:3306/" + basededatos, "root", contrasena);
+            BD.getNewConnection();
+            
+            String query = "SELECT * FROM enfermedades ORDER BY Nombre ASC";
+          
+            stQuery = BD.getCurrentConnection().createStatement();
+            rsRecords = stQuery.executeQuery(query);
+            
+            listadoEnfermedades.clear();
+            
+            while(rsRecords.next()){
+            	listadoEnfermedades.add(new Enfermedad(rsRecords.getString("enfermedades.Nombre"),Boolean.parseBoolean(rsRecords.getString("enfermedades.DolorCabeza")), 
+            			Boolean.parseBoolean(rsRecords.getString("enfermedades.DolorEstomago")), Boolean.parseBoolean(rsRecords.getString("enfermedades.Vomito")), 
+            			Boolean.parseBoolean(rsRecords.getString("enfermedades.Diarrea")), Boolean.parseBoolean(rsRecords.getString("enfermedades.Estornudo")), 
+            			Boolean.parseBoolean(rsRecords.getString("Enfermedades.Tos")), Boolean.parseBoolean(rsRecords.getString("enfermedades.DolorGeneral")), 
+            			Boolean.parseBoolean(rsRecords.getString("Enfermedades.faltaEnergia")),rsRecords.getString("enfermedades.NotasAdicionales"), 
+            			rsRecords.getString("enfermedades.Medicina")));
+                
+            }
+            for(Enfermedad a:listadoEnfermedades) {
+            	System.out.println(a.getNombre());
+            }
+        }catch (Exception e0) {
+            System.out.println("error show rows");
+            e0.printStackTrace();
+        }  
 		
 		try {
-			BufferedReader brE = new BufferedReader(new FileReader("Enfermedades.csv"));
-			BufferedReader brM = new BufferedReader(new FileReader("Medicinas.csv"));
-			
-			
-			String lineE = brE.readLine();
-			String lineM = brM.readLine();
-			
-			while (lineE != null) {
-				String[] AtributosEnf = lineE.split(",");
-				
-				
-				enfermedad = new Enfermedad(AtributosEnf[0],Boolean.parseBoolean(AtributosEnf[1]),Boolean.parseBoolean(AtributosEnf[2]),Boolean.parseBoolean(AtributosEnf[3])
-						,Boolean.parseBoolean(AtributosEnf[4]),Boolean.parseBoolean(AtributosEnf[5]),Boolean.parseBoolean(AtributosEnf[6]),Boolean.parseBoolean(AtributosEnf[7])
-						,Boolean.parseBoolean(AtributosEnf[8]),AtributosEnf[9]);
-				
-				listadoEnfermedades.add(enfermedad);
-
-	            lineE = brE.readLine();
-			}
-			
-			while (lineM != null) {
-				String[] AtributosMed = lineM.split(",");
-				
-				medicina = new Medicina(AtributosMed[0],Double.parseDouble(AtributosMed[1]), AtributosMed[2], AtributosMed[3], AtributosMed[4],AtributosMed[5]);
-				
-				listadoMedicinas.add(medicina);
-				
-	            lineM = brM.readLine();
-			}
-			
-			brE.close();
-			brM.close();
-			
-			
-		}catch(Exception e) {
-			System.out.println("Ocurrio un error al cargar los datos");
-		}
+            ConeccionBD BD = null;
+            
+            BD = new ConeccionBD("jdbc:mysql://localhost:3306/" + basededatos, "root", contrasena);
+            BD.getNewConnection();
+            
+            String query = "SELECT * FROM medicinas ORDER BY Nombre ASC";
+          
+            stQuery = BD.getCurrentConnection().createStatement();
+            rsRecords = stQuery.executeQuery(query);
+            
+            listadoMedicinas.clear();
+            while(rsRecords.next()){
+            	listadoMedicinas.add(new Medicina(rsRecords.getString("medicinas.Nombre"),rsRecords.getDouble("medicinas.Precio"), rsRecords.getString("medicinas.Ingestion")
+            			,rsRecords.getString("medicinas.Tipo"),rsRecords.getString("medicinas.Dosis"),rsRecords.getString("medicinas.NotasAdicionales")
+            			,rsRecords.getString("medicinas.Enfermedad")));
+            }
+            for(Medicina a:listadoMedicinas) {
+            	System.out.println(a.getNombre());
+            }
+        }catch (Exception e0) {
+            System.out.println("error show rows");
+            e0.printStackTrace();
+        }
 	}
+	
 	 /**
 	  * Este metodo permite ingresar el nombre de la enfermedad. 
 	  */
-	public List<Enfermedad> verEnfermedad(String nombre) {
-		List<Enfermedad> enfermedadBusca = null;
-		for (Enfermedad Enfermedad: listadoEnfermedades)
-			if (Enfermedad.getNombre().equals(nombre)){
-				enfermedadBusca: new Enfermedad(((Enfermedad) listadoEnfermedades).getNombre(), ((Enfermedad) listadoEnfermedades).isDolorCabeza(), ((Enfermedad) listadoEnfermedades).isDolorEstomago(), ((Enfermedad) listadoEnfermedades).isVomito(), 
-						((Enfermedad) listadoEnfermedades).isDiarrea(), ((Enfermedad) listadoEnfermedades).isEstornudo(), ((Enfermedad) listadoEnfermedades).isTos(), ((Enfermedad) listadoEnfermedades).isDolorGeneral(), ((Enfermedad) listadoEnfermedades).isFaltaEnergia(),
-						((Enfermedad) listadoEnfermedades).getNotasAdicionales());
-				
-				enfermedadBusca = (List<Enfermedad>) Enfermedad;
-			}
-			if(enfermedadBusca != null) {
-				if(((Enfermedad) listadoEnfermedades).getNombre().contentEquals(nombre)) {
-					enfermedadBusca = listadoEnfermedades;
+	public String verEnfermedad(String nombreEnfermedad){
+		String mensaje = "";
+		//int index = 0;
+		for (int i = 0; i < listadoEnfermedades.size(); i++) {
+			try 
+			{
+				if(listadoEnfermedades.get(i).getNombre().equals(nombreEnfermedad))
+				{
+					
+					mensaje = listadoEnfermedades.get(i).toString();
+					//index = listadoMedicinas.indexOf(medicina);
+					//mensaje = listadoMedicinas.get(index).toString();
 				}
+				
 			}
-			return enfermedadBusca;
+			catch(Exception e)
+			{
+				mensaje = "Lo sentimos pero no se encontro el medicamento.";
+			}
+			
 		}
+		
+		
+			
+		return mensaje;	
+	}
 	/**
 	 * Este metodo permite buscar la medicina 
 	 */
-	/*
-	public List<Medicina> BuscarMed(String nombre) {
-		for (Medicina x: listadoMedicinas) {
-			if (nombre.equals(x.getNombre())){
-				System.out.println(x);
+	
+	public String VerMedicina(String nombreMedicina) {
+		String mensaje = "";
+		//int index = 0;
+		for (int i = 0; i < listadoMedicinas.size(); i++) {
+			try 
+			{
+				if(listadoMedicinas.get(i).getNombre().equals(nombreMedicina))
+				{
+					
+					mensaje = listadoMedicinas.get(i).toString();
+					//index = listadoMedicinas.indexOf(medicina);
+					//mensaje = listadoMedicinas.get(index).toString();
+				}
+				
 			}
+			catch(Exception e)
+			{
+				mensaje = "Lo sentimos pero no se encontro el medicamento.";
+			}
+			
 		}
-		return 
+		//for (Medicina medicina : listadoMedicinas) {
+
+		//}
+		
+		return mensaje;
 	}
-	*/
+	
 	
 	
 	/**
@@ -200,56 +252,80 @@ public class CatalogoSalud {
 	 * Este metodo actualiza un de las medicinas del csv
 	 */
 	public void acualizarMedicina(String nombre,double precio, String ingestion, String tiposMedicina, String dosis, String notasAdicionales) {
-		Medicina Nmedicina = new Medicina(nombre,precio,ingestion,tiposMedicina,dosis,notasAdicionales);
-		int indice = 0;
-		int i = 0;
-		boolean bandera = false;
-		
-		for(Medicina medicina:listadoMedicinas) {
-			if(nombre.equals(medicina.getNombre())) {
-				indice = i;	
-				bandera = true;
-			}
-			i++;
-		}
-		
-		if (bandera == true) {
-			listadoMedicinas.add(indice,Nmedicina);
-			llenarCsvMed();
-			JOptionPane.showMessageDialog(null, "Actualizacion de informacion completada");
-			
-		}
-		else {
-			JOptionPane.showMessageDialog(null, "Ninguna medicina tiene el nombre ingresado");
-		}
-		
-		
 		
 	}
+	
+	public String buscarEnfermedad(boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea,
+			boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia) {
+		
+		String mensaje = "Puede tener:";
+		for (Enfermedad enfermedad : listadoEnfermedades) {
+			double contador = 0;
+			
+			if(enfermedad.isDolorCabeza()== dolorCabeza)
+			{
+				contador++;
+			}
+			if(enfermedad.isDolorEstomago()== dolorEstomago)
+			{
+				contador++;
+			}
+			if(enfermedad.isVomito()== vomito)
+			{
+				contador++;
+			}
+			if(enfermedad.isDiarrea() == diarrea)
+			{
+				contador++;
+			}
+			if(enfermedad.isEstornudo() == estornudo)
+			{
+				contador++;
+			}
+			if(enfermedad.isTos() == tos)
+			{
+				contador++;
+			}
+			if(enfermedad.isDolorGeneral() == dolorGeneral)
+			{
+				contador++;
+			}
+			if(enfermedad.isFaltaEnergia() == faltaEnergia)
+			{
+				contador++;
+			}
+			if(contador >= 4)
+			{
+				mensaje += "\n" + enfermedad.getNombre() + " con una probabilidad del " + String.valueOf(((contador/8)*100)-1)+"%";
+			}
+		}
+		
+		if(mensaje.equals("Puede tener:")) {
+			mensaje = "No se ha encontrado ninguna enfermedad con este patron de sintomas.";
+		}
+		return mensaje;
+	}
+	
 	
 	/**
-	 * Este metodo reescribe el csv
+	 * @param query El query con las instrucciones para el maejo de la base de datos
+	 * Permite Insertar, borrar o actualizar una tupla en una tabla de la base de datos
 	 */
-	private void llenarCsvMed() {
-		
-		try {
-			FileWriter pencil = new FileWriter("Medicinas.csv");
-			PrintWriter pw = new PrintWriter(pencil);
-			String texto = "";
-			
-			for(Medicina Nmedicina: listadoMedicinas) {
-				texto = Nmedicina.getNombre() + "," + String.valueOf(Nmedicina.getPrecio()) + "," + Nmedicina.getIngestion() + ","
-					+ Nmedicina.getTiposMedicina() + "," + Nmedicina.getDosis() + "," + Nmedicina.getNotasAdicionales() + "\n";
-			}
-				
-			pw.write(texto);
-			pw.close();
-				
-		}catch (Exception e) {
-			System.out.println("Ocurrio un error al escribir en el csv");
-		}
-		
-	}
-	
-	
+	private void manejarBD(String query){
+        ConeccionBD BD = null;
+        try{
+            BD = new ConeccionBD("jdbc:mysql://localhost:3306/" + basededatos, "root", contrasena);
+            BD.getNewConnection();
+
+            Statement stQuery = BD.getCurrentConnection().createStatement();
+
+            String queryManejo = query;
+            stQuery.executeUpdate(queryManejo);
+               
+        }
+        catch(Exception e0){
+        	e0.printStackTrace();
+        }
+	}	
 }
+ 

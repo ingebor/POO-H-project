@@ -1,4 +1,8 @@
-
+/**
+ * @author Grupo 2 POO Seccion 21
+ * @date 05/09/2019
+ * Segunda presentacion de proyecto
+ */
 public class Enfermedad {
 	private String nombre;
 	private boolean dolorCabeza;
@@ -10,6 +14,7 @@ public class Enfermedad {
 	private boolean dolorGeneral;
 	private boolean faltaEnergia;
 	private String notasAdicionales;
+	private String nombreMed;
 	
 	public Enfermedad() {
 		nombre = "";
@@ -22,8 +27,9 @@ public class Enfermedad {
 		dolorGeneral = false;
 		faltaEnergia = false;
 		notasAdicionales = "";
+		nombreMed = "";
 	}
-		public Enfermedad(String nombre, boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea, boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia, String notasAdicionales) {
+		public Enfermedad(String nombre, boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea, boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia, String notasAdicionales, String nombreMed) {
 			this.nombre = nombre;
 			this.dolorCabeza = dolorCabeza;
 			this.dolorEstomago = dolorEstomago;
@@ -34,6 +40,7 @@ public class Enfermedad {
 			this.dolorGeneral = dolorGeneral;
 			this.faltaEnergia = faltaEnergia;
 			this.notasAdicionales = "";
+			this.nombreMed = nombreMed;
 	}
 		//nombre
 		/**
@@ -178,10 +185,9 @@ public class Enfermedad {
 		//metodo toString
 		@Override
 		public String toString() {
-			return "Enfermedad [nombre=" + nombre + ", dolorCabeza=" + dolorCabeza + ", dolorEstomago=" + dolorEstomago
-					+ ", vomito=" + vomito + ", diarrea=" + diarrea + ", estornudo=" + estornudo + ", tos=" + tos
-					+ ", dolorGeneral=" + dolorGeneral + ", faltaEnergia=" + faltaEnergia + ", notasAdicionales="
-					+ notasAdicionales + "]";
+			return "Nombre: " + nombre + "\nDolor de cabeza: " + dolorCabeza + "\nDolor de Estomago: " + dolorEstomago + "\nVomito: " + vomito + "\nDiarrea: " + diarrea 
+					+ "\nEstornudos: " + estornudo + "\nTos: " + tos + "\nDolor General: " + dolorGeneral + "\nFalta de Energia: " + faltaEnergia + "\nNotas Adicionales: " + 
+					notasAdicionales;
 		}
 		
 		
