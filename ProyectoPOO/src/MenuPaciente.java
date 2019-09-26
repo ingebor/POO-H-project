@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
 import java.awt.Color;
+import javax.swing.JTextPane;
 
 public class MenuPaciente extends JFrame {
 
@@ -31,8 +32,6 @@ public class MenuPaciente extends JFrame {
 	private JButton btnBuscarMedicina;
 	private JButton btnVolver;
 	private CatalogoSalud catalogo = new CatalogoSalud();
-	private JTextField txtBuscarEnfermedad;
-	private JTextField txtMedicamentos;
 	private JComboBox comboBoxDolor_de_cabeza;
 	private JComboBox comboBoxDolorEstomago;
 	private JComboBox comboBoxVomito;
@@ -42,9 +41,11 @@ public class MenuPaciente extends JFrame {
 	private JComboBox comboBoxDolorGeneral;
 	private JComboBox comboBoxFaltaEnergia;
 	private boolean dolorCabeza, dolorEstomago, vomito, diarrea, estornudo, tos, dolorGeneral, faltaEnergia;
-	private JTextField txtResultado;
 	private JTextField txtLaEnfermedad;
 	private JTextField textLaMedicina;
+	private JTextPane textPaneBuscarEnfermedad;
+	private JTextPane textPaneMedicamentos;
+	private JTextPane textPaneResultado;
 	/**
 	 * Launch the application.
 	 */
@@ -244,19 +245,9 @@ public class MenuPaciente extends JFrame {
 			faltaEnergia = false;
 		}
 		
-		txtBuscarEnfermedad = new JTextField();
-		txtBuscarEnfermedad.setBounds(247, 76, 235, 102);
-		panelIngreso.add(txtBuscarEnfermedad);
-		txtBuscarEnfermedad.setColumns(10);
-		
 		JLabel lblBuscarEnfermedad = new JLabel("Nombre de la Enfermedad:");
 		lblBuscarEnfermedad.setBounds(213, 51, 130, 14);
 		panelIngreso.add(lblBuscarEnfermedad);
-		
-		txtMedicamentos = new JTextField();
-		txtMedicamentos.setBounds(247, 243, 235, 84);
-		panelIngreso.add(txtMedicamentos);
-		txtMedicamentos.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Medicamentos necesarios:");
 		lblNewLabel.setBounds(213, 218, 148, 14);
@@ -285,11 +276,6 @@ public class MenuPaciente extends JFrame {
 		btnVolver.setBounds(311, 21, 171, 23);
 		panelIngreso.add(btnVolver);
 		
-		txtResultado = new JTextField();
-		txtResultado.setBounds(10, 308, 193, 39);
-		panelIngreso.add(txtResultado);
-		txtResultado.setColumns(10);
-		
 		JLabel lblResultados = new JLabel("Resultados:");
 		lblResultados.setBounds(10, 283, 83, 14);
 		panelIngreso.add(lblResultados);
@@ -303,6 +289,18 @@ public class MenuPaciente extends JFrame {
 		textLaMedicina.setBounds(346, 215, 130, 20);
 		panelIngreso.add(textLaMedicina);
 		textLaMedicina.setColumns(10);
+		
+		JTextPane textPaneBuscarEnfermedad = new JTextPane();
+		textPaneBuscarEnfermedad.setBounds(234, 76, 248, 102);
+		panelIngreso.add(textPaneBuscarEnfermedad);
+		
+		textPaneMedicamentos = new JTextPane();
+		textPaneMedicamentos.setBounds(234, 243, 248, 84);
+		panelIngreso.add(textPaneMedicamentos);
+		
+		textPaneResultado = new JTextPane();
+		textPaneResultado.setBounds(10, 305, 193, 51);
+		panelIngreso.add(textPaneResultado);
 		
 		
 
@@ -328,13 +326,13 @@ public class MenuPaciente extends JFrame {
 				else
 				{
 					catalogo.verEnfermedad(txtLaEnfermedad.getText());
-					txtBuscarEnfermedad.setText(catalogo.verEnfermedad(txtLaEnfermedad.getText()));
+					textPaneBuscarEnfermedad.setText(catalogo.verEnfermedad(txtLaEnfermedad.getText()));
 				}
 			 
 			}
 			if (e.getSource() ==  btnIngresoSintomas)
 			{
-				txtResultado.setText(catalogo.buscarEnfermedad(dolorCabeza, dolorEstomago, vomito, diarrea, estornudo, tos, dolorGeneral, faltaEnergia));
+				textPaneResultado.setText(catalogo.buscarEnfermedad(dolorCabeza, dolorEstomago, vomito, diarrea, estornudo, tos, dolorGeneral, faltaEnergia));
 			}
 			if (e.getSource() ==  btnBuscarMedicina)
 			{
@@ -345,13 +343,13 @@ public class MenuPaciente extends JFrame {
 				else
 				{
 					catalogo.VerMedicina(textLaMedicina.getText());
-					txtMedicamentos.setText(catalogo.VerMedicina(textLaMedicina.getText()));
+					textPaneMedicamentos.setText(catalogo.VerMedicina(textLaMedicina.getText()));
 				}
 				
 			}
 			if (e.getSource() ==  btnVolver)
 			{
-				
+				//
 			
 			}
 		}
