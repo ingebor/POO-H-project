@@ -1,4 +1,8 @@
-
+/**
+ * @author Grupo 2 POO Seccion 21
+ * @date 05/09/2019
+ * Segunda presentacion de proyecto
+ */
 public class Medicina {
 	private String nombre;
 	private double precio;

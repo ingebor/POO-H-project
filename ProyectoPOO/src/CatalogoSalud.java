@@ -104,7 +104,7 @@ public class CatalogoSalud {
 	/**
 	 * Este metodo llena tanto el listado de enfermedades como de medicinas al crear un catalogoSalud
 	 */
-	private void llenarCatalogo() {
+	private void llenarCatalogo()  {
 		Enfermedad enfermedad;
 		Medicina medicina;
 		
@@ -144,7 +144,7 @@ public class CatalogoSalud {
 			
 			
 		}catch(Exception e) {
-			System.out.println("Ocurrio un error al cargar los datos");
+			
 		}
 	}
 	 /**
@@ -154,7 +154,11 @@ public class CatalogoSalud {
 		List<Enfermedad> enfermedadBusca = null;
 		for (Enfermedad Enfermedad: listadoEnfermedades)
 			if (Enfermedad.getNombre().equals(nombre)){
+
 				enfermedadBusca.add(Enfermedad);
+
+			enfermedadBusca.add(Enfermedad);
+
 				
 				enfermedadBusca = (List<Enfermedad>) Enfermedad;
 			}
@@ -168,16 +172,19 @@ public class CatalogoSalud {
 	/**
 	 * Este metodo permite buscar la medicina 
 	 */
-	/*
-	public List<Medicina> BuscarMed(String nombre) {
-		for (Medicina x: listadoMedicinas) {
-			if (nombre.equals(x.getNombre())){
-				System.out.println(x);
+	
+	public String BuscarMed(String nombreMed) {
+		int indice = 0;
+		for (Medicina buscandoMed: listadoMedicinas) {
+			if (nombreMed.equals(buscandoMed.getNombre())){
+				indice = listadoMedicinas.indexOf(buscandoMed);
 			}
 		}
-		return 
+		
+		Medicina medMostrar = listadoMedicinas.get(indice);
+		return medMostrar.toString();
 	}
-	*/
+	
 	
 	
 	/**
@@ -197,20 +204,22 @@ public class CatalogoSalud {
 		
 		for(Medicina medicina:listadoMedicinas) {
 			if(nombre.equals(medicina.getNombre())) {
-				indice = i;	
+				indice = listadoMedicinas.indexOf(medicina);	
 				bandera = true;
 			}
 			i++;
 		}
 		
 		if (bandera == true) {
+			listadoMedicinas.remove(indice);
 			listadoMedicinas.add(indice,Nmedicina);
+			
 			llenarCsvMed();
-			JOptionPane.showMessageDialog(null, "Actualizacion de informacion completada");
+			
 			
 		}
 		else {
-			JOptionPane.showMessageDialog(null, "Ninguna medicina tiene el nombre ingresado");
+			
 		}
 		
 		
@@ -229,7 +238,7 @@ public class CatalogoSalud {
 			String texto = "";
 			
 			for(Medicina Nmedicina: listadoMedicinas) {
-				texto = Nmedicina.getNombre() + "," + String.valueOf(Nmedicina.getPrecio()) + "," + Nmedicina.getIngestion() + ","
+				texto += Nmedicina.getNombre() + "," + String.valueOf(Nmedicina.getPrecio()) + "," + Nmedicina.getIngestion() + ","
 					+ Nmedicina.getTiposMedicina() + "," + Nmedicina.getDosis() + "," + Nmedicina.getNotasAdicionales() + "\n";
 			}
 				
