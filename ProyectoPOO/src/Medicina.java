@@ -121,12 +121,27 @@ public class Medicina {
 	public void setNotasAdicionales(String notasAdicionales) {
 		this.notasAdicionales = notasAdicionales;
 	}
+	
+	//nombre de la enfermedad asociada
+		/**
+		 * @return the nombreEnf
+		 */
+		public String getNombreEnf() {
+			return nombreEnf;
+		}
+
+		/**
+		 * @param nombreEnf the nombreEnf to set
+		 */
+		public void setNombreEnf(String nombreEnf) {
+			this.nombreEnf = nombreEnf;
+		}
 
 	//toString
 	@Override
 	public String toString() {
-		return "Nombre del medicamento: " + nombre + "\nPrecio: " + precio + "\nIngestion: " + ingestion + "\nTipos de Medicina: "
-				+ tiposMedicina + "\nDosis: " + dosis + "\nNotas Adicionales: " + notasAdicionales;
+		return "Nombre: " + nombre + "\nPrecio en quetzales: " + precio + "\nModo de ingestion: " + ingestion + "\nTipo de medicina: " + tiposMedicina + "\nDosis" + dosis
+				+ "\nnotasAdicionales: " + notasAdicionales + "\nEnfermedad que combate: " + nombreEnf;
 	}
 	
 	

@@ -29,9 +29,7 @@ CREATE TABLE IF NOT EXISTS `enfermedades` (
   `FaltaEnergia` varchar(50) DEFAULT NULL,
   `NotasAdicionales` mediumtext,
   `Medicina` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`Nombre`),
-  KEY `FK_enfermedades_medicinas` (`Medicina`),
-  CONSTRAINT `FK_enfermedades_medicinas` FOREIGN KEY (`Medicina`) REFERENCES `medicinas` (`Nombre`)
+  PRIMARY KEY (`Nombre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- La exportación de datos fue deseleccionada.
@@ -44,9 +42,15 @@ CREATE TABLE IF NOT EXISTS `medicinas` (
   `Dosis` varchar(50) DEFAULT NULL,
   `NotasAdicionales` mediumtext,
   `Enfermedad` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`Nombre`),
-  KEY `FK_medicinas_enfermedades` (`Enfermedad`),
-  CONSTRAINT `FK_medicinas_enfermedades` FOREIGN KEY (`Enfermedad`) REFERENCES `enfermedades` (`Nombre`)
+  PRIMARY KEY (`Nombre`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- La exportación de datos fue deseleccionada.
+-- Volcando estructura para tabla bdpoo.usuario
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `NombreUsuario` varchar(50) NOT NULL,
+  `Contrasenia` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`NombreUsuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- La exportación de datos fue deseleccionada.

@@ -39,7 +39,7 @@ public class Enfermedad {
 			this.tos = tos;
 			this.dolorGeneral = dolorGeneral;
 			this.faltaEnergia = faltaEnergia;
-			this.notasAdicionales = "";
+			this.notasAdicionales = notasAdicionales;
 			this.nombreMed = nombreMed;
 	}
 		//nombre
@@ -182,13 +182,26 @@ public class Enfermedad {
 			this.notasAdicionales = notasAdicionales;
 		}
 		
+		//Enfermedad relacionada
+		/**
+		 * @return the notasAdicionales
+		 */
+		public String getNombreMed() {
+			return nombreMed;
+		}
+		/**
+		 * @param nombreMed the nombreMed to set
+		 */
+		public void setNombreMed(String nombreMed) {
+			this.nombreMed = nombreMed;
+		}
+		
 		//metodo toString
 		@Override
 		public String toString() {
-			return "Enfermedad [nombre=" + nombre + ", dolorCabeza=" + dolorCabeza + ", dolorEstomago=" + dolorEstomago
-					+ ", vomito=" + vomito + ", diarrea=" + diarrea + ", estornudo=" + estornudo + ", tos=" + tos
-					+ ", dolorGeneral=" + dolorGeneral + ", faltaEnergia=" + faltaEnergia + ", notasAdicionales="
-					+ notasAdicionales + "]";
+			return "Nombre: " + nombre + "\nDolor de cabeza: " + dolorCabeza + "\nDolor de Estomago: " + dolorEstomago + "\nVomito: " + vomito + "\nDiarrea: " + diarrea 
+					+ "\nEstornudos: " + estornudo + "\nTos: " + tos + "\nDolor General: " + dolorGeneral + "\nFalta de Energia: " + faltaEnergia + "\nNotas Adicionales: " + 
+					notasAdicionales + "\nNombre Medicina: " +nombreMed;
 		}
 		
 		
