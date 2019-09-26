@@ -125,8 +125,8 @@ public class Medicina {
 	//toString
 	@Override
 	public String toString() {
-		return "Medicina [nombre=" + nombre + ", precio=" + precio + ", ingestion=" + ingestion + ", tiposMedicina="
-				+ tiposMedicina + ", dosis=" + dosis + ", notasAdicionales=" + notasAdicionales + "]";
+		return "Nombre del medicamento: " + nombre + "\nPrecio: " + precio + "\nIngestion: " + ingestion + "\nTipos de Medicina: "
+				+ tiposMedicina + "\nDosis: " + dosis + "\nNotas Adicionales: " + notasAdicionales;
 	}
 	
 	

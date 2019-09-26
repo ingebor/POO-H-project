@@ -183,29 +183,60 @@ public class CatalogoSalud {
 	 /**
 	  * Este metodo permite ingresar el nombre de la enfermedad. 
 	  */
-	public List<Enfermedad> verEnfermedad(String nombre) {
-		List<Enfermedad> enfermedadBusca = null;
-		for (Enfermedad Enfermedad: listadoEnfermedades)
-			if (Enfermedad.getNombre().equals(nombre)){
-			enfermedadBusca.add(Enfermedad);
-				
-				enfermedadBusca = (List<Enfermedad>) Enfermedad;
-			}
-			if(enfermedadBusca != null) {
-				if(((Enfermedad) listadoEnfermedades).getNombre().contentEquals(nombre)) {
-					enfermedadBusca = listadoEnfermedades;
+	public String verEnfermedad(String nombreEnfermedad){
+		String mensaje = "";
+		int index = 0;
+		for (int i = 0; i < listadoEnfermedades.size(); i++) {
+			try 
+			{
+				if(listadoEnfermedades.get(i).getNombre().equals(nombreEnfermedad))
+				{
+					
+					mensaje = listadoEnfermedades.get(index).toString();
+					//index = listadoMedicinas.indexOf(medicina);
+					//mensaje = listadoMedicinas.get(index).toString();
 				}
+				index++;
 			}
-			return enfermedadBusca;
+			catch(Exception e)
+			{
+				mensaje = "Lo sentimos pero no se encontro el medicamento.";
+			}
+			
 		}
+			
+		return mensaje;	
+	}
 	/**
 	 * Este metodo permite buscar la medicina 
 	 */
 	
-	public String BuscarMed(String nombreMed) {
+	public String BuscarMedicina(String nombreMedicina) {
+		String mensaje = "";
+		int index = 0;
+		for (int i = 0; i < listadoMedicinas.size(); i++) {
+			try 
+			{
+				if(listadoMedicinas.get(i).getNombre().equals(nombreMedicina))
+				{
+					
+					mensaje = listadoMedicinas.get(index).toString();
+					//index = listadoMedicinas.indexOf(medicina);
+					//mensaje = listadoMedicinas.get(index).toString();
+				}
+				index++;
+			}
+			catch(Exception e)
+			{
+				mensaje = "Lo sentimos pero no se encontro el medicamento.";
+			}
+			
+		}
+		//for (Medicina medicina : listadoMedicinas) {
+
+		//}
 		
-		
-		return "";
+		return mensaje;
 	}
 	
 	

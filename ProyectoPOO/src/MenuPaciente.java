@@ -23,7 +23,7 @@ public class MenuPaciente extends JFrame {
 	private JPanel contentPane;
 	private JPanel panelIngreso;
 	private JButton btnIngresoSintomas;
-	private JButton btnBuscarSintomas;
+	private JButton btnBuscarEnfermedad;
 	private JButton btnBuscarMedicina;
 	private JButton btnVolver;
 	private CatalogoSalud catalogo = new CatalogoSalud();
@@ -183,9 +183,9 @@ public class MenuPaciente extends JFrame {
 		lblNewLabel.setBounds(249, 201, 148, 14);
 		panelIngreso.add(lblNewLabel);
 		
-		btnBuscarSintomas = new JButton("Buscar Sintomas");
-		btnBuscarSintomas.setBounds(328, 172, 148, 23);
-		panelIngreso.add(btnBuscarSintomas);
+		btnBuscarEnfermedad = new JButton("Buscar Enfermedad");
+		btnBuscarEnfermedad.setBounds(344, 172, 132, 23);
+		panelIngreso.add(btnBuscarEnfermedad);
 		
 		btnBuscarMedicina = new JButton("Buscar Medicinas");
 		btnBuscarMedicina.setBounds(328, 324, 150, 23);
