@@ -1,36 +1,68 @@
-/**
- * @author Grupo 2 POO Seccion 21
- * @date 05/09/2019
- * Segunda presentacion de proyecto
- */
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+
 import javax.swing.DefaultComboBoxModel;
-import java.awt.Color;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.JComboBox;
 import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.border.TitledBorder;
+import javax.swing.UIManager;
+import java.awt.Color;
 
-public class MenuPaciente {
+public class MenuPaciente extends JFrame {
 
-	private JFrame frame;
-	private JTextField textField;
-
+	private JPanel contentPane;
+	private JPanel panelIngreso;
+	private JButton btnIngresoSintomas;
+	private JButton btnBuscarEnfermedad;
+	private JButton btnBuscarMedicina;
+	private JButton btnVolver;
+	private CatalogoSalud catalogo = new CatalogoSalud();
+	private JTextField txtBuscarSintomas;
+	private JTextField txtMedicamentos;
+	private JComboBox comboBoxDolor_de_cabeza;
+	private JComboBox comboBoxDolorEstomago;
+	private JComboBox comboBoxVomito;
+	private JComboBox comboBoxDiarrea; 
+	private JComboBox comboBoxEstornudo; 
+	private JComboBox comboBoxTos;
+	private JComboBox comboBoxDolorGeneral;
+	private JComboBox comboBoxFaltaEnergia;
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			
 			public void run() {
 				try {
-					MenuPaciente window = new MenuPaciente();
-					window.frame.setVisible(true);
+					try {
+			            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+			                if ("Nimbus".equals(info.getName())) {
+			                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+			                    break;
+			                }
+			            }
+			        } catch (ClassNotFoundException ex) {
+			            java.util.logging.Logger.getLogger(MenuPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			        } catch (InstantiationException ex) {
+			            java.util.logging.Logger.getLogger(MenuPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			        } catch (IllegalAccessException ex) {
+			            java.util.logging.Logger.getLogger(MenuPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+			            java.util.logging.Logger.getLogger(MenuPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			        }
+					MenuPaciente frame = new MenuPaciente();
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -39,188 +71,131 @@ public class MenuPaciente {
 	}
 
 	/**
-	 * Create the application.
+	 * Create the frame.  boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea, boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia
 	 */
 	public MenuPaciente() {
-		initialize();
-	}
+		getContentPane().setLayout(null);
+		
+		panelIngreso = new JPanel();
+		panelIngreso.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Busqueda de enfermedad por sintomas", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panelIngreso.setBounds(10, 11, 517, 358);
+		getContentPane().add(panelIngreso);
+		panelIngreso.setLayout(null);
+		
+		JLabel lblIntruccion = new JLabel("Indique qu\u00E9 s\u00EDntomas padece:");
+		lblIntruccion.setBounds(10, 21, 221, 19);
+		panelIngreso.add(lblIntruccion);
+		lblIntruccion.setFont(new Font("Tahoma", Font.BOLD, 15));
+		
+		JLabel lbldolorCabeza = new JLabel("Dolor de Cabeza:");
+		lbldolorCabeza.setBounds(10, 51, 142, 14);
+		panelIngreso.add(lbldolorCabeza);
+		
+		JLabel lbldolorEstomago = new JLabel("Dolor de Estomago:");
+		lbldolorEstomago.setBounds(10, 76, 142, 14);
+		panelIngreso.add(lbldolorEstomago);
+		
+		JLabel lblvomito = new JLabel("Vomitos:");
+		lblvomito.setBounds(10, 101, 142, 14);
+		panelIngreso.add(lblvomito);
+		lblvomito.setHorizontalAlignment(SwingConstants.LEFT);
+		
+		JLabel lbldiarrea = new JLabel("Diarrea:");
+		lbldiarrea.setBounds(10, 126, 142, 14);
+		panelIngreso.add(lbldiarrea);
+		lbldiarrea.setHorizontalAlignment(SwingConstants.LEFT);
+		
+		JLabel lblestornudo = new JLabel("Estornudo:");
+		lblestornudo.setBounds(10, 151, 142, 14);
+		panelIngreso.add(lblestornudo);
+		
+		JLabel lbltos = new JLabel("Tos:");
+		lbltos.setBounds(10, 176, 142, 14);
+		panelIngreso.add(lbltos);
+		
+		JLabel lbldolorGeneral = new JLabel("Dolor General:");
+		lbldolorGeneral.setBounds(10, 201, 142, 14);
+		panelIngreso.add(lbldolorGeneral);
+		
+		JLabel lblfaltaEnergia = new JLabel("Falta de energia:");
+		lblfaltaEnergia.setBounds(11, 226, 141, 14);
+		panelIngreso.add(lblfaltaEnergia);
+		
+		comboBoxDolor_de_cabeza = new JComboBox();
+		comboBoxDolor_de_cabeza.setBounds(148, 51, 55, 20);
+		panelIngreso.add(comboBoxDolor_de_cabeza);
+		comboBoxDolor_de_cabeza.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
+		
+		comboBoxDolorEstomago = new JComboBox();
+		comboBoxDolorEstomago.setBounds(148, 73, 55, 20);
+		panelIngreso.add(comboBoxDolorEstomago);
+		comboBoxDolorEstomago.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
+		
+		comboBoxVomito = new JComboBox();
+		comboBoxVomito.setBounds(148, 98, 55, 20);
+		panelIngreso.add(comboBoxVomito);
+		comboBoxVomito.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
+		
+		comboBoxDiarrea = new JComboBox();
+		comboBoxDiarrea.setBounds(148, 123, 55, 20);
+		panelIngreso.add(comboBoxDiarrea);
+		comboBoxDiarrea.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
+		
+		comboBoxEstornudo = new JComboBox();
+		comboBoxEstornudo.setBounds(148, 148, 55, 20);
+		panelIngreso.add(comboBoxEstornudo);
+		comboBoxEstornudo.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
+		
+		comboBoxTos = new JComboBox();
+		comboBoxTos.setBounds(148, 173, 55, 20);
+		panelIngreso.add(comboBoxTos);
+		comboBoxTos.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
+		
+		comboBoxDolorGeneral = new JComboBox();
+		comboBoxDolorGeneral.setBounds(148, 198, 55, 20);
+		panelIngreso.add(comboBoxDolorGeneral);
+		comboBoxDolorGeneral.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
+		
+		comboBoxFaltaEnergia = new JComboBox();
+		comboBoxFaltaEnergia.setBounds(148, 223, 55, 20);
+		panelIngreso.add(comboBoxFaltaEnergia);
+		comboBoxFaltaEnergia.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
+		
+		btnIngresoSintomas = new JButton("Ingresar Sintomas");
+		btnIngresoSintomas.setBounds(10, 251, 165, 23);
+		panelIngreso.add(btnIngresoSintomas);
+		
+		txtBuscarSintomas = new JTextField();
+		txtBuscarSintomas.setBounds(247, 65, 235, 102);
+		panelIngreso.add(txtBuscarSintomas);
+		txtBuscarSintomas.setColumns(10);
+		
+		JLabel lblSintomasText = new JLabel("Sintomas");
+		lblSintomasText.setBounds(247, 51, 235, 14);
+		panelIngreso.add(lblSintomasText);
+		
+		txtMedicamentos = new JTextField();
+		txtMedicamentos.setBounds(247, 234, 235, 84);
+		panelIngreso.add(txtMedicamentos);
+		txtMedicamentos.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("Medicamentos necesarios:");
+		lblNewLabel.setBounds(249, 201, 148, 14);
+		panelIngreso.add(lblNewLabel);
+		
+		btnBuscarEnfermedad = new JButton("Buscar Enfermedad");
+		btnBuscarEnfermedad.setBounds(344, 172, 132, 23);
+		panelIngreso.add(btnBuscarEnfermedad);
+		
+		btnBuscarMedicina = new JButton("Buscar Medicinas");
+		btnBuscarMedicina.setBounds(328, 324, 150, 23);
+		panelIngreso.add(btnBuscarMedicina);
+		
+		btnVolver = new JButton("Volver a Inicio");
+		btnVolver.setBounds(311, 21, 171, 23);
+		panelIngreso.add(btnVolver);
+		
+		
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setBackground(new Color(255, 250, 205));
-		frame.setBounds(100, 100, 578, 440);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		JLabel lblPaciente = new JLabel("PACIENTE");
-		lblPaciente.setFont(new Font("Tahoma", Font.BOLD, 14));
-		
-		JLabel lblIn = new JLabel("INSTRUCCIONES");
-		lblIn.setFont(new Font("Tahoma", Font.BOLD, 14));
-		
-		JButton btnIngresarSntomas = new JButton("Ingresar Sintomas");
-		btnIngresarSntomas.setForeground(new Color(0, 0, 0));
-		btnIngresarSntomas.setBackground(new Color(176, 224, 230));
-		
-		JButton btnBu = new JButton("Buscar Medicina");
-		btnBu.setBackground(new Color(176, 224, 230));
-		
-		JButton btnVolver = new JButton("Volver ");
-		btnVolver.setBackground(new Color(176, 224, 230));
-		
-		JLabel lblSintomas = new JLabel("SINTOMAS");
-		lblSintomas.setFont(new Font("Tahoma", Font.BOLD, 14));
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
-		
-		JLabel lblNewLabel = new JLabel("Dolor de cabeza");
-		
-		JLabel label = new JLabel("Dolor de estomago");
-		
-		JLabel label_1 = new JLabel("Vomito");
-		
-		JLabel label_2 = new JLabel("Diarrea");
-		
-		JLabel label_3 = new JLabel("Estornudo");
-		
-		JLabel label_4 = new JLabel("Tos");
-		
-		JLabel label_5 = new JLabel("Dolor General");
-		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
-		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
-		
-		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
-		 
-		JComboBox comboBox_4 = new JComboBox();
-		comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
-		
-		JComboBox comboBox_5 = new JComboBox();
-		comboBox_5.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
-		
-		JComboBox comboBox_6 = new JComboBox();
-		comboBox_6.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		
-		JLabel lblNota = new JLabel("NOTA");
-		lblNota.setFont(new Font("Tahoma", Font.BOLD, 14));
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(28, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblIn, GroupLayout.PREFERRED_SIZE, 141, GroupLayout.PREFERRED_SIZE)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(24)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
-										.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
-										.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
-										.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
-										.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblNewLabel)
-										.addGroup(groupLayout.createSequentialGroup()
-											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(label, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)))
-									.addGap(18)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
-										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-											.addComponent(comboBox_1, 0, 59, Short.MAX_VALUE)
-											.addComponent(comboBox_2, 0, 59, Short.MAX_VALUE)
-											.addComponent(comboBox_3, 0, 59, Short.MAX_VALUE)
-											.addComponent(comboBox_4, 0, 59, Short.MAX_VALUE)
-											.addComponent(comboBox_5, 0, 59, Short.MAX_VALUE)
-											.addComponent(comboBox_6, 0, 59, Short.MAX_VALUE))))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(18)
-									.addComponent(lblSintomas)))
-							.addGap(30))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnIngresarSntomas)
-							.addGap(44)))
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-									.addComponent(btnVolver)
-									.addComponent(btnBu))))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(37)
-							.addComponent(lblNota)))
-					.addContainerGap(34, Short.MAX_VALUE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(243)
-					.addComponent(lblPaciente)
-					.addContainerGap(260, Short.MAX_VALUE))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblPaciente)
-					.addGap(18)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblIn, GroupLayout.PREFERRED_SIZE, 217, GroupLayout.PREFERRED_SIZE)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblSintomas)
-										.addComponent(lblNota))
-									.addGap(6)
-									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-										.addComponent(lblNewLabel)
-										.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
-									.addGap(14)
-									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-										.addComponent(label)
-										.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-									.addGap(5)
-									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-										.addComponent(label_1)
-										.addComponent(comboBox_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-									.addGap(4)
-									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-										.addComponent(label_2)
-										.addComponent(comboBox_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-									.addGap(5)
-									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-										.addComponent(label_3)
-										.addComponent(comboBox_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-									.addGap(4)
-									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-										.addComponent(label_4)
-										.addComponent(comboBox_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-									.addGap(3)
-									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-										.addComponent(label_5)
-										.addComponent(comboBox_6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-									.addGap(88)
-									.addComponent(btnVolver)))
-							.addContainerGap())
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 204, GroupLayout.PREFERRED_SIZE)
-							.addGap(36)
-							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(btnBu)
-								.addComponent(btnIngresarSntomas))
-							.addGap(73))))
-		);
-		frame.getContentPane().setLayout(groupLayout);
-	} 
+	}
 }

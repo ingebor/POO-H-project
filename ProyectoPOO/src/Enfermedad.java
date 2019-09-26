@@ -14,6 +14,7 @@ public class Enfermedad {
 	private boolean dolorGeneral;
 	private boolean faltaEnergia;
 	private String notasAdicionales;
+	private String nombreMed;
 	
 	public Enfermedad() {
 		nombre = "";
@@ -26,8 +27,9 @@ public class Enfermedad {
 		dolorGeneral = false;
 		faltaEnergia = false;
 		notasAdicionales = "";
+		nombreMed = "";
 	}
-		public Enfermedad(String nombre, boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea, boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia, String notasAdicionales) {
+		public Enfermedad(String nombre, boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea, boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia, String notasAdicionales, String nombreMed) {
 			this.nombre = nombre;
 			this.dolorCabeza = dolorCabeza;
 			this.dolorEstomago = dolorEstomago;
@@ -38,6 +40,7 @@ public class Enfermedad {
 			this.dolorGeneral = dolorGeneral;
 			this.faltaEnergia = faltaEnergia;
 			this.notasAdicionales = "";
+			this.nombreMed = nombreMed;
 	}
 		//nombre
 		/**
