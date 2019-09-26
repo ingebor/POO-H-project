@@ -136,11 +136,11 @@ public class MenuPaciente extends JFrame {
 		panelIngreso.add(comboBoxDolor_de_cabeza);
 		comboBoxDolor_de_cabeza.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
 		
-		if(comboBoxDolor_de_cabeza.equals("Si"))
+		if(comboBoxDolor_de_cabeza.getSelectedItem().equals("Si"))
 		{
 			dolorCabeza = true;
 		}
-		if(comboBoxDolor_de_cabeza.equals("No"))
+		if(comboBoxDolor_de_cabeza.getSelectedItem().equals("No"))
 		{
 			dolorCabeza = false;
 		}
@@ -262,12 +262,13 @@ public class MenuPaciente extends JFrame {
 		lblNewLabel.setBounds(213, 218, 148, 14);
 		panelIngreso.add(lblNewLabel);
 		
-		milistener oyente = new milistener();
+		miListener oyente = new miListener();
 		
 		btnBuscarEnfermedad = new JButton("Buscar Enfermedad");
 		btnBuscarEnfermedad.addActionListener(oyente);
 		btnBuscarEnfermedad.setBounds(346, 183, 132, 23);
 		panelIngreso.add(btnBuscarEnfermedad);
+		
 		
 		btnIngresoSintomas = new JButton("Ingresar Sintomas");
 		btnIngresoSintomas.addActionListener(oyente);
@@ -307,52 +308,54 @@ public class MenuPaciente extends JFrame {
 
 		
 		
-		private class milistener implements ActionListener
-		{
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				if (e.getSource() ==  btnBuscarEnfermedad)
-				{
-					if(txtLaEnfermedad.getText().equals(null))
-					{
-						JOptionPane.showMessageDialog(null,"Ingrese el nombre de una enfermedad porfavor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
-					}
-					else
-					{
-						catalogo.verEnfermedad(txtLaEnfermedad.getText());
-						txtBuscarEnfermedad.setText(catalogo.verEnfermedad(txtLaEnfermedad.getText()));
-					}
-				 
-				}
-				if (e.getSource() ==  btnIngresoSintomas)
-				{
-					txtResultado.setText(catalogo.buscarEnfermedad(dolorCabeza, dolorEstomago, vomito, diarrea, estornudo, tos, dolorGeneral, faltaEnergia));
-				}
-				if (e.getSource() ==  btnBuscarMedicina)
-				{
-					if(textLaMedicina.getText().equals(null))
-					{
-						JOptionPane.showMessageDialog(null,"Ingrese la medicina porfavor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
-					}
-					else
-					{
-						catalogo.VerMedicina(textLaMedicina.getText());
-						txtMedicamentos.setText(catalogo.VerMedicina(textLaMedicina.getText()));
-					}
-					
-				}
-				if (e.getSource() ==  btnVolver)
-				{
-					
-					//
-				}
-			}
-			
-			
-		}
+		
 		
 
+	}
+	
+	private class miListener implements ActionListener
+	{
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if (e.getSource() ==  btnBuscarEnfermedad)
+			{
+				if(txtLaEnfermedad.getText().equals(null))
+				{
+					JOptionPane.showMessageDialog(null,"Ingrese el nombre de una enfermedad porfavor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
+				}
+				else
+				{
+					catalogo.verEnfermedad(txtLaEnfermedad.getText());
+					txtBuscarEnfermedad.setText(catalogo.verEnfermedad(txtLaEnfermedad.getText()));
+				}
+			 
+			}
+			if (e.getSource() ==  btnIngresoSintomas)
+			{
+				txtResultado.setText(catalogo.buscarEnfermedad(dolorCabeza, dolorEstomago, vomito, diarrea, estornudo, tos, dolorGeneral, faltaEnergia));
+			}
+			if (e.getSource() ==  btnBuscarMedicina)
+			{
+				if(textLaMedicina.getText().equals(null))
+				{
+					JOptionPane.showMessageDialog(null,"Ingrese la medicina porfavor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
+				}
+				else
+				{
+					catalogo.VerMedicina(textLaMedicina.getText());
+					txtMedicamentos.setText(catalogo.VerMedicina(textLaMedicina.getText()));
+				}
+				
+			}
+			if (e.getSource() ==  btnVolver)
+			{
+				
+				//
+			}
+		}
+		
+		
 	}
 }
