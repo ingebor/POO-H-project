@@ -22,7 +22,7 @@ public class Medicina {
 		nombreEnf = "";
 	}
 		
-	public Medicina(String nombre, double precio, String ingestion, String tiposMedicina, String dosis, String notasAdicionales,String nombreEnf) {
+	public Medicina(String nombre, String precio, String ingestion, String tiposMedicina, String dosis, String notasAdicionales,String nombreEnf) {
 		this.nombre = nombre;
 		this.precio = precio;
 		this.ingestion = ingestion;
@@ -121,12 +121,27 @@ public class Medicina {
 	public void setNotasAdicionales(String notasAdicionales) {
 		this.notasAdicionales = notasAdicionales;
 	}
+	
+	//nombre de la enfermedad asociada
+		/**
+		 * @return the nombreEnf
+		 */
+		public String getNombreEnf() {
+			return nombreEnf;
+		}
+
+		/**
+		 * @param nombreEnf the nombreEnf to set
+		 */
+		public void setNombreEnf(String nombreEnf) {
+			this.nombreEnf = nombreEnf;
+		}
 
 	//toString
 	@Override
 	public String toString() {
-		return "Medicina [nombre=" + nombre + ", precio=" + precio + ", ingestion=" + ingestion + ", tiposMedicina="
-				+ tiposMedicina + ", dosis=" + dosis + ", notasAdicionales=" + notasAdicionales + "]";
+		return "Medicina [nombre=" + nombre + ", precio=" + precio + ", ingestion=" + ingestion + ", tipo de Medicina="
+				+ tiposMedicina + ", dosis=" + dosis + ", notas Adicionales=" + notasAdicionales + ", nombre de enfermedad relacionada ="+ nombreEnf +"]";
 	}
 	
 	

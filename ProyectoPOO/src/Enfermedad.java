@@ -182,6 +182,20 @@ public class Enfermedad {
 			this.notasAdicionales = notasAdicionales;
 		}
 		
+		//Enfermedad relacionada
+		/**
+		 * @return the notasAdicionales
+		 */
+		public String getNombreMed() {
+			return nombreMed;
+		}
+		/**
+		 * @param nombreMed the nombreMed to set
+		 */
+		public void setNombreMed(String nombreMed) {
+			this.nombreMed = nombreMed;
+		}
+		
 		//metodo toString
 		@Override
 		public String toString() {
