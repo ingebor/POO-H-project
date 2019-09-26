@@ -58,6 +58,15 @@ public class CatalogoSalud {
 	
 	}
 	
+	
+	public void borrarEnfermedad(String nombreEnf){
+		String queryDelete = "DELETE FROM enfermedades WHERE Nombre = '" + nombreEnf + "'";
+		manejarBD(queryDelete);
+	}
+	
+	
+	
+	
 	/**
 	 * @param nombre
 	 * @param dolorCabeza
