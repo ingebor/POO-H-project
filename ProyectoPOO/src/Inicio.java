@@ -1,8 +1,3 @@
-/**
- * @author Grupo 2 POO Seccion 21
- * @date 05/09/2019
- * Segunda presentacion de proyecto
- */
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -12,8 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.Color;
+import javax.swing.JPanel;
 
 public class Inicio {
 
@@ -47,63 +41,45 @@ public class Inicio {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.getContentPane().setBackground(new Color(255, 239, 213));
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 248, 195);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JLabel lblInicio = new JLabel("Inicio");
+		JLabel lblInicio = new JLabel("INICIO");
 		
-		JLabel lblInstrucciones = new JLabel("INSTRUCCIONES");
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBackground(new Color(230, 230, 250));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Doctor ", "Paciente"}));
-		
-		JLabel lblSeleccionarCategora = new JLabel("Seleccionar categoria");
-		
-		JButton btnIngresar = new JButton("Ingresar");
-		btnIngresar.setBackground(new Color(176, 224, 230));
+		JPanel panel_1 = new JPanel();
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(184)
-					.addComponent(lblInicio)
-					.addContainerGap(231, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(256, Short.MAX_VALUE)
-					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(142))
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(btnIngresar))
+							.addGap(101)
+							.addComponent(lblInicio))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(52)
-							.addComponent(lblInstrucciones)
-							.addPreferredGap(ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
-							.addComponent(lblSeleccionarCategora)))
-					.addGap(114))
+							.addGap(17)
+							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 208, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(23, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(16)
-							.addComponent(lblInicio)
-							.addGap(18)
-							.addComponent(lblInstrucciones))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(45)
-							.addComponent(lblSeleccionarCategora)))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(40)
-					.addComponent(btnIngresar)
-					.addContainerGap(110, Short.MAX_VALUE))
+					.addGap(14)
+					.addComponent(lblInicio)
+					.addGap(18)
+					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(44, Short.MAX_VALUE))
 		);
+		
+		JLabel lblSeleccionarCategora = new JLabel("SELECCIONAR SU CATEGORIA:");
+		panel_1.add(lblSeleccionarCategora);
+		
+		JComboBox comboBox = new JComboBox();
+		panel_1.add(comboBox);
+		comboBox.addItem("MEDICO");
+		comboBox.addItem("PACIENTE");
+		
+		JButton btnIngresar = new JButton("Ingresar");
+		panel_1.add(btnIngresar);
 		frame.getContentPane().setLayout(groupLayout);
 	}
 }

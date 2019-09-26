@@ -164,8 +164,7 @@ public class CatalogoSalud {
             stQuery = BD.getCurrentConnection().createStatement();
             rsRecords = stQuery.executeQuery(query);
             
-            listadoEnfermedades.clear();
-            
+            listadoMedicinas.clear();
             while(rsRecords.next()){
             	listadoMedicinas.add(new Medicina(rsRecords.getString("medicinas.Nombre"),rsRecords.getDouble("medicinas.Precio"), rsRecords.getString("medicinas.Ingestion")
             			,rsRecords.getString("medicinas.Tipo"),rsRecords.getString("medicinas.Dosis"),rsRecords.getString("medicinas.NotasAdicionales")
@@ -183,29 +182,62 @@ public class CatalogoSalud {
 	 /**
 	  * Este metodo permite ingresar el nombre de la enfermedad. 
 	  */
-	public List<Enfermedad> verEnfermedad(String nombre) {
-		List<Enfermedad> enfermedadBusca = null;
-		for (Enfermedad Enfermedad: listadoEnfermedades)
-			if (Enfermedad.getNombre().equals(nombre)){
-			enfermedadBusca.add(Enfermedad);
-				
-				enfermedadBusca = (List<Enfermedad>) Enfermedad;
-			}
-			if(enfermedadBusca != null) {
-				if(((Enfermedad) listadoEnfermedades).getNombre().contentEquals(nombre)) {
-					enfermedadBusca = listadoEnfermedades;
+	public String verEnfermedad(String nombreEnfermedad){
+		String mensaje = "";
+		//int index = 0;
+		for (int i = 0; i < listadoEnfermedades.size(); i++) {
+			try 
+			{
+				if(listadoEnfermedades.get(i).getNombre().equals(nombreEnfermedad))
+				{
+					
+					mensaje = listadoEnfermedades.get(i).toString();
+					//index = listadoMedicinas.indexOf(medicina);
+					//mensaje = listadoMedicinas.get(index).toString();
 				}
+				
 			}
-			return enfermedadBusca;
+			catch(Exception e)
+			{
+				mensaje = "Lo sentimos pero no se encontro el medicamento.";
+			}
+			
 		}
+		
+		
+			
+		return mensaje;	
+	}
 	/**
 	 * Este metodo permite buscar la medicina 
 	 */
 	
-	public String BuscarMed(String nombreMed) {
+	public String VerMedicina(String nombreMedicina) {
+		String mensaje = "";
+		//int index = 0;
+		for (int i = 0; i < listadoMedicinas.size(); i++) {
+			try 
+			{
+				if(listadoMedicinas.get(i).getNombre().equals(nombreMedicina))
+				{
+					
+					mensaje = listadoMedicinas.get(i).toString();
+					//index = listadoMedicinas.indexOf(medicina);
+					//mensaje = listadoMedicinas.get(index).toString();
+				}
+				
+			}
+			catch(Exception e)
+			{
+				mensaje = "Lo sentimos pero no se encontro el medicamento.";
+			}
+			
+		}
+		//for (Medicina medicina : listadoMedicinas) {
+
+		//}
 		
-		
-		return "";
+		return mensaje;
 	}
 	
 	
@@ -223,67 +255,57 @@ public class CatalogoSalud {
 		
 	}
 	
-	
-	
-	/*
-	
-	
-	private void insert(String query){
-	        ConeccionBD BD = null;
-	        try
-	        {
-	            BD = new ConeccionBD("jdbc:mysql://localhost:3306/" + basededatos, "root", contrasena);
-	            BD.getNewConnection();
-
-	            Statement stQueryInsert = BD.getCurrentConnection().createStatement();
-
-	            String queryInsert = query;
-	            stQueryInsert.executeUpdate(queryInsert);
-	               
-	        }
-	        catch(Exception e0)
-	        {
-	        	e0.printStackTrace();
-	        }
+	public String buscarEnfermedad(boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea,
+			boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia) {
+		
+		String mensaje = "Puede tener:";
+		for (Enfermedad enfermedad : listadoEnfermedades) {
+			double contador = 0;
+			
+			if(enfermedad.isDolorCabeza()== dolorCabeza)
+			{
+				contador++;
+			}
+			if(enfermedad.isDolorEstomago()== dolorEstomago)
+			{
+				contador++;
+			}
+			if(enfermedad.isVomito()== vomito)
+			{
+				contador++;
+			}
+			if(enfermedad.isDiarrea() == diarrea)
+			{
+				contador++;
+			}
+			if(enfermedad.isEstornudo() == estornudo)
+			{
+				contador++;
+			}
+			if(enfermedad.isTos() == tos)
+			{
+				contador++;
+			}
+			if(enfermedad.isDolorGeneral() == dolorGeneral)
+			{
+				contador++;
+			}
+			if(enfermedad.isFaltaEnergia() == faltaEnergia)
+			{
+				contador++;
+			}
+			if(contador >= 4)
+			{
+				mensaje += "\n" + enfermedad.getNombre() + " con una probabilidad del " + String.valueOf(((contador/8)*100)-1)+"%";
+			}
+		}
+		
+		if(mensaje.equals("Puede tener:")) {
+			mensaje = "No se ha encontrado ninguna enfermedad con este patron de sintomas.";
+		}
+		return mensaje;
 	}
-	 
 	
-	private void delete(String query){
-	        ConeccionBD BD = null;
-	        try
-	        {
-	            BD = new ConeccionBD("jdbc:mysql://localhost:3306/" + basededatos, "root", contrasena);
-	            BD.getNewConnection();
-
-	            Statement stQueryDelete = BD.getCurrentConnection().createStatement();
-
-	            String queryDelete = query;
-	            stQueryDelete.executeUpdate(queryDelete);
-	        }
-	        catch(Exception e0)
-	        {
-	            e0.printStackTrace();
-	        }
-	}
-	 
-	private void modificar(String query){
-	        ConeccionBD BD = null;
-	        try
-	        {
-	            BD = new ConeccionBD("jdbc:mysql://localhost:3306/" + basededatos, "root", contrasena);
-	            BD.getNewConnection();
-
-	            Statement stQueryUpdate = BD.getCurrentConnection().createStatement();
-
-	            String queryUpdate  = query;
-	            stQueryUpdate.executeUpdate(queryUpdate);
-	        }
-	        catch(Exception e0)
-	        {
-	            e0.printStackTrace();
-	       }
-	 }
-	*/
 	
 	/**
 	 * @param query El query con las instrucciones para el maejo de la base de datos
