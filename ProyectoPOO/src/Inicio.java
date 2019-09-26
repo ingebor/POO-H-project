@@ -41,47 +41,36 @@ public class Inicio {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 248, 195);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblInicio = new JLabel("INICIO");
 		
-		JPanel panel = new JPanel();
-		
 		JPanel panel_1 = new JPanel();
-		
-		JButton btnIngresar = new JButton("Ingresar");
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(184)
-					.addComponent(lblInicio)
-					.addPreferredGap(ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
-					.addComponent(btnIngresar)
-					.addContainerGap())
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(19)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 166, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
-					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 182, GroupLayout.PREFERRED_SIZE)
-					.addGap(49))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(101)
+							.addComponent(lblInicio))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(17)
+							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 208, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(23, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(16)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblInicio)
-						.addComponent(btnIngresar))
-					.addGap(17)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(26, Short.MAX_VALUE))
+					.addGap(14)
+					.addComponent(lblInicio)
+					.addGap(18)
+					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(44, Short.MAX_VALUE))
 		);
 		
-		JLabel lblSeleccionarCategora = new JLabel("SELECCIONAR SU CATEGORIA");
+		JLabel lblSeleccionarCategora = new JLabel("SELECCIONAR SU CATEGORIA:");
 		panel_1.add(lblSeleccionarCategora);
 		
 		JComboBox comboBox = new JComboBox();
@@ -89,8 +78,8 @@ public class Inicio {
 		comboBox.addItem("MEDICO");
 		comboBox.addItem("PACIENTE");
 		
-		JLabel lblNewLabel = new JLabel("INSTRUCCIONES");
-		panel.add(lblNewLabel);
+		JButton btnIngresar = new JButton("Ingresar");
+		panel_1.add(btnIngresar);
 		frame.getContentPane().setLayout(groupLayout);
 	}
 }
