@@ -164,8 +164,7 @@ public class CatalogoSalud {
             stQuery = BD.getCurrentConnection().createStatement();
             rsRecords = stQuery.executeQuery(query);
             
-            listadoEnfermedades.clear();
-            
+            listadoMedicinas.clear();
             while(rsRecords.next()){
             	listadoMedicinas.add(new Medicina(rsRecords.getString("medicinas.Nombre"),rsRecords.getDouble("medicinas.Precio"), rsRecords.getString("medicinas.Ingestion")
             			,rsRecords.getString("medicinas.Tipo"),rsRecords.getString("medicinas.Dosis"),rsRecords.getString("medicinas.NotasAdicionales")
@@ -185,18 +184,18 @@ public class CatalogoSalud {
 	  */
 	public String verEnfermedad(String nombreEnfermedad){
 		String mensaje = "";
-		int index = 0;
+		//int index = 0;
 		for (int i = 0; i < listadoEnfermedades.size(); i++) {
 			try 
 			{
 				if(listadoEnfermedades.get(i).getNombre().equals(nombreEnfermedad))
 				{
 					
-					mensaje = listadoEnfermedades.get(index).toString();
+					mensaje = listadoEnfermedades.get(i).toString();
 					//index = listadoMedicinas.indexOf(medicina);
 					//mensaje = listadoMedicinas.get(index).toString();
 				}
-				index++;
+				
 			}
 			catch(Exception e)
 			{
@@ -204,6 +203,8 @@ public class CatalogoSalud {
 			}
 			
 		}
+		
+		
 			
 		return mensaje;	
 	}
@@ -213,18 +214,18 @@ public class CatalogoSalud {
 	
 	public String BuscarMedicina(String nombreMedicina) {
 		String mensaje = "";
-		int index = 0;
+		//int index = 0;
 		for (int i = 0; i < listadoMedicinas.size(); i++) {
 			try 
 			{
 				if(listadoMedicinas.get(i).getNombre().equals(nombreMedicina))
 				{
 					
-					mensaje = listadoMedicinas.get(index).toString();
+					mensaje = listadoMedicinas.get(i).toString();
 					//index = listadoMedicinas.indexOf(medicina);
 					//mensaje = listadoMedicinas.get(index).toString();
 				}
-				index++;
+				
 			}
 			catch(Exception e)
 			{

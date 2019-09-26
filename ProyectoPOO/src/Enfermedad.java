@@ -185,10 +185,9 @@ public class Enfermedad {
 		//metodo toString
 		@Override
 		public String toString() {
-			return "Enfermedad [nombre=" + nombre + ", dolorCabeza=" + dolorCabeza + ", dolorEstomago=" + dolorEstomago
-					+ ", vomito=" + vomito + ", diarrea=" + diarrea + ", estornudo=" + estornudo + ", tos=" + tos
-					+ ", dolorGeneral=" + dolorGeneral + ", faltaEnergia=" + faltaEnergia + ", notasAdicionales="
-					+ notasAdicionales + "]";
+			return "Nombre: " + nombre + "\nDolor de cabeza: " + dolorCabeza + "\nDolor de Estomago: " + dolorEstomago + "\nVomito: " + vomito + "\nDiarrea: " + diarrea 
+					+ "\nEstornudos: " + estornudo + "\nTos: " + tos + "\nDolor General: " + dolorGeneral + "\nFalta de Energia: " + faltaEnergia + "\nNotas Adicionales: " + 
+					notasAdicionales;
 		}
 		
 		
