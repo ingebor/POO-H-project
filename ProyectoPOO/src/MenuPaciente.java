@@ -150,11 +150,11 @@ public class MenuPaciente extends JFrame {
 		panelIngreso.add(comboBoxDolorEstomago);
 		comboBoxDolorEstomago.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
 		
-		if(comboBoxDolorEstomago.equals("Si"))
+		if(comboBoxDolorEstomago.getSelectedItem().equals("Si"))
 		{
 			dolorEstomago = true;
 		}
-		if(comboBoxDolorEstomago.equals("No"))
+		if(comboBoxDolorEstomago.getSelectedItem().equals("No"))
 		{
 			dolorEstomago = false;
 		}
@@ -165,11 +165,11 @@ public class MenuPaciente extends JFrame {
 		panelIngreso.add(comboBoxVomito);
 		comboBoxVomito.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
 
-		if(comboBoxVomito.equals("Si"))
+		if(comboBoxVomito.getSelectedItem().equals("Si"))
 		{
 			vomito = true;
 		}
-		if(comboBoxVomito.equals("No"))
+		if(comboBoxVomito.getSelectedItem().equals("No"))
 		{
 			vomito = false;
 		}
@@ -179,11 +179,11 @@ public class MenuPaciente extends JFrame {
 		panelIngreso.add(comboBoxDiarrea);
 		comboBoxDiarrea.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
 
-		if(comboBoxDiarrea.equals("Si"))
+		if(comboBoxDiarrea.getSelectedItem().equals("Si"))
 		{
 			diarrea = true;
 		}
-		if(comboBoxVomito.equals("No"))
+		if(comboBoxVomito.getSelectedItem().equals("No"))
 		{
 			diarrea = false;
 		}
@@ -193,11 +193,11 @@ public class MenuPaciente extends JFrame {
 		panelIngreso.add(comboBoxEstornudo);
 		comboBoxEstornudo.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
 		
-		if(comboBoxEstornudo.equals("Si"))
+		if(comboBoxEstornudo.getSelectedItem().equals("Si"))
 		{
 			estornudo = true;
 		}
-		if(comboBoxEstornudo.equals("No"))
+		if(comboBoxEstornudo.getSelectedItem().equals("No"))
 		{
 			estornudo = false;
 		}
@@ -207,11 +207,11 @@ public class MenuPaciente extends JFrame {
 		panelIngreso.add(comboBoxTos);
 		comboBoxTos.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
 		
-		if(comboBoxTos.equals("Si"))
+		if(comboBoxTos.getSelectedItem().equals("Si"))
 		{
 			tos = true;
 		}
-		if(comboBoxTos.equals("No"))
+		if(comboBoxTos.getSelectedItem().equals("No"))
 		{
 			tos = false;
 		}
@@ -221,11 +221,11 @@ public class MenuPaciente extends JFrame {
 		panelIngreso.add(comboBoxDolorGeneral);
 		comboBoxDolorGeneral.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
 		
-		if(comboBoxDolorGeneral.equals("Si"))
+		if(comboBoxDolorGeneral.getSelectedItem().equals("Si"))
 		{
 			dolorGeneral = true;
 		}
-		if(comboBoxDolorGeneral.equals("No"))
+		if(comboBoxDolorGeneral.getSelectedItem().equals("No"))
 		{
 			dolorGeneral = false;
 		}
@@ -235,11 +235,11 @@ public class MenuPaciente extends JFrame {
 		panelIngreso.add(comboBoxFaltaEnergia);
 		comboBoxFaltaEnergia.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
 		
-		if(comboBoxFaltaEnergia.equals("Si"))
+		if(comboBoxFaltaEnergia.getSelectedItem().equals("Si"))
 		{
 			faltaEnergia = true;
 		}
-		if(comboBoxFaltaEnergia.equals("No"))
+		if(comboBoxFaltaEnergia.getSelectedItem().equals("No"))
 		{
 			faltaEnergia = false;
 		}
@@ -352,7 +352,7 @@ public class MenuPaciente extends JFrame {
 			if (e.getSource() ==  btnVolver)
 			{
 				
-				//
+			
 			}
 		}
 		
