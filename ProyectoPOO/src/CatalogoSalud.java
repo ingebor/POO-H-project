@@ -307,68 +307,6 @@ public class CatalogoSalud {
 	}
 	
 	
-	
-	
-	/*
-	
-	
-	private void insert(String query){
-	        ConeccionBD BD = null;
-	        try
-	        {
-	            BD = new ConeccionBD("jdbc:mysql://localhost:3306/" + basededatos, "root", contrasena);
-	            BD.getNewConnection();
-
-	            Statement stQueryInsert = BD.getCurrentConnection().createStatement();
-
-	            String queryInsert = query;
-	            stQueryInsert.executeUpdate(queryInsert);
-	               
-	        }
-	        catch(Exception e0)
-	        {
-	        	e0.printStackTrace();
-	        }
-	}
-	 
-	
-	private void delete(String query){
-	        ConeccionBD BD = null;
-	        try
-	        {
-	            BD = new ConeccionBD("jdbc:mysql://localhost:3306/" + basededatos, "root", contrasena);
-	            BD.getNewConnection();
-
-	            Statement stQueryDelete = BD.getCurrentConnection().createStatement();
-
-	            String queryDelete = query;
-	            stQueryDelete.executeUpdate(queryDelete);
-	        }
-	        catch(Exception e0)
-	        {
-	            e0.printStackTrace();
-	        }
-	}
-	 
-	private void modificar(String query){
-	        ConeccionBD BD = null;
-	        try
-	        {
-	            BD = new ConeccionBD("jdbc:mysql://localhost:3306/" + basededatos, "root", contrasena);
-	            BD.getNewConnection();
-
-	            Statement stQueryUpdate = BD.getCurrentConnection().createStatement();
-
-	            String queryUpdate  = query;
-	            stQueryUpdate.executeUpdate(queryUpdate);
-	        }
-	        catch(Exception e0)
-	        {
-	            e0.printStackTrace();
-	       }
-	 }
-	*/
-	
 	/**
 	 * @param query El query con las instrucciones para el maejo de la base de datos
 	 * Permite Insertar, borrar o actualizar una tupla en una tabla de la base de datos
