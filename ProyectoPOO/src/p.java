@@ -6,4 +6,6 @@ public class p {
 		System.out.println(c.VerMedicina("Pepto"));
 		System.out.println(c.buscarEnfermedad(true, true, true, true, true, true, true, true));
 	}
+	//Esto es una prueba
+	
 }
