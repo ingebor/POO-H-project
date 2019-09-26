@@ -39,7 +39,7 @@ public class Enfermedad {
 			this.tos = tos;
 			this.dolorGeneral = dolorGeneral;
 			this.faltaEnergia = faltaEnergia;
-			this.notasAdicionales = "";
+			this.notasAdicionales = notasAdicionales;
 			this.nombreMed = nombreMed;
 	}
 		//nombre
@@ -201,7 +201,7 @@ public class Enfermedad {
 		public String toString() {
 			return "Nombre: " + nombre + "\nDolor de cabeza: " + dolorCabeza + "\nDolor de Estomago: " + dolorEstomago + "\nVomito: " + vomito + "\nDiarrea: " + diarrea 
 					+ "\nEstornudos: " + estornudo + "\nTos: " + tos + "\nDolor General: " + dolorGeneral + "\nFalta de Energia: " + faltaEnergia + "\nNotas Adicionales: " + 
-					notasAdicionales;
+					notasAdicionales + "\nNombre Medicina: " +nombreMed;
 		}
 		
 		
