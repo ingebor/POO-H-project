@@ -36,6 +36,7 @@ public class CatalogoSalud {
 		listadoEnfermedades = new ArrayList<Enfermedad>();
 		listadoMedicinas = new ArrayList<Medicina>();
 		llenarCatalogo();
+		System.out.println(listadoEnfermedades.get(0).toString());
 	}
 	
 	/**
@@ -199,7 +200,7 @@ public class CatalogoSalud {
 			}
 			catch(Exception e)
 			{
-				mensaje = "Lo sentimos pero no se encontro el medicamento.";
+				mensaje = "Lo sentimos pero no se encontro la enfermedad";
 			}
 			
 		}

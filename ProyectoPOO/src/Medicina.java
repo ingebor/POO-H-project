@@ -22,7 +22,7 @@ public class Medicina {
 		nombreEnf = "";
 	}
 		
-	public Medicina(String nombre, String precio, String ingestion, String tiposMedicina, String dosis, String notasAdicionales,String nombreEnf) {
+	public Medicina(String nombre, double precio, String ingestion, String tiposMedicina, String dosis, String notasAdicionales,String nombreEnf) {
 		this.nombre = nombre;
 		this.precio = precio;
 		this.ingestion = ingestion;
@@ -140,6 +140,8 @@ public class Medicina {
 	//toString
 	@Override
 	public String toString() {
+		return "Nombre: " + nombre + "\nPrecio en quetzales: " + precio + "\nModo de ingestion: " + ingestion + "\nTipo de medicina: " + tiposMedicina + "\nDosis" + dosis
+				+ "\nnotasAdicionales: " + notasAdicionales + "\nEnfermedad que combate: " + nombreEnf;
 	}
 	
 	

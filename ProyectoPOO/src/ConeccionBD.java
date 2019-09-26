@@ -4,8 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class ConeccionBD
-{
+public class ConeccionBD{
     private Connection currentConnection = null;
     public Statement stQuery = null;
     public ResultSet rsRecords = null;
@@ -13,17 +12,14 @@ public class ConeccionBD
     private String DB_USERNAME = "";
     private String DB_PASSWORD = "";
 
-    public ConeccionBD(String URL, String USER, String PASSWORD)
-    {
+    public ConeccionBD(String URL, String USER, String PASSWORD){
         this.DB_URL = URL;
         this.DB_USERNAME = USER;
         this.DB_PASSWORD = PASSWORD;
     }
 
-    public Connection getNewConnection()
-    {
-        try
-        {
+    public Connection getNewConnection(){
+        try{
             currentConnection = null;
 
             Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -33,27 +29,22 @@ public class ConeccionBD
                     DB_PASSWORD);
 
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex){
             System.out.println ("ConnectionBD->getConnection()..Error..: " + ex.getMessage());
             ex.printStackTrace();
         }
         return currentConnection;
     }
 
-    public Connection getCurrentConnection()
-    {
+    public Connection getCurrentConnection(){
         return currentConnection;
     }
     
-    public void closeConnection ()
-    {
-        try
-        {
+    public void closeConnection (){
+        try{
             currentConnection.close();
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex){
             System.out.println ("ConnectionBD->getConnection()..Error..: " + ex.getMessage());
             ex.printStackTrace();
         }
