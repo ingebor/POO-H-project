@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -170,9 +171,9 @@ public class MenuPaciente extends JFrame {
 		panelIngreso.add(txtBuscarSintomas);
 		txtBuscarSintomas.setColumns(10);
 		
-		JLabel lblSintomasText = new JLabel("Sintomas");
-		lblSintomasText.setBounds(247, 51, 235, 14);
-		panelIngreso.add(lblSintomasText);
+		JLabel lblBuscarEnfermedad = new JLabel("Ingrese el nombre de la Enfermedad:");
+		lblBuscarEnfermedad.setBounds(247, 51, 235, 14);
+		panelIngreso.add(lblBuscarEnfermedad);
 		
 		txtMedicamentos = new JTextField();
 		txtMedicamentos.setBounds(247, 234, 235, 84);
@@ -180,11 +181,11 @@ public class MenuPaciente extends JFrame {
 		txtMedicamentos.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Medicamentos necesarios:");
-		lblNewLabel.setBounds(249, 201, 148, 14);
+		lblNewLabel.setBounds(247, 209, 148, 14);
 		panelIngreso.add(lblNewLabel);
 		
 		btnBuscarEnfermedad = new JButton("Buscar Enfermedad");
-		btnBuscarEnfermedad.setBounds(344, 172, 132, 23);
+		btnBuscarEnfermedad.setBounds(346, 172, 132, 23);
 		panelIngreso.add(btnBuscarEnfermedad);
 		
 		btnBuscarMedicina = new JButton("Buscar Medicinas");
@@ -195,6 +196,24 @@ public class MenuPaciente extends JFrame {
 		btnVolver.setBounds(311, 21, 171, 23);
 		panelIngreso.add(btnVolver);
 		
+		//private class milistener implements ActionListener
+		//{
+			
+			
+			/*
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				el_vuelo.setVuelo1(Integer.parseInt(txtHombre.getText()), Integer.parseInt(txtMujer.getText()), Integer.parseInt(txtNinnio.getText()));
+				el_vuelo.setVuelo2(Integer.parseInt(txtHombres2.getText()), Integer.parseInt(txtMujeres2.getText()), Integer.parseInt(txtNinnios2.getText()));
+				el_vuelo.setVuelo3(Integer.parseInt(txtHombres3.getText()), Integer.parseInt(txtMujeres3.getText()), Integer.parseInt(txtNinnios3.getText()));
+				lblCantdosv.setText(Integer.toString(el_vuelo.totalvuelos()));
+				lblAdvertencia.setText(el_vuelo.adv());
+				txtPlvlPromedioV1.setText(el_vuelo.porcentajeVuelo1()+el_vuelo.cantidaddemaspersonasvuelo1());
+				txtPlvlPromedioV2.setText(el_vuelo.porcentajeVuelo2()+el_vuelo.cantidaddemaspersonasvuelo2());
+				txtPlvlPromedioV3.setText(el_vuelo.porcentajeVuelo3()+el_vuelo.cantidaddemaspersonasvuelo3());
+			*/
+			//}
 		
 
 	}

@@ -211,7 +211,7 @@ public class CatalogoSalud {
 	 * Este metodo permite buscar la medicina 
 	 */
 	
-	public String BuscarMedicina(String nombreMedicina) {
+	public String VerMedicina(String nombreMedicina) {
 		String mensaje = "";
 		int index = 0;
 		for (int i = 0; i < listadoMedicinas.size(); i++) {
@@ -253,6 +253,58 @@ public class CatalogoSalud {
 	public void acualizarMedicina(String nombre,double precio, String ingestion, String tiposMedicina, String dosis, String notasAdicionales) {
 		
 	}
+	
+	public String buscarEnfermedad(boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea,
+			boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia) {
+		
+		String mensaje = "Puede tener:";
+		for (Enfermedad enfermedad : listadoEnfermedades) {
+			double contador = 0;
+			
+			if(enfermedad.isDolorCabeza()== dolorCabeza)
+			{
+				contador++;
+			}
+			if(enfermedad.isDolorEstomago()== dolorEstomago)
+			{
+				contador++;
+			}
+			if(enfermedad.isVomito()== vomito)
+			{
+				contador++;
+			}
+			if(enfermedad.isDiarrea() == diarrea)
+			{
+				contador++;
+			}
+			if(enfermedad.isEstornudo() == estornudo)
+			{
+				contador++;
+			}
+			if(enfermedad.isTos() == tos)
+			{
+				contador++;
+			}
+			if(enfermedad.isDolorGeneral() == dolorGeneral)
+			{
+				contador++;
+			}
+			if(enfermedad.isFaltaEnergia() == faltaEnergia)
+			{
+				contador++;
+			}
+			if(contador >= 4)
+			{
+				mensaje += "\n" + enfermedad.getNombre() + " con una probabilidad del " + String.valueOf(((contador/8)*100)-1)+"%";
+			}
+		}
+		
+		if(mensaje.equals("Puede tener:")) {
+			mensaje = "No se ha encontrado ninguna enfermedad con este patron de sintomas.";
+		}
+		return mensaje;
+	}
+	
 	
 	
 	
