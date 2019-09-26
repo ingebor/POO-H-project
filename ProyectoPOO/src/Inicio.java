@@ -23,7 +23,7 @@ public class Inicio {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void newScreen() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -63,6 +63,8 @@ public class Inicio {
 		JButton button = new JButton("INGRESAR");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				MenuPaciente nuevoPaciente = new MenuPaciente(); 
+				nuevoPaciente.newScreen();
 				
 				
 				

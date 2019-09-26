@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingConstants;
+import java.awt.event.ActionEvent;
 
 public class MenuDoctor {
 
@@ -78,7 +79,7 @@ public class MenuDoctor {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 735, 512);
+		frame.setBounds(100, 100, 735, 535);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
@@ -305,6 +306,16 @@ public class MenuDoctor {
 		MiListener oyente2 = new MiListener();
 		btnAgregarEnf.addActionListener(oyente2);
 		panel_2.add(btnAgregarEnf);
+		
+		JButton btnVolver = new JButton("VOLVER");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Inicio volver = new Inicio();
+				volver.newScreen();
+			}
+		});
+		btnVolver.setBounds(564, 478, 117, 29);
+		panel.add(btnVolver);
 		
 	}
 	//Listener para realizar acciones luego de presionar los botones

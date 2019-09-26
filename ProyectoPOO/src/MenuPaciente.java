@@ -46,10 +46,11 @@ public class MenuPaciente extends JFrame {
 	private JTextPane textPaneBuscarEnfermedad;
 	private JTextPane textPaneMedicamentos;
 	private JTextPane textPaneResultado;
+	private JButton button;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void newScreen() {
 		EventQueue.invokeLater(new Runnable() {
 			
 			public void run() {
@@ -83,7 +84,7 @@ public class MenuPaciente extends JFrame {
 	 * Create the frame.  boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea, boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia
 	 */
 	public MenuPaciente() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(null);
 
 		panelIngreso = new JPanel();
@@ -246,6 +247,16 @@ public class MenuPaciente extends JFrame {
 		textPaneResultado = new JTextPane();
 		textPaneResultado.setBounds(10, 305, 282, 157);
 		panelIngreso.add(textPaneResultado);
+		
+		button = new JButton("VOLVER");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {	
+				Inicio volver = new Inicio();
+				volver.newScreen();
+			}
+		});
+		button.setBounds(526, 491, 117, 29);
+		getContentPane().add(button);
 		
 		
 
