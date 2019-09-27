@@ -82,8 +82,7 @@ public class Inicio {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MenuPaciente nuevoPaciente = new MenuPaciente(); 
-				nuevoPaciente.newScreen();
-				
+				nuevoPaciente.setVisible(true);
 				window.frame.dispose();
 				
 			}
