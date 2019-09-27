@@ -58,11 +58,6 @@ public class CatalogoSalud {
 	
 	}
 	
-
-	
-	
-	
-	
 	/**
 	 * @param nombre
 	 * @param dolorCabeza
@@ -114,6 +109,10 @@ public class CatalogoSalud {
 		}
 	
 	}
+	
+	/**
+	 * Metodo para probar que las listas de objetos se hayan llenado correctamente
+	 */
 	public void pruebaListas() {
 		for(Enfermedad enfermedad:listadoEnfermedades) {
 			System.out.println(enfermedad.getNombre());
@@ -185,9 +184,12 @@ public class CatalogoSalud {
         }
 	}
 	
-	 /**
-	  * Este metodo permite ingresar el nombre de la enfermedad. 
-	  */
+	 
+	/**
+	 * @param nombreEnfermedad
+	 * @return cadena de atributos
+	 * Este metodo permite ingresar el nombre de la enfermedad y devuelve los atributos de dicha enfermedad con el toString de Enfermedad
+	 */
 	public String verEnfermedad(String nombreEnfermedad){
 		String mensaje = "";
 		//int index = 0;
@@ -214,10 +216,13 @@ public class CatalogoSalud {
 			
 		return mensaje;	
 	}
-	/**
-	 * Este metodo permite buscar la medicina 
-	 */
 	
+	
+	/**
+	 * @param nombreMedicina
+	 * @return cadena de atributos
+	 * Este metodo permite ingresar el nombre de la medicina y devuelve los atributos de dicha medicina con el toString de medicina
+	 */
 	public String VerMedicina(String nombreMedicina) {
 		String mensaje = "";
 		//int index = 0;
@@ -255,12 +260,24 @@ public class CatalogoSalud {
 	 * @param tiposMedicina
 	 * @param dosis
 	 * @param notasAdicionales
-	 * Este metodo actualiza un de las medicinas del csv
+	 * Este metodo actualiza un de las medicinas de la base de datos
 	 */
 	public void acualizarMedicina(String nombre,double precio, String ingestion, String tiposMedicina, String dosis, String notasAdicionales) {
 		
 	}
 	
+	/**
+	 * @param dolorCabeza
+	 * @param dolorEstomago
+	 * @param vomito
+	 * @param diarrea
+	 * @param estornudo
+	 * @param tos
+	 * @param dolorGeneral
+	 * @param faltaEnergia
+	 * @return mensaje de probabilidad de enfermedades
+	 * En base a los s[intomas ingresados por el usuario, el metodo determina las posibles enfermedades que padece con una probabilidad incluida
+	 */
 	public String buscarEnfermedad(boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea,
 			boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia) {
 		
@@ -334,10 +351,20 @@ public class CatalogoSalud {
         }
 	}
 	
+	/**
+	 * @param nombreEnf
+	 * Toma el nombre de una enfermedad y borra la tupla de la base de datos que tenga este nombre
+	 */
 	public void borrarEnfermedad(String nombreEnf){
 		String queryDelete = "DELETE FROM enfermedades WHERE Nombre = '" + nombreEnf + "'";
 		manejarBD(queryDelete);
 		}
+	
+	
+		/**
+		 * @param nombreMed
+		 * Toma el nombre de la medicinay borra la tupla de la base de datos que tenga este nombre
+		 */
 		public void borrarMedicina(String nombreMed){
 		String queryDelete = "DELETE FROM medicinas WHERE Nombre = '" + nombreMed + "'";
 		manejarBD(queryDelete);
