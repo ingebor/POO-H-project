@@ -19,16 +19,34 @@ public class Inicio {
 	private JFrame frame;
 	private JTextField textUsuario;
 	private JPasswordField passwordField;
+	private static Inicio window;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void newScreen() {
+	public static void main(String []args) {
+		try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Inicio window = new Inicio();
+					window = new Inicio();
 					window.frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -66,7 +84,7 @@ public class Inicio {
 				MenuPaciente nuevoPaciente = new MenuPaciente(); 
 				nuevoPaciente.newScreen();
 				
-				
+				window.frame.dispose();
 				
 			}
 		});
@@ -138,8 +156,7 @@ public class Inicio {
 					MenuDoctor nuevo = new MenuDoctor(); 
 
 					nuevo.newScreen();
-					
-					
+					window.frame.dispose();
 					
 				
 				}

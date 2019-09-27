@@ -37,6 +37,7 @@ public class MenuDoctor {
 	private JComboBox cmbdolorcuerpoenf;
 	private JComboBox cmbfaltaenergiaenf;
 	private JButton btnAgregarEnf;
+	private static MenuDoctor window;
 	
 	CatalogoSalud catalogo = new CatalogoSalud();
 	Enfermedad enfermedad = new Enfermedad();
@@ -46,24 +47,9 @@ public class MenuDoctor {
 	 * Launch the application.
 	 */
 	public static void newScreen() {
-		try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuDoctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuDoctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuDoctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuDoctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
 		
-		MenuDoctor window = new MenuDoctor();
+		
+		window = new MenuDoctor();
 		window.frame.setVisible(true);	
 	}
 
@@ -311,7 +297,8 @@ public class MenuDoctor {
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Inicio volver = new Inicio();
-				volver.newScreen();
+				volver.main(null);
+				window.frame.dispose();
 			}
 		});
 		btnVolver.setBounds(564, 478, 117, 29);
