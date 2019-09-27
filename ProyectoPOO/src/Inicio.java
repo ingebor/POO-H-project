@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import javax.swing.JOptionPane;
 
 public class Inicio {
 
@@ -46,6 +47,7 @@ public class Inicio {
 				try {
 					window = new Inicio();
 					window.frame.setVisible(true);
+					JOptionPane.showMessageDialog(null, "Para ingresar como medico, utilice \"admin\"\ncomo usuario y \"12345\" como contrasenia");
 					
 				} catch (Exception e) {
 					e.printStackTrace();
