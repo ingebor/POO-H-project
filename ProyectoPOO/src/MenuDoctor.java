@@ -13,6 +13,7 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class MenuDoctor {
 
@@ -65,22 +66,24 @@ public class MenuDoctor {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 735, 535);
+		frame.setBounds(100, 100, 742, 589);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(175, 238, 238));
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
 		//Primer panel para ingresar un medicamento
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(0, 0, 327, 465);
+		panel_1.setBackground(new Color(176, 224, 230));
+		panel_1.setBounds(6, 38, 327, 493);
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblMedicamento_3 = new JLabel("Medicamento");
+		JLabel lblMedicamento_3 = new JLabel("MEDICAMENTO");
 		lblMedicamento_3.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblMedicamento_3.setBounds(38, 13, 115, 16);
+		lblMedicamento_3.setBounds(101, 19, 153, 16);
 		panel_1.add(lblMedicamento_3);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
@@ -100,7 +103,7 @@ public class MenuDoctor {
 		panel_1.add(lblNewLabel);
 		
 		JLabel lblMedicamento_1 = new JLabel("medicamento:");
-		lblMedicamento_1.setBounds(12, 189, 93, 16);
+		lblMedicamento_1.setBounds(12, 186, 93, 16);
 		panel_1.add(lblMedicamento_1);
 		
 		JLabel lblDosis = new JLabel("Dosis: ");
@@ -112,7 +115,7 @@ public class MenuDoctor {
 		panel_1.add(lblEnfermedad);
 		
 		JLabel lblNotasAdicionales = new JLabel("Notas adicionales: ");
-		lblNotasAdicionales.setBounds(12, 336, 118, 16);
+		lblNotasAdicionales.setBounds(12, 311, 153, 16);
 		panel_1.add(lblNotasAdicionales);
 		
 		//Nombre del medicamento
@@ -135,7 +138,7 @@ public class MenuDoctor {
 		
 		//Tipo de medicamento
 		txtmedtipo = new JTextField();
-		txtmedtipo.setBounds(125, 186, 190, 22);
+		txtmedtipo.setBounds(125, 183, 190, 22);
 		panel_1.add(txtmedtipo);
 		txtmedtipo.setColumns(10);
 		
@@ -153,13 +156,13 @@ public class MenuDoctor {
 		
 		//Notas adicionales del medicamento
 		txtnotasmed = new JTextField();
-		txtnotasmed.setBounds(22, 365, 293, 76);
+		txtnotasmed.setBounds(12, 331, 303, 76);
 		panel_1.add(txtnotasmed);
 		txtnotasmed.setColumns(10);
 		
 		//Boton para agregar el medicamento
 		btnAgregarMed = new JButton("Agregar");
-		btnAgregarMed.setBounds(218, 10, 97, 25);
+		btnAgregarMed.setBounds(202, 430, 97, 25);
 		MiListener oyente1 = new MiListener();
 		btnAgregarMed.addActionListener(oyente1);
 		panel_1.add(btnAgregarMed);
@@ -167,17 +170,18 @@ public class MenuDoctor {
 		
 		//Ingresar datos de enfermedad
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(329, 0, 388, 465);
+		panel_2.setBackground(new Color(176, 224, 230));
+		panel_2.setBounds(339, 38, 388, 493);
 		panel.add(panel_2);
 		panel_2.setLayout(null);
 		
-		JLabel lblEnfermedad_1 = new JLabel("Enfermedad");
+		JLabel lblEnfermedad_1 = new JLabel("ENFERMEDAD");
 		lblEnfermedad_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblEnfermedad_1.setBounds(79, 13, 110, 16);
+		lblEnfermedad_1.setBounds(79, 13, 144, 16);
 		panel_2.add(lblEnfermedad_1);
 		
 		JLabel lblNombre_1 = new JLabel("Nombre: ");
-		lblNombre_1.setBounds(12, 48, 56, 16);
+		lblNombre_1.setBounds(12, 48, 107, 16);
 		panel_2.add(lblNombre_1);
 		
 		JLabel lblDolorDeCabeza = new JLabel("Dolor de cabeza:");
@@ -288,7 +292,7 @@ public class MenuDoctor {
 		
 		//Boton para agregar enfermedad
 		btnAgregarEnf = new JButton("Agregar");
-		btnAgregarEnf.setBounds(279, 10, 97, 25);
+		btnAgregarEnf.setBounds(279, 446, 97, 25);
 		MiListener oyente2 = new MiListener();
 		btnAgregarEnf.addActionListener(oyente2);
 		panel_2.add(btnAgregarEnf);
@@ -301,8 +305,12 @@ public class MenuDoctor {
 				window.frame.dispose();
 			}
 		});
-		btnVolver.setBounds(564, 478, 117, 29);
+		btnVolver.setBounds(600, 532, 117, 29);
 		panel.add(btnVolver);
+		
+		JLabel lblMedicoFunciones = new JLabel("MEDICO - FUNCIONES DE ADMINISTRADOR");
+		lblMedicoFunciones.setBounds(230, 17, 293, 16);
+		panel.add(lblMedicoFunciones);
 		
 	}
 	//Listener para realizar acciones luego de presionar los botones
