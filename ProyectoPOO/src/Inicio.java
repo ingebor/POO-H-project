@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JOptionPane;
+import java.awt.Color;
 
 public class Inicio {
 
@@ -68,17 +69,20 @@ public class Inicio {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(173, 216, 230));
 		frame.setBounds(100, 100, 666, 275);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(204, 255, 255));
 		
 		JLabel lblVerificacion = new JLabel("INICIO - VERIFICACION DE IDENTIDAD ");
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(204, 255, 255));
 		
 		JLabel lblPaciente = new JLabel("PACIENTE");
-		lblPaciente.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		lblPaciente.setFont(new Font("Lucida Grande", Font.BOLD, 20));
 		
 		JButton button = new JButton("INGRESAR");
 		button.addActionListener(new ActionListener() {
@@ -166,7 +170,7 @@ public class Inicio {
 		});
 		
 		JLabel lblMedico = new JLabel("MEDICO");
-		lblMedico.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		lblMedico.setFont(new Font("Lucida Grande", Font.BOLD, 20));
 		
 		
 		
