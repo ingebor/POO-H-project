@@ -14,6 +14,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import javax.swing.border.TitledBorder;
+import javax.swing.UIManager;
 
 public class MenuDoctor {
 
@@ -66,7 +68,7 @@ public class MenuDoctor {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 742, 589);
+		frame.setBounds(100, 100, 874, 589);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
@@ -76,93 +78,89 @@ public class MenuDoctor {
 		
 		//Primer panel para ingresar un medicamento
 		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Agregar Medicina", TitledBorder.LEADING, TitledBorder.TOP, null, Color.RED));
 		panel_1.setBackground(new Color(176, 224, 230));
-		panel_1.setBounds(6, 38, 327, 493);
+		panel_1.setBounds(6, 38, 306, 398);
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblMedicamento_3 = new JLabel("MEDICAMENTO");
-		lblMedicamento_3.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblMedicamento_3.setBounds(101, 19, 153, 16);
-		panel_1.add(lblMedicamento_3);
-		
 		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(12, 58, 56, 16);
+		lblNombre.setBounds(12, 32, 56, 16);
 		panel_1.add(lblNombre);
 		
 		JLabel lblPrecio = new JLabel("Precio:");
-		lblPrecio.setBounds(12, 87, 56, 16);
+		lblPrecio.setBounds(12, 59, 56, 16);
 		panel_1.add(lblPrecio);
 		
 		JLabel lblIngestion = new JLabel("Ingestion:");
-		lblIngestion.setBounds(12, 126, 69, 16);
+		lblIngestion.setBounds(12, 86, 69, 16);
 		panel_1.add(lblIngestion);
 		
 		JLabel lblNewLabel = new JLabel("Tipo de");
-		lblNewLabel.setBounds(12, 166, 56, 16);
+		lblNewLabel.setBounds(12, 113, 56, 16);
 		panel_1.add(lblNewLabel);
 		
 		JLabel lblMedicamento_1 = new JLabel("medicamento:");
-		lblMedicamento_1.setBounds(12, 186, 93, 16);
+		lblMedicamento_1.setBounds(12, 128, 93, 16);
 		panel_1.add(lblMedicamento_1);
 		
 		JLabel lblDosis = new JLabel("Dosis: ");
-		lblDosis.setBounds(12, 239, 56, 16);
+		lblDosis.setBounds(12, 155, 56, 16);
 		panel_1.add(lblDosis);
 		
 		JLabel lblEnfermedad = new JLabel("Enfermedad:");
-		lblEnfermedad.setBounds(12, 283, 93, 16);
+		lblEnfermedad.setBounds(12, 182, 93, 16);
 		panel_1.add(lblEnfermedad);
 		
 		JLabel lblNotasAdicionales = new JLabel("Notas adicionales: ");
-		lblNotasAdicionales.setBounds(12, 311, 153, 16);
+		lblNotasAdicionales.setBounds(12, 215, 153, 16);
 		panel_1.add(lblNotasAdicionales);
 		
 		//Nombre del medicamento
 		txtnombremed = new JTextField();
-		txtnombremed.setBounds(125, 55, 190, 22);
+		txtnombremed.setBounds(125, 29, 173, 22);
 		panel_1.add(txtnombremed);
 		txtnombremed.setColumns(10);
 		
 		//Precio del medicamento
 		txtpreciomed = new JTextField();
-		txtpreciomed.setBounds(125, 84, 190, 22);
+		txtpreciomed.setBounds(125, 59, 173, 22);
 		panel_1.add(txtpreciomed);
 		txtpreciomed.setColumns(10);
 		
 		//Ingestion del medicamento
 		txtingestionmed = new JTextField();
-		txtingestionmed.setBounds(125, 123, 190, 22);
+		txtingestionmed.setBounds(125, 86, 173, 22);
 		panel_1.add(txtingestionmed);
 		txtingestionmed.setColumns(10);
 		
 		//Tipo de medicamento
 		txtmedtipo = new JTextField();
-		txtmedtipo.setBounds(125, 183, 190, 22);
+		txtmedtipo.setBounds(125, 120, 173, 22);
 		panel_1.add(txtmedtipo);
 		txtmedtipo.setColumns(10);
 		
 		//Dosis de medicamento
 		txtdosismed = new JTextField();
-		txtdosismed.setBounds(125, 236, 190, 22);
+		txtdosismed.setBounds(125, 155, 173, 22);
 		panel_1.add(txtdosismed);
 		txtdosismed.setColumns(10);
 		
 		//Enfermedad relacionada a medicamento
 		txtenfermedadmed = new JTextField();
-		txtenfermedadmed.setBounds(125, 280, 190, 22);
+		txtenfermedadmed.setBounds(125, 182, 173, 22);
 		panel_1.add(txtenfermedadmed);
 		txtenfermedadmed.setColumns(10);
 		
 		//Notas adicionales del medicamento
 		txtnotasmed = new JTextField();
-		txtnotasmed.setBounds(12, 331, 303, 76);
+		txtnotasmed.setBounds(12, 242, 286, 76);
 		panel_1.add(txtnotasmed);
 		txtnotasmed.setColumns(10);
 		
 		//Boton para agregar el medicamento
 		btnAgregarMed = new JButton("Agregar");
-		btnAgregarMed.setBounds(202, 430, 97, 25);
+		btnAgregarMed.setBounds(200, 342, 97, 25);
 		MiListener oyente1 = new MiListener();
 		btnAgregarMed.addActionListener(oyente1);
 		panel_1.add(btnAgregarMed);
@@ -170,129 +168,125 @@ public class MenuDoctor {
 		
 		//Ingresar datos de enfermedad
 		JPanel panel_2 = new JPanel();
+		panel_2.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Agregar Enfermedad", TitledBorder.LEADING, TitledBorder.TOP, null, Color.RED));
 		panel_2.setBackground(new Color(176, 224, 230));
-		panel_2.setBounds(339, 38, 388, 493);
+		panel_2.setBounds(322, 38, 301, 398);
 		panel.add(panel_2);
 		panel_2.setLayout(null);
 		
-		JLabel lblEnfermedad_1 = new JLabel("ENFERMEDAD");
-		lblEnfermedad_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblEnfermedad_1.setBounds(79, 13, 144, 16);
-		panel_2.add(lblEnfermedad_1);
-		
 		JLabel lblNombre_1 = new JLabel("Nombre: ");
-		lblNombre_1.setBounds(12, 48, 107, 16);
+		lblNombre_1.setBounds(12, 30, 107, 16);
 		panel_2.add(lblNombre_1);
 		
 		JLabel lblDolorDeCabeza = new JLabel("Dolor de cabeza:");
-		lblDolorDeCabeza.setBounds(12, 82, 107, 16);
+		lblDolorDeCabeza.setBounds(12, 57, 107, 16);
 		panel_2.add(lblDolorDeCabeza);
 		
 		JLabel lblDolorDeEstomago = new JLabel("Dolor de estomago: ");
-		lblDolorDeEstomago.setBounds(12, 115, 118, 16);
+		lblDolorDeEstomago.setBounds(12, 84, 118, 16);
 		panel_2.add(lblDolorDeEstomago);
 		
 		JLabel lblVomito = new JLabel("Vomito:");
-		lblVomito.setBounds(12, 153, 56, 16);
+		lblVomito.setBounds(12, 111, 56, 16);
 		panel_2.add(lblVomito);
 		
 		JLabel lblDiarrea = new JLabel("Diarrea: ");
-		lblDiarrea.setBounds(183, 153, 56, 16);
+		lblDiarrea.setBounds(153, 111, 56, 16);
 		panel_2.add(lblDiarrea);
 		
 		JLabel lblEstornudos = new JLabel("Estornudos:");
-		lblEstornudos.setBounds(12, 194, 76, 16);
+		lblEstornudos.setBounds(12, 138, 76, 16);
 		panel_2.add(lblEstornudos);
 		
 		JLabel lblTos = new JLabel("Tos:");
-		lblTos.setBounds(189, 194, 56, 16);
+		lblTos.setBounds(163, 138, 56, 16);
 		panel_2.add(lblTos);
 		
 		JLabel lblDolorDeCuerpo = new JLabel("Dolor de cuerpo: ");
-		lblDolorDeCuerpo.setBounds(12, 233, 107, 16);
+		lblDolorDeCuerpo.setBounds(12, 165, 107, 16);
 		panel_2.add(lblDolorDeCuerpo);
 		
 		JLabel lblNewLabel_1 = new JLabel("Falta de energia:");
-		lblNewLabel_1.setBounds(12, 266, 107, 16);
+		lblNewLabel_1.setBounds(12, 198, 107, 16);
 		panel_2.add(lblNewLabel_1);
 		
 		JLabel lblMedicamento_2 = new JLabel("Medicamento:");
-		lblMedicamento_2.setBounds(12, 301, 93, 16);
+		lblMedicamento_2.setBounds(12, 225, 93, 16);
 		panel_2.add(lblMedicamento_2);
 		
 		JLabel lblNotasAdicionales_1 = new JLabel("Notas adicionales:");
-		lblNotasAdicionales_1.setBounds(12, 333, 118, 16);
+		lblNotasAdicionales_1.setBounds(12, 252, 118, 16);
 		panel_2.add(lblNotasAdicionales_1);
 		
 		//Nombre de la enfermedad
 		txtnombreenf = new JTextField();
-		txtnombreenf.setBounds(156, 42, 220, 22);
+		txtnombreenf.setBounds(83, 27, 207, 22);
 		panel_2.add(txtnombreenf);
 		txtnombreenf.setColumns(10);
 		
 		//Dolor de cabeza
 		cmbdolorcabezaenf = new JComboBox();
-		cmbdolorcabezaenf.setBounds(174, 76, 76, 22);
+		cmbdolorcabezaenf.setBounds(128, 57, 66, 22);
 		panel_2.add(cmbdolorcabezaenf);
 		cmbdolorcabezaenf.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
 		
 		//Dolor de estomago
 		cmbdolorestomagoenf = new JComboBox();
-		cmbdolorestomagoenf.setBounds(183, 113, 66, 22);
+		cmbdolorestomagoenf.setBounds(128, 84, 66, 22);
 		panel_2.add(cmbdolorestomagoenf);
 		cmbdolorestomagoenf.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
 		
 		//Vomito
 		cmbvomitoenf = new JComboBox();
-		cmbvomitoenf.setBounds(102, 150, 65, 22);
+		cmbvomitoenf.setBounds(83, 111, 60, 22);
 		panel_2.add(cmbvomitoenf);
 		cmbvomitoenf.setModel(new DefaultComboBoxModel(new String[] {"Si", "No\t\t"}));
 		
 		//Diarrea
 		cmbdiarreaenf = new JComboBox();
-		cmbdiarreaenf.setBounds(260, 150, 64, 22);
+		cmbdiarreaenf.setBounds(215, 108, 64, 22);
 		panel_2.add(cmbdiarreaenf);
 		cmbdiarreaenf.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
 		
 		//Estornudos
 		cmbestornudosenf = new JComboBox();
-		cmbestornudosenf.setBounds(110, 192, 60, 22);
+		cmbestornudosenf.setBounds(83, 138, 60, 22);
 		panel_2.add(cmbestornudosenf);
 		cmbestornudosenf.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
 		
 		//Tos
 		cmbtosenf = new JComboBox();
-		cmbtosenf.setBounds(260, 192, 64, 22);
+		cmbtosenf.setBounds(215, 135, 64, 22);
 		panel_2.add(cmbtosenf);
 		cmbtosenf.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
 		
 		//Dolor de cuerpo
 		cmbdolorcuerpoenf = new JComboBox();
-		cmbdolorcuerpoenf.setBounds(182, 230, 66, 22);
+		cmbdolorcuerpoenf.setBounds(128, 165, 66, 22);
 		panel_2.add(cmbdolorcuerpoenf);
 		cmbdolorcuerpoenf.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
 		
 		//Falta de energia
 		cmbfaltaenergiaenf = new JComboBox();
-		cmbfaltaenergiaenf.setBounds(183, 262, 66, 22);
+		cmbfaltaenergiaenf.setBounds(128, 195, 66, 22);
 		panel_2.add(cmbfaltaenergiaenf);
 		cmbfaltaenergiaenf.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
 		
 		//Medicamento relacionado a enfermedad
 		txtmedicamentoenf = new JTextField();
-		txtmedicamentoenf.setBounds(169, 296, 207, 22);
+		txtmedicamentoenf.setBounds(93, 225, 197, 22);
 		panel_2.add(txtmedicamentoenf);
 		txtmedicamentoenf.setColumns(10);
 		
 		//Notas adicionales de enfermedad
 		txtnotasenf = new JTextField();
-		txtnotasenf.setBounds(12, 365, 364, 76);
+		txtnotasenf.setBounds(12, 279, 278, 67);
 		panel_2.add(txtnotasenf);
 		txtnotasenf.setColumns(10);
 		
 		//Boton para agregar enfermedad
 		btnAgregarEnf = new JButton("Agregar");
-		btnAgregarEnf.setBounds(279, 446, 97, 25);
+		btnAgregarEnf.setBounds(194, 357, 97, 25);
 		MiListener oyente2 = new MiListener();
 		btnAgregarEnf.addActionListener(oyente2);
 		panel_2.add(btnAgregarEnf);
