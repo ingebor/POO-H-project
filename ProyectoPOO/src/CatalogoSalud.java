@@ -21,11 +21,11 @@ public class CatalogoSalud {
 	private List <Enfermedad> listadoEnfermedades;
 	private List <Medicina> listadoMedicinas;
 	
-	public Statement stQuery;
-    public ResultSet rsRecords;
+	private Statement stQuery;
+    private  ResultSet rsRecords;
     
-    public String basededatos = "bdpoo";
-    public String contrasena = "infobi17";
+    private String basededatos = "bdpoo";
+    private String contrasena = "infobi17";
     
 	/**
 	 * @param Constructor de la clase CatalogoSalud
@@ -53,6 +53,7 @@ public class CatalogoSalud {
 	{	
 		String queryInsert = "INSERT INTO medicinas (Nombre, Precio, Ingestion, Tipo, Dosis, NotasAdicionales, Enfermedad) "
                 + "VALUES ('" + nombre + "', '" + precio + "', '" + ingestion + "', '" + tipoMedicina + "', '" + dosis + "', '" + notasAdicionales + "', '" + nombreEnf + "') ";
+		
 		
         manejarBD(queryInsert);
 	
@@ -260,10 +261,39 @@ public class CatalogoSalud {
 	 * @param tiposMedicina
 	 * @param dosis
 	 * @param notasAdicionales
-	 * Este metodo actualiza un de las medicinas de la base de datos
+	 * Este metodo actualiza un de las medicinas de la base de datos y tambien el listado de Medicinas
 	 */
-	public void acualizarMedicina(String nombre,double precio, String ingestion, String tiposMedicina, String dosis, String notasAdicionales) {
-		
+	public String acualizarMedicina(String nombre,double precio, String ingestion, String tiposMedicina, String dosis, String notasAdicionales, String enfermedad) {
+		String mensaje = "";
+		try {
+			boolean bandera = false;
+			int indice = 0;
+			
+			for(Medicina medicina: listadoMedicinas) {
+				if(medicina.getNombre().equals(nombre)) {
+					bandera = true;
+					indice = listadoMedicinas.indexOf(medicina);
+				}
+			}
+			
+			if(bandera) {
+				String query = "UPDATE medicinas  SET Precio ='" + precio + "', Ingestion ='" + ingestion + "', Tipo = '" + tiposMedicina + "', Dosis = '" + 
+					dosis + "', NotasAdicionales = '" + notasAdicionales + "', Enfermedad ='" + enfermedad + "' WHERE  Nombre ='" + nombre + "';";
+			
+				manejarBD(query);
+				
+				listadoMedicinas.add(indice, new Medicina(nombre,precio,ingestion,tiposMedicina,dosis,notasAdicionales,enfermedad));
+				mensaje = "Actualizacion exitosa";
+			}
+			else {
+				mensaje = "Ninguna medcina coincide con el nombre ingresado. No se\npuede realizar la actualizacion. Intente de nuevo";
+			}
+		}
+		catch(Exception e0) {
+			mensaje = "Ocurrio un error durante el manejo de la base de datos, puede \n que haya ingresado mal un dato. En el precio solo ingrese numeros y decimales.\n"
+					+ "No deje espacios en blanco. Intente de nuevo";
+		}
+		return mensaje;
 	}
 	
 	/**
@@ -358,7 +388,7 @@ public class CatalogoSalud {
 	public void borrarEnfermedad(String nombreEnf){
 		String queryDelete = "DELETE FROM enfermedades WHERE Nombre = '" + nombreEnf + "'";
 		manejarBD(queryDelete);
-		}
+	}
 	
 	
 		/**
@@ -369,6 +399,6 @@ public class CatalogoSalud {
 		String queryDelete = "DELETE FROM medicinas WHERE Nombre = '" + nombreMed + "'";
 		manejarBD(queryDelete);
 
-		}
+	}
 }
  
