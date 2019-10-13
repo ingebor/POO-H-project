@@ -296,6 +296,7 @@ public class CatalogoSalud {
 		return mensaje;
 	}
 	
+	
 	/**
 	 * @param dolorCabeza
 	 * @param dolorEstomago
@@ -400,5 +401,52 @@ public class CatalogoSalud {
 		manejarBD(queryDelete);
 
 	}
+		
+		/**
+		 * @param nombre
+		 * @param dolorCabeza
+		 * @param dolorEstomago
+		 * @param vomito
+		 * @param diarrea
+		 * @param estornudo
+		 * @param tos
+		 * @param dolorGeneral
+		 * @param faltaEnergia
+		 * @param notasAdicionales
+		 * Este metodo actualiza una enfermedad de la base de datos
+		 */
+		public String acualizarEnfermedad(String nombre,boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea, boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia, String notasAdicionales,String medicina) {
+			String notificacion = "";
+			try {
+				boolean seguir = false;
+				int indice = 0;
+				
+				for(Enfermedad enfermedad: listadoEnfermedades) {
+					if(enfermedad.getNombre().equals(nombre)) {
+						seguir = true;
+						indice = listadoEnfermedades.indexOf(enfermedad);
+					}
+				}
+				
+				if(seguir) {
+					String query = "UPDATE enfermedades  SET DolorCabeza ='" + dolorCabeza + "', DolorEstomago ='" + dolorEstomago + "', Vomito = '" + vomito  + "', Diarrea = '" + 
+						diarrea + "', Estornudo = '" + estornudo + "', Tos ='" + tos + "', DolorGeneral ='" + dolorGeneral + "', FaltaEnergia ='" + faltaEnergia +  "', NotasAdicionales ='" + notasAdicionales + "', Medicina ='" + medicina + "' WHERE  Nombre ='" + nombre + "';";
+				
+					manejarBD(query);
+					
+					listadoEnfermedades.add(indice, new Enfermedad(nombre, dolorCabeza ,dolorEstomago , vomito, diarrea,estornudo, tos, dolorGeneral, faltaEnergia, notasAdicionales, medicina));
+					notificacion = "La actualizacion se ha completado";
+				}
+				else {
+					notificacion = "El nombre no coincide con niguna enfermedad actual, ingrese de nuevo.";
+				}
+			}
+			catch(Exception e0) {
+				notificacion = "Ocurrio un error durante el manejo de la base de datos, puede \n que haya ingresado mal un dato. En el precio solo ingrese numeros y decimales.\n"
+						+ "No deje espacios en blanco. Intente de nuevo";
+			}
+			return notificacion;
+		}
 }
+
  
