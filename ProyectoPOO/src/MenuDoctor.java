@@ -57,6 +57,9 @@ public class MenuDoctor {
 	private JButton btnBuscar;
 	private JButton btnActualizar;
 	private JTextPane tpActuaMed;
+	private JTextField tfNombreEnfA;
+	private JTextField tfMedicamentoA;
+	private JTextField textField;
 	
 	/**
 	 * Launch the application.
@@ -80,7 +83,7 @@ public class MenuDoctor {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 950, 589);
+		frame.setBounds(100, 100, 974, 616);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
@@ -92,7 +95,7 @@ public class MenuDoctor {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Agregar Medicina", TitledBorder.LEADING, TitledBorder.TOP, null, Color.RED));
 		panel_1.setBackground(new Color(176, 224, 230));
-		panel_1.setBounds(6, 38, 306, 398);
+		panel_1.setBounds(6, 38, 301, 398);
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -182,7 +185,7 @@ public class MenuDoctor {
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Agregar Enfermedad", TitledBorder.LEADING, TitledBorder.TOP, null, Color.RED));
 		panel_2.setBackground(new Color(176, 224, 230));
-		panel_2.setBounds(322, 38, 301, 398);
+		panel_2.setBounds(322, 38, 302, 398);
 		panel.add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -404,6 +407,73 @@ public class MenuDoctor {
 		btnActualizar.setBounds(189, 355, 89, 23);
 		panelActuaMed.add(btnActualizar);
 		btnActualizar.setEnabled(false);
+		
+		JPanel panelActualizacionEnf = new JPanel();
+		panelActualizacionEnf.setBounds(922, 38, 300, 398);
+		panel.add(panelActualizacionEnf);
+		panelActualizacionEnf.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Actualizar Enfermedad", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(255, 0, 0)));
+		panelActualizacionEnf.setBackground(Color.ORANGE);
+		panelActualizacionEnf.setLayout(null);
+		
+		JLabel lblNombreEnfA = new JLabel("Ingrese el nombre de la enfermedad");
+		lblNombreEnfA.setBounds(0, 30, 231, 16);
+		panelActualizacionEnf.add(lblNombreEnfA);
+		
+		tfNombreEnfA = new JTextField();
+		tfNombreEnfA.setBounds(10, 59, 160, 28);
+		panelActualizacionEnf.add(tfNombreEnfA);
+		tfNombreEnfA.setColumns(10);
+		
+		JLabel lblSintomas = new JLabel("Sintomas de la enfermedad:");
+		lblSintomas.setBounds(0, 92, 185, 16);
+		panelActualizacionEnf.add(lblSintomas);
+		
+		JLabel lblDolorDeCabezaA = new JLabel("Dolor de cabeza:");
+		lblDolorDeCabezaA.setBounds(0, 110, 97, 16);
+		panelActualizacionEnf.add(lblDolorDeCabezaA);
+		
+		JLabel lblDolorDeEstomagoA = new JLabel("Dolor de estomago:");
+		lblDolorDeEstomagoA.setBounds(0, 139, 114, 16);
+		panelActualizacionEnf.add(lblDolorDeEstomagoA);
+		
+		JLabel lblVomitoA = new JLabel("Vomito:");
+		lblVomitoA.setBounds(0, 168, 56, 16);
+		panelActualizacionEnf.add(lblVomitoA);
+		
+		JLabel lblDiarreaA = new JLabel("Diarrea:");
+		lblDiarreaA.setBounds(151, 168, 56, 16);
+		panelActualizacionEnf.add(lblDiarreaA);
+		
+		JLabel lblEstornudosA = new JLabel("Estornudos:");
+		lblEstornudosA.setBounds(0, 203, 68, 16);
+		panelActualizacionEnf.add(lblEstornudosA);
+		
+		JLabel lblTosA = new JLabel("Tos:");
+		lblTosA.setBounds(161, 197, 36, 16);
+		panelActualizacionEnf.add(lblTosA);
+		
+		JLabel lblFaltaDeEnergiaA = new JLabel("Falta de energia:");
+		lblFaltaDeEnergiaA.setBounds(0, 238, 130, 16);
+		panelActualizacionEnf.add(lblFaltaDeEnergiaA);
+		
+		JLabel lblMedicamentoA = new JLabel("Medicamento:");
+		lblMedicamentoA.setBounds(0, 267, 97, 16);
+		panelActualizacionEnf.add(lblMedicamentoA);
+		
+		tfMedicamentoA = new JTextField();
+		tfMedicamentoA.setText("");
+		tfMedicamentoA.setBounds(85, 264, 185, 22);
+		panelActualizacionEnf.add(tfMedicamentoA);
+		tfMedicamentoA.setColumns(10);
+		
+		JLabel lblNotasAdicionalesA = new JLabel("Notas Adicionales:");
+		lblNotasAdicionalesA.setBounds(0, 296, 114, 16);
+		panelActualizacionEnf.add(lblNotasAdicionalesA);
+		
+		textField = new JTextField();
+		textField.setBounds(10, 318, 260, 42);
+		panelActualizacionEnf.add(textField);
+		textField.setColumns(10);
 		btnActualizar.addActionListener(oyente1);
 		
 	}
