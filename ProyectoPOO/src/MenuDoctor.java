@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
@@ -16,6 +18,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
+import javax.swing.JTextPane;
 
 public class MenuDoctor {
 
@@ -45,6 +48,15 @@ public class MenuDoctor {
 	CatalogoSalud catalogo = new CatalogoSalud();
 	Enfermedad enfermedad = new Enfermedad();
 	Medicina medicina = new Medicina();
+	private JTextField tfNombreActuaMed;
+	private JTextField tfActuaPrecio;
+	private JTextField tfActuaIngestion;
+	private JTextField tfActuaTipo;
+	private JTextField tfDosisActua;
+	private JTextField tfEnfMedActua;
+	private JButton btnBuscar;
+	private JButton btnActualizar;
+	private JTextPane tpActuaMed;
 	
 	/**
 	 * Launch the application.
@@ -68,7 +80,7 @@ public class MenuDoctor {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 874, 589);
+		frame.setBounds(100, 100, 950, 589);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
@@ -306,6 +318,94 @@ public class MenuDoctor {
 		lblMedicoFunciones.setBounds(230, 17, 293, 16);
 		panel.add(lblMedicoFunciones);
 		
+		JPanel panelActuaMed = new JPanel();
+		panelActuaMed.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Actualizar Medicina", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(255, 0, 0)));
+		panelActuaMed.setBackground(new Color(135, 206, 250));
+		panelActuaMed.setBounds(636, 38, 288, 398);
+		panel.add(panelActuaMed);
+		panelActuaMed.setLayout(null);
+		
+		JLabel lblNombreMedActua = new JLabel("Ingrese el nombre de la medicina y pulse buscar:");
+		lblNombreMedActua.setBounds(10, 26, 268, 14);
+		panelActuaMed.add(lblNombreMedActua);
+		
+		tfNombreActuaMed = new JTextField();
+		tfNombreActuaMed.setBounds(10, 51, 160, 27);
+		panelActuaMed.add(tfNombreActuaMed);
+		tfNombreActuaMed.setColumns(10);
+		
+		btnBuscar = new JButton("Buscar");
+		btnBuscar.setBounds(180, 50, 89, 23);
+		panelActuaMed.add(btnBuscar);
+		btnBuscar.addActionListener(oyente1);
+		
+		JLabel lblAtributos = new JLabel("Atributos de la medicina:");
+		lblAtributos.setBounds(10, 82, 200, 14);
+		panelActuaMed.add(lblAtributos);
+		
+		JLabel lblActuaPrecioMed = new JLabel("Precio:");
+		lblActuaPrecioMed.setBounds(10, 101, 46, 14);
+		panelActuaMed.add(lblActuaPrecioMed);
+		
+		tfActuaPrecio = new JTextField();
+		tfActuaPrecio.setBounds(93, 98, 185, 27);
+		panelActuaMed.add(tfActuaPrecio);
+		tfActuaPrecio.setColumns(10);
+		
+		JLabel lblIngestionActua = new JLabel("Ingestion:");
+		lblIngestionActua.setBounds(10, 128, 64, 14);
+		panelActuaMed.add(lblIngestionActua);
+		
+		tfActuaIngestion = new JTextField();
+		tfActuaIngestion.setBounds(93, 124, 185, 27);
+		panelActuaMed.add(tfActuaIngestion);
+		tfActuaIngestion.setColumns(10);
+		
+		JLabel lblTipoDeActua = new JLabel("Tipo de\r\n");
+		lblTipoDeActua.setBounds(10, 153, 69, 14);
+		panelActuaMed.add(lblTipoDeActua);
+		
+		JLabel lblmedicamentoActua = new JLabel("medicamento:");
+		lblmedicamentoActua.setBounds(10, 168, 81, 14);
+		panelActuaMed.add(lblmedicamentoActua);
+		
+		tfActuaTipo = new JTextField();
+		tfActuaTipo.setBounds(93, 157, 185, 27);
+		panelActuaMed.add(tfActuaTipo);
+		tfActuaTipo.setColumns(10);
+		
+		JLabel lblDosisActua = new JLabel("Dosis: ");
+		lblDosisActua.setBounds(10, 193, 46, 14);
+		panelActuaMed.add(lblDosisActua);
+		
+		tfDosisActua = new JTextField();
+		tfDosisActua.setBounds(93, 185, 185, 27);
+		panelActuaMed.add(tfDosisActua);
+		tfDosisActua.setColumns(10);
+		
+		JLabel lblEnfermedadMedActua = new JLabel("Enfermedad:");
+		lblEnfermedadMedActua.setBounds(10, 218, 81, 14);
+		panelActuaMed.add(lblEnfermedadMedActua);
+		
+		tfEnfMedActua = new JTextField();
+		tfEnfMedActua.setBounds(93, 212, 185, 27);
+		panelActuaMed.add(tfEnfMedActua);
+		tfEnfMedActua.setColumns(10);
+		
+		JLabel lblNotasActuaMed = new JLabel("Notas Adicionales:");
+		lblNotasActuaMed.setBounds(10, 247, 123, 14);
+		panelActuaMed.add(lblNotasActuaMed);
+		
+		tpActuaMed = new JTextPane();
+		tpActuaMed.setBounds(10, 270, 268, 74);
+		panelActuaMed.add(tpActuaMed);
+		
+		btnActualizar = new JButton("Actualizar");
+		btnActualizar.setBounds(189, 355, 89, 23);
+		panelActuaMed.add(btnActualizar);
+		btnActualizar.setEnabled(false);
+		btnActualizar.addActionListener(oyente1);
+		
 	}
 	//Listener para realizar acciones luego de presionar los botones
 	private class MiListener implements ActionListener{
@@ -387,7 +487,7 @@ public class MenuDoctor {
 					energia = false;
 				}
 				enfermedad.setFaltaEnergia(energia);*/
-				
+			
 				String to = (String)cmbtosenf.getSelectedItem();
 				/*boolean tos = false;
 				if(to.equals("Si")) {
@@ -409,6 +509,33 @@ public class MenuDoctor {
 				enfermedad.setVomito(vomito);*/
 				
 				catalogo.agregarEnfermedad(txtnombreenf.getText(), dolor1, dolor2, vom, diarr, est, to, dolor3, ener, txtnotasenf.getText(), txtmedicamentoenf.getText());
+			}
+			if (e.getSource() == btnBuscar) {
+				if(!tfNombreActuaMed.getText().equals("")) {
+					Medicina buscada = catalogo.buscarMed(tfNombreActuaMed.getText());
+					tfActuaPrecio.setText(String.valueOf(buscada.getPrecio()));
+					tfActuaIngestion.setText(buscada.getIngestion());
+					tfActuaTipo.setText(buscada.getTiposMedicina());
+					tfDosisActua.setText(buscada.getDosis());
+					tfEnfMedActua.setText(buscada.getNombreEnf());
+					tpActuaMed.setText(buscada.getNotasAdicionales());
+					
+					btnActualizar.setEnabled(true);
+					JOptionPane.showMessageDialog(null, "Se le han colocado los valores actuales de los atributos\nen las casillas correspondientes. Cambie los valores que desee\n"
+							+ "y de click en actualizar");
+				}else {
+					JOptionPane.showMessageDialog(null, "No ingreso nombre de la medicina!");
+				}
+			}
+			if (e.getSource() == btnActualizar) {
+				try {
+				JOptionPane.showMessageDialog(null, catalogo.acualizarMedicina(tfNombreActuaMed.getText(), Double.parseDouble(tfActuaPrecio.getText()), tfActuaIngestion.getText(), 
+						tfActuaTipo.getText(), tfDosisActua.getText(), tpActuaMed.getText(), tfEnfMedActua.getText()));
+					
+				btnActualizar.setEnabled(false);
+				}catch(Exception e0) {
+					
+				}
 			}
 		}
 	}

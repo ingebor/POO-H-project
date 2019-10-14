@@ -296,6 +296,23 @@ public class CatalogoSalud {
 		return mensaje;
 	}
 	
+
+	public Medicina buscarMed(String nombre) {
+		Medicina buscada = new Medicina();
+		boolean bandera = true;
+		
+		int indice = 0;
+		while(bandera && indice < listadoMedicinas.size()) {
+			if(listadoMedicinas.get(indice).getNombre().toLowerCase().equals(nombre.toLowerCase())) {
+				buscada = listadoMedicinas.get(indice);
+				bandera = false;
+			}
+			indice++;
+		}
+		
+		return buscada;
+	}
+
 	
 	/**
 	 * @param dolorCabeza
