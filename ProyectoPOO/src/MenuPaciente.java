@@ -73,23 +73,16 @@ public class MenuPaciente extends JFrame {
 	 * Create the frame.  boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea, boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia
 	 */
 	public MenuPaciente() {
+		getContentPane().setBackground(new Color(176, 224, 230));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(null);
 		getContentPane().setBounds(10, 21, 644, 19);
 		miListener oyente = new miListener();
 		
-		btnVolver_1 = new JButton("Volver");
-		btnVolver_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {	
-				Inicio volver = new Inicio();
-				volver.main(null);
-				frame.dispose();
-			}
-		});
-		
 				panelIngreso = new JPanel();
+				panelIngreso.setBackground(new Color(224, 255, 255));
 				panelIngreso.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Busqueda de enfermedad por sintomas", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-				panelIngreso.setBounds(10, 11, 302, 525);
+				panelIngreso.setBounds(10, 80, 302, 525);
 				getContentPane().add(panelIngreso);
 				panelIngreso.setLayout(null);
 				
@@ -207,11 +200,10 @@ public class MenuPaciente extends JFrame {
 								textPaneResultado = new JTextPane();
 								textPaneResultado.setBounds(10, 308, 282, 206);
 								panelIngreso.add(textPaneResultado);
-		btnVolver_1.setBounds(624, 546, 89, 23);
-		getContentPane().add(btnVolver_1);
 		
 		NombreDeMedicamento = new JPanel();
-		NombreDeMedicamento.setBounds(312, 283, 401, 252);
+		NombreDeMedicamento.setBackground(new Color(173, 216, 230));
+		NombreDeMedicamento.setBounds(324, 341, 401, 265);
 		getContentPane().add(NombreDeMedicamento);
 		NombreDeMedicamento.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Ingrese el nombre del medicamento", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		NombreDeMedicamento.setLayout(null);
@@ -234,7 +226,8 @@ public class MenuPaciente extends JFrame {
 		NombreDeMedicamento.add(btnBuscarMedicina);
 		
 		JPanel Nombre_De_Enfermedad = new JPanel();
-		Nombre_De_Enfermedad.setBounds(312, 11, 401, 261);
+		Nombre_De_Enfermedad.setBackground(new Color(176, 196, 222));
+		Nombre_De_Enfermedad.setBounds(322, 80, 401, 261);
 		getContentPane().add(Nombre_De_Enfermedad);
 		Nombre_De_Enfermedad.setBorder(new TitledBorder(null, "Ingrese el nombre de la enfermedad", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		Nombre_De_Enfermedad.setLayout(null);
@@ -258,9 +251,25 @@ public class MenuPaciente extends JFrame {
 		Nombre_De_Enfermedad.add(txtLaEnfermedad);
 		txtLaEnfermedad.setColumns(10);
 		
+		JLabel lblPaciene = new JLabel("PACIENTE");
+		lblPaciene.setFont(new Font("Lucida Grande", Font.BOLD, 25));
+		lblPaciene.setBounds(32, 18, 225, 49);
+		getContentPane().add(lblPaciene);
+		
 		JButton btnNewButton = new JButton("Instrucciones de ayuda");
-		btnNewButton.setBounds(10, 546, 162, 23);
+		btnNewButton.setBounds(379, 29, 322, 23);
 		getContentPane().add(btnNewButton);
+		
+		btnVolver_1 = new JButton("Volver");
+		btnVolver_1.setBounds(285, 28, 89, 23);
+		getContentPane().add(btnVolver_1);
+		btnVolver_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {	
+				Inicio volver = new Inicio();
+				volver.main(null);
+				frame.dispose();
+			}
+		});
 		btnBuscarEnfermedad.addActionListener(oyente);
 		btnBuscarMedicina.addActionListener(oyente);
 		
