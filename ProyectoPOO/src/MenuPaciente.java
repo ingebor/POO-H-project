@@ -46,8 +46,9 @@ public class MenuPaciente extends JFrame {
 	private JTextPane textPaneBuscarEnfermedad;
 	private JTextPane textPaneMedicamentos;
 	private JTextPane textPaneResultado;
-	private JButton button;
+	private JButton btnVolver_1;
 	private static MenuPaciente frame;
+	private JPanel NombreDeMedicamento;
 	/**
 	 * Launch the application.
 	 */
@@ -77,8 +78,8 @@ public class MenuPaciente extends JFrame {
 		getContentPane().setBounds(10, 21, 644, 19);
 		miListener oyente = new miListener();
 		
-		button = new JButton("VOLVER");
-		button.addActionListener(new ActionListener() {
+		btnVolver_1 = new JButton("Volver");
+		btnVolver_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
 				Inicio volver = new Inicio();
 				volver.main(null);
@@ -88,7 +89,7 @@ public class MenuPaciente extends JFrame {
 		
 				panelIngreso = new JPanel();
 				panelIngreso.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Busqueda de enfermedad por sintomas", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-				panelIngreso.setBounds(10, 11, 644, 480);
+				panelIngreso.setBounds(10, 11, 302, 525);
 				getContentPane().add(panelIngreso);
 				panelIngreso.setLayout(null);
 				
@@ -189,30 +190,10 @@ public class MenuPaciente extends JFrame {
 								comboBoxFaltaEnergia.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
 								
 								
-								
-								JLabel lblBuscarEnfermedad = new JLabel("Nombre de la Enfermedad:");
-								lblBuscarEnfermedad.setBounds(338, 39, 156, 14);
-								panelIngreso.add(lblBuscarEnfermedad);
-								
-								JLabel lblNewLabel = new JLabel("Nombre del medicamento");
-								lblNewLabel.setBounds(338, 283, 156, 14);
-								panelIngreso.add(lblNewLabel);
-								
-								btnBuscarEnfermedad = new JButton("Buscar Enfermedad");
-								btnBuscarEnfermedad.addActionListener(oyente);
-								btnBuscarEnfermedad.setBounds(484, 222, 150, 23);
-								panelIngreso.add(btnBuscarEnfermedad);
-								
-								
 								btnIngresoSintomas = new JButton("Ingresar Sintomas");
 								btnIngresoSintomas.addActionListener(oyente);
 								btnIngresoSintomas.setBounds(10, 251, 165, 23);
 								panelIngreso.add(btnIngresoSintomas);
-								
-								btnBuscarMedicina = new JButton("Buscar Medicinas");
-								btnBuscarMedicina.addActionListener(oyente);
-								btnBuscarMedicina.setBounds(484, 446, 150, 23);
-								panelIngreso.add(btnBuscarMedicina);
 								
 								btnVolver = new JButton("Volver a Inicio");
 								btnVolver.addActionListener(oyente);
@@ -223,39 +204,65 @@ public class MenuPaciente extends JFrame {
 								lblResultados.setBounds(10, 283, 83, 14);
 								panelIngreso.add(lblResultados);
 								
-								txtLaEnfermedad = new JTextField();
-								txtLaEnfermedad.setBounds(504, 31, 130, 30);
-								panelIngreso.add(txtLaEnfermedad);
-								txtLaEnfermedad.setColumns(10);
-								
-								textLaMedicina = new JTextField();
-								textLaMedicina.setBounds(504, 276, 130, 28);
-								panelIngreso.add(textLaMedicina);
-								textLaMedicina.setColumns(10);
-								
-								textPaneBuscarEnfermedad = new JTextPane();
-								textPaneBuscarEnfermedad.setBounds(338, 64, 296, 151);
-								panelIngreso.add(textPaneBuscarEnfermedad);
-								
-								textPaneMedicamentos = new JTextPane();
-								textPaneMedicamentos.setBounds(338, 305, 296, 134);
-								panelIngreso.add(textPaneMedicamentos);
-								
 								textPaneResultado = new JTextPane();
-								textPaneResultado.setBounds(10, 305, 282, 157);
+								textPaneResultado.setBounds(10, 308, 282, 206);
 								panelIngreso.add(textPaneResultado);
-								
-								JLabel lblNewLabel_1 = new JLabel("Ingrese el nombre de la enfermedad que quiera consultar:");
-								lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
-								lblNewLabel_1.setBounds(338, 14, 296, 14);
-								panelIngreso.add(lblNewLabel_1);
-								
-								JLabel lblNewLabel_2 = new JLabel("Ingrese el nombre de la medicina que quiera consultar:");
-								lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 9));
-								lblNewLabel_2.setBounds(338, 255, 296, 14);
-								panelIngreso.add(lblNewLabel_2);
-		button.setBounds(526, 491, 117, 29);
-		getContentPane().add(button);
+		btnVolver_1.setBounds(624, 546, 89, 23);
+		getContentPane().add(btnVolver_1);
+		
+		NombreDeMedicamento = new JPanel();
+		NombreDeMedicamento.setBounds(312, 283, 401, 252);
+		getContentPane().add(NombreDeMedicamento);
+		NombreDeMedicamento.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Ingrese el nombre del medicamento", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		NombreDeMedicamento.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Nombre del medicamento:");
+		lblNewLabel.setBounds(10, 22, 141, 14);
+		NombreDeMedicamento.add(lblNewLabel);
+		
+		textPaneMedicamentos = new JTextPane();
+		textPaneMedicamentos.setBounds(10, 47, 381, 160);
+		NombreDeMedicamento.add(textPaneMedicamentos);
+		
+		textLaMedicina = new JTextField();
+		textLaMedicina.setBounds(146, 15, 245, 28);
+		NombreDeMedicamento.add(textLaMedicina);
+		textLaMedicina.setColumns(10);
+		
+		btnBuscarMedicina = new JButton("Buscar Medicinas");
+		btnBuscarMedicina.setBounds(241, 218, 150, 23);
+		NombreDeMedicamento.add(btnBuscarMedicina);
+		
+		JPanel Nombre_De_Enfermedad = new JPanel();
+		Nombre_De_Enfermedad.setBounds(312, 11, 401, 261);
+		getContentPane().add(Nombre_De_Enfermedad);
+		Nombre_De_Enfermedad.setBorder(new TitledBorder(null, "Ingrese el nombre de la enfermedad", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		Nombre_De_Enfermedad.setLayout(null);
+		
+		textPaneBuscarEnfermedad = new JTextPane();
+		textPaneBuscarEnfermedad.setBounds(10, 65, 381, 151);
+		Nombre_De_Enfermedad.add(textPaneBuscarEnfermedad);
+		
+		btnBuscarEnfermedad = new JButton("Buscar Enfermedad");
+		btnBuscarEnfermedad.setBounds(241, 227, 150, 23);
+		Nombre_De_Enfermedad.add(btnBuscarEnfermedad);
+		
+		
+		
+		JLabel lblBuscarEnfermedad = new JLabel("Nombre de la Enfermedad:");
+		lblBuscarEnfermedad.setBounds(10, 32, 142, 14);
+		Nombre_De_Enfermedad.add(lblBuscarEnfermedad);
+		
+		txtLaEnfermedad = new JTextField();
+		txtLaEnfermedad.setBounds(147, 24, 244, 30);
+		Nombre_De_Enfermedad.add(txtLaEnfermedad);
+		txtLaEnfermedad.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Instrucciones de ayuda");
+		btnNewButton.setBounds(10, 546, 162, 23);
+		getContentPane().add(btnNewButton);
+		btnBuscarEnfermedad.addActionListener(oyente);
+		btnBuscarMedicina.addActionListener(oyente);
 		
 		
 
@@ -284,6 +291,7 @@ public class MenuPaciente extends JFrame {
 					//catalogo.verEnfermedad(txtLaEnfermedad.getText());
 					textPaneBuscarEnfermedad.setText(catalogo.verEnfermedad(txtLaEnfermedad.getText()));
 				}
+				
 			 
 			}
 			if (e.getSource() ==  btnIngresoSintomas)
