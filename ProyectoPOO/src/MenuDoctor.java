@@ -474,6 +474,49 @@ public class MenuDoctor {
 		textField.setBounds(10, 318, 260, 42);
 		panelActualizacionEnf.add(textField);
 		textField.setColumns(10);
+		
+		JComboBox cmbDolorCabezaA = new JComboBox();
+		cmbDolorCabezaA.setModel(new DefaultComboBoxModel(new String[] {"si", "no"}));
+		cmbDolorCabezaA.setBounds(99, 107, 47, 22);
+		panelActualizacionEnf.add(cmbDolorCabezaA);
+		
+		JComboBox cmbDolorEstomagoA = new JComboBox();
+		cmbDolorEstomagoA.setModel(new DefaultComboBoxModel(new String[] {"si ", "no"}));
+		cmbDolorEstomagoA.setBounds(115, 136, 55, 22);
+		panelActualizacionEnf.add(cmbDolorEstomagoA);
+		
+		JComboBox cmbVomitoA = new JComboBox();
+		cmbVomitoA.setModel(new DefaultComboBoxModel(new String[] {"si", "no"}));
+		cmbVomitoA.setBounds(54, 168, 43, 22);
+		panelActualizacionEnf.add(cmbVomitoA);
+		
+		JComboBox cmbDiarreaA = new JComboBox();
+		cmbDiarreaA.setModel(new DefaultComboBoxModel(new String[] {"si", "no"}));
+		cmbDiarreaA.setBounds(204, 168, 47, 22);
+		panelActualizacionEnf.add(cmbDiarreaA);
+		
+		JComboBox cmbEstornudosA = new JComboBox();
+		cmbEstornudosA.setModel(new DefaultComboBoxModel(new String[] {"si", "no"}));
+		cmbEstornudosA.setBounds(66, 200, 48, 22);
+		panelActualizacionEnf.add(cmbEstornudosA);
+		
+		JComboBox cmbTosA = new JComboBox();
+		cmbTosA.setModel(new DefaultComboBoxModel(new String[] {"si", "no"}));
+		cmbTosA.setBounds(204, 200, 47, 22);
+		panelActualizacionEnf.add(cmbTosA);
+		
+		JComboBox cmbFaltaEnergiaA = new JComboBox();
+		cmbFaltaEnergiaA.setModel(new DefaultComboBoxModel(new String[] {"si", "no"}));
+		cmbFaltaEnergiaA.setBounds(99, 235, 56, 22);
+		panelActualizacionEnf.add(cmbFaltaEnergiaA);
+		
+		JButton btnBuscarEnf = new JButton("Buscar");
+		btnBuscarEnf.setBounds(173, 61, 97, 25);
+		panelActualizacionEnf.add(btnBuscarEnf);
+		
+		JButton btnActualizacionA = new JButton("Actualizacion");
+		btnActualizacionA.setBounds(173, 360, 115, 25);
+		panelActualizacionEnf.add(btnActualizacionA);
 		btnActualizar.addActionListener(oyente1);
 		
 	}
