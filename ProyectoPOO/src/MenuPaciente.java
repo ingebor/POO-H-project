@@ -46,8 +46,9 @@ public class MenuPaciente extends JFrame {
 	private JTextPane textPaneBuscarEnfermedad;
 	private JTextPane textPaneMedicamentos;
 	private JTextPane textPaneResultado;
-	private JButton button;
+	private JButton btnVolver_1;
 	private static MenuPaciente frame;
+	private JPanel NombreDeMedicamento;
 	/**
 	 * Launch the application.
 	 */
@@ -72,23 +73,16 @@ public class MenuPaciente extends JFrame {
 	 * Create the frame.  boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea, boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia
 	 */
 	public MenuPaciente() {
+		getContentPane().setBackground(new Color(176, 224, 230));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(null);
 		getContentPane().setBounds(10, 21, 644, 19);
 		miListener oyente = new miListener();
 		
-		button = new JButton("VOLVER");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {	
-				Inicio volver = new Inicio();
-				volver.main(null);
-				frame.dispose();
-			}
-		});
-		
 				panelIngreso = new JPanel();
+				panelIngreso.setBackground(new Color(224, 255, 255));
 				panelIngreso.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Busqueda de enfermedad por sintomas", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-				panelIngreso.setBounds(10, 11, 644, 480);
+				panelIngreso.setBounds(10, 80, 302, 525);
 				getContentPane().add(panelIngreso);
 				panelIngreso.setLayout(null);
 				
@@ -136,14 +130,14 @@ public class MenuPaciente extends JFrame {
 				comboBoxDolor_de_cabeza = new JComboBox();
 				comboBoxDolor_de_cabeza.setBounds(148, 51, 55, 20);
 				panelIngreso.add(comboBoxDolor_de_cabeza);
-				comboBoxDolor_de_cabeza.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
+				comboBoxDolor_de_cabeza.setModel(new DefaultComboBoxModel(new String[] {" ","Si", "No"}));
 				
 				
 				
 				comboBoxDolorEstomago = new JComboBox();
 				comboBoxDolorEstomago.setBounds(148, 73, 55, 20);
 				panelIngreso.add(comboBoxDolorEstomago);
-				comboBoxDolorEstomago.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
+				comboBoxDolorEstomago.setModel(new DefaultComboBoxModel(new String[] {" ","Si", "No"}));
 				
 				
 				
@@ -151,68 +145,48 @@ public class MenuPaciente extends JFrame {
 				comboBoxVomito = new JComboBox();
 				comboBoxVomito.setBounds(148, 98, 55, 20);
 				panelIngreso.add(comboBoxVomito);
-				comboBoxVomito.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
+				comboBoxVomito.setModel(new DefaultComboBoxModel(new String[] {" ","Si", "No"}));
 				
 						
 						
 						comboBoxDiarrea = new JComboBox();
 						comboBoxDiarrea.setBounds(148, 123, 55, 20);
 						panelIngreso.add(comboBoxDiarrea);
-						comboBoxDiarrea.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
+						comboBoxDiarrea.setModel(new DefaultComboBoxModel(new String[] {" ","Si", "No"}));
 						
 								
 								
 								comboBoxEstornudo = new JComboBox();
 								comboBoxEstornudo.setBounds(148, 148, 55, 20);
 								panelIngreso.add(comboBoxEstornudo);
-								comboBoxEstornudo.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
+								comboBoxEstornudo.setModel(new DefaultComboBoxModel(new String[] {" ","Si", "No"}));
 								
 								
 								
 								comboBoxTos = new JComboBox();
 								comboBoxTos.setBounds(148, 173, 55, 20);
 								panelIngreso.add(comboBoxTos);
-								comboBoxTos.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
+								comboBoxTos.setModel(new DefaultComboBoxModel(new String[] {" ","Si", "No"}));
 								
 								
 								
 								comboBoxDolorGeneral = new JComboBox();
 								comboBoxDolorGeneral.setBounds(148, 198, 55, 20);
 								panelIngreso.add(comboBoxDolorGeneral);
-								comboBoxDolorGeneral.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
+								comboBoxDolorGeneral.setModel(new DefaultComboBoxModel(new String[] {" ","Si", "No"}));
 								
 								
 								
 								comboBoxFaltaEnergia = new JComboBox();
 								comboBoxFaltaEnergia.setBounds(148, 223, 55, 20);
 								panelIngreso.add(comboBoxFaltaEnergia);
-								comboBoxFaltaEnergia.setModel(new DefaultComboBoxModel(new String[] {"Si", "No"}));
-								
-								
-								
-								JLabel lblBuscarEnfermedad = new JLabel("Nombre de la Enfermedad:");
-								lblBuscarEnfermedad.setBounds(338, 39, 156, 14);
-								panelIngreso.add(lblBuscarEnfermedad);
-								
-								JLabel lblNewLabel = new JLabel("Nombre del medicamento");
-								lblNewLabel.setBounds(338, 283, 156, 14);
-								panelIngreso.add(lblNewLabel);
-								
-								btnBuscarEnfermedad = new JButton("Buscar Enfermedad");
-								btnBuscarEnfermedad.addActionListener(oyente);
-								btnBuscarEnfermedad.setBounds(484, 222, 150, 23);
-								panelIngreso.add(btnBuscarEnfermedad);
+								comboBoxFaltaEnergia.setModel(new DefaultComboBoxModel(new String[] {" ","Si", "No"}));
 								
 								
 								btnIngresoSintomas = new JButton("Ingresar Sintomas");
 								btnIngresoSintomas.addActionListener(oyente);
 								btnIngresoSintomas.setBounds(10, 251, 165, 23);
 								panelIngreso.add(btnIngresoSintomas);
-								
-								btnBuscarMedicina = new JButton("Buscar Medicinas");
-								btnBuscarMedicina.addActionListener(oyente);
-								btnBuscarMedicina.setBounds(484, 446, 150, 23);
-								panelIngreso.add(btnBuscarMedicina);
 								
 								btnVolver = new JButton("Volver a Inicio");
 								btnVolver.addActionListener(oyente);
@@ -223,40 +197,116 @@ public class MenuPaciente extends JFrame {
 								lblResultados.setBounds(10, 283, 83, 14);
 								panelIngreso.add(lblResultados);
 								
-								txtLaEnfermedad = new JTextField();
-								txtLaEnfermedad.setBounds(504, 31, 130, 30);
-								panelIngreso.add(txtLaEnfermedad);
-								txtLaEnfermedad.setColumns(10);
-								
-								textLaMedicina = new JTextField();
-								textLaMedicina.setBounds(504, 276, 130, 28);
-								panelIngreso.add(textLaMedicina);
-								textLaMedicina.setColumns(10);
-								
-								textPaneBuscarEnfermedad = new JTextPane();
-								textPaneBuscarEnfermedad.setBounds(338, 64, 296, 151);
-								panelIngreso.add(textPaneBuscarEnfermedad);
-								
-								textPaneMedicamentos = new JTextPane();
-								textPaneMedicamentos.setBounds(338, 305, 296, 134);
-								panelIngreso.add(textPaneMedicamentos);
-								
 								textPaneResultado = new JTextPane();
-								textPaneResultado.setBounds(10, 305, 282, 157);
+								textPaneResultado.setBounds(10, 308, 282, 206);
 								panelIngreso.add(textPaneResultado);
-								
-								JLabel lblNewLabel_1 = new JLabel("Ingrese el nombre de la enfermedad que quiera consultar:");
-								lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
-								lblNewLabel_1.setBounds(338, 14, 296, 14);
-								panelIngreso.add(lblNewLabel_1);
-								
-								JLabel lblNewLabel_2 = new JLabel("Ingrese el nombre de la medicina que quiera consultar:");
-								lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 9));
-								lblNewLabel_2.setBounds(338, 255, 296, 14);
-								panelIngreso.add(lblNewLabel_2);
-		button.setBounds(526, 491, 117, 29);
-		getContentPane().add(button);
 		
+		NombreDeMedicamento = new JPanel();
+		NombreDeMedicamento.setBackground(new Color(173, 216, 230));
+		NombreDeMedicamento.setBounds(324, 341, 401, 265);
+		getContentPane().add(NombreDeMedicamento);
+		NombreDeMedicamento.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Ingrese el nombre del medicamento", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		NombreDeMedicamento.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Nombre del medicamento:");
+		lblNewLabel.setBounds(10, 22, 141, 14);
+		NombreDeMedicamento.add(lblNewLabel);
+		
+		textPaneMedicamentos = new JTextPane();
+		textPaneMedicamentos.setBounds(10, 47, 381, 160);
+		NombreDeMedicamento.add(textPaneMedicamentos);
+		
+		textLaMedicina = new JTextField();
+		textLaMedicina.setBounds(146, 15, 245, 28);
+		NombreDeMedicamento.add(textLaMedicina);
+		textLaMedicina.setColumns(10);
+		
+		btnBuscarMedicina = new JButton("Buscar Medicinas");
+		btnBuscarMedicina.setBounds(241, 218, 150, 23);
+		NombreDeMedicamento.add(btnBuscarMedicina);
+		
+		JPanel Nombre_De_Enfermedad = new JPanel();
+		Nombre_De_Enfermedad.setBackground(new Color(176, 196, 222));
+		Nombre_De_Enfermedad.setBounds(322, 80, 401, 261);
+		getContentPane().add(Nombre_De_Enfermedad);
+		Nombre_De_Enfermedad.setBorder(new TitledBorder(null, "Ingrese el nombre de la enfermedad", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		Nombre_De_Enfermedad.setLayout(null);
+		
+		textPaneBuscarEnfermedad = new JTextPane();
+		textPaneBuscarEnfermedad.setBounds(10, 65, 381, 151);
+		Nombre_De_Enfermedad.add(textPaneBuscarEnfermedad);
+		
+		btnBuscarEnfermedad = new JButton("Buscar Enfermedad");
+		btnBuscarEnfermedad.setBounds(241, 227, 150, 23);
+		Nombre_De_Enfermedad.add(btnBuscarEnfermedad);
+		
+		
+		
+		JLabel lblBuscarEnfermedad = new JLabel("Nombre de la Enfermedad:");
+		lblBuscarEnfermedad.setBounds(10, 32, 142, 14);
+		Nombre_De_Enfermedad.add(lblBuscarEnfermedad);
+		
+		txtLaEnfermedad = new JTextField();
+		txtLaEnfermedad.setBounds(147, 24, 244, 30);
+		Nombre_De_Enfermedad.add(txtLaEnfermedad);
+		txtLaEnfermedad.setColumns(10);
+		
+		JLabel lblPaciene = new JLabel("PACIENTE");
+		lblPaciene.setFont(new Font("Lucida Grande", Font.BOLD, 25));
+		lblPaciene.setBounds(32, 18, 225, 49);
+		getContentPane().add(lblPaciene);
+		
+		JButton btnNewButton = new JButton("Instrucciones de ayuda");
+		btnNewButton.setBounds(379, 29, 322, 23);
+		getContentPane().add(btnNewButton);
+		
+		btnVolver_1 = new JButton("Volver");
+		btnVolver_1.setBounds(285, 28, 89, 23);
+		getContentPane().add(btnVolver_1);
+		btnVolver_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {	
+				Inicio volver = new Inicio();
+				volver.main(null);
+				frame.dispose();
+			}
+		});
+		btnBuscarEnfermedad.addActionListener(oyente);
+		btnBuscarMedicina.addActionListener(oyente);
+		
+		
+		if(comboBoxDolor_de_cabeza.getSelectedItem().equals(" "))
+		{
+			btnIngresoSintomas.setEnabled(false);
+		}
+		if(comboBoxDolorEstomago.getSelectedItem().equals(" "))
+		{
+			btnIngresoSintomas.setEnabled(false);
+		}
+		if(comboBoxVomito.getSelectedItem().equals(" "))
+		{
+			btnIngresoSintomas.setEnabled(false);
+		}
+		if(comboBoxDiarrea.getSelectedItem().equals(" "))
+		{
+			btnIngresoSintomas.setEnabled(false);
+		}
+		if(comboBoxEstornudo.getSelectedItem().equals(" "))
+		{
+			btnIngresoSintomas.setEnabled(false);
+		}
+		if(comboBoxTos.getSelectedItem().equals(" "))
+		{
+			btnIngresoSintomas.setEnabled(false);
+		}
+		if(comboBoxDolorGeneral.getSelectedItem().equals(" "))
+		{
+			btnIngresoSintomas.setEnabled(false);
+		}
+		if(comboBoxFaltaEnergia.getSelectedItem().equals(" "))
+		{
+			btnIngresoSintomas.setEnabled(false);
+		}
+
 		
 
 		
@@ -284,11 +334,12 @@ public class MenuPaciente extends JFrame {
 					//catalogo.verEnfermedad(txtLaEnfermedad.getText());
 					textPaneBuscarEnfermedad.setText(catalogo.verEnfermedad(txtLaEnfermedad.getText()));
 				}
+				
 			 
 			}
-			if (e.getSource() ==  btnIngresoSintomas)
+			if (e.getSource() ==  btnIngresoSintomas) 
 			{
-				if(comboBoxDolor_de_cabeza.getSelectedItem().equals("Si"))
+				if(comboBoxDolor_de_cabeza.getSelectedItem().equals("Si")) //
 				{
 					dolorCabeza = true;
 				}
@@ -296,7 +347,7 @@ public class MenuPaciente extends JFrame {
 				{
 					dolorCabeza = false;
 				}
-				if(comboBoxDolorEstomago.getSelectedItem().equals("Si"))
+				if(comboBoxDolorEstomago.getSelectedItem().equals("Si"))//
 				{
 					dolorEstomago = true;
 				}
@@ -304,7 +355,7 @@ public class MenuPaciente extends JFrame {
 				{
 					dolorEstomago = false;
 				}
-				if(comboBoxVomito.getSelectedItem().equals("Si"))
+				if(comboBoxVomito.getSelectedItem().equals("Si"))//
 				{
 					vomito = true;
 				}
@@ -312,7 +363,7 @@ public class MenuPaciente extends JFrame {
 				{
 					vomito = false;
 				}
-				if(comboBoxDiarrea.getSelectedItem().equals("Si"))
+				if(comboBoxDiarrea.getSelectedItem().equals("Si"))//
 				{
 					diarrea = true;
 				}
@@ -320,7 +371,7 @@ public class MenuPaciente extends JFrame {
 				{
 					diarrea = false;
 				}
-				if(comboBoxEstornudo.getSelectedItem().equals("Si"))
+				if(comboBoxEstornudo.getSelectedItem().equals("Si"))//
 				{
 					estornudo = true;
 				}
@@ -328,7 +379,7 @@ public class MenuPaciente extends JFrame {
 				{
 					estornudo = false;
 				}
-				if(comboBoxTos.getSelectedItem().equals("Si"))
+				if(comboBoxTos.getSelectedItem().equals("Si"))//
 				{
 					tos = true;
 				}
@@ -336,7 +387,7 @@ public class MenuPaciente extends JFrame {
 				{
 					tos = false;
 				}
-				if(comboBoxDolorGeneral.getSelectedItem().equals("Si"))
+				if(comboBoxDolorGeneral.getSelectedItem().equals("Si"))//
 				{
 					dolorGeneral = true;
 				}
@@ -354,6 +405,15 @@ public class MenuPaciente extends JFrame {
 				}
 				
 				textPaneResultado.setText(catalogo.buscarEnfermedad(dolorCabeza, dolorEstomago, vomito, diarrea, estornudo, tos, dolorGeneral, faltaEnergia));
+				comboBoxDolor_de_cabeza.setSelectedItem(" ");
+				comboBoxFaltaEnergia.setSelectedItem(" ");
+				comboBoxDolorEstomago.setSelectedItem(" ");
+				comboBoxVomito.setSelectedItem(" ");
+				comboBoxDiarrea.setSelectedItem(" ");
+				comboBoxEstornudo.setSelectedItem(" ");
+				comboBoxTos.setSelectedItem(" ");
+				comboBoxDolorGeneral.setSelectedItem(" ");
+				comboBoxFaltaEnergia.setSelectedItem(" ");
 			}
 			if (e.getSource() ==  btnBuscarMedicina)
 			{
@@ -370,7 +430,8 @@ public class MenuPaciente extends JFrame {
 			}
 			if (e.getSource() ==  btnVolver)
 			{
-				//
+				Inicio nuevo = new Inicio(); 
+				frame.dispose();
 			
 			}
 		}

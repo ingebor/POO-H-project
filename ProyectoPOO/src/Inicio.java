@@ -159,7 +159,6 @@ public class Inicio {
 				if (textUsuario.getText().equals("admin") && clave.equals("12345")) { 
 					
 					MenuDoctor nuevo = new MenuDoctor(); 
-
 					nuevo.newScreen();
 					window.frame.dispose();
 					
