@@ -83,7 +83,7 @@ public class MenuDoctor {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 974, 616);
+		frame.setBounds(100, 100, 1300, 616);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
@@ -409,7 +409,7 @@ public class MenuDoctor {
 		btnActualizar.setEnabled(false);
 		
 		JPanel panelActualizacionEnf = new JPanel();
-		panelActualizacionEnf.setBounds(922, 38, 300, 398);
+		panelActualizacionEnf.setBounds(942, 38, 300, 398);
 		panel.add(panelActualizacionEnf);
 		panelActualizacionEnf.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Actualizar Enfermedad", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(255, 0, 0)));
 		panelActualizacionEnf.setBackground(Color.ORANGE);
