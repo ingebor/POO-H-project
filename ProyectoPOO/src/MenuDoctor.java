@@ -539,7 +539,7 @@ public class MenuDoctor {
 		JLabel lblDolorDeCuerpoA = new JLabel("Dolor de cuerpo:");
 		lblDolorDeCuerpoA.setBounds(10, 238, 97, 16);
 		panelActualizacionEnf.add(lblDolorDeCuerpoA);
-		
+		//
 		
 	}
 	//Listener para realizar acciones luego de presionar los botones
