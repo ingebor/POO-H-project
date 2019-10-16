@@ -151,25 +151,25 @@ public class Inicio {
 		JButton btnIngresar = new JButton("INGRESAR");
 		btnIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
-				char key[]= passwordField.getPassword(); 
-				String clave= new String(key); 
-				
-				if (textUsuario.getText().equals("admin") && clave.equals("12345")) { 
+					char key[]= passwordField.getPassword(); 
+					String clave= new String(key); 
 					
-					MenuDoctor nuevo = new MenuDoctor(); 
-					nuevo.newScreen();
-					window.frame.dispose();
-					
+					if (textUsuario.getText().equals("admin") && clave.equals("12345")) { 
+						
+						MenuDoctor nuevo = new MenuDoctor(); 
+						nuevo.newScreen();
+						window.frame.dispose();
+					}
 				
-				}
+					
 				
 			}
 		});
 		
 		JLabel lblMedico = new JLabel("MEDICO");
 		lblMedico.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+		
+		JLabel label = new JLabel("");
 		
 		
 		
@@ -182,24 +182,26 @@ public class Inicio {
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createSequentialGroup()
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+							.addContainerGap(19, Short.MAX_VALUE)
+							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
 								.addGroup(gl_panel.createSequentialGroup()
-									.addGap(19)
 									.addComponent(lblContrasena, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED))
-								.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-									.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addGroup(gl_panel.createSequentialGroup()
 									.addComponent(lblNewLabel)
 									.addGap(17)))
 							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-								.addComponent(textUsuario, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-								.addComponent(passwordField, Alignment.LEADING)))
+								.addComponent(textUsuario, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+								.addComponent(passwordField, Alignment.LEADING, 181, 181, 181)))
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(107)
 							.addComponent(btnIngresar))
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(110)
-							.addComponent(lblMedico)))
+							.addComponent(lblMedico))
+						.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+							.addContainerGap(254, Short.MAX_VALUE)
+							.addComponent(label)))
 					.addContainerGap())
 		);
 		gl_panel.setVerticalGroup(
@@ -217,9 +219,34 @@ public class Inicio {
 						.addComponent(lblContrasena))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(btnIngresar)
-					.addGap(26))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(label)
+					.addGap(12))
 		);
 		panel.setLayout(gl_panel);
 		frame.getContentPane().setLayout(groupLayout);
 	}
+	
+	/*public int validarEntradas() {
+		int invalidos = 0;
+		//Validar que el usuario no este vacio
+		if(textUsuario.getText().equals("")) {
+			textUsuario.setForeground(Color.red);
+			invalidos++;
+		}
+		else 
+			textUsuario.setForeground(Color.green);
+		if(passwordField.getText().equals("")) {
+			passwordField.setForeground(Color.red);
+			invalidos++;
+		}
+		else 
+			passwordField.setForeground(Color.green);
+		return invalidos; 
+	}
+	
+	public void limpiarCamposIngreso() {
+		textUsuario.setText(null);
+		passwordField.setText(null);
+	}*/
 }
