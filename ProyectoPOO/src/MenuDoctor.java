@@ -43,6 +43,14 @@ public class MenuDoctor {
 	private JComboBox cmbdolorcuerpoenf;
 	private JComboBox cmbfaltaenergiaenf;
 	private JButton btnAgregarEnf;
+	private JComboBox cmbDolorEstomagoA;
+	private JComboBox cmbDolorCabezaA;
+	private JComboBox cmbVomitoA;
+	private JComboBox cmbDiarreaA;
+	private JComboBox cmbEstornudosA;
+	private JComboBox cmbTosA;
+	private JComboBox cmbFaltaEnergiaA;
+	private JComboBox cmbDolorCuerpo;
 	private static MenuDoctor window;
 	
 	CatalogoSalud catalogo = new CatalogoSalud();
@@ -56,10 +64,12 @@ public class MenuDoctor {
 	private JTextField tfEnfMedActua;
 	private JButton btnBuscar;
 	private JButton btnActualizar;
+	private JButton btnBuscarEnf;
+	private JButton btnActualizacionA;
 	private JTextPane tpActuaMed;
 	private JTextField tfNombreEnfA;
 	private JTextField tfMedicamentoA;
-	private JTextField textField;
+	private JTextField textNotasEnfA;
 	
 	/**
 	 * Launch the application.
@@ -83,7 +93,7 @@ public class MenuDoctor {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 974, 616);
+		frame.setBounds(100, 100, 1300, 616);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
@@ -409,51 +419,51 @@ public class MenuDoctor {
 		btnActualizar.setEnabled(false);
 		
 		JPanel panelActualizacionEnf = new JPanel();
-		panelActualizacionEnf.setBounds(922, 38, 300, 398);
+		panelActualizacionEnf.setBounds(942, 38, 300, 398);
 		panel.add(panelActualizacionEnf);
 		panelActualizacionEnf.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Actualizar Enfermedad", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(255, 0, 0)));
 		panelActualizacionEnf.setBackground(Color.ORANGE);
 		panelActualizacionEnf.setLayout(null);
 		
 		JLabel lblNombreEnfA = new JLabel("Ingrese el nombre de la enfermedad");
-		lblNombreEnfA.setBounds(0, 30, 231, 16);
+		lblNombreEnfA.setBounds(10, 13, 231, 16);
 		panelActualizacionEnf.add(lblNombreEnfA);
 		
 		tfNombreEnfA = new JTextField();
-		tfNombreEnfA.setBounds(10, 59, 160, 28);
+		tfNombreEnfA.setBounds(0, 33, 160, 28);
 		panelActualizacionEnf.add(tfNombreEnfA);
 		tfNombreEnfA.setColumns(10);
 		
 		JLabel lblSintomas = new JLabel("Sintomas de la enfermedad:");
-		lblSintomas.setBounds(0, 92, 185, 16);
+		lblSintomas.setBounds(0, 61, 185, 16);
 		panelActualizacionEnf.add(lblSintomas);
 		
 		JLabel lblDolorDeCabezaA = new JLabel("Dolor de cabeza:");
-		lblDolorDeCabezaA.setBounds(0, 110, 97, 16);
+		lblDolorDeCabezaA.setBounds(10, 85, 97, 16);
 		panelActualizacionEnf.add(lblDolorDeCabezaA);
 		
 		JLabel lblDolorDeEstomagoA = new JLabel("Dolor de estomago:");
-		lblDolorDeEstomagoA.setBounds(0, 139, 114, 16);
+		lblDolorDeEstomagoA.setBounds(10, 114, 114, 16);
 		panelActualizacionEnf.add(lblDolorDeEstomagoA);
 		
 		JLabel lblVomitoA = new JLabel("Vomito:");
-		lblVomitoA.setBounds(0, 168, 56, 16);
+		lblVomitoA.setBounds(10, 143, 56, 16);
 		panelActualizacionEnf.add(lblVomitoA);
 		
 		JLabel lblDiarreaA = new JLabel("Diarrea:");
-		lblDiarreaA.setBounds(151, 168, 56, 16);
+		lblDiarreaA.setBounds(140, 149, 56, 16);
 		panelActualizacionEnf.add(lblDiarreaA);
 		
 		JLabel lblEstornudosA = new JLabel("Estornudos:");
-		lblEstornudosA.setBounds(0, 203, 68, 16);
+		lblEstornudosA.setBounds(-2, 182, 68, 16);
 		panelActualizacionEnf.add(lblEstornudosA);
 		
 		JLabel lblTosA = new JLabel("Tos:");
-		lblTosA.setBounds(161, 197, 36, 16);
+		lblTosA.setBounds(150, 178, 36, 16);
 		panelActualizacionEnf.add(lblTosA);
 		
 		JLabel lblFaltaDeEnergiaA = new JLabel("Falta de energia:");
-		lblFaltaDeEnergiaA.setBounds(0, 238, 130, 16);
+		lblFaltaDeEnergiaA.setBounds(8, 206, 130, 16);
 		panelActualizacionEnf.add(lblFaltaDeEnergiaA);
 		
 		JLabel lblMedicamentoA = new JLabel("Medicamento:");
@@ -470,11 +480,66 @@ public class MenuDoctor {
 		lblNotasAdicionalesA.setBounds(0, 296, 114, 16);
 		panelActualizacionEnf.add(lblNotasAdicionalesA);
 		
-		textField = new JTextField();
-		textField.setBounds(10, 318, 260, 42);
-		panelActualizacionEnf.add(textField);
-		textField.setColumns(10);
-		btnActualizar.addActionListener(oyente1);
+		textNotasEnfA = new JTextField();
+		textNotasEnfA.setBounds(10, 318, 260, 42);
+		panelActualizacionEnf.add(textNotasEnfA);
+		textNotasEnfA.setColumns(10);
+		
+		cmbDolorCabezaA = new JComboBox();
+		cmbDolorCabezaA.setBounds(108, 82, 47, 22);
+		panelActualizacionEnf.add(cmbDolorCabezaA);
+		cmbDolorCabezaA.setModel(new DefaultComboBoxModel(new String[] {"si", "no"}));
+		
+		cmbDolorEstomagoA = new JComboBox();
+		cmbDolorEstomagoA.setBounds(130, 114, 55, 22);
+		panelActualizacionEnf.add(cmbDolorEstomagoA);
+		cmbDolorEstomagoA.setModel(new DefaultComboBoxModel(new String[] {"si ", "no"}));
+		
+		cmbVomitoA = new JComboBox();
+		cmbVomitoA.setBounds(64, 143, 43, 22);
+		panelActualizacionEnf.add(cmbVomitoA);
+		cmbVomitoA.setModel(new DefaultComboBoxModel(new String[] {"si", "no"}));
+		
+		cmbDiarreaA = new JComboBox();
+		cmbDiarreaA.setBounds(204, 146, 47, 22);
+		panelActualizacionEnf.add(cmbDiarreaA);
+		cmbDiarreaA.setModel(new DefaultComboBoxModel(new String[] {"si", "no"}));
+		
+		cmbEstornudosA = new JComboBox();
+		cmbEstornudosA.setBounds(76, 179, 48, 22);
+		panelActualizacionEnf.add(cmbEstornudosA);
+		cmbEstornudosA.setModel(new DefaultComboBoxModel(new String[] {"si", "no"}));
+		
+		cmbTosA = new JComboBox();
+		cmbTosA.setBounds(198, 179, 47, 22);
+		panelActualizacionEnf.add(cmbTosA);
+		cmbTosA.setModel(new DefaultComboBoxModel(new String[] {"si", "no"}));
+		
+		cmbFaltaEnergiaA = new JComboBox();
+		cmbFaltaEnergiaA.setBounds(115, 207, 56, 22);
+		panelActualizacionEnf.add(cmbFaltaEnergiaA);
+		cmbFaltaEnergiaA.setModel(new DefaultComboBoxModel(new String[] {"si", "no"}));
+		
+		cmbDolorCuerpo = new JComboBox();
+		cmbDolorCuerpo.setBounds(130, 235, 36, 22);
+		panelActualizacionEnf.add(cmbDolorCuerpo);
+		cmbDolorCuerpo.setModel(new DefaultComboBoxModel(new String[] {"si", "no"}));
+		
+		
+		btnBuscarEnf = new JButton("Buscar");
+		btnBuscarEnf.setBounds(172, 35, 97, 25);
+		panelActualizacionEnf.add(btnBuscarEnf);
+		btnBuscarEnf.addActionListener(oyente2);
+		
+		btnActualizacionA = new JButton("Actualizacion");
+		btnActualizacionA.setBounds(173, 360, 115, 25);
+		panelActualizacionEnf.add(btnActualizacionA);
+		btnActualizacionA.setEnabled(false);
+		
+		JLabel lblDolorDeCuerpoA = new JLabel("Dolor de cuerpo:");
+		lblDolorDeCuerpoA.setBounds(10, 238, 97, 16);
+		panelActualizacionEnf.add(lblDolorDeCuerpoA);
+		//
 		
 	}
 	
