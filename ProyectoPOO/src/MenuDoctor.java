@@ -93,7 +93,7 @@ public class MenuDoctor {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 1300, 616);
+		frame.setBounds(100, 100, 1256, 504);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
@@ -324,11 +324,11 @@ public class MenuDoctor {
 				window.frame.dispose();
 			}
 		});
-		btnVolver.setBounds(600, 532, 117, 29);
+		btnVolver.setBounds(1125, 448, 117, 29);
 		panel.add(btnVolver);
 		
 		JLabel lblMedicoFunciones = new JLabel("MEDICO - FUNCIONES DE ADMINISTRADOR");
-		lblMedicoFunciones.setBounds(230, 17, 293, 16);
+		lblMedicoFunciones.setBounds(482, 10, 293, 16);
 		panel.add(lblMedicoFunciones);
 		
 		JPanel panelActuaMed = new JPanel();

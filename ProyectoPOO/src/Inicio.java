@@ -70,7 +70,7 @@ public class Inicio {
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(173, 216, 230));
-		frame.setBounds(100, 100, 666, 275);
+		frame.setBounds(100, 100, 629, 255);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
@@ -117,26 +117,29 @@ public class Inicio {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(216, Short.MAX_VALUE)
+					.addContainerGap(193, Short.MAX_VALUE)
 					.addComponent(lblVerificacion)
 					.addGap(203))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(17)
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addContainerGap()
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 322, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 286, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(35, Short.MAX_VALUE))
+					.addContainerGap(23, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(12)
 					.addComponent(lblVerificacion)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))
-					.addContainerGap(24, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addContainerGap(12, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())))
 		);
 		
 		JLabel lblNewLabel = new JLabel("USUARIO: ");
@@ -152,6 +155,8 @@ public class Inicio {
 		btnIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				try {
+				
 				
 				char key[]= passwordField.getPassword(); 
 				String clave= new String(key); 
@@ -161,12 +166,20 @@ public class Inicio {
 					MenuDoctor nuevo = new MenuDoctor(); 
 					nuevo.newScreen();
 					window.frame.dispose();
+				}
+				}
+				
+				catch (Exception ex) {
 					
+					JOptionPane.showMessageDialog(null, "ESTA INGRESANDO UN VALOR INVALIDO, VUELVA A INTENTARLO.");
+			
+					
+				}
 				
 				}
 				
 			}
-		});
+		);
 		
 		JLabel lblMedico = new JLabel("MEDICO");
 		lblMedico.setFont(new Font("Lucida Grande", Font.BOLD, 20));

@@ -49,11 +49,9 @@ public class CatalogoSalud {
 	 * @param nombreEnf
 	 * Agrega una enfermedad a la base de datos
 	 */
-	public void agregarMedicina(String nombre, String precio, String ingestion, String tipoMedicina, String dosis, String notasAdicionales, String nombreEnf)
-	{	
+	public void agregarMedicina(String nombre, String precio, String ingestion, String tipoMedicina, String dosis, String notasAdicionales, String nombreEnf){	
 		String queryInsert = "INSERT INTO medicinas (Nombre, Precio, Ingestion, Tipo, Dosis, NotasAdicionales, Enfermedad) "
                 + "VALUES ('" + nombre + "', '" + precio + "', '" + ingestion + "', '" + tipoMedicina + "', '" + dosis + "', '" + notasAdicionales + "', '" + nombreEnf + "') ";
-		
 		
         manejarBD(queryInsert);
 	
@@ -74,8 +72,7 @@ public class CatalogoSalud {
 	 * Agrega una medicina a la base de datos
 	 */
 	public void agregarEnfermedad(String nombre, String dolorCabeza, String dolorEstomago, String vomito, String diarrea,
-			String estornudo, String tos, String dolorGeneral, String faltaEnergia, String notasAdicionales, String nombreMed)
-	{
+			String estornudo, String tos, String dolorGeneral, String faltaEnergia, String notasAdicionales, String nombreMed){
 		String queryInsert = "INSERT INTO enfermedades (Nombre, DolorCabeza, DolorEstomago, Vomito, Diarrea, Estornudo, Tos, DolorGeneral, FaltaEnergia, NotasAdicionales, Medicina) "
                 + "VALUES ('" + nombre + "', '" + dolorCabeza + "', '" + dolorEstomago + "', '" + vomito + "', '" + diarrea + "', '" + estornudo + "', '" + tos + "', '" + dolorGeneral + 
                 "', '" + faltaEnergia + "', '" + notasAdicionales + "', '" + nombreMed + "') ";
@@ -83,33 +80,6 @@ public class CatalogoSalud {
         manejarBD(queryInsert);
 	}
 	
-	
-	/**
-	 * @param Actualiza una enfermedad, para agregar mas informacion, nuevos sintomas o el nombre de la enen la lista del array de enfermedades 
-	 * 
-	 */
-	public void ActualizarEnfermedad(String nombre, boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea, boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia) {	
-		int i = 0;
-		for(int j = 0; j < listadoEnfermedades.size(); j++)
-		{
-			if (nombre.equals(listadoEnfermedades.get(i).getNombre()))
-			{
-				listadoEnfermedades.get(i).setNombre(nombre);
-				listadoEnfermedades.get(i).setDolorCabeza(dolorCabeza);				
-				listadoEnfermedades.get(i).setDolorEstomago(dolorEstomago);
-				listadoEnfermedades.get(i).setVomito(vomito);
-				listadoEnfermedades.get(i).setDiarrea(diarrea);
-				listadoEnfermedades.get(i).setEstornudo(estornudo);
-				listadoEnfermedades.get(i).setTos(tos);
-				listadoEnfermedades.get(i).setDolorGeneral(dolorGeneral);
-				listadoEnfermedades.get(i).setFaltaEnergia(faltaEnergia);
-				// Necesito saber si no se usan todos los parametros.
-			}
-			else
-				i++;
-		}
-	
-	}
 	
 	/**
 	 * Metodo para probar que las listas de objetos se hayan llenado correctamente
@@ -405,7 +375,10 @@ public class CatalogoSalud {
 	 */
 	public void borrarEnfermedad(String nombreEnf){
 		String queryDelete = "DELETE FROM enfermedades WHERE Nombre = '" + nombreEnf + "'";
+		
 		manejarBD(queryDelete);
+		
+		
 	}
 	
 	
