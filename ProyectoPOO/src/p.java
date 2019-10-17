@@ -5,7 +5,8 @@ public class p {
 		System.out.println(c.verEnfermedad("Gripe"));
 		System.out.println(c.VerMedicina("Pepto"));
 		System.out.println(c.buscarEnfermedad(true, true, true, true, true, true, true, true));
-		c.acualizarMedicina("Pepto", 12.25, "oral", "pastilla", "10", "Prueba de actualizacion", "Diarrea");
+		c.acualizarMedicina("Pepto", 1000, "oral", "pastilla", "10", "Prueba de actualizacion", "Diarrea");
+		//c.agregarMedicina("kj", "1.23", "oral", "pastilla", "Nada", "joaed", "La mala");
 	}
 	//Esto es una prueba
 	

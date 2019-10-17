@@ -49,10 +49,11 @@ public class MenuPaciente extends JFrame {
 	private JButton btnVolver_1;
 	private static MenuPaciente frame;
 	private JPanel NombreDeMedicamento;
+	
 	/**
 	 * Launch the application.
 	 */
-	public static void newScreen() {
+	public void newScreen() {
 		EventQueue.invokeLater(new Runnable() {
 			
 			public void run() {
@@ -73,6 +74,8 @@ public class MenuPaciente extends JFrame {
 	 * Create the frame.  boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea, boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia
 	 */
 	public MenuPaciente() {
+		
+		
 		getContentPane().setBackground(new Color(176, 224, 230));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(null);
@@ -324,7 +327,7 @@ public class MenuPaciente extends JFrame {
 			// TODO Auto-generated method stub
 			if (e.getSource() ==  btnBuscarEnfermedad)
 			{
-				if(txtLaEnfermedad.getText().equals(null))
+				if(txtLaEnfermedad.getText().equals(""))
 				{
 					JOptionPane.showMessageDialog(null,"Ingrese el nombre de una enfermedad porfavor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
 				}

@@ -76,7 +76,6 @@ public class MenuDoctor {
 	 */
 	public static void newScreen() {
 		
-		
 		window = new MenuDoctor();
 		window.frame.setVisible(true);	
 	}
@@ -417,6 +416,7 @@ public class MenuDoctor {
 		btnActualizar.setBounds(189, 355, 89, 23);
 		panelActuaMed.add(btnActualizar);
 		btnActualizar.setEnabled(false);
+		btnActualizar.addActionListener(oyente1);
 		
 		JPanel panelActualizacionEnf = new JPanel();
 		panelActualizacionEnf.setBounds(942, 38, 300, 398);
@@ -545,7 +545,7 @@ public class MenuDoctor {
 	//Listener para realizar acciones luego de presionar los botones
 	private class MiListener implements ActionListener{
 		@Override 
-		public void actionPerformed(java.awt.event.ActionEvent e) {
+		public void actionPerformed(ActionEvent e) {
 			//Si se presiona el primer boton
 			if (e.getSource()==btnAgregarMed) {
 				//medicina.setNombre(txtnombremed.getText());
