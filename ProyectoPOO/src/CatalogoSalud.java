@@ -464,6 +464,22 @@ public class CatalogoSalud {
 			}
 			return notificacion;
 		}
+		
+		public Enfermedad buscarEnfermedadA(String nombre) {
+			Enfermedad NombreBusc = new Enfermedad();
+			boolean seguir = true;
+			
+			int indice = 0;
+			while(seguir && indice < listadoEnfermedades.size()) {
+				if(listadoEnfermedades.get(indice).getNombre().toLowerCase().equals(nombre.toLowerCase())) {
+					NombreBusc = listadoEnfermedades.get(indice);
+					seguir = false;
+				}
+				indice++;
+			}
+			
+			return NombreBusc;
+		}
 }
 
  
