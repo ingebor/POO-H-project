@@ -168,6 +168,12 @@ public class Inicio {
 					nuevo.newScreen();
 					window.frame.dispose();
 				}
+				
+				else {
+					JOptionPane.showMessageDialog(null, "NO ESTÁ INGRESANDO LA CONTRASEÑA O EL USUARIO CORRECTAMENTE, VUELVA A INTENTARLO.");
+
+					
+				}
 				}
 				
 				catch (Exception ex) {
