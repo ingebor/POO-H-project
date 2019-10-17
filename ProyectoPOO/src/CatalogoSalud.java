@@ -437,7 +437,7 @@ public class CatalogoSalud {
 			}
 			return notificacion;
 		}
-		
+		//
 		public Enfermedad buscarEnfermedadA(String nombre) {
 			Enfermedad NombreBusc = new Enfermedad();
 			boolean seguir = true;
