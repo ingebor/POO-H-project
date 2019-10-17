@@ -1,4 +1,5 @@
 import java.awt.EventQueue;
+// LOL 
 
 import javax.swing.JFrame;
 import javax.swing.GroupLayout;

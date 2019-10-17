@@ -25,7 +25,7 @@ public class CatalogoSalud {
     private  ResultSet rsRecords;
     
     private String basededatos = "bdpoo";
-    private String contrasena = "Contradepruebaproyecto2019";
+    private String contrasena = "lol123";
     
 	/**
 	 * @param Constructor de la clase CatalogoSalud
