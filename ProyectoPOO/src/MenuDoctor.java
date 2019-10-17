@@ -595,7 +595,7 @@ public class MenuDoctor {
 				//medicina.setTiposMedicina(txtmedtipo.getText());
 				//medicina.setNotasAdicionales(txtnotasmed.getText());
 				//medicina.setNombreEnf(txtenfermedadmed.getText());
-				catalogo.agregarMedicina(txtnombremed.getText(),txtpreciomed.getText(),txtingestionmed.getText(), txtmedtipo.getText(), txtdosismed.getText(), txtnotasmed.getText(),txtenfermedadmed.getText());
+				JOptionPane.showMessageDialog(null, catalogo.agregarMedicina(txtnombremed.getText(),txtpreciomed.getText(),txtingestionmed.getText(), txtmedtipo.getText(), txtdosismed.getText(), txtnotasmed.getText(),txtenfermedadmed.getText()));
 			}
 			if (e.getSource()==btnAgregarEnf) {
 				/*enfermedad.setNombre(txtnombreenf.getText());
@@ -752,11 +752,21 @@ public class MenuDoctor {
 			}
 			
 			if(e.getSource() == btnBorrarMedicina) {
-				catalogo.borrarMedicina(tfMedBorrar.getText());
+				if(!tfMedBorrar.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, catalogo.borrarMedicina(tfMedBorrar.getText()));
+					tfMedBorrar.setText("");
+				} else {
+					JOptionPane.showMessageDialog(null, "No ingreso medicina para borrar!");
+				}
 			}
 			
 			if(e.getSource() == btnBorrarEnfermedad) {
-				catalogo.borrarEnfermedad(tfEnfBorrar.getText());
+				if(!tfEnfBorrar.getText().equals("")) {
+					catalogo.borrarEnfermedad(tfEnfBorrar.getText());
+					tfEnfBorrar.setText("");
+				} else {
+					JOptionPane.showMessageDialog(null, "No ingreso enfermedad para borrar!");
+				}
 			}
 		}
 	}

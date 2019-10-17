@@ -49,12 +49,19 @@ public class CatalogoSalud {
 	 * @param nombreEnf
 	 * Agrega una enfermedad a la base de datos
 	 */
-	public void agregarMedicina(String nombre, String precio, String ingestion, String tipoMedicina, String dosis, String notasAdicionales, String nombreEnf){	
-		String queryInsert = "INSERT INTO medicinas (Nombre, Precio, Ingestion, Tipo, Dosis, NotasAdicionales, Enfermedad) "
-                + "VALUES ('" + nombre + "', '" + precio + "', '" + ingestion + "', '" + tipoMedicina + "', '" + dosis + "', '" + notasAdicionales + "', '" + nombreEnf + "') ";
+	public String agregarMedicina(String nombre, String precio, String ingestion, String tipoMedicina, String dosis, String notasAdicionales, String nombreEnf){	
+		String mensaje = "";
+		try {
+			String queryInsert = "INSERT INTO medicinas (Nombre, Precio, Ingestion, Tipo, Dosis, NotasAdicionales, Enfermedad) "
+	                + "VALUES ('" + nombre.toLowerCase() + "', '" + precio + "', '" + ingestion + "', '" + tipoMedicina + "', '" + dosis + "', '" + notasAdicionales + "', '" + nombreEnf + "') ";
+			
+	        manejarBD(queryInsert);
+	        mensaje = "Se ingreso adecuadamente la medicina";
+		}catch(Exception e) {
+			mensaje = "Existe una medicina de mismo nombre dentro de la base de datos";
+		}
 		
-        manejarBD(queryInsert);
-	
+		return mensaje;
 	}
 	
 	/**
@@ -74,7 +81,7 @@ public class CatalogoSalud {
 	public void agregarEnfermedad(String nombre, String dolorCabeza, String dolorEstomago, String vomito, String diarrea,
 			String estornudo, String tos, String dolorGeneral, String faltaEnergia, String notasAdicionales, String nombreMed){
 		String queryInsert = "INSERT INTO enfermedades (Nombre, DolorCabeza, DolorEstomago, Vomito, Diarrea, Estornudo, Tos, DolorGeneral, FaltaEnergia, NotasAdicionales, Medicina) "
-                + "VALUES ('" + nombre + "', '" + dolorCabeza + "', '" + dolorEstomago + "', '" + vomito + "', '" + diarrea + "', '" + estornudo + "', '" + tos + "', '" + dolorGeneral + 
+                + "VALUES ('" + nombre.toLowerCase() + "', '" + dolorCabeza + "', '" + dolorEstomago + "', '" + vomito + "', '" + diarrea + "', '" + estornudo + "', '" + tos + "', '" + dolorGeneral + 
                 "', '" + faltaEnergia + "', '" + notasAdicionales + "', '" + nombreMed + "') ";
 		
         manejarBD(queryInsert);
@@ -373,12 +380,26 @@ public class CatalogoSalud {
 	 * @param nombreEnf
 	 * Toma el nombre de una enfermedad y borra la tupla de la base de datos que tenga este nombre
 	 */
-	public void borrarEnfermedad(String nombreEnf){
-		String queryDelete = "DELETE FROM enfermedades WHERE Nombre = '" + nombreEnf + "'";
+	public String borrarEnfermedad(String nombreEnf){
+		String mensaje = "";
 		
-		manejarBD(queryDelete);
+		boolean bandera = false;
+		for(Enfermedad enfermedad: listadoEnfermedades) {
+			if(enfermedad.getNombre().equals(nombreEnf.toLowerCase())){
+				bandera = true;
+			}
+		}
 		
+		if(bandera) {
+			String queryDelete = "DELETE FROM enfermedades WHERE Nombre = '" + nombreEnf + "'";
+			manejarBD(queryDelete);
+			mensaje = "Borrado exitoso";
+		}
+		else {
+			mensaje = "Ningun nombre coincidio con el ingresado.\nIntente de nuevo";
+		}
 		
+		return mensaje;
 	}
 	
 	
@@ -386,10 +407,25 @@ public class CatalogoSalud {
 		 * @param nombreMed
 		 * Toma el nombre de la medicinay borra la tupla de la base de datos que tenga este nombre
 		 */
-		public void borrarMedicina(String nombreMed){
-		String queryDelete = "DELETE FROM medicinas WHERE Nombre = '" + nombreMed + "'";
-		manejarBD(queryDelete);
-
+		public String borrarMedicina(String nombreMed){
+			String mensaje = "";
+			
+			boolean bandera = false;
+			for(Medicina medicina: listadoMedicinas) {
+				if(medicina.getNombre().equals(nombreMed.toLowerCase())) {
+					bandera = true;
+				}
+			}
+			if(bandera) {
+				String queryDelete = "DELETE FROM medicinas WHERE Nombre = '" + nombreMed + "'";
+				manejarBD(queryDelete);
+				mensaje = "Borrado exitoso";
+			}
+			else {
+				mensaje = "Ningun nombre coincidio con el ingresado.\nIntente de nuevo";
+			}
+			
+			return mensaje;
 	}
 		
 		/**
