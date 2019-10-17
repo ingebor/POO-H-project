@@ -25,7 +25,7 @@ public class CatalogoSalud {
     private  ResultSet rsRecords;
     
     private String basededatos = "bdpoo";
-    private String contrasena = "infobi17";
+    private String contrasena = "Contradepruebaproyecto2019";
     
 	/**
 	 * @param Constructor de la clase CatalogoSalud
@@ -36,7 +36,7 @@ public class CatalogoSalud {
 		listadoEnfermedades = new ArrayList<Enfermedad>();
 		listadoMedicinas = new ArrayList<Medicina>();
 		llenarCatalogo();
-		System.out.println(listadoEnfermedades.get(0).toString());
+
 	}
 	
 	/**
@@ -56,7 +56,7 @@ public class CatalogoSalud {
 	                + "VALUES ('" + nombre.toLowerCase() + "', '" + precio + "', '" + ingestion + "', '" + tipoMedicina + "', '" + dosis + "', '" + notasAdicionales + "', '" + nombreEnf + "') ";
 			
 	        manejarBD(queryInsert);
-	        mensaje = "Se ingreso adecuadamente la medicina";
+	        //mensaje = "Se ingreso adecuadamente la medicina";
 		}catch(Exception e) {
 			mensaje = "Existe una medicina de mismo nombre dentro de la base de datos";
 		}

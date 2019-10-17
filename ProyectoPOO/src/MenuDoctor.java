@@ -74,6 +74,8 @@ public class MenuDoctor {
 	private JTextField tfEnfBorrar;
 	private JButton btnBorrarMedicina;
 	private JButton btnBorrarEnfermedad;
+	private JLabel lblAdAgregarMedicamento;
+	private JLabel lblAdAgregarEnfermedad;
 	
 	/**
 	 * Launch the application.
@@ -192,6 +194,11 @@ public class MenuDoctor {
 		MiListener oyente1 = new MiListener();
 		btnAgregarMed.addActionListener(oyente1);
 		panel_1.add(btnAgregarMed);
+		
+		
+		lblAdAgregarMedicamento = new JLabel("");
+		lblAdAgregarMedicamento.setBounds(12, 346, 176, 16);
+		panel_1.add(lblAdAgregarMedicamento);
 		
 		
 		//Ingresar datos de enfermedad
@@ -318,6 +325,10 @@ public class MenuDoctor {
 		MiListener oyente2 = new MiListener();
 		btnAgregarEnf.addActionListener(oyente2);
 		panel_2.add(btnAgregarEnf);
+		
+		lblAdAgregarEnfermedad = new JLabel("");
+		lblAdAgregarEnfermedad.setBounds(12, 361, 170, 16);
+		panel_2.add(lblAdAgregarEnfermedad);
 		
 		JButton btnVolver = new JButton("VOLVER");
 		btnVolver.addActionListener(new ActionListener() {
@@ -581,108 +592,264 @@ public class MenuDoctor {
 		//
 		
 	}
+	
+	
+	//Validar que las entradas de agregar medicinas no tenga campos vacios o datos incorrectos
+	public int validarAgregarMedicina() {
+		int invalidos = 0;
+		//Validar nombre 
+		if(txtnombremed.getText().equals("")) {
+			txtnombremed.setForeground(Color.red);
+			invalidos++;
+		}
+		
+		//Validar precio 
+		if(!txtpreciomed.getText().equals("")) {
+			try {
+				Integer.parseInt(txtpreciomed.getText());
+				txtpreciomed.setForeground(Color.green);
+			}
+			catch(Exception e) {
+				txtpreciomed.setForeground(Color.red);
+				invalidos++;
+			}
+		}
+		else {
+			txtpreciomed.setForeground(Color.red);
+			invalidos++;
+		}
+		
+		//Validar ingestion 
+		if(txtingestionmed.getText().equals("")) {
+			txtingestionmed.setForeground(Color.red);
+			invalidos++;
+		}
+		else
+			txtingestionmed.setForeground(Color.green);
+		
+		//Validar tipo de medicamento
+		if(txtmedtipo.getText().equals("")) {
+			txtmedtipo.setForeground(Color.red);
+			invalidos++;
+		}
+		else
+			txtmedtipo.setForeground(Color.green);
+		
+		//Validar dosis
+		if(txtdosismed.getText().equals("")) {
+			txtdosismed.setForeground(Color.red);
+			invalidos++;
+		}
+		else
+			txtdosismed.setForeground(Color.green);
+		
+		//Validar tipo de enfermedad
+		if(txtenfermedadmed.getText().equals("")) {
+			txtenfermedadmed.setForeground(Color.red);
+			invalidos++;
+		}
+		else 
+			txtenfermedadmed.setForeground(Color.green);
+		return invalidos;
+	}
+	
+	//Validar que las entradas de agregar enfermedad no tenga campos vacios o datos incorrectos
+	public int validarAgregarEnfermedad() {
+		int invalidos = 0;
+		//Validar nombre 
+		/*if(txtnombreenf.getText().equals("")) {
+			txtnombreenf.setForeground(Color.red);
+			invalidos++;
+		}
+		else
+			txtnombreenf.setForeground(Color.green);*/ 
+		//Ya se tiene una forma de defenderse de esto en el listener del boton
+		
+		//Validar medicamento enfermedad
+		if(txtmedicamentoenf.getText().equals("")) {
+			txtmedicamentoenf.setForeground(Color.red);
+			invalidos++;
+		}
+		else
+			txtmedicamentoenf.setForeground(Color.green);
+		
+		return invalidos;
+	}
+	
+	//Validar que las entradas de actualizar medicinas no tenga campos vacios o datos incorrectos
+	public int validarActualizarMedicina() {
+		int invalidos = 0;
+		//Validar nombre medicamento 
+		if(tfNombreActuaMed.getText().equals("")) {
+			tfNombreActuaMed.setForeground(Color.red);
+			invalidos++;
+		}
+		else 
+			tfNombreActuaMed.setForeground(Color.green);
+		
+		//Validar precio
+		if(!tfActuaPrecio.getText().equals("")) {
+			try {
+				Integer.parseInt(tfActuaPrecio.getText());
+				tfActuaPrecio.setForeground(Color.green);
+			}
+			catch(Exception e) {
+				tfActuaPrecio.setForeground(Color.red);
+				invalidos++;
+			}
+		}
+		else {
+			tfActuaPrecio.setForeground(Color.red);
+			invalidos++;
+		}
+		
+		//Validar ingestion
+		if(tfActuaIngestion.getText().equals("")) {
+			tfActuaIngestion.setForeground(Color.red);
+			invalidos++;
+		}
+		else
+			tfActuaIngestion.setForeground(Color.green);
+		
+		//Validar tipo
+		if(tfActuaTipo.getText().equals("")) {
+			tfActuaTipo.setForeground(Color.red);
+			invalidos++;
+		}
+		else 
+			tfActuaTipo.setForeground(Color.green);
+		
+		//Validar dosis
+		if(tfDosisActua.getText().equals("")) {
+			tfDosisActua.setForeground(Color.red);
+			invalidos++;
+		}
+		else 
+			tfDosisActua.setForeground(Color.green);
+		
+		//Validar enfermedad relacionada 
+		if(tfEnfMedActua.getText().equals("")) {
+			tfEnfMedActua.setForeground(Color.red);
+			invalidos++;
+		}
+		else
+			tfEnfMedActua.setForeground(Color.green);
+		
+		return invalidos;
+	}
+	
+	//Validar que las entradas de actualizar enfermedad no tenga campos vacios o datos incorrectos
+	public int validarActualizarEnfermedad() {
+		int invalidos =0;
+		if (tfMedicamentoA.getText().equals("")) {
+			tfMedicamentoA.setForeground(Color.red);
+			invalidos++;
+		}
+		else 
+			tfMedicamentoA.setForeground(Color.green);
+		return invalidos;
+	}
+	
+	//Limpiar los campos al de agregar medicina al momento de tenerlos todos correctos
+	public void limpiarCamposAgregarMedicina() {
+		txtnombremed.setText(null);
+		txtnombremed.setForeground(Color.black);
+		txtpreciomed.setText(null);
+		txtpreciomed.setForeground(Color.black);
+		txtingestionmed.setText(null);
+		txtingestionmed.setForeground(Color.black);
+		txtmedtipo.setText(null);
+		txtmedtipo.setForeground(Color.black);
+		txtdosismed.setText(null);
+		txtdosismed.setForeground(Color.black);
+		txtenfermedadmed.setText(null);
+		txtenfermedadmed.setForeground(Color.black);
+		txtnotasenf.setText(null);
+		txtnotasmed.setText(null);
+
+	}
+	
+	//Limpiar los campos al de agregar enfermedad al momento de tenerlos todos correctos
+	public void limpiarCamposAgregarEnfermedad() {
+		txtnombreenf.setText(null);
+		txtnombreenf.setForeground(Color.black);
+		txtmedicamentoenf.setText(null);
+		txtmedicamentoenf.setForeground(Color.black);
+		txtnotasenf.setText(null);
+	}
+	
+	//Limpiar los campos al de actualizar medicina al momento de tenerlos todos correctos
+	public void limpiarCamposActualizarMedicamento() {
+		tfNombreActuaMed.setText(null);
+		tfNombreActuaMed.setForeground(Color.black);
+		tfActuaPrecio.setText(null);
+		tfActuaPrecio.setForeground(Color.black);
+		tfActuaIngestion.setText(null);
+		tfActuaIngestion.setForeground(Color.black);
+		tfActuaTipo.setText(null);
+		tfActuaTipo.setForeground(Color.black);
+		tfDosisActua.setText(null);
+		tfDosisActua.setForeground(Color.black);
+		tfEnfMedActua.setText(null);
+		tfEnfMedActua.setForeground(Color.black);
+		tpActuaMed.setText(null);
+	}
+	
+	//Limpiar los campos de actualizar enfermedad al momento de tenerlos todos correctos
+	public void limpiarCamposActualizarEnfermedad() {
+		tfMedicamentoA.setText(null);
+		tfMedicamentoA.setForeground(Color.black);
+		textNotasEnfA.setText(null);
+	}
+	
 	//Listener para realizar acciones luego de presionar los botones
 	private class MiListener implements ActionListener{
 		@Override 
 		public void actionPerformed(ActionEvent e) {
 			//Si se presiona el primer boton
 			if (e.getSource()==btnAgregarMed) {
-				//medicina.setNombre(txtnombremed.getText());
-				//medicina.setDosis(txtdosismed.getText());
-				//medicina.setIngestion(txtingestionmed.getText());
-				//double pr = Double.parseDouble(txtpreciomed.getText());
-				//medicina.setPrecio(pr);
-				//medicina.setTiposMedicina(txtmedtipo.getText());
-				//medicina.setNotasAdicionales(txtnotasmed.getText());
-				//medicina.setNombreEnf(txtenfermedadmed.getText());
-				JOptionPane.showMessageDialog(null, catalogo.agregarMedicina(txtnombremed.getText(),txtpreciomed.getText(),txtingestionmed.getText(), txtmedtipo.getText(), txtdosismed.getText(), txtnotasmed.getText(),txtenfermedadmed.getText()));
+				int vali = validarAgregarMedicina();
+				if (vali==0) {
+					catalogo.agregarMedicina(txtnombremed.getText(),txtpreciomed.getText(),txtingestionmed.getText(), txtmedtipo.getText(), txtdosismed.getText(), txtnotasmed.getText(),txtenfermedadmed.getText());
+					limpiarCamposAgregarMedicina();
+					
+					lblAdAgregarMedicamento.setText("Campos correctos");
+				}
+				else 
+					lblAdAgregarMedicamento.setText(vali+" campos invalidos");
+				
+				//JOptionPane.showMessageDialog(null, catalogo.agregarMedicina(txtnombremed.getText(),txtpreciomed.getText(),txtingestionmed.getText(), txtmedtipo.getText(), txtdosismed.getText(), txtnotasmed.getText(),txtenfermedadmed.getText()));
 			}
 			if (e.getSource()==btnAgregarEnf) {
-				/*enfermedad.setNombre(txtnombreenf.getText());
-				enfermedad.setNotasAdicionales(txtnotasenf.getText());
-				enfermedad.setNombreMed(txtmedicamentoenf.getText());*/
+				int vali = validarAgregarEnfermedad();
+				if (vali==0) {
+					
+					String diarr = (String)cmbdiarreaenf.getSelectedItem();
+					
+					String dolor1 = (String)cmbdolorcabezaenf.getSelectedItem();
+					
+					String dolor2 = (String)cmbdolorestomagoenf.getSelectedItem();
+					
+					String dolor3 =(String)cmbdolorcuerpoenf.getSelectedItem();
+					
+					String est = (String)cmbestornudosenf.getSelectedItem();
+					
+					String ener = (String)cmbfaltaenergiaenf.getSelectedItem();
 				
-				String diarr = (String)cmbdiarreaenf.getSelectedItem();
-				/*boolean diarrea = false;
-				if(diarr.equals("Si")) {
-					diarrea = true;
-				}
-				else if (diarr.equals("No")){
-					diarrea = false;
-				}
-				enfermedad.setDiarrea(diarrea);*/
+					String to = (String)cmbtosenf.getSelectedItem();
+					
+					String vom = (String)cmbvomitoenf.getSelectedItem();
+					
+					catalogo.agregarEnfermedad(txtnombreenf.getText(), dolor1, dolor2, vom, diarr, est, to, dolor3, ener, txtnotasenf.getText(), txtmedicamentoenf.getText());
+					limpiarCamposAgregarEnfermedad();
+					lblAdAgregarEnfermedad.setText("Campos correctos");
 				
-				String dolor1 = (String)cmbdolorcabezaenf.getSelectedItem();
-				/*boolean dolorC = false;
-				if(dolor1.equals("Si")) {
-					dolorC = true;
-				}
-				else if (dolor1.equals("No")) {
-					dolorC=false;
-				}
-				enfermedad.setDolorCabeza(dolorC);*/
-				
-				String dolor2 = (String)cmbdolorestomagoenf.getSelectedItem();
-				/*boolean dolorE = false;
-				if (dolor2.equals("Si")) {
-					dolorE = true;
-				}
-				else if (dolor2.equals("No")) {
-					dolorE = false;
-				}
-				enfermedad.setDolorEstomago(dolorE);*/
-				
-				String dolor3 =(String)cmbdolorcuerpoenf.getSelectedItem();
-				/*boolean dolorG = false;
-				if (dolor3.equals("Si")) {
-					dolorG = true;
-				}
-				else if (dolor3.equals("No")) {
-					dolorG = false;
-				}
-				enfermedad.setDolorGeneral(dolorG);*/
-				
-				String est = (String)cmbestornudosenf.getSelectedItem();
-				/*boolean estornudo = false;
-				if (est.equals("Si")) {
-					estornudo = true;
-				}
-				if (est.equals("No")) {
-					estornudo = false;
-				}
-				enfermedad.setEstornudo(estornudo);*/
-				
-				String ener = (String)cmbfaltaenergiaenf.getSelectedItem();
-				/*boolean energia = false;
-				if (ener.equals("Si")) {
-					energia = true;
-				}
-				else if (ener.equals("No")){
-					energia = false;
-				}
-				enfermedad.setFaltaEnergia(energia);*/
-			
-				String to = (String)cmbtosenf.getSelectedItem();
-				/*boolean tos = false;
-				if(to.equals("Si")) {
-					tos = true;
-				}
-				else if (to.equals("No")) {
-					tos = false;
-				}
-				enfermedad.setTos(tos);*/
-				
-				String vom = (String)cmbvomitoenf.getSelectedItem();
-				/*boolean vomito = false;
-				if (vom.equals("Si")) {
-					vomito = true;
-				}
-				else if (vom.equals("No")) {
-					vomito = false;
-				}
-				enfermedad.setVomito(vomito);*/
 				
 				catalogo.agregarEnfermedad(txtnombreenf.getText(), dolor1, dolor2, vom, diarr, est, to, dolor3, ener, txtnotasenf.getText(), txtmedicamentoenf.getText());
+				//else mostrar invalidos en label
+				}
+				else 
+					lblAdAgregarEnfermedad.setText(vali+" campos invalidos");
 			}
 			if (e.getSource() == btnBuscar) {
 				if(!tfNombreActuaMed.getText().equals("")) {

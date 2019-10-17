@@ -173,7 +173,7 @@ public class Inicio {
 				catch (Exception ex) {
 					
 					JOptionPane.showMessageDialog(null, "ESTA INGRESANDO UN VALOR INVALIDO, VUELVA A INTENTARLO.");
-			
+					ex.printStackTrace();
 					
 				}
 				
