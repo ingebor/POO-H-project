@@ -27,6 +27,7 @@ public class Inicio {
 	 * Launch the application.
 	 */
 	public static void main(String []args) {
+		
 		try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -70,7 +71,7 @@ public class Inicio {
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(173, 216, 230));
-		frame.setBounds(100, 100, 666, 275);
+		frame.setBounds(100, 100, 629, 255);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
@@ -117,26 +118,29 @@ public class Inicio {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(216, Short.MAX_VALUE)
+					.addContainerGap(193, Short.MAX_VALUE)
 					.addComponent(lblVerificacion)
 					.addGap(203))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(17)
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addContainerGap()
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 322, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 286, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(35, Short.MAX_VALUE))
+					.addContainerGap(23, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(12)
 					.addComponent(lblVerificacion)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))
-					.addContainerGap(24, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addContainerGap(12, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())))
 		);
 		
 		JLabel lblNewLabel = new JLabel("USUARIO: ");
@@ -151,25 +155,41 @@ public class Inicio {
 		JButton btnIngresar = new JButton("INGRESAR");
 		btnIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					char key[]= passwordField.getPassword(); 
-					String clave= new String(key); 
-					
-					if (textUsuario.getText().equals("admin") && clave.equals("12345")) { 
-						
-						MenuDoctor nuevo = new MenuDoctor(); 
-						nuevo.newScreen();
-						window.frame.dispose();
-					}
 				
+				try {
+				
+				
+				char key[]= passwordField.getPassword(); 
+				String clave= new String(key); 
+				
+				if (textUsuario.getText().equals("admin") && clave.equals("12345")) { 
 					
+					MenuDoctor nuevo = new MenuDoctor(); 
+					nuevo.newScreen();
+					window.frame.dispose();
+				}
+				
+				else {
+					JOptionPane.showMessageDialog(null, "NO ESTÁ INGRESANDO LA CONTRASEÑA O EL USUARIO CORRECTAMENTE, VUELVA A INTENTARLO.");
+
+					
+				}
+				}
+				
+				catch (Exception ex) {
+					
+					JOptionPane.showMessageDialog(null, "ESTA INGRESANDO UN VALOR INVALIDO, VUELVA A INTENTARLO.");
+			
+					
+				}
+				
+				}
 				
 			}
-		});
+		);
 		
 		JLabel lblMedico = new JLabel("MEDICO");
 		lblMedico.setFont(new Font("Lucida Grande", Font.BOLD, 20));
-		
-		JLabel label = new JLabel("");
 		
 		
 		
@@ -182,26 +202,24 @@ public class Inicio {
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createSequentialGroup()
-							.addContainerGap(19, Short.MAX_VALUE)
-							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
 								.addGroup(gl_panel.createSequentialGroup()
+									.addGap(19)
 									.addComponent(lblContrasena, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED))
-								.addGroup(gl_panel.createSequentialGroup()
+								.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+									.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 									.addComponent(lblNewLabel)
 									.addGap(17)))
 							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-								.addComponent(textUsuario, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-								.addComponent(passwordField, Alignment.LEADING, 181, 181, 181)))
+								.addComponent(textUsuario, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+								.addComponent(passwordField, Alignment.LEADING)))
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(107)
 							.addComponent(btnIngresar))
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(110)
-							.addComponent(lblMedico))
-						.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-							.addContainerGap(254, Short.MAX_VALUE)
-							.addComponent(label)))
+							.addComponent(lblMedico)))
 					.addContainerGap())
 		);
 		gl_panel.setVerticalGroup(
@@ -219,34 +237,9 @@ public class Inicio {
 						.addComponent(lblContrasena))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(btnIngresar)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(label)
-					.addGap(12))
+					.addGap(26))
 		);
 		panel.setLayout(gl_panel);
 		frame.getContentPane().setLayout(groupLayout);
 	}
-	
-	/*public int validarEntradas() {
-		int invalidos = 0;
-		//Validar que el usuario no este vacio
-		if(textUsuario.getText().equals("")) {
-			textUsuario.setForeground(Color.red);
-			invalidos++;
-		}
-		else 
-			textUsuario.setForeground(Color.green);
-		if(passwordField.getText().equals("")) {
-			passwordField.setForeground(Color.red);
-			invalidos++;
-		}
-		else 
-			passwordField.setForeground(Color.green);
-		return invalidos; 
-	}
-	
-	public void limpiarCamposIngreso() {
-		textUsuario.setText(null);
-		passwordField.setText(null);
-	}*/
 }
