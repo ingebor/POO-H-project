@@ -672,6 +672,45 @@ public class MenuDoctor {
 					
 				}
 			}
+			if (e.getSource() == btnBuscarEnf) {
+				if(!tfNombreEnfA.getText().equals("")) {
+					Enfermedad buscada = catalogo.buscarEnfermedadA(tfNombreActuaMed.getText());
+					cmbDolorCabezaA.setToolTipText(String.valueOf(buscada.isDolorCabeza()));
+					cmbDolorEstomagoA.setToolTipText(String.valueOf(buscada.isDolorEstomago()));
+					cmbVomitoA.setToolTipText(String.valueOf(buscada.isVomito()));
+					cmbDiarreaA.setToolTipText(String.valueOf(buscada.isDiarrea()));
+					cmbEstornudosA.setToolTipText(String.valueOf(buscada.isEstornudo()));
+					cmbTosA.setToolTipText(String.valueOf(buscada.isTos()));
+					cmbDolorCuerpo.setToolTipText(String.valueOf(buscada.isDolorGeneral()));
+					cmbFaltaEnergiaA.setToolTipText(String.valueOf(buscada.isFaltaEnergia()));
+					
+					btnActualizacionA.setEnabled(true);
+					JOptionPane.showMessageDialog(null, "Se le han colocado los valores actuales de los atributos\nen las casillas correspondientes. Cambie los valores que desee\n"
+							+ "y de click en actualizar");
+				}else {
+					JOptionPane.showMessageDialog(null, "No ingreso nombre de la Enfermedad!");
+				}
+			}
+			if (e.getSource() == btnActualizacionA) {
+				try {
+					String dolorC = (String)cmbDolorCabezaA.getSelectedItem();
+					String dolorE = (String)cmbDolorEstomagoA.getSelectedItem();
+					String vomito = (String)cmbVomitoA.getSelectedItem();
+					String diarrea = (String)cmbDiarreaA.getSelectedItem();
+					String estor = (String)cmbEstornudosA.getSelectedItem();
+					String tos = (String)cmbTosA.getSelectedItem();
+					String dol = (String)cmbDolorCuerpo.getSelectedItem();
+					String fEn = (String)cmbFaltaEnergiaA.getSelectedItem();
+					
+				JOptionPane.showMessageDialog(null, catalogo.acualizarEnfermedad(tfNombreEnfA.getText(), Boolean.parseBoolean(dolorC), Boolean.parseBoolean(dolorE), 
+						Boolean.parseBoolean(vomito), Boolean.parseBoolean(diarrea), Boolean.parseBoolean(estor), Boolean.parseBoolean(tos), Boolean.parseBoolean(dol),
+						Boolean.parseBoolean(fEn), textNotasEnfA.getText(), tfMedicamentoA.getText()));
+					
+				btnActualizar.setEnabled(false);
+				}catch(Exception e0) {
+					
+				}
+			}
 		}
 	}
 }
