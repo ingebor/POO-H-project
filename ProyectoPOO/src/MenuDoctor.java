@@ -697,7 +697,17 @@ public class MenuDoctor {
 		return invalidos;
 	}
 	
-	
+	//Validar que las entradas de actualizar enfermedad no tenga campos vacios o datos incorrectos
+	public int validarActualizarEnfermedad() {
+		int invalidos =0;
+		if (tfMedicamentoA.getText().equals("")) {
+			tfMedicamentoA.setForeground(Color.red);
+			invalidos++;
+		}
+		else 
+			tfMedicamentoA.setForeground(Color.green);
+		return invalidos;
+	}
 	
 	//Limpiar los campos al de agregar medicina al momento de tenerlos todos correctos
 	public void limpiarCamposAgregarMedicina() {
@@ -740,6 +750,13 @@ public class MenuDoctor {
 		tfEnfMedActua.setText(null);
 		tfEnfMedActua.setForeground(Color.black);
 		tpActuaMed.setText(null);
+	}
+	
+	//Limpiar los campos de actualizar enfermedad al momento de tenerlos todos correctos
+	public void limpiarCamposActualizarEnfermedad() {
+		tfMedicamentoA.setText(null);
+		tfMedicamentoA.setForeground(Color.black);
+		textNotasEnfA.setText(null);
 	}
 	
 	//Listener para realizar acciones luego de presionar los botones

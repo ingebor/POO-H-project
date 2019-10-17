@@ -26,6 +26,7 @@ import javax.swing.JTextPane;
 public class MenuPaciente extends JFrame {
 
 	private JPanel contentPane;
+	private JPanel PanelInstruct;
 	private JPanel panelIngreso;
 	private JButton btnIngresoSintomas;
 	private JButton btnBuscarEnfermedad;
@@ -49,6 +50,14 @@ public class MenuPaciente extends JFrame {
 	private JButton btnVolver_1;
 	private static MenuPaciente frame;
 	private JPanel NombreDeMedicamento;
+	private JButton INSTRUCT;
+	private JLabel lblEnElPanel;
+	private JTextPane txtpnEnEstePanel;
+	private JLabel lblEnElPanel_1;
+	private JTextPane txtpnEnEstePanel_1;
+	private JLabel lblNewLabel_1;
+	private JTextPane txtpnEnEstePanel_2;
+	private JButton CerrarInstruct;
 	/**
 	 * Launch the application.
 	 */
@@ -78,6 +87,46 @@ public class MenuPaciente extends JFrame {
 		getContentPane().setLayout(null);
 		getContentPane().setBounds(10, 21, 644, 19);
 		miListener oyente = new miListener();
+				
+				JPanel PanelInstruct = new JPanel();
+				PanelInstruct.setBounds(0, 0, 539, 368);
+				getContentPane().add(PanelInstruct);
+				PanelInstruct.setEnabled(false);
+				PanelInstruct.setLayout(null);
+				
+				JButton CerrarInstruct = new JButton("Cerrar");
+				CerrarInstruct.setBounds(440, 334, 89, 23);
+				PanelInstruct.add(CerrarInstruct);
+				
+				lblEnElPanel = new JLabel("En el panel \"Busqueda por enfermedad por Sintomas\": ");
+				lblEnElPanel.setFont(new Font("Tahoma", Font.BOLD, 12));
+				lblEnElPanel.setBounds(10, 24, 400, 32);
+				PanelInstruct.add(lblEnElPanel);
+				
+				txtpnEnEstePanel = new JTextPane();
+				txtpnEnEstePanel.setText("En este panel podra ingresar los sintomas que usted padece, para que despues le salgas los resultados de las posibles enfermedades que puede tener.");
+				txtpnEnEstePanel.setBounds(214, 53, 196, 78);
+				PanelInstruct.add(txtpnEnEstePanel);
+				
+				lblEnElPanel_1 = new JLabel("En el panel \"Buscar Enfermedad\":");
+				lblEnElPanel_1.setFont(new Font("Tahoma", Font.BOLD, 12));
+				lblEnElPanel_1.setBounds(10, 170, 239, 14);
+				PanelInstruct.add(lblEnElPanel_1);
+				
+				txtpnEnEstePanel_1 = new JTextPane();
+				txtpnEnEstePanel_1.setText("En este panel solo es necesario que ingrese el nombre de una enfermedad y luego se le dispondra informacion sobre esto.");
+				txtpnEnEstePanel_1.setBounds(172, 186, 170, 78);
+				PanelInstruct.add(txtpnEnEstePanel_1);
+				
+				lblNewLabel_1 = new JLabel("En el panel \"Buscar Medicamentos\":");
+				lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 12));
+				lblNewLabel_1.setBounds(10, 277, 279, 14);
+				PanelInstruct.add(lblNewLabel_1);
+				
+				txtpnEnEstePanel_2 = new JTextPane();
+				txtpnEnEstePanel_2.setText("En este panel solo es necesario que ingrese el nombre de un medicamento y luego se le dispondra informacion sobre esto.");
+				txtpnEnEstePanel_2.setBounds(50, 302, 239, 55);
+				PanelInstruct.add(txtpnEnEstePanel_2);
 		
 				panelIngreso = new JPanel();
 				panelIngreso.setBackground(new Color(224, 255, 255));
@@ -256,9 +305,9 @@ public class MenuPaciente extends JFrame {
 		lblPaciene.setBounds(32, 18, 225, 49);
 		getContentPane().add(lblPaciene);
 		
-		JButton btnNewButton = new JButton("Instrucciones de ayuda");
-		btnNewButton.setBounds(379, 29, 322, 23);
-		getContentPane().add(btnNewButton);
+		JButton INSTRUCT = new JButton("Instrucciones de ayuda");
+		INSTRUCT.setBounds(379, 29, 322, 23);
+		getContentPane().add(INSTRUCT);
 		
 		btnVolver_1 = new JButton("Volver");
 		btnVolver_1.setBounds(285, 28, 89, 23);
@@ -431,8 +480,20 @@ public class MenuPaciente extends JFrame {
 			if (e.getSource() ==  btnVolver)
 			{
 				Inicio nuevo = new Inicio(); 
+	
 				frame.dispose();
 			
+			}
+			if(e.getSource() == INSTRUCT)
+			{
+				
+				PanelInstruct.setEnabled(true);
+				
+			}
+			if(e.getSource() == CerrarInstruct)
+			{
+				
+				PanelInstruct.setEnabled(false);
 			}
 		}
 		
