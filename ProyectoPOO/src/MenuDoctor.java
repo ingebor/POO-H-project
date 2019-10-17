@@ -70,6 +70,8 @@ public class MenuDoctor {
 	private JTextField tfNombreEnfA;
 	private JTextField tfMedicamentoA;
 	private JTextField textNotasEnfA;
+	private JLabel lblAdAddMed;
+	private JLabel lblAddEnf;
 	
 	/**
 	 * Launch the application.
@@ -189,6 +191,10 @@ public class MenuDoctor {
 		MiListener oyente1 = new MiListener();
 		btnAgregarMed.addActionListener(oyente1);
 		panel_1.add(btnAgregarMed);
+		
+		lblAdAddMed = new JLabel("");
+		lblAdAddMed.setBounds(12, 342, 176, 25);
+		panel_1.add(lblAdAddMed);
 		
 		
 		//Ingresar datos de enfermedad
@@ -315,6 +321,10 @@ public class MenuDoctor {
 		MiListener oyente2 = new MiListener();
 		btnAgregarEnf.addActionListener(oyente2);
 		panel_2.add(btnAgregarEnf);
+		
+		lblAddEnf = new JLabel("");
+		lblAddEnf.setBounds(12, 361, 170, 16);
+		panel_2.add(lblAddEnf);
 		
 		JButton btnVolver = new JButton("VOLVER");
 		btnVolver.addActionListener(new ActionListener() {
@@ -687,6 +697,8 @@ public class MenuDoctor {
 		return invalidos;
 	}
 	
+	
+	
 	//Limpiar los campos al de agregar medicina al momento de tenerlos todos correctos
 	public void limpiarCamposAgregarMedicina() {
 		txtnombremed.setText(null);
@@ -748,10 +760,14 @@ public class MenuDoctor {
 					//medicina.setNombreEnf(txtenfermedadmed.getText());
 					catalogo.agregarMedicina(txtnombremed.getText(),txtpreciomed.getText(),txtingestionmed.getText(), txtmedtipo.getText(), txtdosismed.getText(), txtnotasmed.getText(),txtenfermedadmed.getText());
 					limpiarCamposAgregarMedicina();
+					lblAdAddMed.setText("Campos correctos");
 				}
 				//else en el label de advertencias 
+				else 
+					lblAdAddMed.setText(vali+" campos invalidos");
 			}
 			if (e.getSource()==btnAgregarEnf) {
+				//System.out.println("Prueba");
 				int vali = validarAgregarEnfermedad();
 				if (vali==0) {
 					/*enfermedad.setNombre(txtnombreenf.getText());
@@ -840,8 +856,11 @@ public class MenuDoctor {
 					
 					catalogo.agregarEnfermedad(txtnombreenf.getText(), dolor1, dolor2, vom, diarr, est, to, dolor3, ener, txtnotasenf.getText(), txtmedicamentoenf.getText());
 					limpiarCamposAgregarEnfermedad();
+					lblAddEnf.setText("Campos correctos");
 				}
 				//else mostrar invalidos en label
+				else 
+					lblAddEnf.setText(vali+" campos invalidos");
 			}
 			if (e.getSource() == btnBuscar) {
 				if(!tfNombreActuaMed.getText().equals("")) {
