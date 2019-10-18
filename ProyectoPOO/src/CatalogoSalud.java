@@ -132,9 +132,9 @@ public class CatalogoSalud {
             			rsRecords.getString("enfermedades.Medicina")));
                 
             }
-            for(Enfermedad a:listadoEnfermedades) {
-            	System.out.println(a.getNombre());
-            }
+            //for(Enfermedad a:listadoEnfermedades) {
+            	//System.out.println(a.getNombre());
+            //}
         }catch (Exception e0) {
             System.out.println("error show rows");
             e0.printStackTrace();
@@ -157,9 +157,9 @@ public class CatalogoSalud {
             			,rsRecords.getString("medicinas.Tipo"),rsRecords.getString("medicinas.Dosis"),rsRecords.getString("medicinas.NotasAdicionales")
             			,rsRecords.getString("medicinas.Enfermedad")));
             }
-            for(Medicina a:listadoMedicinas) {
-            	System.out.println(a.getNombre());
-            }
+            //for(Medicina a:listadoMedicinas) {
+            	//System.out.println(a.getNombre());
+            //}
         }catch (Exception e0) {
             System.out.println("error show rows");
             e0.printStackTrace();
