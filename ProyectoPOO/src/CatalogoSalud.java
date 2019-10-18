@@ -24,6 +24,7 @@ public class CatalogoSalud {
 	private Statement stQuery;
     private  ResultSet rsRecords;
     
+    private String usuario = "root";
     private String basededatos = "bdpoo";
     private String contrasena = "lol123";
     
