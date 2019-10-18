@@ -431,6 +431,7 @@ public class MenuDoctor {
 		btnActualizar.setBounds(189, 355, 89, 23);
 		panelActuaMed.add(btnActualizar);
 		btnActualizar.setEnabled(false);
+		btnActualizar.addActionListener(oyente1);
 		
 		JPanel panelActualizacionEnf = new JPanel();
 		panelActualizacionEnf.setBounds(945, 38, 312, 398);
@@ -543,12 +544,13 @@ public class MenuDoctor {
 		btnBuscarEnf = new JButton("Buscar");
 		btnBuscarEnf.setBounds(180, 31, 97, 25);
 		panelActualizacionEnf.add(btnBuscarEnf);
-		btnBuscarEnf.addActionListener(oyente2);
+		btnBuscarEnf.addActionListener(oyente1);
 		
 		btnActualizacionA = new JButton("Actualizacion");
 		btnActualizacionA.setBounds(173, 360, 115, 25);
 		panelActualizacionEnf.add(btnActualizacionA);
 		btnActualizacionA.setEnabled(false);
+		btnActualizacionA.addActionListener(oyente1);
 		
 		JLabel lblDolorDeCuerpoA = new JLabel("Dolor de cuerpo:");
 		lblDolorDeCuerpoA.setBounds(10, 238, 97, 16);
@@ -806,14 +808,7 @@ public class MenuDoctor {
 			if (e.getSource()==btnAgregarMed) {
 				int vali = validarAgregarMedicina();
 				if (vali==0) {
-					//medicina.setNombre(txtnombremed.getText());
-					//medicina.setDosis(txtdosismed.getText());
-					//medicina.setIngestion(txtingestionmed.getText());
-					//double pr = Double.parseDouble(txtpreciomed.getText());
-					//medicina.setPrecio(pr);
-					//medicina.setTiposMedicina(txtmedtipo.getText());
-					//medicina.setNotasAdicionales(txtnotasmed.getText());
-					//medicina.setNombreEnf(txtenfermedadmed.getText());
+	
 					catalogo.agregarMedicina(txtnombremed.getText(),txtpreciomed.getText(),txtingestionmed.getText(), txtmedtipo.getText(), txtdosismed.getText(), txtnotasmed.getText(),txtenfermedadmed.getText());
 					limpiarCamposAgregarMedicina();
 					lblAdAddMed.setText("Campos correctos");
@@ -823,94 +818,90 @@ public class MenuDoctor {
 					lblAdAddMed.setText(vali+" campos invalidos");
 			}
 			if (e.getSource()==btnAgregarEnf) {
-				//System.out.println("Prueba");
+				
 				int vali = validarAgregarEnfermedad();
 				if (vali==0) {
-					/*enfermedad.setNombre(txtnombreenf.getText());
-					enfermedad.setNotasAdicionales(txtnotasenf.getText());
-					enfermedad.setNombreMed(txtmedicamentoenf.getText());*/
+					String dolorCabeza = "";
+					String dolorEstomago = "";
+					String vomito = "";
+					String diarrea = "";
+					String estornudo = "";
+					String tos = "";
+					String dolorGeneral = "";
+					String faltaEnergia = "";
+					String notasAdicionales = "";
+					String nombreMed = "";
 					
+					if(cmbdolorcabezaenf.getSelectedItem().equals("Si")) {
+						dolorCabeza = "true";
+					} else {
+						dolorCabeza = "false";
+					}
+					
+					if(cmbdolorestomagoenf.getSelectedItem().equals("Si")) {
+						dolorEstomago = "true";
+					} else {
+						dolorEstomago = "false";
+					}
+					
+					if(cmbvomitoenf.getSelectedItem().equals("Si")) {
+						vomito = "true";
+					} else {
+						vomito = "false";
+					}
+					
+					if(cmbdiarreaenf.getSelectedItem().equals("Si")) {
+						diarrea = "true";
+					} else {
+						diarrea = "false";
+					}
+					
+					if(cmbestornudosenf.getSelectedItem().equals("Si")) {
+						estornudo = "true";
+					} else {
+						estornudo = "false";
+					}
+					
+					if(cmbtosenf.getSelectedItem().equals("Si")) {
+						tos = "true";
+					} else {
+						tos = "false";
+					}
+					
+					if(cmbdolorcuerpoenf.getSelectedItem().equals("Si")) {
+						dolorGeneral = "true";
+					} else {
+						dolorGeneral = "false";
+					}
+					
+					if(cmbfaltaenergiaenf.getSelectedItem().equals("Si")) {
+						faltaEnergia = "true";
+					} else {
+						faltaEnergia = "false";
+					}
+					
+					notasAdicionales = txtnotasenf.getText();
+					nombreMed = txtmedicamentoenf.getText();
+					/*
 					String diarr = (String)cmbdiarreaenf.getSelectedItem();
-					/*boolean diarrea = false;
-					if(diarr.equals("Si")) {
-						diarrea = true;
-					}
-					else if (diarr.equals("No")){
-						diarrea = false;
-					}
-					enfermedad.setDiarrea(diarrea);*/
-					
+
 					String dolor1 = (String)cmbdolorcabezaenf.getSelectedItem();
-					/*boolean dolorC = false;
-					if(dolor1.equals("Si")) {
-						dolorC = true;
-					}
-					else if (dolor1.equals("No")) {
-						dolorC=false;
-					}
-					enfermedad.setDolorCabeza(dolorC);*/
-					
+
 					String dolor2 = (String)cmbdolorestomagoenf.getSelectedItem();
-					/*boolean dolorE = false;
-					if (dolor2.equals("Si")) {
-						dolorE = true;
-					}
-					else if (dolor2.equals("No")) {
-						dolorE = false;
-					}
-					enfermedad.setDolorEstomago(dolorE);*/
-					
+
 					String dolor3 =(String)cmbdolorcuerpoenf.getSelectedItem();
-					/*boolean dolorG = false;
-					if (dolor3.equals("Si")) {
-						dolorG = true;
-					}
-					else if (dolor3.equals("No")) {
-						dolorG = false;
-					}
-					enfermedad.setDolorGeneral(dolorG);*/
-					
+
 					String est = (String)cmbestornudosenf.getSelectedItem();
-					/*boolean estornudo = false;
-					if (est.equals("Si")) {
-						estornudo = true;
-					}
-					if (est.equals("No")) {
-						estornudo = false;
-					}
-					enfermedad.setEstornudo(estornudo);*/
 					
 					String ener = (String)cmbfaltaenergiaenf.getSelectedItem();
-					/*boolean energia = false;
-					if (ener.equals("Si")) {
-						energia = true;
-					}
-					else if (ener.equals("No")){
-						energia = false;
-					}
-					enfermedad.setFaltaEnergia(energia);*/
-				
+	
 					String to = (String)cmbtosenf.getSelectedItem();
-					/*boolean tos = false;
-					if(to.equals("Si")) {
-						tos = true;
-					}
-					else if (to.equals("No")) {
-						tos = false;
-					}
-					enfermedad.setTos(tos);*/
-					
+				
 					String vom = (String)cmbvomitoenf.getSelectedItem();
-					/*boolean vomito = false;
-					if (vom.equals("Si")) {
-						vomito = true;
-					}
-					else if (vom.equals("No")) {
-						vomito = false;
-					}
-					enfermedad.setVomito(vomito);*/
-					
+				
 					catalogo.agregarEnfermedad(txtnombreenf.getText(), dolor1, dolor2, vom, diarr, est, to, dolor3, ener, txtnotasenf.getText(), txtmedicamentoenf.getText());
+					*/
+					catalogo.agregarEnfermedad(txtnombreenf.getText().toLowerCase(), dolorCabeza, dolorEstomago, vomito, diarrea, estornudo, tos, dolorGeneral, faltaEnergia, notasAdicionales, nombreMed);
 					limpiarCamposAgregarEnfermedad();
 					lblAddEnf.setText("Campos correctos");
 				}
@@ -939,6 +930,121 @@ public class MenuDoctor {
 				try {
 				JOptionPane.showMessageDialog(null, catalogo.acualizarMedicina(tfNombreActuaMed.getText(), Double.parseDouble(tfActuaPrecio.getText()), tfActuaIngestion.getText(), 
 						tfActuaTipo.getText(), tfDosisActua.getText(), tpActuaMed.getText(), tfEnfMedActua.getText()));
+					
+				btnActualizar.setEnabled(false);
+				}catch(Exception e0) {
+					
+				}
+			}
+			if (e.getSource() == btnBuscarEnf) {
+				if(!tfNombreEnfA.getText().equals("")) {
+					Enfermedad buscada = catalogo.buscarEnfermedadA(tfNombreEnfA.getText());
+					System.out.println(buscada.isDolorCabeza());
+					if(buscada.isDolorCabeza() == true) {
+						cmbDolorCabezaA.setSelectedIndex(0);
+					} else {
+						cmbDolorCabezaA.setSelectedIndex(1);
+					}
+					
+					if(buscada.isDolorEstomago()) {
+						cmbDolorEstomagoA.setSelectedIndex(0);
+					} else {
+						cmbDolorEstomagoA.setSelectedIndex(1);
+					}
+					
+					if(buscada.isVomito()) {
+						cmbVomitoA.setSelectedIndex(0);
+					} else {
+						cmbVomitoA.setSelectedIndex(1);
+					}
+					
+					if(buscada.isDiarrea()) {
+						cmbDiarreaA.setSelectedIndex(0);
+					} else {
+						cmbDiarreaA.setSelectedIndex(1);
+					}
+					
+					if(buscada.isEstornudo()) {
+						cmbEstornudosA.setSelectedIndex(0);
+					} else {
+						cmbEstornudosA.setSelectedIndex(1);
+					}
+					
+					if(buscada.isTos()) {
+						cmbTosA.setSelectedIndex(0);
+					} else {
+						cmbTosA.setSelectedIndex(1);
+					}
+					
+					if(buscada.isDolorGeneral()) {
+						cmbDolorCuerpo.setSelectedIndex(0);
+					} else {
+						cmbDolorCuerpo.setSelectedIndex(1);
+					}
+					
+					if(buscada.isFaltaEnergia()) {
+						cmbFaltaEnergiaA.setSelectedIndex(0);
+					} else {
+						cmbFaltaEnergiaA.setSelectedIndex(1);
+					}
+					/* 
+					cmbDolorCabezaA.setToolTipText(String.valueOf(buscada.isDolorCabeza()));
+					cmbDolorEstomagoA.setToolTipText(String.valueOf(buscada.isDolorEstomago()));
+					cmbVomitoA.setToolTipText(String.valueOf(buscada.isVomito()));
+					cmbDiarreaA.setToolTipText(String.valueOf(buscada.isDiarrea()));
+					cmbEstornudosA.setToolTipText(String.valueOf(buscada.isEstornudo()));
+					cmbTosA.setToolTipText(String.valueOf(buscada.isTos()));
+					cmbDolorCuerpo.setToolTipText(String.valueOf(buscada.isDolorGeneral()));
+					cmbFaltaEnergiaA.setToolTipText(String.valueOf(buscada.isFaltaEnergia()));
+					*/
+					
+					tfMedicamentoA.setText(buscada.getNombreMed());
+					textNotasEnfA.setText(buscada.getNotasAdicionales());
+					
+					btnActualizacionA.setEnabled(true);
+					JOptionPane.showMessageDialog(null, "Se le han colocado los valores actuales de los atributos\nen las casillas correspondientes. Cambie los valores que desee\n"
+							+ "y de click en actualizar");
+				}else {
+					JOptionPane.showMessageDialog(null, "No ingreso nombre de la Enfermedad!");
+				}
+			}
+			if (e.getSource() == btnActualizacionA) {
+				boolean dolorCabeza = false;
+				boolean dolorEstomago = false;
+				boolean vomito = false;
+				boolean diarrea = false;
+				boolean estornudo = false;
+				boolean tos = false;
+				boolean dolorGeneral = false;
+				boolean faltaEnergia = false;
+				try {
+					if(cmbDolorCabezaA.getSelectedItem().equals("si")){
+						dolorCabeza = true;
+					}
+					if(cmbDolorEstomagoA.getSelectedItem().equals("si")) {
+						dolorEstomago = true;
+					}
+					if(cmbVomitoA.getSelectedItem().equals("si")) {
+						vomito = true;
+					}
+					if(cmbDiarreaA.getSelectedItem().equals("si")) {
+						diarrea = true;
+					}
+					if(cmbEstornudosA.getSelectedItem().equals("si")) {
+						estornudo = true;
+					}
+					if(cmbTosA.getSelectedItem().equals("si")) {
+						tos = true;
+					}
+					if(cmbDolorCuerpo.getSelectedItem().equals("si")) {
+						dolorGeneral = true;
+					}
+					if(cmbFaltaEnergiaA.getSelectedItem().equals("si")) {
+						faltaEnergia = true;
+					}
+					
+				JOptionPane.showMessageDialog(null, catalogo.actualizarEnfermedad(tfNombreEnfA.getText(), dolorCabeza, dolorEstomago,vomito, diarrea, 
+						estornudo, tos, dolorGeneral, faltaEnergia, textNotasEnfA.getText(), tfMedicamentoA.getText()));
 					
 				btnActualizar.setEnabled(false);
 				}catch(Exception e0) {

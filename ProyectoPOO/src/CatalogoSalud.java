@@ -37,7 +37,6 @@ public class CatalogoSalud {
 		listadoEnfermedades = new ArrayList<Enfermedad>();
 		listadoMedicinas = new ArrayList<Medicina>();
 		llenarCatalogo();
-		//System.out.println(listadoEnfermedades.get(0).toString());
 	}
 	
 	/**
@@ -48,7 +47,7 @@ public class CatalogoSalud {
 	 * @param dosis
 	 * @param notasAdicionales
 	 * @param nombreEnf
-	 * Agrega una enfermedad a la base de datos
+	 * Agrega una medicina a la base de datos
 	 */
 	public String agregarMedicina(String nombre, String precio, String ingestion, String tipoMedicina, String dosis, String notasAdicionales, String nombreEnf){	
 		String mensaje = "";
@@ -57,6 +56,7 @@ public class CatalogoSalud {
 	                + "VALUES ('" + nombre.toLowerCase() + "', '" + precio + "', '" + ingestion + "', '" + tipoMedicina + "', '" + dosis + "', '" + notasAdicionales + "', '" + nombreEnf + "') ";
 			
 	        manejarBD(queryInsert);
+	        listadoMedicinas.add(new Medicina(nombre, Double.parseDouble(precio), ingestion, tipoMedicina, dosis, notasAdicionales, nombreEnf));
 	        mensaje = "Se ingreso adecuadamente la medicina";
 		}catch(Exception e) {
 			mensaje = "Existe una medicina de mismo nombre dentro de la base de datos";
@@ -85,6 +85,9 @@ public class CatalogoSalud {
                 + "VALUES ('" + nombre.toLowerCase() + "', '" + dolorCabeza + "', '" + dolorEstomago + "', '" + vomito + "', '" + diarrea + "', '" + estornudo + "', '" + tos + "', '" + dolorGeneral + 
                 "', '" + faltaEnergia + "', '" + notasAdicionales + "', '" + nombreMed + "') ";
 		
+		listadoEnfermedades.add(new Enfermedad(nombre, Boolean.parseBoolean(dolorCabeza), Boolean.parseBoolean(dolorEstomago), Boolean.parseBoolean(vomito),
+				Boolean.parseBoolean(diarrea), Boolean.parseBoolean(estornudo), Boolean.parseBoolean(tos), Boolean.parseBoolean(dolorGeneral), Boolean.parseBoolean(faltaEnergia),
+				notasAdicionales, nombreMed));
         manejarBD(queryInsert);
 	}
 	
@@ -442,7 +445,7 @@ public class CatalogoSalud {
 		 * @param notasAdicionales
 		 * Este metodo actualiza una enfermedad de la base de datos
 		 */
-		public String acualizarEnfermedad(String nombre,boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea, boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia, String notasAdicionales,String medicina) {
+		public String actualizarEnfermedad(String nombre,boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea, boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia, String notasAdicionales,String medicina) {
 			String notificacion = "";
 			try {
 				boolean seguir = false;
@@ -456,8 +459,8 @@ public class CatalogoSalud {
 				}
 				
 				if(seguir) {
-					String query = "UPDATE enfermedades  SET DolorCabeza ='" + dolorCabeza + "', DolorEstomago ='" + dolorEstomago + "', Vomito = '" + vomito  + "', Diarrea = '" + 
-						diarrea + "', Estornudo = '" + estornudo + "', Tos ='" + tos + "', DolorGeneral ='" + dolorGeneral + "', FaltaEnergia ='" + faltaEnergia +  "', NotasAdicionales ='" + notasAdicionales + "', Medicina ='" + medicina + "' WHERE  Nombre ='" + nombre + "';";
+					String query = "UPDATE enfermedades  SET DolorCabeza ='" + String.valueOf(dolorCabeza) + "', DolorEstomago ='" + String.valueOf(dolorEstomago) + "', Vomito = '" + String.valueOf(vomito)  + "', Diarrea = '" + 
+						String.valueOf(diarrea) + "', Estornudo = '" + String.valueOf(estornudo) + "', Tos ='" + String.valueOf(tos) + "', DolorGeneral ='" + String.valueOf(dolorGeneral) + "', FaltaEnergia ='" + String.valueOf(faltaEnergia) +  "', NotasAdicionales ='" + notasAdicionales + "', Medicina ='" + medicina + "' WHERE  Nombre ='" + nombre + "';";
 				
 					manejarBD(query);
 					
@@ -487,7 +490,7 @@ public class CatalogoSalud {
 				}
 				indice++;
 			}
-			
+			System.out.println(indice);
 			return NombreBusc;
 		}
 }
