@@ -110,7 +110,7 @@ public class CatalogoSalud {
 		try {
             ConeccionBD BD = null;
             
-            BD = new ConeccionBD("jdbc:mysql://localhost:3306/" + basededatos, "root", contrasena);
+            BD = new ConeccionBD("jdbc:mysql://localhost:3306/" + basededatos, usuario, contrasena);
             BD.getNewConnection();
             
             String query = "SELECT * FROM enfermedades ORDER BY Nombre ASC";
@@ -140,7 +140,7 @@ public class CatalogoSalud {
 		try {
             ConeccionBD BD = null;
             
-            BD = new ConeccionBD("jdbc:mysql://localhost:3306/" + basededatos, "root", contrasena);
+            BD = new ConeccionBD("jdbc:mysql://localhost:3306/" + basededatos, usuario, contrasena);
             BD.getNewConnection();
             
             String query = "SELECT * FROM medicinas ORDER BY Nombre ASC";
@@ -363,7 +363,7 @@ public class CatalogoSalud {
 	private void manejarBD(String query){
         ConeccionBD BD = null;
         try{
-            BD = new ConeccionBD("jdbc:mysql://localhost:3306/" + basededatos, "root", contrasena);
+            BD = new ConeccionBD("jdbc:mysql://localhost:3306/" + basededatos, usuario, contrasena);
             BD.getNewConnection();
 
             Statement stQuery = BD.getCurrentConnection().createStatement();
