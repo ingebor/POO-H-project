@@ -949,6 +949,7 @@ public class MenuDoctor {
 				if(!tfBorrarMed.getText().equals("")) {
 					try {
 						JOptionPane.showMessageDialog(null, catalogo.borrarMedicina(tfBorrarMed.getText()));
+						tfBorrarMed.setText("");
 					}catch(Exception e0){
 						JOptionPane.showMessageDialog(null, "Ocurrio un error, intente de nuevo");
 					}
@@ -957,7 +958,16 @@ public class MenuDoctor {
 				}
 			}
 			if (e.getSource() == btnBorrarEnf) {
-				
+				if(!tfBorrarEnf.getText().equals("")) {
+					try {
+						JOptionPane.showMessageDialog(null, catalogo.borrarEnfermedad(tfBorrarEnf.getText()));
+						tfBorrarEnf.setText("");
+					}catch(Exception e0) {
+						JOptionPane.showMessageDialog(null, "Ocurrio un error, intente de nuevo");
+					}
+				}else {
+					JOptionPane.showMessageDialog(null, "La casilla esta vacia!");
+				}
 			}
 		}
 	}
