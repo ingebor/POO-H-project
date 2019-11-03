@@ -11,7 +11,7 @@ public class p {
 		System.out.println("Esto es una prueba");
 		*/
 		
-		System.out.println(c.borrarDoctor("Juane"));
+		System.out.println(c.agregarDoctor("Juan", "Mancuerna"));
 	}
 	//Esto es una prueba
 	

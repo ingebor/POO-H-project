@@ -566,6 +566,14 @@ public class CatalogoSalud {
 			
 			return mensaje;
 		}
+		
+		/**
+		 * Acceso al listado de doctores
+		 * @return listadoDoctores el listado de Doctores
+		 */
+		public List<Doctor> getListadoDoctores(){
+			return listadoDoctores;
+		}
 }
 
  

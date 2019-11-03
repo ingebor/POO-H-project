@@ -12,6 +12,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JToggleButton;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JOptionPane;
@@ -23,6 +24,7 @@ public class Inicio {
 	private JTextField textUsuario;
 	private JPasswordField passwordField;
 	private static Inicio window;
+	private CatalogoSalud catalogo;
 
 	/**
 	 * Launch the application.
@@ -63,7 +65,9 @@ public class Inicio {
 	 * Create the application.
 	 */
 	public Inicio() {
+		catalogo = new CatalogoSalud();
 		initialize();
+		
 	}
 
 	/**
@@ -158,12 +162,25 @@ public class Inicio {
 			public void actionPerformed(ActionEvent e) {
 				
 				try {
-				
+				List <Doctor> listaDoc = catalogo.getListadoDoctores();
 				
 				char key[]= passwordField.getPassword(); 
 				String clave= new String(key); 
 				
-				if (textUsuario.getText().equals("admin") && clave.equals("12345")) { 
+				int i = 0;
+				boolean acceso = false;
+				while(i < listaDoc.size() && !acceso) {
+					if((textUsuario.getText().equals(listaDoc.get(i).getNombreUsuario()) && clave.equals(listaDoc.get(i).getContrasena()))){
+						acceso = true;
+					}
+					i++;
+				}
+				
+				if((textUsuario.getText().equals("admin") && clave.equals("12345"))) {
+					acceso = true;
+				}
+				
+				if (acceso) { 
 					
 					MenuDoctor nuevo = new MenuDoctor(); 
 					nuevo.newScreen();
@@ -171,7 +188,7 @@ public class Inicio {
 				}
 				
 				else {
-					JOptionPane.showMessageDialog(null, "NO ESTÁ INGRESANDO LA CONTRASEÑA O EL USUARIO CORRECTAMENTE, VUELVA A INTENTARLO.");
+					JOptionPane.showMessageDialog(null, "NO ESTA INGRESANDO LA CONTRASENA O EL USUARIO CORRECTAMENTE, VUELVA A INTENTARLO.");
 
 					
 				}
