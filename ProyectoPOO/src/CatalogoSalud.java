@@ -25,7 +25,7 @@ public class CatalogoSalud {
     private  ResultSet rsRecords;
     
     private String usuario = "";
-    private String basededatos = "bdpoo";
+    private String basededatos = "";
     private String contrasena = "";
     
 	/**
