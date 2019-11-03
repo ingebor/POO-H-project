@@ -20,6 +20,7 @@ import java.sql.Statement;
 public class CatalogoSalud {
 	private List <Enfermedad> listadoEnfermedades;
 	private List <Medicina> listadoMedicinas;
+	private List <Doctor> listadoDoctores;
 	
 	private Statement stQuery;
     private  ResultSet rsRecords;
@@ -36,6 +37,7 @@ public class CatalogoSalud {
 
 		listadoEnfermedades = new ArrayList<Enfermedad>();
 		listadoMedicinas = new ArrayList<Medicina>();
+		listadoDoctores = new ArrayList<Doctor>();
 		llenarCatalogo();
 	}
 	
@@ -160,6 +162,17 @@ public class CatalogoSalud {
             //for(Medicina a:listadoMedicinas) {
             	//System.out.println(a.getNombre());
             //}
+            
+            String querydDoc = "SELECT * FROM usuario";
+            stQuery = BD.getCurrentConnection().createStatement();
+            rsRecords = stQuery.executeQuery(querydDoc);
+            
+            listadoDoctores.clear();
+            while(rsRecords.next()) {
+            	listadoDoctores.add(new Doctor(rsRecords.getString("usuario.NombreUsuario"), rsRecords.getString("usuario.Contrasenia")));
+            }
+            
+            BD.closeConnection();
         }catch (Exception e0) {
             System.out.println("error show rows");
             e0.printStackTrace();
@@ -492,6 +505,66 @@ public class CatalogoSalud {
 			}
 			System.out.println(indice);
 			return NombreBusc;
+		}
+		
+		/**
+		 * Agrega un nuevo doctor a la base de datos, para que este pueda entrar a la interfaz de doctor del programa
+		 * @param nombreUsuario el nombre de Ususario del doctor
+		 * @param contrasena la contrasenia del doctor
+		 * @return Un mensaje que indica el resultado de la operacion
+		 */
+		public String agregarDoctor(String nombreUsuario, String contrasena) {
+			String mensaje = "";
+			boolean mismoUsuario = false;
+			int i = 0;
+			for(Doctor doctor: listadoDoctores) {
+				if(doctor.getNombreUsuario().equals(nombreUsuario)) {
+					mismoUsuario = true;
+				}
+			}
+			
+			if(mismoUsuario) {
+				mensaje = "El nombre de usuario ingresado ya existe";
+			}else {
+				String queryInsert = "INSERT INTO usuario (NombreUsuario, Contrasenia) VALUES ('" + nombreUsuario + "', '" + contrasena + "')";
+				manejarBD(queryInsert);
+				listadoDoctores.add(new Doctor(nombreUsuario, contrasena));
+				
+				mensaje = "Nuevo Doctor agregado";
+			}
+			
+			return mensaje;
+		}
+		
+		/**
+		 * Borra a un doctor de la base de datos en la tabla usuario
+		 * @param nombreUsuario el nombre de Usuario del doctor que se va a borrar
+		 * @return Un mensaje que indica el resultado de la operación
+		 */
+		public String borrarDoctor(String nombreUsuario) {
+			String mensaje = "";
+			boolean banderaBorrar = false;
+			int indice = 0;
+			int i = 0;
+			
+			while(!banderaBorrar && i < listadoDoctores.size() && listadoDoctores.size() != 0) {
+				if(listadoDoctores.get(i).getNombreUsuario().equals(nombreUsuario)) {
+					banderaBorrar = true;
+					indice = i;
+				}
+				i++;
+			}
+			
+			if(banderaBorrar) {
+				String queryDelete = "DELETE FROM usuario WHERE NombreUsuario = '" + nombreUsuario + "'";
+				manejarBD(queryDelete);
+				listadoDoctores.remove(indice);
+				mensaje = "Borrado Exitoso";
+			}else {
+				mensaje = "No existe ningun doctor con ese nombre de usuario\n o bien, no hay doctores en la base de datos";
+			}
+			
+			return mensaje;
 		}
 }
 
