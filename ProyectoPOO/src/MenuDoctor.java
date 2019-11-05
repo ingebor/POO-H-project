@@ -937,6 +937,7 @@ public class MenuDoctor {
 					
 				btnActualizar.setEnabled(false);
 				}catch(Exception e0) {
+					JOptionPane.showMessageDialog(null, "Ha ingresado algo incorrecto");
 					
 				}
 			}
