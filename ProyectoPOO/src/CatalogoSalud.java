@@ -27,9 +27,9 @@ public class CatalogoSalud {
     private ConeccionBD BD;
     
     //Al hacer push o commit, dejen estas solo en comillas
-    private String usuario = "root";
-    private String basededatos = "bdpoo";
-    private String contrasena = "infobi17";
+    private String usuario = "";
+    private String basededatos = "";
+    private String contrasena = "";
     
 	/**
 	 * @param Constructor sin parametros de la clase CatalogoSalud
