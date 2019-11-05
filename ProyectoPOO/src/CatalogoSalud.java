@@ -27,7 +27,7 @@ public class CatalogoSalud {
     
     private String usuario = "root";
     private String basededatos = "bdpoo";
-    private String contrasena = "Andres9740";
+    private String contrasena = "infobi17";
     
 	/**
 	 * @param Constructor de la clase CatalogoSalud

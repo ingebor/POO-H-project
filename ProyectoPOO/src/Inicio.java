@@ -25,6 +25,10 @@ public class Inicio {
 	private JPasswordField passwordField;
 	private static Inicio window;
 	private CatalogoSalud catalogo;
+	private JTextField tfUsAdmin;
+	private JTextField tfCnAdmin;
+	private JPasswordField pfAdmin;
+	private JButton btnIngresarAdmin;
 
 	/**
 	 * Launch the application.
@@ -76,7 +80,7 @@ public class Inicio {
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(173, 216, 230));
-		frame.setBounds(100, 100, 629, 255);
+		frame.setBounds(100, 100, 629, 391);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
@@ -119,19 +123,26 @@ public class Inicio {
 					.addGap(75))
 		);
 		panel_1.setLayout(gl_panel_1);
+		
+		JPanel panelAdmin = new JPanel();
+		panelAdmin.setBackground(new Color(224, 255, 255));
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
+			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(193, Short.MAX_VALUE)
-					.addComponent(lblVerificacion)
-					.addGap(203))
-				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 322, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 286, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(23, Short.MAX_VALUE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addComponent(lblVerificacion)
+							.addGap(203))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 322, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 286, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(panelAdmin, GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE)
+							.addContainerGap())))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -139,14 +150,43 @@ public class Inicio {
 					.addGap(12)
 					.addComponent(lblVerificacion)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addContainerGap(12, Short.MAX_VALUE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap())))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(panelAdmin, GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+					.addContainerGap())
 		);
+		panelAdmin.setLayout(null);
+		
+		JLabel lblAdministrador = new JLabel("ADMINISTRADOR");
+		lblAdministrador.setFont(new Font("Dialog", Font.BOLD, 20));
+		lblAdministrador.setBounds(10, 11, 305, 19);
+		panelAdmin.add(lblAdministrador);
+		
+		tfUsAdmin = new JTextField();
+		tfUsAdmin.setBounds(116, 36, 187, 27);
+		panelAdmin.add(tfUsAdmin);
+		tfUsAdmin.setColumns(10);
+		
+		pfAdmin = new JPasswordField();
+		pfAdmin.setBounds(116, 72, 187, 27);
+		panelAdmin.add(pfAdmin);
+		
+		JLabel lblUsuario = new JLabel("USUARIO:");
+		lblUsuario.setBounds(10, 41, 96, 14);
+		panelAdmin.add(lblUsuario);
+		
+		JLabel lblContrasena_1 = new JLabel("CONTRASENA:");
+		lblContrasena_1.setBounds(10, 77, 96, 14);
+		panelAdmin.add(lblContrasena_1);
+		
+		miListener oyente = new miListener();
+		
+		btnIngresarAdmin = new JButton("INGRESAR");
+		btnIngresarAdmin.setBounds(358, 52, 89, 23);
+		panelAdmin.add(btnIngresarAdmin);
+		btnIngresarAdmin.addActionListener(oyente);
 		
 		JLabel lblNewLabel = new JLabel("USUARIO: ");
 		
@@ -259,5 +299,17 @@ public class Inicio {
 		);
 		panel.setLayout(gl_panel);
 		frame.getContentPane().setLayout(groupLayout);
+	}
+	
+	private class miListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if(e.getSource() == btnIngresarAdmin) {
+				
+			}
+		}
+		
 	}
 }
