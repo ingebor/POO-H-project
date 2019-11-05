@@ -27,9 +27,9 @@ public class CatalogoSalud {
     private ConeccionBD BD;
     
     //Al hacer push o commit, dejen estas solo en comillas
-    private String usuario = "";
-    private String basededatos = "";
-    private String contrasena = "";
+    private String usuario = "root";
+    private String basededatos = "bdpoo";
+    private String contrasena = "Andres9740";
     
 	/**
 	 * @param Constructor sin parametros de la clase CatalogoSalud
@@ -40,7 +40,7 @@ public class CatalogoSalud {
 		listadoEnfermedades = new ArrayList<Enfermedad>();
 		listadoMedicinas = new ArrayList<Medicina>();
 		listadoDoctores = new ArrayList<Doctor>();
-		BD = new ConeccionBD("jdbc:mysql://localhost:3306/" + basededatos, usuario, contrasena);
+		BD = new ConeccionBD("jdbc:mysql://localhost/"+basededatos+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC" , usuario, contrasena );
 		BD.getNewConnection();
 		
 		llenarCatalogo();
