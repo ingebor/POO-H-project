@@ -20,6 +20,7 @@ import java.awt.Color;
 import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
 import javax.swing.JTextPane;
+import javax.swing.JScrollPane;
 
 public class MenuDoctor {
 
@@ -183,12 +184,6 @@ public class MenuDoctor {
 		panel_1.add(txtenfermedadmed);
 		txtenfermedadmed.setColumns(10);
 		
-		//Notas adicionales del medicamento
-		txtnotasmed = new JTextField();
-		txtnotasmed.setBounds(12, 242, 286, 76);
-		panel_1.add(txtnotasmed);
-		txtnotasmed.setColumns(10);
-		
 		//Boton para agregar el medicamento
 		btnAgregarMed = new JButton("Agregar");
 		btnAgregarMed.setBounds(200, 342, 97, 25);
@@ -199,6 +194,15 @@ public class MenuDoctor {
 		lblAdAddMed = new JLabel("");
 		lblAdAddMed.setBounds(12, 342, 176, 25);
 		panel_1.add(lblAdAddMed);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(15, 259, 283, 71);
+		panel_1.add(scrollPane);
+		
+		//Notas adicionales del medicamento
+		txtnotasmed = new JTextField();
+		scrollPane.setViewportView(txtnotasmed);
+		txtnotasmed.setColumns(10);
 		
 		
 		//Ingresar datos de enfermedad
