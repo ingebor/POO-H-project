@@ -25,6 +25,7 @@ public class CatalogoSalud {
 	private Statement stQuery;
     private  ResultSet rsRecords;
     
+    //Al hacer push o commit, dejen estas solo en comillas
     private String usuario = "";
     private String basededatos = "";
     private String contrasena = "";

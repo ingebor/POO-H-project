@@ -11,6 +11,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+/**
+ * @author Grupo 2
+ * @date 04/11/2019
+ * La clase proporciona un menu para el administrador
+ */
 public class menuAdmin {
 
 	private JFrame frame;

@@ -18,6 +18,11 @@ import java.awt.Font;
 import javax.swing.JOptionPane;
 import java.awt.Color;
 
+/**
+ * @author Grupo 2
+ * @date 
+ * Crea la ventana de Inicio de la aplicacion
+ */
 public class Inicio {
 
 	private JFrame frame;
