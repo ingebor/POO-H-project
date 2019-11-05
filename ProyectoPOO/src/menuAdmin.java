@@ -22,9 +22,14 @@ public class menuAdmin {
 	private JTextField tfNDU;
 	private JTextField tfNDC;
 	private JPanel panelNDoctor;
+	private JPanel panelBorrarD;
 	private JButton btnAgregar;
 	private JButton btnVolver;
+	private JButton btnBorrar;
 	private CatalogoSalud catalogo;
+	private JLabel lblIngreseElNombre;
+	private JLabel lblNombreDeUsuario_1;
+	private JTextField tfUsBo;
 
 	/**
 	 * Launch the application.
@@ -55,7 +60,7 @@ public class menuAdmin {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 354, 289);
+		frame.setBounds(100, 100, 730, 289);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -97,6 +102,30 @@ public class menuAdmin {
 		btnVolver = new JButton("VOLVER");
 		btnVolver.setBounds(20, 208, 89, 23);
 		frame.getContentPane().add(btnVolver);
+		
+		panelBorrarD = new JPanel();
+		panelBorrarD.setBorder(new TitledBorder(null, "Eliminar Doctor", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panelBorrarD.setBounds(338, 11, 366, 176);
+		frame.getContentPane().add(panelBorrarD);
+		panelBorrarD.setLayout(null);
+		
+		lblIngreseElNombre = new JLabel("Ingrese el nombre de usuario del doctor y pulse borrar:");
+		lblIngreseElNombre.setBounds(10, 22, 346, 14);
+		panelBorrarD.add(lblIngreseElNombre);
+		
+		lblNombreDeUsuario_1 = new JLabel("Nombre de Usuario:");
+		lblNombreDeUsuario_1.setBounds(10, 47, 121, 14);
+		panelBorrarD.add(lblNombreDeUsuario_1);
+		
+		tfUsBo = new JTextField();
+		tfUsBo.setBounds(130, 44, 197, 27);
+		panelBorrarD.add(tfUsBo);
+		tfUsBo.setColumns(10);
+		
+		btnBorrar = new JButton("BORRAR");
+		btnBorrar.setBounds(10, 94, 89, 23);
+		panelBorrarD.add(btnBorrar);
+		btnBorrar.addActionListener(oyente);
 		btnVolver.addActionListener(oyente);
 	}
 
@@ -124,6 +153,14 @@ public class menuAdmin {
 				Inicio inicio = new Inicio();
 				inicio.getFrame().setVisible(true);
 				frame.dispose();
+			}
+			
+			if(e.getSource() == btnBorrar) {
+				if(!tfUsBo.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, catalogo.borrarDoctor(tfUsBo.getText()));
+				}else {
+					JOptionPane.showMessageDialog(null, "No ingreso doctor para borrar!");
+				}
 			}
 		}
 		

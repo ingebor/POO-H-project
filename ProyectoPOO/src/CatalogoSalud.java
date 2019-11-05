@@ -26,9 +26,9 @@ public class CatalogoSalud {
     private  ResultSet rsRecords;
     
     //Al hacer push o commit, dejen estas solo en comillas
-    private String usuario = "";
-    private String basededatos = "";
-    private String contrasena = "";
+    private String usuario = "root";
+    private String basededatos = "bdpoo";
+    private String contrasena = "infobi17";
     
 	/**
 	 * @param Constructor sin parametros de la clase CatalogoSalud
