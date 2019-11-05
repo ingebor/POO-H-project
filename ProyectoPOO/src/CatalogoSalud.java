@@ -25,9 +25,9 @@ public class CatalogoSalud {
 	private Statement stQuery;
     private  ResultSet rsRecords;
     
-    private String usuario = "root";
-    private String basededatos = "bdpoo";
-    private String contrasena = "infobi17";
+    private String usuario = "";
+    private String basededatos = "";
+    private String contrasena = "";
     
 	/**
 	 * @param Constructor de la clase CatalogoSalud

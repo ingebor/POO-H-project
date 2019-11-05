@@ -56,7 +56,8 @@ public class Inicio {
 				try {
 					window = new Inicio();
 					window.frame.setVisible(true);
-					JOptionPane.showMessageDialog(null, "Para ingresar como medico, utilice \"admin\"\ncomo usuario y \"12345\" como contrasenia");
+					JOptionPane.showMessageDialog(null, "Para ingresar como medico, utilice \"doctor\"\ncomo usuario y \"12345\" como contrasenia\n"
+							+ "Para ingresar como administrador, utilice \"Grupo2\"\ncomo usuario y \"ElWatt123\" como contrasenia");
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -184,7 +185,7 @@ public class Inicio {
 		miListener oyente = new miListener();
 		
 		btnIngresarAdmin = new JButton("INGRESAR");
-		btnIngresarAdmin.setBounds(358, 52, 89, 23);
+		btnIngresarAdmin.setBounds(358, 52, 103, 27);
 		panelAdmin.add(btnIngresarAdmin);
 		btnIngresarAdmin.addActionListener(oyente);
 		
@@ -216,7 +217,7 @@ public class Inicio {
 					i++;
 				}
 				
-				if((textUsuario.getText().equals("admin") && clave.equals("12345"))) {
+				if((textUsuario.getText().equals("doctor") && clave.equals("12345"))) {
 					acceso = true;
 				}
 				
@@ -307,9 +308,19 @@ public class Inicio {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			if(e.getSource() == btnIngresarAdmin) {
-				
+				if(tfUsAdmin.getText().equals("Grupo2") && pfAdmin.getText().equals("ElWatt123")) {
+					menuAdmin NmenuA = new menuAdmin();
+					NmenuA.getFrame().setVisible(true);
+					frame.dispose();
+				} else {
+					JOptionPane.showMessageDialog(null, "No ingreso la informacion adecuada. Intente de nuevo");
+				}
 			}
 		}
 		
+	}
+	
+	public JFrame getFrame() {
+		return frame;
 	}
 }
