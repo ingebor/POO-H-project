@@ -24,6 +24,7 @@ public class CatalogoSalud {
 	
 	private Statement stQuery;
     private  ResultSet rsRecords;
+    private ConeccionBD BD;
     
     //Al hacer push o commit, dejen estas solo en comillas
     private String usuario = "";
@@ -39,6 +40,9 @@ public class CatalogoSalud {
 		listadoEnfermedades = new ArrayList<Enfermedad>();
 		listadoMedicinas = new ArrayList<Medicina>();
 		listadoDoctores = new ArrayList<Doctor>();
+		BD = new ConeccionBD("jdbc:mysql://localhost:3306/" + basededatos, usuario, contrasena);
+		BD.getNewConnection();
+		
 		llenarCatalogo();
 	}
 	
@@ -113,11 +117,10 @@ public class CatalogoSalud {
 	 * Este metodo llena tanto el listado de enfermedades como el de medicinas al crear un catalogoSalud
 	 */
 	private void llenarCatalogo()  {
+		
 		try {
-            ConeccionBD BD = null;
+          
             
-            BD = new ConeccionBD("jdbc:mysql://localhost:3306/" + basededatos, usuario, contrasena);
-            BD.getNewConnection();
             
             String query = "SELECT * FROM enfermedades ORDER BY Nombre ASC";
           
@@ -144,10 +147,6 @@ public class CatalogoSalud {
         }  
 		
 		try {
-            ConeccionBD BD = null;
-            
-            BD = new ConeccionBD("jdbc:mysql://localhost:3306/" + basededatos, usuario, contrasena);
-            BD.getNewConnection();
             
             String query = "SELECT * FROM medicinas ORDER BY Nombre ASC";
           
@@ -173,7 +172,6 @@ public class CatalogoSalud {
             	listadoDoctores.add(new Doctor(rsRecords.getString("usuario.NombreUsuario"), rsRecords.getString("usuario.Contrasenia")));
             }
             
-            BD.closeConnection();
         }catch (Exception e0) {
             System.out.println("error show rows");
             e0.printStackTrace();
@@ -378,11 +376,7 @@ public class CatalogoSalud {
 	 * Permite Insertar, borrar o actualizar una tupla en una tabla de la base de datos
 	 */
 	private void manejarBD(String query){
-        ConeccionBD BD = null;
-        try{
-            BD = new ConeccionBD("jdbc:mysql://localhost:3306/" + basededatos, usuario, contrasena);
-            BD.getNewConnection();
-
+        try{   
             Statement stQuery = BD.getCurrentConnection().createStatement();
 
             String queryManejo = query;
