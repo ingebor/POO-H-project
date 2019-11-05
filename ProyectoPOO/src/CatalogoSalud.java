@@ -31,7 +31,7 @@ public class CatalogoSalud {
     private String contrasena = "";
     
 	/**
-	 * @param Constructor de la clase CatalogoSalud
+	 * @param Constructor sin parametros de la clase CatalogoSalud
 	 */
 	public CatalogoSalud()
 	{
