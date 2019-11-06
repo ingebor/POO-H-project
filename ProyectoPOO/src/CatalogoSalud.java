@@ -30,7 +30,7 @@ public class CatalogoSalud {
     //h
     private String usuario = "root";
     private String basededatos = "bdpoo";
-    private String contrasena = "Contradepruebaproyecto2019";
+    private String contrasena = "12345";
     
 	/**
 	 * @param Constructor sin parametros de la clase CatalogoSalud
@@ -191,14 +191,19 @@ public class CatalogoSalud {
 					
 					mensaje = listadoEnfermedades.get(i).toString();
 				}
-				
+			
 			}
 			catch(Exception e)
 			{
 				mensaje = "Lo sentimos, no se ha encontrado la enfermedad";
 			}
-			
+		
 		}	
+		if(mensaje.equals(""))
+		{
+			mensaje = "Lo sentimos, no se ha encontrado la enfermedad";
+		}
+		
 		return mensaje;	
 	}
 	
@@ -224,6 +229,10 @@ public class CatalogoSalud {
 				mensaje = "Lo sentimos, no se ha encontrado el medicamento.";
 			}
 			
+		}
+		if(mensaje.equals(""))
+		{
+			mensaje = "Lo sentimos, no se ha encontrado la enfermedad";
 		}
 		return mensaje;
 	}
