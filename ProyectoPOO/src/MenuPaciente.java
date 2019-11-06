@@ -22,6 +22,9 @@ import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
 import java.awt.Color;
 import javax.swing.JTextPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
 
 public class MenuPaciente extends JFrame {
 
@@ -43,9 +46,6 @@ public class MenuPaciente extends JFrame {
 	private boolean dolorCabeza, dolorEstomago, vomito, diarrea, estornudo, tos, dolorGeneral, faltaEnergia;
 	private JTextField txtLaEnfermedad;
 	private JTextField textLaMedicina;
-	private JTextPane textPaneBuscarEnfermedad;
-	private JTextPane textPaneMedicamentos;
-	private JTextPane textPaneResultado;
 	private JButton btnVolver_1;
 	private static MenuPaciente frame;
 	private JPanel NombreDeMedicamento;
@@ -54,6 +54,12 @@ public class MenuPaciente extends JFrame {
 	private JButton btnListo;
 	private JLabel lbllisto;
 	private JLabel lblAdIngresarSintomas;
+	private JScrollPane scrollPane;
+	private JTextArea textPaneResultado;
+	private JScrollPane scrollPane_1;
+	private JTextArea textPaneBuscarEnfermedad;
+	private JScrollPane scrollPane_2;
+	private JTextArea textPaneMedicamentos;
 	private JButton btnInstruccion;
 	
 	/**
@@ -206,10 +212,6 @@ public class MenuPaciente extends JFrame {
 		lblResultados.setBounds(10, 283, 83, 14);
 		panelIngreso.add(lblResultados);
 		
-		textPaneResultado = new JTextPane();
-		textPaneResultado.setBounds(10, 308, 282, 206);
-		panelIngreso.add(textPaneResultado);
-		
 		btnListo = new JButton("Listo");
 		btnListo.setBounds(222, 221, 70, 25);
 		miListener escuchar = new miListener();
@@ -228,6 +230,15 @@ public class MenuPaciente extends JFrame {
 		lblAdIngresarSintomas.setBounds(187, 254, 105, 16);
 		panelIngreso.add(lblAdIngresarSintomas);
 		
+		scrollPane = new JScrollPane();
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(10, 319, 286, 177);
+		panelIngreso.add(scrollPane);
+		
+		textPaneResultado = new JTextArea();
+		scrollPane.setViewportView(textPaneResultado);
+		
 		NombreDeMedicamento = new JPanel();
 		NombreDeMedicamento.setBackground(new Color(173, 216, 230));
 		NombreDeMedicamento.setBounds(324, 341, 401, 265);
@@ -239,10 +250,6 @@ public class MenuPaciente extends JFrame {
 		lblNewLabel.setBounds(10, 22, 161, 14);
 		NombreDeMedicamento.add(lblNewLabel);
 		
-		textPaneMedicamentos = new JTextPane();
-		textPaneMedicamentos.setBounds(10, 47, 381, 160);
-		NombreDeMedicamento.add(textPaneMedicamentos);
-		
 		textLaMedicina = new JTextField();
 		textLaMedicina.setBounds(171, 15, 220, 28);
 		NombreDeMedicamento.add(textLaMedicina);
@@ -253,16 +260,21 @@ public class MenuPaciente extends JFrame {
 		btnBuscarMedicina.setBounds(241, 218, 150, 23);
 		NombreDeMedicamento.add(btnBuscarMedicina);
 		
+		scrollPane_2 = new JScrollPane();
+		scrollPane_2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane_2.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane_2.setBounds(20, 49, 363, 157);
+		NombreDeMedicamento.add(scrollPane_2);
+		
+		textPaneMedicamentos = new JTextArea();
+		scrollPane_2.setViewportView(textPaneMedicamentos);
+		
 		JPanel Nombre_De_Enfermedad = new JPanel();
 		Nombre_De_Enfermedad.setBackground(new Color(176, 196, 222));
 		Nombre_De_Enfermedad.setBounds(322, 80, 401, 261);
 		getContentPane().add(Nombre_De_Enfermedad);
 		Nombre_De_Enfermedad.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Buscar enfermedad ", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		Nombre_De_Enfermedad.setLayout(null);
-		
-		textPaneBuscarEnfermedad = new JTextPane();
-		textPaneBuscarEnfermedad.setBounds(10, 65, 381, 151);
-		Nombre_De_Enfermedad.add(textPaneBuscarEnfermedad);
 		
 		btnBuscarEnfermedad = new JButton("Buscar Enfermedad");
 		btnBuscarEnfermedad.setEnabled(true);
@@ -279,6 +291,15 @@ public class MenuPaciente extends JFrame {
 		txtLaEnfermedad.setBounds(183, 24, 208, 30);
 		Nombre_De_Enfermedad.add(txtLaEnfermedad);
 		txtLaEnfermedad.setColumns(10);
+		
+		scrollPane_1 = new JScrollPane();
+		scrollPane_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane_1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane_1.setBounds(20, 58, 358, 157);
+		Nombre_De_Enfermedad.add(scrollPane_1);
+		
+		textPaneBuscarEnfermedad = new JTextArea();
+		scrollPane_1.setViewportView(textPaneBuscarEnfermedad);
 		
 		JLabel lblPaciene = new JLabel("PACIENTE");
 		lblPaciene.setFont(new Font("Lucida Grande", Font.BOLD, 25));

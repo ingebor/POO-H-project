@@ -21,6 +21,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
 import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.JTextArea;
 
 public class MenuDoctor {
 
@@ -31,10 +33,8 @@ public class MenuDoctor {
 	private JTextField txtmedtipo;
 	private JTextField txtdosismed;
 	private JTextField txtenfermedadmed;
-	private JTextField txtnotasmed;
 	private JTextField txtnombreenf;
 	private JTextField txtmedicamentoenf;
-	private JTextField txtnotasenf;
 	private JButton btnAgregarMed;
 	private JComboBox cmbdolorcabezaenf;
 	private JComboBox cmbdolorestomagoenf;
@@ -68,16 +68,20 @@ public class MenuDoctor {
 	private JButton btnActualizar;
 	private JButton btnBuscarEnf;
 	private JButton btnActualizacionA;
-	private JTextPane tpActuaMed;
 	private JTextField tfNombreEnfA;
 	private JTextField tfMedicamentoA;
-	private JTextField textNotasEnfA;
 	private JLabel lblAdAddMed;
 	private JLabel lblAddEnf;
 	private JTextField tfBorrarMed;
 	private JTextField tfBorrarEnf;
 	private JButton btnBorrarMed;
 	private JButton btnBorrarEnf;
+	private JTextArea txtnotasmed;
+	private JTextArea txtnotasenf;
+	private JTextArea tpActuaMed;
+	private JTextArea textNotasEnfA;
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -197,13 +201,13 @@ public class MenuDoctor {
 		panel_1.add(lblAdAddMed);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(15, 259, 283, 71);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(12, 269, 294, 67);
 		panel_1.add(scrollPane);
 		
-		//Notas adicionales del medicamento
-		txtnotasmed = new JTextField();
+		txtnotasmed = new JTextArea();
 		scrollPane.setViewportView(txtnotasmed);
-		txtnotasmed.setColumns(10);
 		
 		
 		//Ingresar datos de enfermedad
@@ -318,12 +322,6 @@ public class MenuDoctor {
 		panel_2.add(txtmedicamentoenf);
 		txtmedicamentoenf.setColumns(10);
 		
-		//Notas adicionales de enfermedad
-		txtnotasenf = new JTextField();
-		txtnotasenf.setBounds(12, 279, 278, 67);
-		panel_2.add(txtnotasenf);
-		txtnotasenf.setColumns(10);
-		
 		//Boton para agregar enfermedad
 		btnAgregarEnf = new JButton("Agregar");
 		btnAgregarEnf.setBounds(194, 357, 97, 25);
@@ -334,6 +332,15 @@ public class MenuDoctor {
 		lblAddEnf = new JLabel("");
 		lblAddEnf.setBounds(12, 361, 170, 16);
 		panel_2.add(lblAddEnf);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane_1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane_1.setBounds(12, 278, 268, 67);
+		panel_2.add(scrollPane_1);
+		
+		txtnotasenf = new JTextArea();
+		scrollPane_1.setViewportView(txtnotasenf);
 		
 		JButton btnVolver = new JButton("VOLVER");
 		btnVolver.addActionListener(new ActionListener() {
@@ -428,14 +435,19 @@ public class MenuDoctor {
 		lblNotasActuaMed.setBounds(10, 247, 123, 14);
 		panelActuaMed.add(lblNotasActuaMed);
 		
-		tpActuaMed = new JTextPane();
-		tpActuaMed.setBounds(10, 270, 268, 74);
-		panelActuaMed.add(tpActuaMed);
-		
 		btnActualizar = new JButton("Actualizar");
 		btnActualizar.setBounds(189, 355, 89, 23);
 		panelActuaMed.add(btnActualizar);
 		btnActualizar.setEnabled(false);
+		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane_2.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane_2.setBounds(10, 276, 268, 67);
+		panelActuaMed.add(scrollPane_2);
+		
+		tpActuaMed = new JTextArea();
+		scrollPane_2.setViewportView(tpActuaMed);
 		btnActualizar.addActionListener(oyente1);
 		
 		JPanel panelActualizacionEnf = new JPanel();
@@ -500,11 +512,6 @@ public class MenuDoctor {
 		lblNotasAdicionalesA.setBounds(10, 294, 114, 16);
 		panelActualizacionEnf.add(lblNotasAdicionalesA);
 		
-		textNotasEnfA = new JTextField();
-		textNotasEnfA.setBounds(10, 318, 260, 42);
-		panelActualizacionEnf.add(textNotasEnfA);
-		textNotasEnfA.setColumns(10);
-		
 		cmbDolorCabezaA = new JComboBox();
 		cmbDolorCabezaA.setBounds(123, 82, 55, 22);
 		panelActualizacionEnf.add(cmbDolorCabezaA);
@@ -560,6 +567,15 @@ public class MenuDoctor {
 		JLabel lblDolorDeCuerpoA = new JLabel("Dolor de cuerpo:");
 		lblDolorDeCuerpoA.setBounds(10, 238, 97, 16);
 		panelActualizacionEnf.add(lblDolorDeCuerpoA);
+		
+		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_3.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane_3.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane_3.setBounds(20, 315, 287, 43);
+		panelActualizacionEnf.add(scrollPane_3);
+		
+		textNotasEnfA = new JTextArea();
+		scrollPane_3.setViewportView(textNotasEnfA);
 		
 		JPanel panelBorrar = new JPanel();
 		panelBorrar.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Borrado de informacion", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(255, 0, 0)));
