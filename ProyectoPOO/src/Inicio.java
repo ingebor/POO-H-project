@@ -61,8 +61,8 @@ public class Inicio {
 				try {
 					window = new Inicio();
 					window.frame.setVisible(true);
-					JOptionPane.showMessageDialog(null, "Para ingresar como medico, utilice \"doctor\"\ncomo usuario y \"12345\" como contrasenia\n"
-							+ "Para ingresar como administrador, utilice \"Grupo2\"\ncomo usuario y \"ElWatt123\" como contrasenia");
+					JOptionPane.showMessageDialog(null, "Para ingresar como medico, utilice \"doctor\"\ncomo usuario y \"12345\" como contraseña.\n"
+							+ "\nPara ingresar como administrador, utilice \"Grupo2\"\ncomo usuario y \"ElWatt123\" como contraseña.");
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -85,6 +85,7 @@ public class Inicio {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.getContentPane().setBackground(new Color(173, 216, 230));
 		frame.setBounds(100, 100, 629, 391);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -199,7 +200,7 @@ public class Inicio {
 		textUsuario = new JTextField();
 		textUsuario.setColumns(10);
 		
-		JLabel lblContrasena = new JLabel("CONTRASENA: ");
+		JLabel lblContrasena = new JLabel("CONTRASEÑA: ");
 		
 		passwordField = new JPasswordField();
 		
@@ -234,7 +235,7 @@ public class Inicio {
 				}
 				
 				else {
-					JOptionPane.showMessageDialog(null, "NO ESTA INGRESANDO LA CONTRASENA O EL USUARIO CORRECTAMENTE, VUELVA A INTENTARLO.");
+					JOptionPane.showMessageDialog(null, "No está ingresando la contraseña o el usuario correctamente, vuelva a intentarlo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
 
 					
 				}
@@ -242,7 +243,7 @@ public class Inicio {
 				
 				catch (Exception ex) {
 					
-					JOptionPane.showMessageDialog(null, "ESTA INGRESANDO UN VALOR INVALIDO, VUELVA A INTENTARLO.");
+					JOptionPane.showMessageDialog(null, "Está ingresando un valor inválido, vuelva a intentarlo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
 			
 					
 				}
@@ -318,7 +319,7 @@ public class Inicio {
 					NmenuA.getFrame().setVisible(true);
 					frame.dispose();
 				} else {
-					JOptionPane.showMessageDialog(null, "No ingreso la informacion adecuada. Intente de nuevo");
+					JOptionPane.showMessageDialog(null, "No ingresó la informacion adecuada, intente de nuevo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		}

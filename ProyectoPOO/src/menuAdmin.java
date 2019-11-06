@@ -60,6 +60,7 @@ public class menuAdmin {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setBounds(100, 100, 730, 289);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -78,7 +79,7 @@ public class menuAdmin {
 		lblNombreDeUsuario.setBounds(10, 51, 141, 14);
 		panelNDoctor.add(lblNombreDeUsuario);
 		
-		JLabel lblContrasena = new JLabel("Contrasena:");
+		JLabel lblContrasena = new JLabel("Contrase\u00F1a:");
 		lblContrasena.setBounds(10, 88, 141, 14);
 		panelNDoctor.add(lblContrasena);
 		
@@ -158,6 +159,7 @@ public class menuAdmin {
 			if(e.getSource() == btnBorrar) {
 				if(!tfUsBo.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, catalogo.borrarDoctor(tfUsBo.getText()));
+					tfUsBo.setText(null);
 				}else {
 					JOptionPane.showMessageDialog(null, "No ingreso doctor para borrar!");
 				}

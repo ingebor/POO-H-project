@@ -100,6 +100,7 @@ public class MenuDoctor {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setBounds(100, 100, 1300, 616);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
@@ -660,15 +661,6 @@ public class MenuDoctor {
 	//Validar que las entradas de agregar enfermedad no tenga campos vacios o datos incorrectos
 	public int validarAgregarEnfermedad() {
 		int invalidos = 0;
-		//Validar nombre 
-		/*if(txtnombreenf.getText().equals("")) {
-			txtnombreenf.setForeground(Color.red);
-			invalidos++;
-		}
-		else
-			txtnombreenf.setForeground(Color.green);*/ 
-		//Ya se tiene una forma de defenderse de esto en el listener del boton
-		
 		//Validar medicamento enfermedad
 		if(txtmedicamentoenf.getText().equals("")) {
 			txtmedicamentoenf.setForeground(Color.red);
@@ -768,7 +760,7 @@ public class MenuDoctor {
 		txtdosismed.setForeground(Color.black);
 		txtenfermedadmed.setText(null);
 		txtenfermedadmed.setForeground(Color.black);
-		txtnotasenf.setText(null);
+		txtnotasmed.setText(null);
 	}
 	
 	//Limpiar los campos al de agregar enfermedad al momento de tenerlos todos correctos
@@ -817,9 +809,9 @@ public class MenuDoctor {
 					limpiarCamposAgregarMedicina();
 					lblAdAddMed.setText("Campos correctos");
 				}
-				//else en el label de advertencias 
 				else 
-					lblAdAddMed.setText(vali+" campos invalidos");
+					JOptionPane.showMessageDialog(null, "Hay campos inválidos, ingrese todos los datos correctamente por favor.");
+					//lblAdAddMed.setText(vali+" campos invalidos");
 			}
 			if (e.getSource()==btnAgregarEnf) {
 				
@@ -886,32 +878,13 @@ public class MenuDoctor {
 					
 					notasAdicionales = txtnotasenf.getText();
 					nombreMed = txtmedicamentoenf.getText();
-					/*
-					String diarr = (String)cmbdiarreaenf.getSelectedItem();
-
-					String dolor1 = (String)cmbdolorcabezaenf.getSelectedItem();
-
-					String dolor2 = (String)cmbdolorestomagoenf.getSelectedItem();
-
-					String dolor3 =(String)cmbdolorcuerpoenf.getSelectedItem();
-
-					String est = (String)cmbestornudosenf.getSelectedItem();
-					
-					String ener = (String)cmbfaltaenergiaenf.getSelectedItem();
 	
-					String to = (String)cmbtosenf.getSelectedItem();
-				
-					String vom = (String)cmbvomitoenf.getSelectedItem();
-				
-					catalogo.agregarEnfermedad(txtnombreenf.getText(), dolor1, dolor2, vom, diarr, est, to, dolor3, ener, txtnotasenf.getText(), txtmedicamentoenf.getText());
-					*/
 					catalogo.agregarEnfermedad(txtnombreenf.getText().toLowerCase(), dolorCabeza, dolorEstomago, vomito, diarrea, estornudo, tos, dolorGeneral, faltaEnergia, notasAdicionales, nombreMed);
 					limpiarCamposAgregarEnfermedad();
 					lblAddEnf.setText("Campos correctos");
 				}
-				//else mostrar invalidos en label
 				else 
-					lblAddEnf.setText(vali+" campos invalidos");
+					JOptionPane.showMessageDialog(null, "Hay campos inválidos, ingrese todos los datos correctamente por favor.");
 			}
 			if (e.getSource() == btnBuscar) {
 				if(!tfNombreActuaMed.getText().equals("")) {
@@ -924,10 +897,10 @@ public class MenuDoctor {
 					tpActuaMed.setText(buscada.getNotasAdicionales());
 					
 					btnActualizar.setEnabled(true);
-					JOptionPane.showMessageDialog(null, "Se le han colocado los valores actuales de los atributos\nen las casillas correspondientes. Cambie los valores que desee\n"
-							+ "y de click en actualizar");
+					JOptionPane.showMessageDialog(null, "Se han colocado los valores actuales de los atributos\nen las casillas correspondientes. Cambie los valores que desee\n"
+							+ "y haga click en actualizar");
 				}else {
-					JOptionPane.showMessageDialog(null, "No ingreso nombre de la medicina!");
+					JOptionPane.showMessageDialog(null, "No ingresó nombre de la medicina, vuelva a intentarlo por favor.");
 				}
 			}
 			if (e.getSource() == btnActualizar) {
@@ -937,7 +910,7 @@ public class MenuDoctor {
 					
 				btnActualizar.setEnabled(false);
 				}catch(Exception e0) {
-					JOptionPane.showMessageDialog(null, "Ha ingresado algo incorrecto");
+					JOptionPane.showMessageDialog(null, "Ha ingresado algo incorrecto, vuelva a intentarlo por favor.");
 					
 				}
 			}
@@ -992,25 +965,15 @@ public class MenuDoctor {
 					} else {
 						cmbFaltaEnergiaA.setSelectedIndex(1);
 					}
-					/* 
-					cmbDolorCabezaA.setToolTipText(String.valueOf(buscada.isDolorCabeza()));
-					cmbDolorEstomagoA.setToolTipText(String.valueOf(buscada.isDolorEstomago()));
-					cmbVomitoA.setToolTipText(String.valueOf(buscada.isVomito()));
-					cmbDiarreaA.setToolTipText(String.valueOf(buscada.isDiarrea()));
-					cmbEstornudosA.setToolTipText(String.valueOf(buscada.isEstornudo()));
-					cmbTosA.setToolTipText(String.valueOf(buscada.isTos()));
-					cmbDolorCuerpo.setToolTipText(String.valueOf(buscada.isDolorGeneral()));
-					cmbFaltaEnergiaA.setToolTipText(String.valueOf(buscada.isFaltaEnergia()));
-					*/
 					
 					tfMedicamentoA.setText(buscada.getNombreMed());
 					textNotasEnfA.setText(buscada.getNotasAdicionales());
 					
 					btnActualizacionA.setEnabled(true);
-					JOptionPane.showMessageDialog(null, "Se le han colocado los valores actuales de los atributos\nen las casillas correspondientes. Cambie los valores que desee\n"
-							+ "y de click en actualizar");
+					JOptionPane.showMessageDialog(null, "Se han colocado los valores actuales de los atributos\nen las casillas correspondientes. Cambie los valores que desee\n"
+							+ "y haga click en actualizar");
 				}else {
-					JOptionPane.showMessageDialog(null, "No ingreso nombre de la Enfermedad!");
+					JOptionPane.showMessageDialog(null, "No ha ingresado el nombre de la enfermedad, vuelva a intentarlo por favor.");
 				}
 			}
 			if (e.getSource() == btnActualizacionA) {
@@ -1062,10 +1025,10 @@ public class MenuDoctor {
 						JOptionPane.showMessageDialog(null, catalogo.borrarMedicina(tfBorrarMed.getText()));
 						tfBorrarMed.setText("");
 					}catch(Exception e0){
-						JOptionPane.showMessageDialog(null, "Ocurrio un error, intente de nuevo");
+						JOptionPane.showMessageDialog(null, "Ocurrió un error, intente de nuevo");
 					}
 				}else {
-					JOptionPane.showMessageDialog(null, "La casilla esta vacia!");
+					JOptionPane.showMessageDialog(null, "La casilla esta vacía, vuelva a intentarlo por favor.");
 				}
 			}
 			if (e.getSource() == btnBorrarEnf) {
@@ -1074,10 +1037,10 @@ public class MenuDoctor {
 						JOptionPane.showMessageDialog(null, catalogo.borrarEnfermedad(tfBorrarEnf.getText()));
 						tfBorrarEnf.setText("");
 					}catch(Exception e0) {
-						JOptionPane.showMessageDialog(null, "Ocurrio un error, intente de nuevo");
+						JOptionPane.showMessageDialog(null, "Ocurrió un error, intente de nuevo por favor.");
 					}
 				}else {
-					JOptionPane.showMessageDialog(null, "La casilla esta vacia!");
+					JOptionPane.showMessageDialog(null, "La casilla esta vacía, intente de nuevo por favor.");
 				}
 			}
 		}

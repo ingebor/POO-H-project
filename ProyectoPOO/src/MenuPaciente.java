@@ -26,7 +26,6 @@ import javax.swing.JTextPane;
 public class MenuPaciente extends JFrame {
 
 	private JPanel contentPane;
-	private JPanel PanelInstruct;
 	private JPanel panelIngreso;
 	private JButton btnIngresoSintomas;
 	private JButton btnBuscarEnfermedad;
@@ -55,6 +54,7 @@ public class MenuPaciente extends JFrame {
 	private JButton btnListo;
 	private JLabel lbllisto;
 	private JLabel lblAdIngresarSintomas;
+	private JButton btnInstruccion;
 	
 	/**
 	 * Launch the application.
@@ -80,6 +80,7 @@ public class MenuPaciente extends JFrame {
 	 * Create the frame.  boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea, boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia
 	 */
 	public MenuPaciente() {
+		setResizable(false);
 		getContentPane().setBackground(new Color(176, 224, 230));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(null);
@@ -231,7 +232,7 @@ public class MenuPaciente extends JFrame {
 		NombreDeMedicamento.setBackground(new Color(173, 216, 230));
 		NombreDeMedicamento.setBounds(324, 341, 401, 265);
 		getContentPane().add(NombreDeMedicamento);
-		NombreDeMedicamento.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Ingrese el nombre del medicamento", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		NombreDeMedicamento.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Buscar medicamento", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		NombreDeMedicamento.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Nombre del medicamento:");
@@ -256,7 +257,7 @@ public class MenuPaciente extends JFrame {
 		Nombre_De_Enfermedad.setBackground(new Color(176, 196, 222));
 		Nombre_De_Enfermedad.setBounds(322, 80, 401, 261);
 		getContentPane().add(Nombre_De_Enfermedad);
-		Nombre_De_Enfermedad.setBorder(new TitledBorder(null, "Ingrese el nombre de la enfermedad", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		Nombre_De_Enfermedad.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Buscar enfermedad ", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		Nombre_De_Enfermedad.setLayout(null);
 		
 		textPaneBuscarEnfermedad = new JTextPane();
@@ -284,10 +285,11 @@ public class MenuPaciente extends JFrame {
 		lblPaciene.setBounds(32, 18, 225, 49);
 		getContentPane().add(lblPaciene);
 		
-		JButton INSTRUCT = new JButton("Instrucciones de ayuda");
-		INSTRUCT.setEnabled(false);
-		INSTRUCT.setBounds(379, 29, 322, 23);
-		getContentPane().add(INSTRUCT);
+		btnInstruccion = new JButton("Instrucciones de ayuda");
+		btnInstruccion.setBounds(379, 29, 322, 23);
+		miListener oyente1 = new miListener();
+		btnInstruccion.addActionListener(oyente1);
+		getContentPane().add(btnInstruccion);
 		
 		btnVolver_1 = new JButton("Volver");
 		btnVolver_1.setBounds(285, 28, 89, 23);
@@ -336,7 +338,8 @@ public class MenuPaciente extends JFrame {
 					lblAdIngresarSintomas.setText(null);
 				}
 				else {
-					lblAdIngresarSintomas.setText("Campos invalidos");
+					JOptionPane.showMessageDialog(null,"Hay campos inválidos, por favor complete la selección de los síntomas.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
+					//lblAdIngresarSintomas.setText("Campos invalidos");
 					btnIngresoSintomas.setEnabled(false);
 				}
 				
@@ -345,12 +348,10 @@ public class MenuPaciente extends JFrame {
 			{
 				if(txtLaEnfermedad.getText().equals(""))
 				{
-					JOptionPane.showMessageDialog(null,"Ingrese el nombre de una enfermedad porfavor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null,"Ingrese el nombre de una enfermedad por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
 				}
 				else
 				{
-					
-					//catalogo.verEnfermedad(txtLaEnfermedad.getText());
 					textPaneBuscarEnfermedad.setText(catalogo.verEnfermedad(txtLaEnfermedad.getText()));
 				}
 				
@@ -438,33 +439,28 @@ public class MenuPaciente extends JFrame {
 			{
 				if(textLaMedicina.getText().equals(""))
 				{
-					JOptionPane.showMessageDialog(null,"Ingrese la medicina porfavor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null,"Ingrese el nombre de la medicina por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
 				}
 				else
 				{
-					//catalogo.VerMedicina(textLaMedicina.getText());
 					textPaneMedicamentos.setText(catalogo.VerMedicina(textLaMedicina.getText()));
 				}
 				
 			}
 			if (e.getSource() ==  btnVolver)
 			{
-				Inicio nuevo = new Inicio(); 
 	
 				frame.dispose();
 			
 			}
-			if(e.getSource() == INSTRUCT)
+			if(e.getSource() == btnInstruccion)
 			{
-				
-				PanelInstruct.setEnabled(true);
-				
+				JLabel primera = new JLabel("<html><b>Búsqueda de enfermedad por síntomas:</b> <body> En esta sección deberá de<br> seleccionar 'Si' en los síntomas que esté padeciendo y 'No' en los<br>síntomas que no esté padeciendo, luego debe presionar el botón<br>'Listo' y, si ha ingresado los datos correctamente, se le permitirá<br>ingresar los síntomas y obtener sus resultados."
+						+ "<br><br><b>Buscar enfermedad:</b> En esta sección deberá ingresar correctamente<br>el nombre de la enfermedad de la que desea saber las especificaciones."
+						+ "<br><br><b>Buscar medicamento:</b> En esta sección deberá ingresar correctamente<br>el nombre de la enfermedad de la que desea saber las especificaciones.</body>");
+				JOptionPane.showMessageDialog(null,primera,"Infor box: "+"Instrucciones",JOptionPane.PLAIN_MESSAGE);
 			}
-			if(e.getSource() == CerrarInstruct)
-			{
-				
-				PanelInstruct.setEnabled(false);
-			}
+			
 		}
 		
 		

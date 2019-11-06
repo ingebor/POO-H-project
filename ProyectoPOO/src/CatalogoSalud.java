@@ -30,7 +30,7 @@ public class CatalogoSalud {
     //h
     private String usuario = "root";
     private String basededatos = "bdpoo";
-    private String contrasena = "Andres9740";
+    private String contrasena = "Contradepruebaproyecto2019";
     
 	/**
 	 * @param Constructor sin parametros de la clase CatalogoSalud
@@ -65,9 +65,9 @@ public class CatalogoSalud {
 			
 	        manejarBD(queryInsert);
 	        listadoMedicinas.add(new Medicina(nombre, Double.parseDouble(precio), ingestion, tipoMedicina, dosis, notasAdicionales, nombreEnf));
-	        mensaje = "Se ingreso adecuadamente la medicina";
+	        mensaje = "Se ingresó adecuadamente la medicina";
 		}catch(Exception e) {
-			mensaje = "Existe una medicina de mismo nombre dentro de la base de datos";
+			mensaje = "Existe una medicina del mismo nombre dentro de la base de datos, intente de nuevo por favor.";
 		}
 		
 		return mensaje;
@@ -139,9 +139,7 @@ public class CatalogoSalud {
             			rsRecords.getString("enfermedades.Medicina")));
                 
             }
-            //for(Enfermedad a:listadoEnfermedades) {
-            	//System.out.println(a.getNombre());
-            //}
+
         }catch (Exception e0) {
             System.out.println("error show rows");
             e0.printStackTrace();
@@ -160,9 +158,7 @@ public class CatalogoSalud {
             			,rsRecords.getString("medicinas.Tipo"),rsRecords.getString("medicinas.Dosis"),rsRecords.getString("medicinas.NotasAdicionales")
             			,rsRecords.getString("medicinas.Enfermedad")));
             }
-            //for(Medicina a:listadoMedicinas) {
-            	//System.out.println(a.getNombre());
-            //}
+
             
             String querydDoc = "SELECT * FROM usuario";
             stQuery = BD.getCurrentConnection().createStatement();
@@ -187,7 +183,6 @@ public class CatalogoSalud {
 	 */
 	public String verEnfermedad(String nombreEnfermedad){
 		String mensaje = "";
-		//int index = 0;
 		for (int i = 0; i < listadoEnfermedades.size(); i++) {
 			try 
 			{
@@ -195,20 +190,15 @@ public class CatalogoSalud {
 				{
 					
 					mensaje = listadoEnfermedades.get(i).toString();
-					//index = listadoMedicinas.indexOf(medicina);
-					//mensaje = listadoMedicinas.get(index).toString();
 				}
 				
 			}
 			catch(Exception e)
 			{
-				mensaje = "Lo sentimos pero no se encontro la enfermedad";
+				mensaje = "Lo sentimos, no se ha encontrado la enfermedad";
 			}
 			
-		}
-		
-		
-			
+		}	
 		return mensaje;	
 	}
 	
@@ -220,29 +210,21 @@ public class CatalogoSalud {
 	 */
 	public String VerMedicina(String nombreMedicina) {
 		String mensaje = "";
-		//int index = 0;
 		for (int i = 0; i < listadoMedicinas.size(); i++) {
 			try 
 			{
 				if(listadoMedicinas.get(i).getNombre().equals(nombreMedicina))
 				{
-					
 					mensaje = listadoMedicinas.get(i).toString();
-					//index = listadoMedicinas.indexOf(medicina);
-					//mensaje = listadoMedicinas.get(index).toString();
 				}
 				
 			}
 			catch(Exception e)
 			{
-				mensaje = "Lo sentimos pero no se encontro el medicamento.";
+				mensaje = "Lo sentimos, no se ha encontrado el medicamento.";
 			}
 			
 		}
-		//for (Medicina medicina : listadoMedicinas) {
-
-		//}
-		
 		return mensaje;
 	}
 	
@@ -277,15 +259,15 @@ public class CatalogoSalud {
 				manejarBD(query);
 				
 				listadoMedicinas.add(indice, new Medicina(nombre,precio,ingestion,tiposMedicina,dosis,notasAdicionales,enfermedad));
-				mensaje = "Actualizacion exitosa";
+				mensaje = "Se ha realizado la actualización exitosamente.";
 			}
 			else {
-				mensaje = "Ninguna medcina coincide con el nombre ingresado. No se\npuede realizar la actualizacion. Intente de nuevo";
+				mensaje = "Ninguna medcina coincide con el nombre ingresado. No se\npuede realizar la actualizacion. Intente de nuevo por favor.";
 			}
 		}
 		catch(Exception e0) {
-			mensaje = "Ocurrio un error durante el manejo de la base de datos, puede \n que haya ingresado mal un dato. En el precio solo ingrese numeros y decimales.\n"
-					+ "No deje espacios en blanco. Intente de nuevo";
+			mensaje = "Ocurrió un error durante el manejo de la base de datos, puede \n que haya ingresado mal un dato. En el precio solo ingrese numeros y decimales.\n"
+					+ "No deje espacios en blanco. Intente de nuevo por favor.";
 		}
 		return mensaje;
 	}
@@ -366,7 +348,7 @@ public class CatalogoSalud {
 		}
 		
 		if(mensaje.equals("Puede tener:")) {
-			mensaje = "No se ha encontrado ninguna enfermedad con este patron de sintomas.";
+			mensaje = "No se ha encontrado ninguna enfermedad con este patrón de síntomas en la base de datos.";
 		}
 		return mensaje;
 	}
@@ -406,10 +388,10 @@ public class CatalogoSalud {
 		if(bandera) {
 			String queryDelete = "DELETE FROM enfermedades WHERE Nombre = '" + nombreEnf + "'";
 			manejarBD(queryDelete);
-			mensaje = "Borrado exitoso";
+			mensaje = "Se ha eliminado la enfermedad exitosamente";
 		}
 		else {
-			mensaje = "Ningun nombre coincidio con el ingresado.\nIntente de nuevo";
+			mensaje = "Ningún nombre ha coincidido con el ingresado.\nIntente de nuevo por favor.";
 		}
 		
 		return mensaje;
@@ -432,10 +414,10 @@ public class CatalogoSalud {
 			if(bandera) {
 				String queryDelete = "DELETE FROM medicinas WHERE Nombre = '" + nombreMed + "'";
 				manejarBD(queryDelete);
-				mensaje = "Borrado exitoso";
+				mensaje = "Se ha eliminado el medicamento exitosamente";
 			}
 			else {
-				mensaje = "Ningun nombre coincidio con el ingresado.\nIntente de nuevo";
+				mensaje = "Ningún nombre ha coincidido con el ingresado.\nIntente de nuevo por favor.";
 			}
 			
 			return mensaje;
@@ -477,12 +459,12 @@ public class CatalogoSalud {
 					notificacion = "La actualizacion se ha completado";
 				}
 				else {
-					notificacion = "El nombre no coincide con niguna enfermedad actual, ingrese de nuevo.";
+					notificacion = "El nombre no coincide con niguna enfermedad actual, ingrese de nuevo por favor.";
 				}
 			}
 			catch(Exception e0) {
-				notificacion = "Ocurrio un error durante el manejo de la base de datos, puede \n que haya ingresado mal un dato. En el precio solo ingrese numeros y decimales.\n"
-						+ "No deje espacios en blanco. Intente de nuevo";
+				notificacion = "Ocurrió un error durante el manejo de la base de datos, puede \n que haya ingresado mal un dato. En el precio solo ingrese numeros y decimales.\n"
+						+ "No deje espacios en blanco. Intente de nuevo, por favor.";
 			}
 			return notificacion;
 		}
@@ -520,7 +502,7 @@ public class CatalogoSalud {
 			}
 			
 			if(mismoUsuario) {
-				mensaje = "El nombre de usuario ingresado ya existe";
+				mensaje = "El nombre de usuario ingresado ya existe, ingrese otro nombre por favor.";
 			}else {
 				String queryInsert = "INSERT INTO usuario (NombreUsuario, Contrasenia) VALUES ('" + nombreUsuario + "', '" + contrasena + "')";
 				manejarBD(queryInsert);
@@ -555,9 +537,10 @@ public class CatalogoSalud {
 				String queryDelete = "DELETE FROM usuario WHERE NombreUsuario = '" + nombreUsuario + "'";
 				manejarBD(queryDelete);
 				listadoDoctores.remove(indice);
-				mensaje = "Borrado Exitoso";
+				mensaje = "Se ha eliminado al doctor exitosamente";
+				
 			}else {
-				mensaje = "No existe ningun doctor con ese nombre de usuario\n o bien, no hay doctores en la base de datos";
+				mensaje = "No existe ningún doctor con ese nombre de usuario\n o bien, no hay doctores en la base de datos.";
 			}
 			
 			return mensaje;
