@@ -84,6 +84,7 @@ public class MenuDoctor {
 	
 	/**
 	 * Launch the application.
+	 * 
 	 */
 	public static void newScreen() {
 		
