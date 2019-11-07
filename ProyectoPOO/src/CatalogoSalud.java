@@ -30,7 +30,7 @@ public class CatalogoSalud {
     //h
     private String usuario = "root";
     private String basededatos = "bdpoo";
-    private String contrasena = "Contradepruebaproyecto2019";
+    private String contrasena = "Andres9740";
     
 	/**
 	 * @param Constructor sin parametros de la clase CatalogoSalud
@@ -57,17 +57,31 @@ public class CatalogoSalud {
 	 * @param nombreEnf
 	 * Agrega una medicina a la base de datos
 	 */
-	public String agregarMedicina(String nombre, String precio, String ingestion, String tipoMedicina, String dosis, String notasAdicionales, String nombreEnf){	
-		String mensaje = "";
+	public int agregarMedicina(String nombre, String precio, String ingestion, String tipoMedicina, String dosis, String notasAdicionales, String nombreEnf){	
+		int mensaje = 0;
 		try {
+			boolean seguir = true;
+			int indice = 0;
+			for(Medicina medicina: listadoMedicinas) {
+				if(medicina.getNombre().equals(nombre)) {
+					seguir = false;
+					indice = listadoMedicinas.indexOf(medicina);
+				}
+			}
+			
+			if(seguir) {
 			String queryInsert = "INSERT INTO medicinas (Nombre, Precio, Ingestion, Tipo, Dosis, NotasAdicionales, Enfermedad) "
 	                + "VALUES ('" + nombre.toLowerCase() + "', '" + precio + "', '" + ingestion + "', '" + tipoMedicina + "', '" + dosis + "', '" + notasAdicionales + "', '" + nombreEnf + "') ";
 			
 	        manejarBD(queryInsert);
 	        listadoMedicinas.add(new Medicina(nombre, Double.parseDouble(precio), ingestion, tipoMedicina, dosis, notasAdicionales, nombreEnf));
-	        mensaje = "Se ingresó adecuadamente la medicina";
+	        mensaje = 1;
+			}
+			else {
+				mensaje = 0;
+			}
 		}catch(Exception e) {
-			mensaje = "Existe una medicina del mismo nombre dentro de la base de datos, intente de nuevo por favor.";
+			mensaje = 0;
 		}
 		
 		return mensaje;
@@ -87,8 +101,21 @@ public class CatalogoSalud {
 	 * @param nombreMed
 	 * Agrega una medicina a la base de datos
 	 */
-	public void agregarEnfermedad(String nombre, String dolorCabeza, String dolorEstomago, String vomito, String diarrea,
+	public int agregarEnfermedad(String nombre, String dolorCabeza, String dolorEstomago, String vomito, String diarrea,
 			String estornudo, String tos, String dolorGeneral, String faltaEnergia, String notasAdicionales, String nombreMed){
+		int mensaje = 0;
+		try {
+			boolean seguir = true;
+			int indice = 0;
+			
+			for(Enfermedad enfermedad: listadoEnfermedades) {
+				if(enfermedad.getNombre().equals(nombre)) {
+					seguir = false;
+					indice = listadoEnfermedades.indexOf(enfermedad);
+				}
+			}
+			
+			if(seguir) {
 		String queryInsert = "INSERT INTO enfermedades (Nombre, DolorCabeza, DolorEstomago, Vomito, Diarrea, Estornudo, Tos, DolorGeneral, FaltaEnergia, NotasAdicionales, Medicina) "
                 + "VALUES ('" + nombre.toLowerCase() + "', '" + dolorCabeza + "', '" + dolorEstomago + "', '" + vomito + "', '" + diarrea + "', '" + estornudo + "', '" + tos + "', '" + dolorGeneral + 
                 "', '" + faltaEnergia + "', '" + notasAdicionales + "', '" + nombreMed + "') ";
@@ -97,6 +124,17 @@ public class CatalogoSalud {
 				Boolean.parseBoolean(diarrea), Boolean.parseBoolean(estornudo), Boolean.parseBoolean(tos), Boolean.parseBoolean(dolorGeneral), Boolean.parseBoolean(faltaEnergia),
 				notasAdicionales, nombreMed));
         manejarBD(queryInsert);
+        mensaje = 1;
+			}
+			else {
+				mensaje = 0;
+			}
+		}
+		catch(Exception e) {
+			mensaje = 0;
+			
+		}
+		return mensaje;
 	}
 	
 	
@@ -198,7 +236,10 @@ public class CatalogoSalud {
 				mensaje = "Lo sentimos, no se ha encontrado la enfermedad";
 			}
 			
-		}	
+		}
+		if(mensaje.equals("")) {
+			mensaje = "Lo sentimos, no se ha encontrado la enfermedad";
+		}
 		return mensaje;	
 	}
 	
@@ -224,6 +265,9 @@ public class CatalogoSalud {
 				mensaje = "Lo sentimos, no se ha encontrado el medicamento.";
 			}
 			
+		}
+		if(mensaje.equals("")) {
+			mensaje = "Lo sentimos, no se ha encontrado el medicamento.";
 		}
 		return mensaje;
 	}

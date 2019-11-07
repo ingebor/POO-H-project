@@ -825,9 +825,10 @@ public class MenuDoctor {
 					limpiarCamposAgregarMedicina();
 					lblAdAddMed.setText("Campos correctos");
 				}
-				else 
+				else {
 					JOptionPane.showMessageDialog(null, "Hay campos inválidos, ingrese todos los datos correctamente por favor.");
 					//lblAdAddMed.setText(vali+" campos invalidos");
+				}
 			}
 			if (e.getSource()==btnAgregarEnf) {
 				
@@ -898,10 +899,20 @@ public class MenuDoctor {
 					catalogo.agregarEnfermedad(txtnombreenf.getText().toLowerCase(), dolorCabeza, dolorEstomago, vomito, diarrea, estornudo, tos, dolorGeneral, faltaEnergia, notasAdicionales, nombreMed);
 					limpiarCamposAgregarEnfermedad();
 					lblAddEnf.setText("Campos correctos");
+					
+					if(catalogo.agregarEnfermedad(txtnombreenf.getText().toLowerCase(), dolorCabeza, dolorEstomago, vomito, diarrea, estornudo, tos, dolorGeneral, faltaEnergia, notasAdicionales, nombreMed) == 1) {
+						JOptionPane.showMessageDialog(null, "campos correctos");
+					}
+					else if(catalogo.agregarEnfermedad(txtnombreenf.getText().toLowerCase(), dolorCabeza, dolorEstomago, vomito, diarrea, estornudo, tos, dolorGeneral, faltaEnergia, notasAdicionales, nombreMed) == 0) {
+						JOptionPane.showMessageDialog(null, "El nombre que ha ingresado ya existe");
+					}
 				}
-				else 
+				else {
 					JOptionPane.showMessageDialog(null, "Hay campos inválidos, ingrese todos los datos correctamente por favor.");
+				}
+				
 			}
+			
 			if (e.getSource() == btnBuscar) {
 				if(!tfNombreActuaMed.getText().equals("")) {
 					Medicina buscada = catalogo.buscarMed(tfNombreActuaMed.getText());
