@@ -351,7 +351,7 @@ public class CatalogoSalud {
 	 * @param dolorGeneral
 	 * @param faltaEnergia
 	 * @return mensaje de probabilidad de enfermedades
-	 * En base a los s[intomas ingresados por el usuario, el metodo determina las posibles enfermedades que padece con una probabilidad incluida
+	 * En base a los sintomas ingresados por el usuario, el metodo determina las posibles enfermedades que padece con una probabilidad incluida
 	 */
 	public String buscarEnfermedad(boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea,
 			boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia) {
