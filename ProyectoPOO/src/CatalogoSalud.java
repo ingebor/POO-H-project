@@ -30,7 +30,7 @@ public class CatalogoSalud {
     //h
     private String usuario = "root";
     private String basededatos = "bdpoo";
-    private String contrasena = "Andres9740";
+    private String contrasena = "infobi17";
 
 
     

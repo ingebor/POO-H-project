@@ -898,14 +898,15 @@ public class MenuDoctor {
 					notasAdicionales = txtnotasenf.getText();
 					nombreMed = txtmedicamentoenf.getText();
 	
-					catalogo.agregarEnfermedad(txtnombreenf.getText().toLowerCase(), dolorCabeza, dolorEstomago, vomito, diarrea, estornudo, tos, dolorGeneral, faltaEnergia, notasAdicionales, nombreMed);
+					int resultado = catalogo.agregarEnfermedad(txtnombreenf.getText().toLowerCase(), dolorCabeza, dolorEstomago, vomito, diarrea, estornudo, tos, dolorGeneral, faltaEnergia, notasAdicionales, nombreMed);
 					limpiarCamposAgregarEnfermedad();
-					lblAddEnf.setText("Campos correctos");
 					
-					if(catalogo.agregarEnfermedad(txtnombreenf.getText().toLowerCase(), dolorCabeza, dolorEstomago, vomito, diarrea, estornudo, tos, dolorGeneral, faltaEnergia, notasAdicionales, nombreMed) == 1) {
+					
+					if(resultado == 1) {
 						JOptionPane.showMessageDialog(null, "campos correctos");
+						lblAddEnf.setText("Campos correctos");
 					}
-					else if(catalogo.agregarEnfermedad(txtnombreenf.getText().toLowerCase(), dolorCabeza, dolorEstomago, vomito, diarrea, estornudo, tos, dolorGeneral, faltaEnergia, notasAdicionales, nombreMed) == 0) {
+					else if(resultado == 0) {
 						JOptionPane.showMessageDialog(null, "El nombre que ha ingresado ya existe");
 					}
 				}
