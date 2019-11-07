@@ -293,7 +293,7 @@ public class CatalogoSalud {
 			int indice = 0;
 			
 			for(Medicina medicina: listadoMedicinas) {
-				if(medicina.getNombre().equals(nombre)) {
+				if(medicina.getNombre().equals(nombre.toLowerCase())) {
 					bandera = true;
 					indice = listadoMedicinas.indexOf(medicina);
 				}
@@ -305,7 +305,7 @@ public class CatalogoSalud {
 			
 				manejarBD(query);
 				
-				listadoMedicinas.add(indice, new Medicina(nombre,precio,ingestion,tiposMedicina,dosis,notasAdicionales,enfermedad));
+				listadoMedicinas.set(indice, new Medicina(nombre,precio,ingestion,tiposMedicina,dosis,notasAdicionales,enfermedad));
 				mensaje = "Se ha realizado la actualización exitosamente.";
 			}
 			else {
