@@ -17,6 +17,7 @@ CREATE DATABASE IF NOT EXISTS `bdpoo` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `bdpoo`;
 
 -- Volcando estructura para tabla bdpoo.enfermedades
+DROP TABLE if EXISTS enfermedades;
 CREATE TABLE IF NOT EXISTS `enfermedades` (
   `Nombre` varchar(50) NOT NULL,
   `DolorCabeza` varchar(50) DEFAULT NULL,
@@ -34,6 +35,7 @@ CREATE TABLE IF NOT EXISTS `enfermedades` (
 
 -- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla bdpoo.medicinas
+DROP TABLE if EXISTS medicinas;
 CREATE TABLE IF NOT EXISTS `medicinas` (
   `Nombre` varchar(50) NOT NULL,
   `Precio` double DEFAULT NULL,
@@ -47,6 +49,7 @@ CREATE TABLE IF NOT EXISTS `medicinas` (
 
 -- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla bdpoo.usuario
+DROP TABLE if EXISTS usuario;
 CREATE TABLE IF NOT EXISTS `usuario` (
   `NombreUsuario` varchar(50) NOT NULL,
   `Contrasenia` varchar(50) DEFAULT NULL,

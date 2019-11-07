@@ -57,6 +57,7 @@ public class Doctor {
 		this.contrasena = contrasena;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Doctor [nombreUsuario=" + nombreUsuario + ", contrasena=" + contrasena + "]";

@@ -246,6 +246,7 @@ public class CatalogoSalud {
 	 * @param tiposMedicina
 	 * @param dosis
 	 * @param notasAdicionales
+	 * @return Avisa al usuario si la actualizacion se realizo exitosamente 
 	 * Este metodo actualiza un de las medicinas de la base de datos y tambien el listado de Medicinas
 	 */
 	public String acualizarMedicina(String nombre,double precio, String ingestion, String tiposMedicina, String dosis, String notasAdicionales, String enfermedad) {
@@ -282,13 +283,17 @@ public class CatalogoSalud {
 	}
 	
 
+	/**
+	 * @param nombre
+	 * @return Regresa la medicina que el usuario desea buscar de la lista de atributos.
+	 */
 	public Medicina buscarMed(String nombre) {
 		Medicina buscada = new Medicina();
 		boolean bandera = true;
 		
 		int indice = 0;
 		while(bandera && indice < listadoMedicinas.size()) {
-			if(listadoMedicinas.get(indice).getNombre().toLowerCase().equals(nombre.toLowerCase())) {
+		 	if(listadoMedicinas.get(indice).getNombre().toLowerCase().equals(nombre.toLowerCase())) {
 				buscada = listadoMedicinas.get(indice);
 				bandera = false;
 			}
@@ -382,6 +387,7 @@ public class CatalogoSalud {
 	
 	/**
 	 * @param nombreEnf
+	 * @return Indica si se borro la enfermedad exitosamente en la base de datos
 	 * Toma el nombre de una enfermedad y borra la tupla de la base de datos que tenga este nombre
 	 */
 	public String borrarEnfermedad(String nombreEnf){
@@ -409,6 +415,7 @@ public class CatalogoSalud {
 	
 		/**
 		 * @param nombreMed
+		 * @return Indica si se borro la medicina exitosamente en la base de datos
 		 * Toma el nombre de la medicinay borra la tupla de la base de datos que tenga este nombre
 		 */
 		public String borrarMedicina(String nombreMed){
@@ -443,6 +450,7 @@ public class CatalogoSalud {
 		 * @param dolorGeneral
 		 * @param faltaEnergia
 		 * @param notasAdicionales
+		 * @return Indica si la enfermedad se actualizo exitosamente en la base de datos
 		 * Este metodo actualiza una enfermedad de la base de datos
 		 */
 		public String actualizarEnfermedad(String nombre,boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea, boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia, String notasAdicionales,String medicina) {
@@ -477,7 +485,12 @@ public class CatalogoSalud {
 			}
 			return notificacion;
 		}
-		//
+		
+		/**
+		 * @param nombre
+		 * @return regresa el nombre de la enfermedad y sus atributos de la lista
+		 * Este metodo permite buscar la enfermedad una enfermedad que el usuario desea y con eso obtenemos su informacion
+		 */
 		public Enfermedad buscarEnfermedadA(String nombre) {
 			Enfermedad NombreBusc = new Enfermedad();
 			boolean seguir = true;

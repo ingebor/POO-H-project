@@ -18,6 +18,10 @@ public class ConeccionBD{
         this.DB_PASSWORD = PASSWORD;
     }
 
+	/**
+	 * @param Este metodo realiza la coneccion a la base de datos de MySQL
+	 * Con este metodos nos podemos conectar a la base de datos de MySQL
+	 */
     public Connection getNewConnection(){
         try{
             currentConnection = null;

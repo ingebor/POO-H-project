@@ -15,7 +15,9 @@ public class Enfermedad {
 	private boolean faltaEnergia;
 	private String notasAdicionales;
 	private String nombreMed;
-	
+	/**
+	 * Constructor sin parametros de la clase CatalogoSalud
+	 */
 	public Enfermedad() {
 		nombre = "";
 		dolorCabeza = false;
