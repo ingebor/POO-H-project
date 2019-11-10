@@ -92,7 +92,7 @@ public class Inicio {
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.getContentPane().setBackground(new Color(173, 216, 230));
-		frame.setBounds(100, 100, 629, 391);
+		frame.setBounds(100, 100, 629, 258);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
@@ -172,6 +172,7 @@ public class Inicio {
 					.addContainerGap())
 		);
 		panelAdmin.setLayout(null);
+		panelAdmin.setVisible(false);
 		
 		JLabel lblAdministrador = new JLabel("ADMINISTRADOR");
 		lblAdministrador.setFont(new Font("Dialog", Font.BOLD, 20));
@@ -242,7 +243,7 @@ public class Inicio {
 				}
 				
 				else {
-					JOptionPane.showMessageDialog(null, "No está ingresando la contraseña o el usuario correctamente, vuelva a intentarlo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
+					//JOptionPane.showMessageDialog(null, "No está ingresando la contraseña o el usuario correctamente, vuelva a intentarlo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
 
 					
 				}
@@ -250,7 +251,7 @@ public class Inicio {
 				
 				catch (Exception ex) {
 					
-					JOptionPane.showMessageDialog(null, "Está ingresando un valor inválido, vuelva a intentarlo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
+					//JOptionPane.showMessageDialog(null, "Está ingresando un valor inválido, vuelva a intentarlo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
 			
 					
 				}
@@ -337,6 +338,7 @@ public class Inicio {
 			
 			if(e.getSource() == btnIngresar) {
 				
+				boolean accesoFinal = false;
 				
 				List <Doctor> listaDoc = catalogo.getListadoDoctores();
 				
@@ -359,6 +361,20 @@ public class Inicio {
 				if(acceso) {
 					frame.dispose();
 				}
+				
+				if(!acceso) {
+					if(textUsuario.getText().equals("Grupo2") && passwordField.getText().equals("ElWatt123")) {
+						menuAdmin NmenuA = new menuAdmin();
+						NmenuA.getFrame().setVisible(true);
+						accesoFinal = true;
+						frame.dispose();
+					}
+					if(!accesoFinal) {
+						JOptionPane.showMessageDialog(null, "No ingresó la informacion adecuada, intente de nuevo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
+					}
+				}
+				
+				
 			}
 		}
 		
