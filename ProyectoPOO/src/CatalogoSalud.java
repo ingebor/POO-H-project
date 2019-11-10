@@ -29,7 +29,7 @@ public class CatalogoSalud {
     
     //Al hacer push o commit, dejen estas solo en comillas
     //h
-    private String usuario = "root";
+    private String usuario = "";
     private String basededatos = "bdpoo";
     private String contrasena = "";
 

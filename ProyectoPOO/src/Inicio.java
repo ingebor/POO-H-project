@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 import java.awt.Color;
 
 /**
- * @author Grupo 2
+ * @author Grupo 6
  * @date 
  * Crea la ventana de Inicio de la aplicacion
  */
