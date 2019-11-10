@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+//a
 public class CatalogoSalud {
 	private List <Enfermedad> listadoEnfermedades;
 	private List <Medicina> listadoMedicinas;
@@ -28,7 +29,7 @@ public class CatalogoSalud {
     
     //Al hacer push o commit, dejen estas solo en comillas
     //h
-    private String usuario = "";
+    private String usuario = "root";
     private String basededatos = "bdpoo";
     private String contrasena = "";
 
