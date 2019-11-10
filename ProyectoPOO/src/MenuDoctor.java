@@ -935,8 +935,15 @@ public class MenuDoctor {
 			}
 			if (e.getSource() == btnActualizar) {
 				try {
-				JOptionPane.showMessageDialog(null, catalogo.acualizarMedicina(tfNombreActuaMed.getText(), Double.parseDouble(tfActuaPrecio.getText()), tfActuaIngestion.getText(), 
+				JOptionPane.showMessageDialog(null, catalogo.acualizarMedicina(tfNombreActuaMed.getText().toLowerCase(), Double.parseDouble(tfActuaPrecio.getText()), tfActuaIngestion.getText(), 
 						tfActuaTipo.getText(), tfDosisActua.getText(), tpActuaMed.getText(), tfEnfMedActua.getText()));
+				tfNombreActuaMed.setText(null);
+				tfActuaPrecio.setText(null);
+				tfActuaIngestion.setText(null);
+				tfActuaTipo.setText(null);
+				tfDosisActua.setText(null);
+				tpActuaMed.setText(null);
+				tfEnfMedActua.setText(null);
 					
 				btnActualizar.setEnabled(false);
 				}catch(Exception e0) {
@@ -1041,8 +1048,12 @@ public class MenuDoctor {
 						faltaEnergia = true;
 					}
 					
-				JOptionPane.showMessageDialog(null, catalogo.actualizarEnfermedad(tfNombreEnfA.getText(), dolorCabeza, dolorEstomago,vomito, diarrea, 
+				JOptionPane.showMessageDialog(null, catalogo.actualizarEnfermedad(tfNombreEnfA.getText().toLowerCase(), dolorCabeza, dolorEstomago,vomito, diarrea, 
 						estornudo, tos, dolorGeneral, faltaEnergia, textNotasEnfA.getText(), tfMedicamentoA.getText()));
+				tfNombreEnfA.setText(null);
+				textNotasEnfA.setText(null);
+				tfMedicamentoA.setText(null);
+				
 					
 				btnActualizar.setEnabled(false);
 				}catch(Exception e0) {
@@ -1074,5 +1085,9 @@ public class MenuDoctor {
 				}
 			}
 		}
+	}
+	
+	public JFrame getFrame() {
+		return frame;
 	}
 }

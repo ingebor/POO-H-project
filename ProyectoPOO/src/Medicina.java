@@ -12,6 +12,9 @@ public class Medicina {
 	private String notasAdicionales;
 	private String nombreEnf;
 	
+	/**
+	 * Constructor sin parametros de la clase CatalogoSalud
+	 */
 	public Medicina() {
 		nombre = "";
 		precio = 0;
