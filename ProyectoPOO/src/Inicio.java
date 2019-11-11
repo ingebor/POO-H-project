@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 import java.awt.Color;
 
 /**
- * @author Grupo 6
+ * @author Grupo 6 POO Seccion 21
  * @date 
  * Crea la ventana de Inicio de la aplicacion
  */
@@ -75,7 +75,7 @@ public class Inicio {
 	}
 
 	/**
-	 * Create the application.
+	 * Constructor de Inicio.
 	 */
 	public Inicio() {
 		catalogo = new CatalogoSalud();
@@ -84,7 +84,7 @@ public class Inicio {
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Incicializa los contenidos del JFrame
 	 */
 	private void initialize() {
 		miListener oyente = new miListener();
@@ -316,6 +316,10 @@ public class Inicio {
 		frame.getContentPane().setLayout(groupLayout);
 	}
 	
+	/**
+	 * @author Grupo 6
+	 * Clase privada que implementa ActionListener para atrapar eventos
+	 */
 	private class miListener implements ActionListener{
 
 		@Override

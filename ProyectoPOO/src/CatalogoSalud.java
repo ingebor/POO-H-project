@@ -1,5 +1,5 @@
 /**
- * @author Grupo 2 POO Seccion 21
+ * @author Grupo 6 POO Seccion 21
  * @date 05/09/2019
  * Segunda presentacion de proyecto
  */
@@ -37,7 +37,7 @@ public class CatalogoSalud {
 
     
 	/**
-	 * @param Constructor sin parametros de la clase CatalogoSalud
+	 * Constructor sin parametros de catalogoSalud
 	 */
 	public CatalogoSalud()
 	{
@@ -52,14 +52,14 @@ public class CatalogoSalud {
 	}
 	
 	/**
-	 * @param nombre
-	 * @param precio
-	 * @param ingestion
-	 * @param tipoMedicina
-	 * @param dosis
-	 * @param notasAdicionales
-	 * @param nombreEnf
-	 * Agrega una medicina a la base de datos
+	 * Agrega una medicina a la base de datoss
+	 * @param nombre el nombre de la medicina
+	 * @param precio el precio de la medicina
+	 * @param ingestion el modo de ingestion de la medicina
+	 * @param tipoMedicina el tipo de medicina
+	 * @param dosis la dosis de la medicina
+	 * @param notasAdicionales las notas Adicionales que se puedan ajuntar acerca de la medicina
+	 * @param nombreEnf la enfermedad que la medicina alivia
 	 */
 	public int agregarMedicina(String nombre, String precio, String ingestion, String tipoMedicina, String dosis, String notasAdicionales, String nombreEnf){	
 		int mensaje = 0;
@@ -67,7 +67,7 @@ public class CatalogoSalud {
 			boolean seguir = true;
 			int indice = 0;
 			for(Medicina medicina: listadoMedicinas) {
-				if(medicina.getNombre().equals(nombre)) {
+				if(medicina.getNombre().toLowerCase().equals(nombre.toLowerCase())) {
 					seguir = false;
 					indice = listadoMedicinas.indexOf(medicina);
 				}
@@ -92,18 +92,19 @@ public class CatalogoSalud {
 	}
 	
 	/**
-	 * @param nombre
-	 * @param dolorCabeza
-	 * @param dolorEstomago
-	 * @param vomito
-	 * @param diarrea
-	 * @param estornudo
-	 * @param tos
-	 * @param dolorGeneral
-	 * @param faltaEnergia
-	 * @param notasAdicionales
-	 * @param nombreMed
-	 * Agrega una medicina a la base de datos
+	 * Agrega una enfermedad a la base de datos
+	 * @param nombre el nombre de la enfermedad
+	 * @param dolorCabeza si dolor de cabeza es un sintoma de la enfermedad
+	 * @param dolorEstomago si dolor de estomago es un sintoma de la enfermedad
+	 * @param vomito si vomito es un sintoma de la enfermedad
+	 * @param diarrea si diarrea es un sintoma de la enfermedad
+	 * @param estornudo si estornudar es un sintoma de la enfermedad
+	 * @param tos si la tos es un sintoma de la enfermedad
+	 * @param dolorGeneral si el dolor general es un sintoma de la enfermedad
+	 * @param faltaEnergia si la falta de energia es un sintoma de la enfermedad
+	 * @param notasAdicionales Son anotacioness extra acerca de la enfermedad
+	 * @param nombreMed Nombre de la medicina que alivia a la enfermedad
+	 * 
 	 */
 	public int agregarEnfermedad(String nombre, String dolorCabeza, String dolorEstomago, String vomito, String diarrea,
 			String estornudo, String tos, String dolorGeneral, String faltaEnergia, String notasAdicionales, String nombreMed){
@@ -113,7 +114,7 @@ public class CatalogoSalud {
 			int indice = 0;
 			
 			for(Enfermedad enfermedad: listadoEnfermedades) {
-				if(enfermedad.getNombre().equals(nombre)) {
+				if(enfermedad.getNombre().toLowerCase().equals(nombre.toLowerCase())) {
 					seguir = false;
 					indice = listadoEnfermedades.indexOf(enfermedad);
 				}
@@ -141,23 +142,8 @@ public class CatalogoSalud {
 		return mensaje;
 	}
 	
-	
 	/**
-	 * Metodo para probar que las listas de objetos se hayan llenado correctamente
-	 */
-	public void pruebaListas() {
-		for(Enfermedad enfermedad:listadoEnfermedades) {
-			System.out.println(enfermedad.getNombre());
-		}
-		
-		for(Medicina medicina:listadoMedicinas) {
-			System.out.println(medicina.getNombre());
-		}
-	}
-	
-	
-	/**
-	 * Este metodo llena tanto el listado de enfermedades como el de medicinas al crear un catalogoSalud
+	 * Este metodo llena los listados de enfermedades, doctores y de medicinas del catalogo
 	 */
 	private void llenarCatalogo()  {
 		
@@ -228,7 +214,7 @@ public class CatalogoSalud {
 		for (int i = 0; i < listadoEnfermedades.size(); i++) {
 			try 
 			{
-				if(listadoEnfermedades.get(i).getNombre().equals(nombreEnfermedad))
+				if(listadoEnfermedades.get(i).getNombre().toLowerCase().equals(nombreEnfermedad.toLowerCase()))
 				{
 					
 					mensaje = listadoEnfermedades.get(i).toString();
@@ -249,16 +235,16 @@ public class CatalogoSalud {
 	
 	
 	/**
-	 * @param nombreMedicina
-	 * @return cadena de atributos
 	 * Este metodo permite ingresar el nombre de la medicina y devuelve los atributos de dicha medicina con el toString de medicina
+	 * @param nombreMedicina El nombre de la medicina que se desea consultar
+	 * @return cadena de atributos de la medicina
 	 */
 	public String VerMedicina(String nombreMedicina) {
 		String mensaje = "";
 		for (int i = 0; i < listadoMedicinas.size(); i++) {
 			try 
 			{
-				if(listadoMedicinas.get(i).getNombre().equals(nombreMedicina))
+				if(listadoMedicinas.get(i).getNombre().toLowerCase().equals(nombreMedicina.toLowerCase()))
 				{
 					mensaje = listadoMedicinas.get(i).toString();
 				}
@@ -279,14 +265,14 @@ public class CatalogoSalud {
 	
 	
 	/**
-	 * @param nombre
-	 * @param precio
-	 * @param ingestion
-	 * @param tiposMedicina
-	 * @param dosis
-	 * @param notasAdicionales
-	 * @return Avisa al usuario si la actualizacion se realizo exitosamente 
 	 * Este metodo actualiza un de las medicinas de la base de datos y tambien el listado de Medicinas
+	 * @param nombre el nombre de la medicina que sera actualizada
+	 * @param precio el nuevo valor de precio
+	 * @param ingestion el nuevo valor de ingestion
+	 * @param tiposMedicina el nuevo valor de tipo de medicina
+	 * @param dosis el nuevo valor de dosis
+	 * @param notasAdicionales las nuevas notas adicionales
+	 * @return Una cadena donde indica si la operacion fue exitosa o no
 	 */
 	public String acualizarMedicina(String nombre,double precio, String ingestion, String tiposMedicina, String dosis, String notasAdicionales, String enfermedad) {
 		String mensaje = "";
@@ -295,7 +281,7 @@ public class CatalogoSalud {
 			int indice = 0;
 			
 			for(Medicina medicina: listadoMedicinas) {
-				if(medicina.getNombre().equals(nombre.toLowerCase())) {
+				if(medicina.getNombre().toLowerCase().equals(nombre.toLowerCase())) {
 					bandera = true;
 					indice = listadoMedicinas.indexOf(medicina);
 				}
@@ -323,8 +309,9 @@ public class CatalogoSalud {
 	
 
 	/**
-	 * @param nombre
-	 * @return Regresa la medicina que el usuario desea buscar de la lista de atributos.
+	 * Busca una medicina en listadoMedicnas
+	 * @param nombre el nombre de la medicina que se quiere encontrar
+	 * @return Regresa la medicina que el usuario desea buscar de la lista de medicinas.
 	 */
 	public Medicina buscarMed(String nombre) {
 		Medicina buscada = new Medicina();
@@ -344,16 +331,16 @@ public class CatalogoSalud {
 
 	
 	/**
-	 * @param dolorCabeza
-	 * @param dolorEstomago
-	 * @param vomito
-	 * @param diarrea
-	 * @param estornudo
-	 * @param tos
-	 * @param dolorGeneral
-	 * @param faltaEnergia
-	 * @return mensaje de probabilidad de enfermedades
 	 * En base a los sintomas ingresados por el usuario, el metodo determina las posibles enfermedades que padece con una probabilidad incluida
+	 * @param dolorCabeza si el usuario tiene dolor de cabeza o no
+	 * @param dolorEstomago si el usuario tiene dolor de estomago o no
+	 * @param vomito si el usuario tiene vomitos o no
+	 * @param diarrea si el usuario tiene diarrea o no
+	 * @param estornudo si el usuario tiene estornudos o no
+	 * @param tos si el usuario tiene tos o no
+	 * @param dolorGeneral si el usuario tiene dolor general o no
+	 * @param faltaEnergia si el usuario tiene falta de energia o no
+	 * @return mensaje de probabilidad de enfermedades
 	 */
 	public String buscarEnfermedad(boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea,
 			boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia) {
@@ -408,8 +395,8 @@ public class CatalogoSalud {
 	
 	
 	/**
-	 * @param query El query con las instrucciones para el maejo de la base de datos
 	 * Permite Insertar, borrar o actualizar una tupla en una tabla de la base de datos
+	 * @param query El query con las instrucciones para el manejo de la base de datos
 	 */
 	private void manejarBD(String query){
         try{   
@@ -425,23 +412,26 @@ public class CatalogoSalud {
 	}
 	
 	/**
+	 * Toma el nombre de una enfermedad y borra la tupla de la base de datos que tenga este nombre. Tambien la borra del listado de enfermedades
 	 * @param nombreEnf
 	 * @return Indica si se borro la enfermedad exitosamente en la base de datos
-	 * Toma el nombre de una enfermedad y borra la tupla de la base de datos que tenga este nombre
 	 */
 	public String borrarEnfermedad(String nombreEnf){
 		String mensaje = "";
+		int index = 0;
 		
 		boolean bandera = false;
 		for(Enfermedad enfermedad: listadoEnfermedades) {
-			if(enfermedad.getNombre().equals(nombreEnf.toLowerCase())){
+			if(enfermedad.getNombre().toLowerCase().equals(nombreEnf.toLowerCase())){
 				bandera = true;
+				index = listadoEnfermedades.indexOf(enfermedad);
 			}
 		}
 		
 		if(bandera) {
 			String queryDelete = "DELETE FROM enfermedades WHERE Nombre = '" + nombreEnf + "'";
 			manejarBD(queryDelete);
+			listadoEnfermedades.remove(index);
 			mensaje = "Se ha eliminado la enfermedad exitosamente";
 		}
 		else {
@@ -453,22 +443,25 @@ public class CatalogoSalud {
 	
 	
 		/**
-		 * @param nombreMed
+		 * Toma el nombre de la medicina y borra la tupla de la base de datos que tenga este nombre y también la borra del listado de medicina
+		 * @param nombreMed El nombre de la medicina que se va a borrar
 		 * @return Indica si se borro la medicina exitosamente en la base de datos
-		 * Toma el nombre de la medicinay borra la tupla de la base de datos que tenga este nombre
 		 */
 		public String borrarMedicina(String nombreMed){
 			String mensaje = "";
+			int index = 0;
 			
 			boolean bandera = false;
 			for(Medicina medicina: listadoMedicinas) {
 				if(medicina.getNombre().equals(nombreMed.toLowerCase())) {
 					bandera = true;
+					index = listadoMedicinas.indexOf(medicina);
 				}
 			}
 			if(bandera) {
 				String queryDelete = "DELETE FROM medicinas WHERE Nombre = '" + nombreMed + "'";
 				manejarBD(queryDelete);
+				listadoMedicinas.remove(index);
 				mensaje = "Se ha eliminado el medicamento exitosamente";
 			}
 			else {
@@ -479,18 +472,18 @@ public class CatalogoSalud {
 	}
 		
 		/**
-		 * @param nombre
-		 * @param dolorCabeza
-		 * @param dolorEstomago
-		 * @param vomito
-		 * @param diarrea
-		 * @param estornudo
-		 * @param tos
-		 * @param dolorGeneral
-		 * @param faltaEnergia
-		 * @param notasAdicionales
+		 * Este metodo actualiza una enfermedad de la base de datos y en el listado de enfermedades
+		 * @param nombre el nombre de la enfermedad para actualizar
+		 * @param dolorCabeza el nuevo valor de dolorCabeza
+		 * @param dolorEstomago el nuevo valor de dolorEstomago
+		 * @param vomito el nuevo valor de vomito
+		 * @param diarrea el nuevo valor de diarrea
+		 * @param estornudo el nuevo valor de estornudo
+		 * @param tos el nuevo valor de tos
+		 * @param dolorGeneral el nuevo valor de dolorGeneral
+		 * @param faltaEnergia el nuevo valor de faltaEnergia
+		 * @param notasAdicionales Las nuevas notasAdicionales
 		 * @return Indica si la enfermedad se actualizo exitosamente en la base de datos
-		 * Este metodo actualiza una enfermedad de la base de datos
 		 */
 		public String actualizarEnfermedad(String nombre,boolean dolorCabeza, boolean dolorEstomago, boolean vomito, boolean diarrea, boolean estornudo, boolean tos, boolean dolorGeneral, boolean faltaEnergia, String notasAdicionales,String medicina) {
 			String notificacion = "";
@@ -499,7 +492,7 @@ public class CatalogoSalud {
 				int indice = 0;
 				
 				for(Enfermedad enfermedad: listadoEnfermedades) {
-					if(enfermedad.getNombre().equals(nombre)) {
+					if(enfermedad.getNombre().toLowerCase().equals(nombre.toLowerCase())) {
 						seguir = true;
 						indice = listadoEnfermedades.indexOf(enfermedad);
 					}
@@ -511,7 +504,7 @@ public class CatalogoSalud {
 				
 					manejarBD(query);
 					
-					listadoEnfermedades.add(indice, new Enfermedad(nombre, dolorCabeza ,dolorEstomago , vomito, diarrea,estornudo, tos, dolorGeneral, faltaEnergia, notasAdicionales, medicina));
+					listadoEnfermedades.set(indice, new Enfermedad(nombre, dolorCabeza ,dolorEstomago , vomito, diarrea,estornudo, tos, dolorGeneral, faltaEnergia, notasAdicionales, medicina));
 					notificacion = "La actualizacion se ha completado";
 				}
 				else {
@@ -526,9 +519,9 @@ public class CatalogoSalud {
 		}
 		
 		/**
-		 * @param nombre
-		 * @return regresa el nombre de la enfermedad y sus atributos de la lista
 		 * Este metodo permite buscar la enfermedad una enfermedad que el usuario desea y con eso obtenemos su informacion
+		 * @param nombre el nombre de la enfermedad buscada
+		 * @return regresa el nombre de la enfermedad y sus atributos de la lista
 		 */
 		public Enfermedad buscarEnfermedadA(String nombre) {
 			Enfermedad NombreBusc = new Enfermedad();
