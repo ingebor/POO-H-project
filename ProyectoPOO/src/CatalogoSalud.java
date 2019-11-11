@@ -33,7 +33,7 @@ public class CatalogoSalud {
     private String basededatos = "bdpoo";
     private String contrasena = "";
 
-    //haa
+    //haaa
 
     
 	/**
