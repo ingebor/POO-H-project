@@ -24,6 +24,10 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JTextArea;
 
+/**
+ * @author Grupo 6 POO Seccion 21
+ * Crea una ventana para un usuario medico de la aplicacion
+ */
 public class MenuDoctor {
 
 	private JFrame frame;

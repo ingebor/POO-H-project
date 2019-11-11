@@ -26,6 +26,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 
+/**
+ * @author Grupo 6 POO Seccion 21
+ * Crea una ventana para un usuario paciente de la aplicacion
+ */
 public class MenuPaciente extends JFrame {
 
 	private JPanel contentPane;
