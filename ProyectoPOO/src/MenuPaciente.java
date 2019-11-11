@@ -61,6 +61,7 @@ public class MenuPaciente extends JFrame {
 	private JScrollPane scrollPane_2;
 	private JTextArea textPaneMedicamentos;
 	private JButton btnInstruccion;
+	private JButton btnLimpiar;
 	
 	/**
 	 * Launch the application.
@@ -239,6 +240,12 @@ public class MenuPaciente extends JFrame {
 		textPaneResultado = new JTextArea();
 		scrollPane.setViewportView(textPaneResultado);
 		textPaneResultado.setLineWrap(true);
+		
+		btnLimpiar = new JButton("limpiar ");
+		btnLimpiar.setBounds(195, 256, 97, 25);
+		miListener limp = new miListener();
+		btnLimpiar.addActionListener(limp);
+		panelIngreso.add(btnLimpiar);
 		
 		NombreDeMedicamento = new JPanel();
 		NombreDeMedicamento.setBackground(new Color(173, 216, 230));
@@ -449,6 +456,9 @@ public class MenuPaciente extends JFrame {
 				}
 				
 				textPaneResultado.setText(catalogo.buscarEnfermedad(dolorCabeza, dolorEstomago, vomito, diarrea, estornudo, tos, dolorGeneral, faltaEnergia));
+			}
+			
+			if (e.getSource() == btnLimpiar) {
 				comboBoxDolor_de_cabeza.setSelectedItem(" ");
 				comboBoxFaltaEnergia.setSelectedItem(" ");
 				comboBoxDolorEstomago.setSelectedItem(" ");
