@@ -51,7 +51,7 @@ public class CatalogoSalud {
 	}
 	
 	/**
-	 * Agrega una medicina a la base de datos
+	 * Agrega una medicina a la base de datoss
 	 * @param nombre el nombre de la medicina
 	 * @param precio el precio de la medicina
 	 * @param ingestion el modo de ingestion de la medicina
