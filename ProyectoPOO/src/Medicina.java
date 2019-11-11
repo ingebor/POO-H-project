@@ -147,5 +147,5 @@ public class Medicina {
 				+ "\nnotasAdicionales: " + notasAdicionales + "\nEnfermedad que combate: " + nombreEnf;
 	}
 	
-	
+	//a
 }
