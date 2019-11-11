@@ -143,7 +143,7 @@ public class Medicina {
 	//toString
 	@Override
 	public String toString() {
-		return "Nombre: " + nombre + "\nPrecio en quetzales: " + precio + "\nModo de ingestion: " + ingestion + "\nTipo de medicina: " + tiposMedicina + "\nDosis" + dosis
+		return "Nombre: " + nombre + "\nPrecio en quetzales: " + precio + "\nModo de ingestion: " + ingestion + "\nTipo de medicina: " + tiposMedicina + "\nDosis: " + dosis
 				+ "\nnotasAdicionales: " + notasAdicionales + "\nEnfermedad que combate: " + nombreEnf;
 	}
 	
