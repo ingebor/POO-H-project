@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 import java.awt.Color;
 
 /**
- * @author Grupo 2
+ * @author Grupo 6
  * @date 
  * Crea la ventana de Inicio de la aplicacion
  */
@@ -34,6 +34,9 @@ public class Inicio {
 	private JTextField tfCnAdmin;
 	private JPasswordField pfAdmin;
 	private JButton btnIngresarAdmin;
+	private JButton button;
+	private JButton btnIngresar;
+	
 
 	/**
 	 * Launch the application.
@@ -84,10 +87,12 @@ public class Inicio {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		miListener oyente = new miListener();
+		
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.getContentPane().setBackground(new Color(173, 216, 230));
-		frame.setBounds(100, 100, 629, 391);
+		frame.setBounds(100, 100, 629, 258);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
@@ -101,15 +106,17 @@ public class Inicio {
 		JLabel lblPaciente = new JLabel("PACIENTE");
 		lblPaciente.setFont(new Font("Lucida Grande", Font.BOLD, 20));
 		
-		JButton button = new JButton("INGRESAR");
+		button = new JButton("INGRESAR");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MenuPaciente nuevoPaciente = new MenuPaciente(); 
 				nuevoPaciente.newScreen();
 				window.frame.dispose();
 				
+				
 			}
 		});
+		button.addActionListener(oyente);
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.TRAILING)
@@ -165,6 +172,7 @@ public class Inicio {
 					.addContainerGap())
 		);
 		panelAdmin.setLayout(null);
+		panelAdmin.setVisible(false);
 		
 		JLabel lblAdministrador = new JLabel("ADMINISTRADOR");
 		lblAdministrador.setFont(new Font("Dialog", Font.BOLD, 20));
@@ -188,7 +196,7 @@ public class Inicio {
 		lblContrasena_1.setBounds(10, 77, 96, 14);
 		panelAdmin.add(lblContrasena_1);
 		
-		miListener oyente = new miListener();
+		
 		
 		btnIngresarAdmin = new JButton("INGRESAR");
 		btnIngresarAdmin.setBounds(358, 52, 103, 27);
@@ -204,7 +212,7 @@ public class Inicio {
 		
 		passwordField = new JPasswordField();
 		
-		JButton btnIngresar = new JButton("INGRESAR");
+		btnIngresar = new JButton("INGRESAR");
 		btnIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -235,7 +243,7 @@ public class Inicio {
 				}
 				
 				else {
-					JOptionPane.showMessageDialog(null, "No está ingresando la contraseña o el usuario correctamente, vuelva a intentarlo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
+					//JOptionPane.showMessageDialog(null, "No está ingresando la contraseña o el usuario correctamente, vuelva a intentarlo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
 
 					
 				}
@@ -243,7 +251,7 @@ public class Inicio {
 				
 				catch (Exception ex) {
 					
-					JOptionPane.showMessageDialog(null, "Está ingresando un valor inválido, vuelva a intentarlo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
+					//JOptionPane.showMessageDialog(null, "Está ingresando un valor inválido, vuelva a intentarlo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
 			
 					
 				}
@@ -252,6 +260,7 @@ public class Inicio {
 				
 			}
 		);
+		btnIngresar.addActionListener(oyente);
 		
 		JLabel lblMedico = new JLabel("MEDICO");
 		lblMedico.setFont(new Font("Lucida Grande", Font.BOLD, 20));
@@ -321,6 +330,51 @@ public class Inicio {
 				} else {
 					JOptionPane.showMessageDialog(null, "No ingresó la informacion adecuada, intente de nuevo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
 				}
+			}
+			
+			if(e.getSource() == button) {
+				frame.dispose();
+			}
+			
+			if(e.getSource() == btnIngresar) {
+				
+				boolean accesoFinal = false;
+				
+				List <Doctor> listaDoc = catalogo.getListadoDoctores();
+				
+				char key[]= passwordField.getPassword(); 
+				String clave= new String(key); 
+				
+				int i = 0;
+				boolean acceso = false;
+				while(i < listaDoc.size() && !acceso) {
+					if((textUsuario.getText().equals(listaDoc.get(i).getNombreUsuario()) && clave.equals(listaDoc.get(i).getContrasena()))){
+						acceso = true;
+					}
+					i++;
+				}
+				
+				if((textUsuario.getText().equals("doctor") && clave.equals("12345"))) {
+					acceso = true;
+				}
+				
+				if(acceso) {
+					frame.dispose();
+				}
+				
+				if(!acceso) {
+					if(textUsuario.getText().equals("Grupo2") && passwordField.getText().equals("ElWatt123")) {
+						menuAdmin NmenuA = new menuAdmin();
+						NmenuA.getFrame().setVisible(true);
+						accesoFinal = true;
+						frame.dispose();
+					}
+					if(!accesoFinal) {
+						JOptionPane.showMessageDialog(null, "No ingresó la informacion adecuada, intente de nuevo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
+					}
+				}
+				
+				
 			}
 		}
 		

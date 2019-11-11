@@ -1086,4 +1086,8 @@ public class MenuDoctor {
 			}
 		}
 	}
+	
+	public JFrame getFrame() {
+		return frame;
+	}
 }

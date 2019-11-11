@@ -201,8 +201,58 @@ public class Enfermedad {
 		//metodo toString
 		@Override
 		public String toString() {
-			return "Nombre: " + nombre + "\nDolor de cabeza: " + dolorCabeza + "\nDolor de Estomago: " + dolorEstomago + "\nVomito: " + vomito + "\nDiarrea: " + diarrea 
-					+ "\nEstornudos: " + estornudo + "\nTos: " + tos + "\nDolor General: " + dolorGeneral + "\nFalta de Energia: " + faltaEnergia + "\nNotas Adicionales: " + 
+			String rDolorCabeza = "";
+			if(this.dolorCabeza) {
+				rDolorCabeza = "Si";
+			}else {
+				rDolorCabeza = "No";
+			}
+			String rDolorEstomago = "";
+			if(this.dolorEstomago) {
+				rDolorEstomago = "si";
+			}else {
+				rDolorEstomago = "no";
+			}
+			String rVomito = "";
+			if(this.vomito) {
+				rVomito = "si";
+			}else {
+				rVomito = "no";
+			}
+			String rDiarrea = "";
+			if(this.diarrea) {
+				rDiarrea = "si";
+			}else {
+				rDiarrea = "no";
+			}
+			String rEstornudo = "";
+			if(this.estornudo) {
+				rEstornudo = "si";
+			}else {
+				rEstornudo = "no";
+			}
+			String rTos = "";
+			if(this.tos) {
+				rTos = "si";
+			}else {
+				rTos = "no";
+			}
+			String rDolorGeneral = "";
+			if(this.dolorGeneral) {
+				rDolorGeneral = "si";
+			}else {
+				rDolorGeneral = "no";
+			}
+			String rFaltaEnergia = "";
+			if(this.faltaEnergia) {
+				rFaltaEnergia = "si";
+			}else {
+				rFaltaEnergia = "no";
+			}
+
+			
+			return "Nombre: " + nombre + "\nDolor de cabeza: " + rDolorCabeza + "\nDolor de Estomago: " + rDolorEstomago + "\nVomito: " + rVomito + "\nDiarrea: " + rDiarrea 
+					+ "\nEstornudos: " + rEstornudo + "\nTos: " + rTos + "\nDolor General: " + rDolorGeneral + "\nFalta de Energia: " + rFaltaEnergia + "\nNotas Adicionales: " + 
 					notasAdicionales + "\nNombre Medicina: " +nombreMed;
 		}
 		
