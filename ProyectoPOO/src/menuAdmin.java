@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 /**
- * @author Grupo 2
+ * @author Grupo 6
  * @date 04/11/2019
  * La clase proporciona un menu para el administrador
  */

@@ -1,5 +1,5 @@
 /**
- * @author Grupo 2 POO
+ * @author Grupo 6 POO
  * @date 03/011/2019
  * Modelar a un usuario doctor para el programa
  */

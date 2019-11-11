@@ -4,6 +4,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+/**
+ * @author Grupo 6 POO Seccion 21
+ * Permite conectar el programa a una base de datos en sql
+ */
 public class ConeccionBD{
     private Connection currentConnection = null;
     public Statement stQuery = null;
@@ -12,6 +16,12 @@ public class ConeccionBD{
     private String DB_USERNAME = "";
     private String DB_PASSWORD = "";
 
+    /**
+     * Constructor con parametros de ConeccionBD
+     * @param URL el URL para hacer la conexion
+     * @param USER el nombre de usuario para hacer la conexion
+     * @param PASSWORD la contrasenia para hacer la conexion a sql
+     */
     public ConeccionBD(String URL, String USER, String PASSWORD){
         this.DB_URL = URL;
         this.DB_USERNAME = USER;
@@ -19,8 +29,7 @@ public class ConeccionBD{
     }
 
 	/**
-	 * @param Este metodo realiza la coneccion a la base de datos de MySQL
-	 * Con este metodos nos podemos conectar a la base de datos de MySQL
+	 * El metodo establece una nueva conexion con la base de datos, utilizando los atributos que se llenaron con el constructor
 	 */
     public Connection getNewConnection(){
         try{
@@ -40,10 +49,17 @@ public class ConeccionBD{
         return currentConnection;
     }
 
+    /**
+     * Acceso a currentConnection
+     * @return Connection la conexion actual a sql
+     */
     public Connection getCurrentConnection(){
         return currentConnection;
     }
     
+    /**
+     * Cierra la conexion actual con sql
+     */
     public void closeConnection (){
         try{
             currentConnection.close();
