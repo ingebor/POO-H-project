@@ -64,8 +64,8 @@ public class Inicio {
 				try {
 					window = new Inicio();
 					window.frame.setVisible(true);
-					JOptionPane.showMessageDialog(null, "Para ingresar como medico, utilice \"doctor\"\ncomo usuario y \"12345\" como contraseña.\n"
-							+ "\nPara ingresar como administrador, utilice \"Grupo2\"\ncomo usuario y \"ElWatt123\" como contraseña.");
+					JOptionPane.showMessageDialog(null, "Colaborador:\nPara ingresar como medico, utilice \"doctor\"\ncomo usuario y \"12345\" como contraseï¿½a.\n"
+							+ "\nPara ingresar como administrador, utilice \"Grupo2\"\ncomo usuario y \"ElWatt123\" como contraseï¿½a.");
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -208,7 +208,7 @@ public class Inicio {
 		textUsuario = new JTextField();
 		textUsuario.setColumns(10);
 		
-		JLabel lblContrasena = new JLabel("CONTRASEÑA: ");
+		JLabel lblContrasena = new JLabel("CONTRASEï¿½A: ");
 		
 		passwordField = new JPasswordField();
 		
@@ -242,16 +242,15 @@ public class Inicio {
 					window.frame.dispose();
 				}
 				
+				
 				else {
-					//JOptionPane.showMessageDialog(null, "No está ingresando la contraseña o el usuario correctamente, vuelva a intentarlo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
-
-					
+					passwordField.setText("");					
 				}
 				}
 				
 				catch (Exception ex) {
 					
-					//JOptionPane.showMessageDialog(null, "Está ingresando un valor inválido, vuelva a intentarlo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
+					//JOptionPane.showMessageDialog(null, "Estï¿½ ingresando un valor invï¿½lido, vuelva a intentarlo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
 			
 					
 				}
@@ -262,7 +261,7 @@ public class Inicio {
 		);
 		btnIngresar.addActionListener(oyente);
 		
-		JLabel lblMedico = new JLabel("MEDICO");
+		JLabel lblMedico = new JLabel("COLABORADOR");
 		lblMedico.setFont(new Font("Lucida Grande", Font.BOLD, 20));
 		
 		
@@ -328,7 +327,10 @@ public class Inicio {
 					NmenuA.getFrame().setVisible(true);
 					frame.dispose();
 				} else {
-					JOptionPane.showMessageDialog(null, "No ingresó la informacion adecuada, intente de nuevo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
+
+					JOptionPane.showMessageDialog(null, "No ingresï¿½ la informacion adecuada, intente de nuevo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
+					passwordField.setText("");
+
 				}
 			}
 			
@@ -370,7 +372,7 @@ public class Inicio {
 						frame.dispose();
 					}
 					if(!accesoFinal) {
-						JOptionPane.showMessageDialog(null, "No ingresó la informacion adecuada, intente de nuevo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "No ingresï¿½ la informacion adecuada, intente de nuevo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
 					}
 				}
 				
