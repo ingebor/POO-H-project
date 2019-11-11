@@ -238,6 +238,7 @@ public class MenuPaciente extends JFrame {
 		
 		textPaneResultado = new JTextArea();
 		scrollPane.setViewportView(textPaneResultado);
+		textPaneResultado.setLineWrap(true);
 		
 		NombreDeMedicamento = new JPanel();
 		NombreDeMedicamento.setBackground(new Color(173, 216, 230));
@@ -268,6 +269,7 @@ public class MenuPaciente extends JFrame {
 		
 		textPaneMedicamentos = new JTextArea();
 		scrollPane_2.setViewportView(textPaneMedicamentos);
+		textPaneMedicamentos.setLineWrap(true);
 		
 		JPanel Nombre_De_Enfermedad = new JPanel();
 		Nombre_De_Enfermedad.setBackground(new Color(176, 196, 222));
@@ -300,6 +302,7 @@ public class MenuPaciente extends JFrame {
 		
 		textPaneBuscarEnfermedad = new JTextArea();
 		scrollPane_1.setViewportView(textPaneBuscarEnfermedad);
+		textPaneBuscarEnfermedad.setLineWrap(true);
 		
 		JLabel lblPaciene = new JLabel("PACIENTE");
 		lblPaciene.setFont(new Font("Lucida Grande", Font.BOLD, 25));

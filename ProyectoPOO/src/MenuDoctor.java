@@ -210,6 +210,7 @@ public class MenuDoctor {
 		
 		txtnotasmed = new JTextArea();
 		scrollPane.setViewportView(txtnotasmed);
+		txtnotasmed.setLineWrap(true);
 		
 		
 		//Ingresar datos de enfermedad
@@ -343,6 +344,7 @@ public class MenuDoctor {
 		
 		txtnotasenf = new JTextArea();
 		scrollPane_1.setViewportView(txtnotasenf);
+		txtnotasenf.setLineWrap(true);
 		
 		JButton btnVolver = new JButton("VOLVER");
 		btnVolver.addActionListener(new ActionListener() {
@@ -441,6 +443,8 @@ public class MenuDoctor {
 		btnActualizar.setBounds(189, 355, 89, 23);
 		panelActuaMed.add(btnActualizar);
 		btnActualizar.setEnabled(false);
+		btnActualizar.addActionListener(oyente1);
+
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
 		scrollPane_2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -450,7 +454,7 @@ public class MenuDoctor {
 		
 		tpActuaMed = new JTextArea();
 		scrollPane_2.setViewportView(tpActuaMed);
-		btnActualizar.addActionListener(oyente1);
+		tpActuaMed.setLineWrap(true);
 		
 		JPanel panelActualizacionEnf = new JPanel();
 		panelActualizacionEnf.setBounds(945, 38, 312, 398);
@@ -578,6 +582,7 @@ public class MenuDoctor {
 		
 		textNotasEnfA = new JTextArea();
 		scrollPane_3.setViewportView(textNotasEnfA);
+		textNotasEnfA.setLineWrap(true);
 		
 		JPanel panelBorrar = new JPanel();
 		panelBorrar.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Borrado de informacion", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(255, 0, 0)));

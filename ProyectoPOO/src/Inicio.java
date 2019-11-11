@@ -64,7 +64,7 @@ public class Inicio {
 				try {
 					window = new Inicio();
 					window.frame.setVisible(true);
-					JOptionPane.showMessageDialog(null, "Para ingresar como medico, utilice \"doctor\"\ncomo usuario y \"12345\" como contraseña.\n"
+					JOptionPane.showMessageDialog(null, "Colaborador:\nPara ingresar como medico, utilice \"doctor\"\ncomo usuario y \"12345\" como contraseña.\n"
 							+ "\nPara ingresar como administrador, utilice \"Grupo2\"\ncomo usuario y \"ElWatt123\" como contraseña.");
 					
 				} catch (Exception e) {
@@ -262,7 +262,7 @@ public class Inicio {
 		);
 		btnIngresar.addActionListener(oyente);
 		
-		JLabel lblMedico = new JLabel("MEDICO");
+		JLabel lblMedico = new JLabel("COLABORADOR");
 		lblMedico.setFont(new Font("Lucida Grande", Font.BOLD, 20));
 		
 		
