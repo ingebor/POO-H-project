@@ -208,7 +208,7 @@ public class Inicio {
 		textUsuario = new JTextField();
 		textUsuario.setColumns(10);
 		
-		JLabel lblContrasena = new JLabel("CONTRASE�A: ");
+		JLabel lblContrasena = new JLabel("Clave: ");
 		
 		passwordField = new JPasswordField();
 		
@@ -275,18 +275,17 @@ public class Inicio {
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createSequentialGroup()
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+							.addContainerGap(19, Short.MAX_VALUE)
+							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
 								.addGroup(gl_panel.createSequentialGroup()
-									.addGap(19)
-									.addComponent(lblContrasena, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED))
-								.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-									.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 									.addComponent(lblNewLabel)
-									.addGap(17)))
+									.addGap(17))
+								.addGroup(gl_panel.createSequentialGroup()
+									.addComponent(lblContrasena, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED)))
 							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-								.addComponent(textUsuario, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-								.addComponent(passwordField, Alignment.LEADING)))
+								.addComponent(textUsuario, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+								.addComponent(passwordField, Alignment.LEADING, 181, 181, 181)))
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(107)
 							.addComponent(btnIngresar))
