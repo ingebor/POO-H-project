@@ -40,6 +40,7 @@ public class MenuDoctor {
 	private JTextField txtnombreenf;
 	private JTextField txtmedicamentoenf;
 	private JButton btnAgregarMed;
+	private JButton btnInstrucciones;
 	private JComboBox cmbdolorcabezaenf;
 	private JComboBox cmbdolorestomagoenf;
 	private JComboBox cmbvomitoenf;
@@ -623,7 +624,10 @@ public class MenuDoctor {
 		panelBorrar.add(btnBorrarEnf);
 		btnBorrarEnf.addActionListener(oyente1);
 		//
-		
+		btnInstrucciones = new JButton("Instrucciones de ayuda");
+		btnInstrucciones.setBounds(1078, 10, 179, 23);
+		panel.add(btnInstrucciones);
+		btnInstrucciones .addActionListener(oyente1);
 	}
 	
 	//Validar que las entradas de agregar medicinas no tenga campos vacios o datos incorrectos
@@ -1093,6 +1097,15 @@ public class MenuDoctor {
 					JOptionPane.showMessageDialog(null, "La casilla esta vacía, intente de nuevo por favor.");
 				}
 			}
+			
+			if (e.getSource() == btnInstrucciones)
+			{
+				JLabel primera = new JLabel("<html><b>Agregar Medicina:</b> <body> En esta sección podra <br> ingresar los atributos de un medicamento<br>como el nombre del medicamento, el precio (porfavor ingresar cifras numericas), la ingestion, la dosis, etcetera.<br>No es obligatorio ingresar las notas adicionales.<br> Con el boton agregar se guardaran la informacion en la base de datos."
+						+ "<br><br><b>Agregar enfermedad:</b> Esta seccion es similar a la seccion agragar medicamento. <br> En este caso solo es necesario ingresar el nombre de la enfermedad y los sintomas que puede<br>padecer una persona por esta enfermedad.<br> Con el boton agregar se guardaran la informacion en la base de datos."
+						+ "<br><br><b>Actualizar enfermedad y medicamento:</b> En esta seccion es necesario que ingrese una enfermedad guardada en la base de datos<br> y con el boton buscar se hallara la enfermedad, permitiendo asi cambiar sus atributos para luego actulizarlos en la base de datos con el boton actualizacion.</body>");
+				JOptionPane.showMessageDialog(null,primera,"Infor box: "+"Instrucciones",JOptionPane.PLAIN_MESSAGE);
+			}
+
 		}
 	}
 	
