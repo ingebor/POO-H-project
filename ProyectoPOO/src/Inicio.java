@@ -64,8 +64,8 @@ public class Inicio {
 				try {
 					window = new Inicio();
 					window.frame.setVisible(true);
-					JOptionPane.showMessageDialog(null, "Colaborador:\nPara ingresar como medico, utilice \"doctor\"\ncomo usuario y \"12345\" como contrase�a.\n"
-							+ "\nPara ingresar como administrador, utilice \"Grupo2\"\ncomo usuario y \"ElWatt123\" como contrase�a.");
+					JOptionPane.showMessageDialog(null, "Colaborador:\nPara ingresar como medico, utilice \"doctor\"\ncomo usuario y \"12345\" como clave.\n"
+							+ "\nPara ingresar como administrador, utilice \"Grupo2\"\ncomo usuario y \"ElWatt123\" como clave.");
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -331,7 +331,7 @@ public class Inicio {
 					frame.dispose();
 				} else {
 
-					JOptionPane.showMessageDialog(null, "No ingres� la informacion adecuada, intente de nuevo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "No ingreso la informacion adecuada, intente de nuevo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
 					passwordField.setText("");
 
 				}
@@ -375,7 +375,7 @@ public class Inicio {
 						frame.dispose();
 					}
 					if(!accesoFinal) {
-						JOptionPane.showMessageDialog(null, "No ingres� la informacion adecuada, intente de nuevo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "No ingreso la informacion adecuada, intente de nuevo por favor.","Infor box: "+"Advertencia",JOptionPane.INFORMATION_MESSAGE);
 					}
 				}
 				
